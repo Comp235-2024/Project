@@ -1,0 +1,9 @@
+.vscode
+.idea
+tests/ItemsTest.exe
+tests/ItemsTest.ilk
+tests/ItemsTest.pdb
+tests/build/
+cmake-build-debug/
+
+build
