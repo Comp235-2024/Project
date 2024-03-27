@@ -19,6 +19,9 @@
 //#include "Cell.h"
 #include "../../Characters/include/Character.h"
 #include "../../Items/include/Item.h"
+#include "../../ItemContainers/include/TreasureChest.h"
+#include "../../ItemContainers/include/ItemContainer.h"
+
 #include "../../Items/include/Movable.h"
 #include "Door.h"
 #include "Observable.h"

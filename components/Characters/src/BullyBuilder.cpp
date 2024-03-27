@@ -3,7 +3,7 @@
 //
 
 #include "BullyBuilder.h"
-#include "Dice.h"
+#include "../../Functionalities/include/Dice.h"
 
 // BullyBuilder implementation
 BullyBuilder::BullyBuilder() { character = new Character(); }

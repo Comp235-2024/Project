@@ -1,8 +1,8 @@
 
-#include "../components/Functionalities/include/Dice.h"
-#include "../components/Items/include/Item.h"
-#include "../components/Maps/include/Map.h"
+#include "../../Functionalities/include/Dice.h"
 #include "CharacterObserver.h"
+#include "Item.h"
+#include "Map.h"
 //#include "../tests/ItemsTest.cpp"
 #include "Campaign.h"
 #include "MapObserver.h"
@@ -11,15 +11,15 @@
 #include "CharacterStrategy.h"
 using namespace std;
 using namespace sf;
-#include "GameLooptyLoop.h"
+#include "../include/GameLooptyLoop.h"
 #include "Character.h"
 #include "TankBuilder.h"
 #include "NimbleBuilder.h"
 #include "BullyBuilder.h"
 
-#include <SFML/Graphics.hpp>
-#include <nlohmann/json.hpp>
-#include "CONFIG.h"
+#include "../include/CONFIG.h"
+#include "SFML/Graphics.hpp"
+#include "nlohmann/json.hpp"
 
 
 const Vector2f gameSize = {WINDOW_WIDTH, WINDOW_HEIGHT};

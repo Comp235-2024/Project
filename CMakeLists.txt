@@ -26,16 +26,18 @@ include_directories(components/ItemContainers/include)
 include_directories(components/Items/include)
 include_directories(components/Log/include)
 include_directories(components/Maps/include)
+include_directories(components/GameEngine/include)
+include_directories(components/Functionalities/include)
 
 # Add the source files for each subdirectory
 file(GLOB_RECURSE SOURCES
-        "src/*.cpp"
         "components/Characters/src/*.cpp"
         "components/ItemContainers/src/*.cpp"
         "components/Items/src/*.cpp"
         "components/Log/src/*.cpp"
         "components/Maps/src/*.cpp"
-        "components/GameEngine/src/*.cpp")
+        "components/GameEngine/src/*.cpp"
+        "components/Functionalities/src/*.cpp")
 
 
 # Define the executable

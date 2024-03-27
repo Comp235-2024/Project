@@ -2,7 +2,7 @@
 #include "BullyBuilder.h"
 #include "NimbleBuilder.h"
 #include "TankBuilder.h"
-#include "dice.h"
+#include "../../Functionalities/include/Dice.h"
 #include <iostream>
 
 Character::Character(){

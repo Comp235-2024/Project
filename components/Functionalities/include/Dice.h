@@ -26,7 +26,7 @@
 #ifndef A3_DICE_H
 #define A3_DICE_H
 
-#include "Log/include/LogObservable.h"
+#include "../../Log/include/LogObservable.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>

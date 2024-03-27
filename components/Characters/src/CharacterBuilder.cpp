@@ -5,7 +5,7 @@
 #ifndef A2_CHARACTERBUILDER_CPP_H
 #define A2_CHARACTERBUILDER_CPP_H
 #include "CharacterBuilder.h"
-#include "Dice.h"
+#include "../../Functionalities/include/Dice.h"
 
 #endif//A2_CHARACTERBUILDER_CPP_H
 void CharacterBuilder::applyLevelBasedHPIncrease(Character& character, int baseHP) {

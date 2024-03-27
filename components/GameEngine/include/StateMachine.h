@@ -8,7 +8,7 @@
 #ifndef A2_STATEMACHINE_H
 #define A2_STATEMACHINE_H
 
-#include "Log/include/LogObservable.h"
+#include "../../Log/include/LogObservable.h"
 #include "State.h"
 #include <memory>
 #include <stack>

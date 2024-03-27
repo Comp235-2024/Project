@@ -2,7 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-19.
 //
 #include "NimbleBuilder.h"
-#include "Dice.h"
+#include "../../Functionalities/include/Dice.h"
 
 NimbleBuilder::NimbleBuilder() { character = new Character(); }
 NimbleBuilder::~NimbleBuilder() { delete character; }

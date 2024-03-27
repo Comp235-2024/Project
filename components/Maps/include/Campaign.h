@@ -9,9 +9,9 @@ creating connections between maps, editing maps, and saving/loading the campaign
 #ifndef A3_CAMPAIGN_H
 #define A3_CAMPAIGN_H
 
-#include "Log/include/LogObservable.h"
+#include "../../Log/include/LogObservable.h"
 #include "Map.h"                                                     // Include the "Map.h" header
-#include "cmake-build-debug/_deps/json-src/include/nlohmann/json.hpp"// Include the "nlohmann/json.hpp" header
+#include "../../../cmake-build-debug/_deps/json-src/include/nlohmann/json.hpp"// Include the "nlohmann/json.hpp" header
 #include <iostream>
 #include <unordered_map>
 #include <vector>

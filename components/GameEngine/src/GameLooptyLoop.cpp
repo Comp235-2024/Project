@@ -8,7 +8,7 @@
 #include "GameLooptyLoop.h"
 #include "WelcomeScreen.h"
 #include "MainMenu.h"
-#include "Log/include/LogObserver.h"
+#include "../../Log/include/LogObserver.h"
 
 
 

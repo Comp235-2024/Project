@@ -9,7 +9,7 @@
 #ifndef A2_ASSETMANAGER_H
 #define A2_ASSETMANAGER_H
 
-#include "Log/include/LogObservable.h"
+#include "../../Log/include/LogObservable.h"
 #include "SFML/Graphics.hpp"
 #include <map>
 using namespace std;

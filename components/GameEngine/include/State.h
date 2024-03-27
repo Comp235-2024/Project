@@ -9,7 +9,7 @@
 #define A2_STATE_H
 
 
-#include "Log/include/LogObservable.h"
+#include "../../Log/include/LogObservable.h"
 
 /**
  * @brief The State class is an abstract base class for implementing different states in a game.

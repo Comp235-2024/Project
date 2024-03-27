@@ -2,7 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-19.
 //
 #include "TankBuilder.h"
-#include "Dice.h"
+#include "../../Functionalities/include/Dice.h"
 #include "Character.h"
 
 
