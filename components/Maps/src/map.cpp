@@ -5,6 +5,7 @@
  */
 
 #include "../include/Map.h"
+#include "SFML/System/Vector2.hpp"
 #include <algorithm>
 #include <cassert>
 #include <cstdint>
@@ -18,15 +19,16 @@
 #include <vector>
 
 using namespace std;
+using namespace sf;
 namespace fs = std::filesystem;
 
 
 // NOTE maybe add some sort of random wall generation
-Map::Map(){
-    this->startCell={-1,-1};
-    this->endCell={-1,-1};
-    this->size_x=0;
-    this->size_y=0;
+Map::Map() {
+    this->startCell = {-1, -1};
+    this->endCell = {-1, -1};
+    this->size_x = 0;
+    this->size_y = 0;
 }
 /**
  * @brief Constructs a new Map object.
@@ -37,7 +39,8 @@ Map::Map(){
 Map::Map(int size_x, int size_y)
     : size_x(size_x),
       size_y(size_y),
-      grid(size_y, Row(size_x, nullptr)) {
+      size_map(size_x, size_y),
+      grid(size_y, Row(size_x, Cell())) {
     startCell = getRandomCell();
 
 
@@ -53,8 +56,8 @@ Map::Map(int size_x, int size_y)
  */
 Map::Map(const Map &other) = default;
 
-Map& Map::operator=(const Map& other) {
-    if (this != &other) { // Self-assignment check
+Map &Map::operator=(const Map &other) {
+    if (this != &other) {// Self-assignment check
         this->size_x = other.size_x;
         this->size_y = other.size_y;
 
@@ -63,13 +66,13 @@ Map& Map::operator=(const Map& other) {
         this->grid = Grid(other.size_y, Row(other.size_x));
         for (int y = 0; y < other.size_y; ++y) {
             for (int x = 0; x < other.size_x; ++x) {
-                if (other.grid[y][x] != nullptr) {
+                if (other.grid[y][x].movable != nullptr) {
                     // This assumes Movable has a clone function or similar
                     // If Movable objects don't have polymorphic cloning,
                     // you might need a different approach
-                    this->grid[y][x] = std::make_shared<Movable>(*other.grid[y][x]);
+                    this->grid[y][x] = other.grid[y][x];
                 } else {
-                    this->grid[y][x] = nullptr;
+                    this->grid[y][x].movable = nullptr;
                 }
             }
         }
@@ -83,9 +86,6 @@ Map& Map::operator=(const Map& other) {
 }
 
 
-
-
-
 /**
  * @brief Returns the map grid.
  *
@@ -97,13 +97,13 @@ const Grid &Map::getMap() const { return grid; }
  * @bried Setter for the name of the map
  * @param name
  */
-void Map::setName(string name){this->name=name;}
+void Map::setName(string name) { this->name = name; }
 
 /**
  * @brief Getter for the name of the map
  * @return string
  */
-string Map::getName() const{return this->name;}
+string Map::getName() const { return this->name; }
 
 /**
  * @brief Setter for the size of the X-coordinate of the map
@@ -133,19 +133,19 @@ int Map::getSizeY() const { return size_y; }
  * @brief Setter for the grid of the map
  * @param grid
  */
-void Map::setGrid(const Grid& grid) { this->grid = grid; }
+void Map::setGrid(const Grid &grid) { this->grid = grid; }
 
 /**
  * @brief Setter for the start cell of the map
  * @param startCell
  */
-void Map::setStartCell(const Position& startCell) { this->startCell = startCell; }
+void Map::setStartCell(const Vector2i &startCell) { this->startCell = startCell; }
 
 /**
  * @brief Setter for the end cell of the map
  * @param endCell
  */
-void Map::setEndCell(const Position& endCell) { this->endCell = endCell; }
+void Map::setEndCell(const Vector2i &endCell) { this->endCell = endCell; }
 
 /**
  * @brief Getter for the grid of the map
@@ -155,15 +155,15 @@ const Grid Map::getGrid() const { return grid; }
 
 /**
  * @brief Getter for the start cell of the map
- * @return Position
+ * @return Vector2i
  */
-Position Map::getStartCell() const { return startCell; }
+Vector2i Map::getStartCell() const { return startCell; }
 
 /**
  * @brief Getter for the end cell of the map
- * @return Position
+ * @return Vector2i
  */
-Position Map::getEndCell() const { return endCell; }
+Vector2i Map::getEndCell() const { return endCell; }
 
 
 /**
@@ -191,27 +191,27 @@ bool Map::validateMap() const {
  * @return A vector of positions representing the path from the start position
  * to the end position.
  */
-vector<Position> Map::findPath(Position start, Position end) const {
-    if (!start.checkValidity(size_x, size_y) ||
-        !end.checkValidity(size_x, size_y)) {
+vector<Vector2i> Map::findPath(Vector2i start, Vector2i end) const {
+    if (!checkValidity(start) ||
+        !checkValidity(end)) {
         return {};
     }
 
-    vector<Position> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-    queue<Position> queue;
-    map<Position, Position> cameFrom;
-    vector<Position> path;
+    vector<Vector2i> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    queue<Vector2i> queue;
+    map<Vector2i, Vector2i> cameFrom;
+    vector<Vector2i> path;
 
     queue.push(start);
     cameFrom[start] = start;
 
     while (!queue.empty()) {
-        Position current = queue.front();
+        Vector2i current = queue.front();
         queue.pop();
 
         if (current == end) {
             // reconstruct the path
-            for (Position pos = end; pos != start; pos = cameFrom[pos]) {
+            for (Vector2i pos = end; pos != start; pos = cameFrom[pos]) {
                 path.push_back(pos);
             }
             path.push_back(start);
@@ -219,14 +219,14 @@ vector<Position> Map::findPath(Position start, Position end) const {
             return path;
         }
 
-        for (auto &dir : directions) {
-            Position newpos = {current.x + dir.x, current.y + dir.y};
+        for (auto &dir: directions) {
+            Vector2i newpos = {current.x + dir.x, current.y + dir.y};
 
-            if (newpos.checkValidity(size_x, size_y) && cameFrom.count(newpos) == 0) {
+            if (checkValidity(newpos) && cameFrom.count(newpos) == 0) {
                 auto cell = grid[newpos.y][newpos.x];
-                auto entry_exit = std::dynamic_pointer_cast<Door>(cell); // Attempt to cast cell to Door
+                auto entry_exit = std::dynamic_pointer_cast<Door>(cell.movable);// Attempt to cast cell to Door
 
-                if (!cell || entry_exit) { // Check if the cell is nullptr or if the cast to Door is successful
+                if (!cell.movable || entry_exit) {// Check if the cell is nullptr or if the cast to Door is successful
                     queue.push(newpos);
                     cameFrom[newpos] = current;
                 }
@@ -253,19 +253,19 @@ vector<Position> Map::findPath(Position start, Position end) const {
 //                                 T>::type * = nullptr>
 //
 template<typename T>
-bool Map::place(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
+bool Map::place(const T &obj, const Vector2i &Vector2i) {
+    if (checkEmpty(Vector2i)) {
+        grid[Vector2i.y][Vector2i.x].movable = make_shared<T>(std::move(obj));
         notify();
         return true;
     }
     return false;
 }
 
-bool Map::place(Character &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        obj.position = sf::Vector2f(Position.x, Position.y);
-        grid[Position.y][Position.x] = make_shared<Character>(std::move(obj));
+bool Map::place(Character &obj, const Vector2i &Vector2i) {
+    if (checkEmpty(Vector2i)) {
+        obj.position = sf::Vector2i(Vector2i.x, Vector2i.y);
+        grid[Vector2i.y][Vector2i.x].movable = make_shared<Character>(std::move(obj));
         notify();
         return true;
     }
@@ -273,9 +273,9 @@ bool Map::place(Character &obj, const Position &Position) {
 }
 
 
-bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = obj;
+bool Map::place(const shared_ptr<TreasureChest> &obj, const Vector2i &Vector2i) {
+    if (checkEmpty(Vector2i)) {
+        grid[Vector2i.y][Vector2i.x].movable = obj;
         notify();
         return true;
     }
@@ -283,9 +283,9 @@ bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) 
 }
 
 template<typename T>
-bool Map::specialPlace(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
+bool Map::specialPlace(const T &obj, const Vector2i &Vector2i) {
+    if (checkEmpty(Vector2i)) {
+        grid[Vector2i.y][Vector2i.x].movable = make_shared<T>(std::move(obj));
         return true;
     }
     return false;
@@ -294,12 +294,12 @@ bool Map::specialPlace(const T &obj, const Position &Position) {
 
 /**
  * @brief Removes a movable object from the map at the specified position.
- * @param Position The position from which to remove the object.
+ * @param Vector2i The position from which to remove the object.
  * @return True if the object was successfully removed, false otherwise.
  */
-bool Map::remove(const Position &Position) {
-    if (!checkEmpty(Position)) {
-        grid[Position.y][Position.x] = nullptr;
+bool Map::remove(const Vector2i &Vector2i) {
+    if (!checkEmpty(Vector2i)) {
+        grid[Vector2i.y][Vector2i.x].movable = nullptr;
         notify();
         return true;
     }
@@ -307,17 +307,31 @@ bool Map::remove(const Position &Position) {
 }
 
 /**
- * @brief Generates a random Position within the map boundaries.
+ * @brief Generates a random Vector2i within the map boundaries.
  *
- * @return A random Position object.
+ * @return A random Vector2i object.
  */
-Position Map::getRandomCell() const {
+Vector2i Map::getRandomCell() const {
     random_device rd;
     mt19937 eng(rd());
     uniform_int_distribution<> randomX(0, size_x - 1);
     uniform_int_distribution<> randomY(0, size_y - 1);
-    return Position{randomX(eng), randomY(eng)};
+    return Vector2i{randomX(eng), randomY(eng)};
 }
+
+
+// static bool checkValidity(int max_x, int max_y, int x, int y) {
+//     return x >= 0 && x < max_x && y >= 0 && y < max_y;
+// }
+
+// static bool checkValidity(int max_x, int max_y, Vector2i pos) {
+//     return checkValidity(max_x, max_y, pos.x, pos.y);
+// }
+
+bool Map::checkValidity(const sf::Vector2i &pos) const {
+    return pos.x >= 0 && pos.x < size_x && pos.y >= 0 && pos.y < size_y;
+}
+
 
 /**
  * Moves an object from the starting position to the ending position on the map.
@@ -327,14 +341,14 @@ Position Map::getRandomCell() const {
  * @param pos_end The ending position of the object.
  * @return True if the move is successful, false otherwise.
  */
-bool Map::move(const Position &pos_start, const Position &pos_end) {
+bool Map::move(const Vector2i &pos_start, const Vector2i &pos_end) {
     // NOTE this needs to happen after the move is deemed valid, aka check if
     // distance not to big
     // TODO add some sort of logging in the future
     // TODO add path tracing on move
 
-    if (!pos_start.checkValidity(size_x, size_y) ||
-        !pos_end.checkValidity(size_x, size_y)) {
+    if (!checkValidity(pos_start) ||
+        !checkValidity(pos_end)) {
         return false;
     }
 
@@ -344,42 +358,21 @@ bool Map::move(const Position &pos_start, const Position &pos_end) {
 
     if (checkEmpty(pos_end)) {
         grid[pos_end.y][pos_end.x] = std::move(grid[pos_start.y][pos_start.x]);
-        grid[pos_start.y][pos_start.x] = nullptr;// clear the initial Position
+        grid[pos_start.y][pos_start.x].movable = nullptr;// clear the initial Vector2i
         notify();
         return true;
     }
     return false;
 }
 
-bool Map::move(const sf::Vector2f &_pos_start, const sf::Vector2f &_pos_end) {
-    Position pos_start = Position(_pos_start.x, _pos_start.y);
-    Position pos_end = Position(_pos_end.x, _pos_end.y);
 
-    if (!pos_start.checkValidity(size_x, size_y) ||
-        !pos_end.checkValidity(size_x, size_y)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_start)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_end)) {
-        grid[pos_end.y][pos_end.x] = std::move(grid[pos_start.y][pos_start.x]);
-        grid[pos_start.y][pos_start.x] = nullptr;// clear the initial Position
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::specialMove(const Position &pos_start, const Position &pos_end) {
+bool Map::specialMove(const Vector2i &pos_start, const Vector2i &pos_end) {
     // NOTE this needs to happen after the move is deemed valid, aka check if
     // distance not to big
     // TODO add some sort of logging in the future
 
-    if (!pos_start.checkValidity(size_x, size_y) ||
-        !pos_end.checkValidity(size_x, size_y)) {
+    if (!checkValidity(pos_start) ||
+        !checkValidity(pos_end)) {
         return false;
     }
 
@@ -389,7 +382,7 @@ bool Map::specialMove(const Position &pos_start, const Position &pos_end) {
 
     if (checkEmpty(pos_end)) {
         grid[pos_end.y][pos_end.x] = std::move(grid[pos_start.y][pos_start.x]);
-        grid[pos_start.y][pos_start.x] = nullptr;// clear the initial Position
+        grid[pos_start.y][pos_start.x].movable = nullptr;// clear the initial Vector2i
         return true;
     }
     return false;
@@ -402,7 +395,7 @@ bool Map::specialMove(const Position &pos_start, const Position &pos_end) {
  * @param pos_end The ending position.
  * @return The distance between the two positions.
  */
-int Map::getDistance(const Position &pos_start, const Position &pos_end) const {
+int Map::getDistance(const Vector2i &pos_start, const Vector2i &pos_end) const {
     return int(findPath(startCell, endCell).size());
 }
 
@@ -412,8 +405,8 @@ int Map::getDistance(const Position &pos_start, const Position &pos_end) const {
  * @param pos The position to check.
  * @return True if the position is empty, false otherwise.
  */
-bool Map::checkEmpty(const Position &pos) const {
-    return grid[pos.y][pos.x] == nullptr;
+bool Map::checkEmpty(const Vector2i &pos) const {
+    return grid[pos.y][pos.x].movable == nullptr;
 }
 
 #pragma region Map
@@ -422,11 +415,6 @@ bool Map::operator<(const Map &rhs) const {
     if (rhs.size_x < size_x) return false;
     if (size_y < rhs.size_y) return true;
     if (rhs.size_y < size_y) return false;
-    if (grid < rhs.grid) return true;
-    if (rhs.grid < grid) return false;
-    if (startCell < rhs.startCell) return true;
-    if (rhs.startCell < startCell) return false;
-    return endCell < rhs.endCell;
 }
 bool Map::operator>(const Map &rhs) const { return rhs < *this; }
 bool Map::operator<=(const Map &rhs) const { return !(rhs < *this); }
@@ -453,98 +441,42 @@ ostream &operator<<(ostream &os, const Map &map) {
     map_str += string(map.size_x * 2 - 1, '-') + "\n";
     for (auto &row: map.grid) {
         for (auto &cell: row) {
-            if (cell == nullptr) {
+            if (cell.movable == nullptr) {
                 map_str += "- ";
-            } else if (Wall* wall = dynamic_cast<Wall*>(cell.get())) {
+            } else if (Wall *wall = dynamic_cast<Wall *>(cell.movable.get())) {
                 map_str += "X ";
-            } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
+            } else if (auto *player = dynamic_cast<Character *>(cell.movable.get())) {
                 map_str += "O ";
 
-            }else if (shared_ptr<Door> entry_exit =
-                    dynamic_pointer_cast<Door>(cell)) {
-                if(entry_exit->getStart()){
+            } else if (shared_ptr<Door> entry_exit =
+                dynamic_pointer_cast<Door>(cell.movable)) {
+                if (entry_exit->getStart()) {
                     map_str += "S ";
-                }
-                else if(entry_exit->getExit()){
+                } else if (entry_exit->getExit()) {
                     map_str += "E ";
                 }
-            }else {
-                    map_str += "@ "; // This is done to be able to represent the
-                    // path during testing
-                }
-
+            } else {
+                map_str += "@ ";// This is done to be able to represent the
+                // path during testing
+            }
         }
         map_str += "\n";
     }
     map_str += string(map.size_x * 2 - 1, '-') + "\n";
 
     os << string(map.size_x * 3 - 1, '-') + "\n"
-       << "\n"
-       << map_str << "\n"
-       << "size_x: " << map.size_x << "\n"
-       << "size_y: " << map.size_y << "\n"
-       << "startCell: " << map.startCell << "\n"
-       << "endCell: " << map.endCell << "\n"
-       << string(map.size_x * 3 - 1, '-') + "\n";
+        << "\n"
+        << map_str << "\n"
+        << "size_x: " << map.size_x << "\n"
+        << "size_y: " << map.size_y << "\n"
+        << "startCell: " << "(" << map.startCell.x << ", " << map.startCell.y << ")"
+        << "endCell: " << "(" << map.endCell.x << ", " << map.endCell.y << ")"
+        << string(map.size_x * 3 - 1, '-') + "\n";
     return os;
 }
 
 #pragma endregion
 
-/**
- * @brief Checks if the position is valid within the given boundaries.
- *
- * @param max_x The maximum x-coordinate.
- * @param max_y The maximum y-coordinate.
- * @return true if the position is valid, false otherwise.
- */
-bool Position::checkValidity(int max_x, int max_y) const {
-    return x >= 0 && x < max_x && y >= 0 && y < max_y;
-}
-
-#pragma region Position
-Position &Position::operator=(const Position &other) {
-    if (this != &other) {
-        x = other.x;
-        y = other.y;
-    }
-    return *this;
-}
-
-/**
- * @brief Constructs a new Position object.
- * @param x
- * @param y
- */
-Position::Position(int x, int y) : x(x), y(y) {}
-
-/**
- * @brief Default constructor for the Position class.
- */
-Position::Position() = default;
-
-
-bool Position::operator==(const Position& other) const {
-    return x == other.x && y == other.y;
-}
-
-bool Position::operator!=(const Position &other) const {
-    return !(*this == other);
-}
-
-bool Position::operator<(const Position &rhs) const {
-    if (x < rhs.x) return true;
-    if (rhs.x < x) return false;
-    return y < rhs.y;
-}
-bool Position::operator>(const Position &rhs) const { return rhs < *this; }
-bool Position::operator<=(const Position &rhs) const { return !(rhs < *this); }
-bool Position::operator>=(const Position &rhs) const { return !(*this < rhs); }
-ostream &operator<<(ostream &os, const Position &position) {
-    os << "x: " << position.x << " y: " << position.y;
-    return os;
-}
-#pragma endregion
 
 
 bool Map::map_test() {
@@ -554,31 +486,31 @@ bool Map::map_test() {
     Map map(10, 10);
 
     Wall wall;
-    map.place(wall, Position{1, 1});
-    map.place(wall, Position{5, 5});
-    Position start{0, 0};
-    Position end{2, 2};
-    vector<Position> path = map.findPath(start, end);
+    map.place(wall, Vector2i{1, 1});
+    map.place(wall, Vector2i{5, 5});
+    Vector2i start{0, 0};
+    Vector2i end{2, 2};
+    vector<Vector2i> path = map.findPath(start, end);
     assert(path.size() == 5);
     assert(path[0] == start);
-    assert(path[1] == Position(1, 0));
-    assert(path[2] == Position(2, 0));
-    assert(path[3] == Position(2, 1));
+    assert(path[1] == Vector2i(1, 0));
+    assert(path[2] == Vector2i(2, 0));
+    assert(path[3] == Vector2i(2, 1));
     assert(path[4] == end);
 
     // Test Case 2: No path exists
     cout << "Test Case 2: No path exists" << endl;
-    end = Position{9, 9};
+    end = Vector2i{9, 9};
     for (int j = 0; j < 10; j++) {
-        map.place(wall, Position{j, 5});
+        map.place(wall, Vector2i{j, 5});
     }
     path = map.findPath(start, end);
     assert(path.empty());
 
     // Test Case 3: Start and end positions are the same
     cout << "Test Case 3: Start and end positions are the same" << endl;
-    start = Position{0, 0};
-    end = Position{0, 0};
+    start = Vector2i{0, 0};
+    end = Vector2i{0, 0};
     path = map.findPath(start, end);
     assert(path.size() == 1);
     assert(path[0] == start);
@@ -586,19 +518,19 @@ bool Map::map_test() {
     // Test Case 4: Large grid
     cout << "Test Case 4: Large grid" << endl;
     Map big_map = Map(1000, 1000);
-    start = Position{0, 0};
-    end = Position{999, 999};
+    start = Vector2i{0, 0};
+    end = Vector2i{999, 999};
     path = big_map.findPath(start, end);
     assert(path.size() == 1999);// Assuming each step is 1 unit
 
     // Test Case 5: Invalid start or end position
     cout << "Test Case 5: Invalid start or end position" << endl;
-    start = Position{-1, 0};
-    end = Position{2, 2};
+    start = Vector2i{-1, 0};
+    end = Vector2i{2, 2};
     path = map.findPath(start, end);
     cout << "path: " << path.size() << endl;
     for (auto a: path) {
-        cout << "path: " << a << endl;
+        cout << "path: " << "(" << a.x << ", " << a.y << ")" << endl;
     }
     assert(path.empty());
 
@@ -617,12 +549,12 @@ bool Map::map_test() {
 
     // Test Case 7: Move object
     cout << "Test Case 7: Move object" << endl;
-    map2.place(wall, Position{1, 1});
+    map2.place(wall, Vector2i{1, 1});
     cout << map2 << endl;
     cout << map2.validateMap() << endl;
     cout << "________________________________________________________" << endl;
 
-    map2.move(Position{1, 1}, Position{1, 0});
+    map2.move(Vector2i{1, 1}, Vector2i{1, 0});
     cout << map2 << endl;
     cout << map2.validateMap() << endl;
     cout << "________________________________________________________" << endl;
@@ -630,17 +562,17 @@ bool Map::map_test() {
     // Test Case 8: Place wall of length 8
     cout << "Test Case 8: Place wall of length 8" << endl;
     for (int j = 0; j < 8; j++) {
-        map2.place(wall, Position{j, 5});
+        map2.place(wall, Vector2i{j, 5});
     }
 
 
     // Test Case 9: Find path
     cout << "Test Case 9: Find path" << endl;
-    map2.place(wall, Position{2, 8});
+    map2.place(wall, Vector2i{2, 8});
     cout << map2 << endl;
 
-    for (auto a: map2.findPath(Position{0, 8}, Position{0, 2})) {
-        cout << "path: " << a << endl;
+    for (auto a: map2.findPath(Vector2i{0, 8}, Vector2i{0, 2})) {
+        cout << "path: " << "(" << a.x << ", " << a.y << ")" << endl;
         Wall path2;
         map2.place(path2, a);
     }
@@ -657,42 +589,43 @@ bool Map::map_test() {
 string SavedMapBuilderFromStringRepresentation::chooseMap() {
 
 
-    string path="../../tests/SavedGrids";
+    string path = "../../tests/SavedGrids";
     int user_choice;
-    int file_index=0;
+    int file_index = 0;
     string file_path;
 
     vector<string> files;
 
-    if(fs::exists(path)){
-        int i=0;
-        cout<<"Please choose which map you would like to build by entering its number: "<<endl;
-        for(const auto& entry: fs::directory_iterator(path)){
+    if (fs::exists(path)) {
+        int i = 0;
+        cout << "Please choose which map you would like to build by entering its number: " << endl;
+        for (const auto &entry: fs::directory_iterator(path)) {
             files.push_back(entry.path().string());
-            cout<<++i<<") "<<entry.path().filename()<<endl;
+            cout << ++i << ") " << entry.path().filename() << endl;
         }
 
-        cout<<"\nYour choice:";
-        cin>>user_choice;
+        cout << "\nYour choice:";
+        cin >> user_choice;
 
-        while(user_choice<1 || user_choice>i || cin.fail()){
+        while (user_choice < 1 || user_choice > i || cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-            cout<<"Invalid choice. Please enter a valid choice: ";
-            cin>>user_choice;
+            cout << "Invalid choice. Please enter a valid choice: ";
+            cin >> user_choice;
         }
     }
 
-    else{
+    else {
         cout << "Error: Directory does not exist" << endl;
         return "";
     }
 
-    string file_name=files[user_choice - 1].substr(files[user_choice - 1].find_last_of("/\\")+1);
-    file_name=file_name.substr(0, file_name.find_last_of("."));
+    string file_name = files[user_choice - 1].substr(files[user_choice - 1].find_last_of("/\\") + 1);
+    file_name = file_name.substr(0, file_name.find_last_of("."));
 
-    cout<<"You chose: "<<file_name<<endl<<endl;
+    cout << "You chose: " << file_name << endl
+         << endl;
     return files[user_choice - 1];
 };
 
@@ -703,16 +636,16 @@ string SavedMapBuilderFromStringRepresentation::chooseMap() {
  * @param y The y-coordinate of the row.
  * @return
  */
-Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string& row, Map& map, int y) {
+Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string &row, Map &map, int y) {
     stringstream ss(row);
     Row map_row;
 
-    int x=0;
-    Position start;
-    Position end;
+    int x = 0;
+    Vector2i start;
+    Vector2i end;
 
 
-    for(char c; ss >> c; x++) {
+    for (char c; ss >> c; x++) {
         if (toupper(c) == 'X') {
             map_row.push_back(make_shared<Wall>(std::move(Wall())));
         } else if (toupper(c) == '-') {
@@ -728,7 +661,7 @@ Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string& row, M
                 map_row.push_back(make_shared<Door>(true, false));
             }
 
-            else{
+            else {
                 throw invalid_argument("The map has more than 1 start");
             }
 
@@ -736,10 +669,10 @@ Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string& row, M
 
             //If the map does not already have an exit Cell
             if (map.getEndCell().x == -1 && map.getEndCell().y == -1) {
-            end = {x, y};
-            map.setEndCell(end);
+                end = {x, y};
+                map.setEndCell(end);
 
-            map_row.push_back(make_shared<Door>(false, true));
+                map_row.push_back(make_shared<Door>(false, true));
             }
 
             //If the map already has an exit Cell
@@ -747,9 +680,8 @@ Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string& row, M
                 throw invalid_argument("The map has more than 1 exit");
             }
 
-        } else  //If we reach here then the character is invalid
+        } else//If we reach here then the character is invalid
             throw invalid_argument("Invalid character in map file");
-
     }
 
     return map_row;
@@ -760,12 +692,12 @@ Row SavedMapBuilderFromStringRepresentation::parseGrid(const std::string& row, M
  * @param file_path The path to the file.
  * @return
  */
-int getSizeYFromFile(string file_path){
+int getSizeYFromFile(string file_path) {
     ifstream file(file_path);
     string line;
-    int size_y=0;
+    int size_y = 0;
 
-    while(getline(file, line)){
+    while (getline(file, line)) {
         size_y++;
     }
 
@@ -778,14 +710,14 @@ int getSizeYFromFile(string file_path){
  */
 bool SavedMapBuilderFromStringRepresentation::buildGrid() {
     //User choice of map
-    string file_path=chooseMap();
+    string file_path = chooseMap();
 
     //Name of the map
-    string map_name=file_path.substr(file_path.find_last_of("/\\")+1);
-    map_name=map_name.substr(0, map_name.find_last_of("."));
+    string map_name = file_path.substr(file_path.find_last_of("/\\") + 1);
+    map_name = map_name.substr(0, map_name.find_last_of("."));
 
-    int size_y=getSizeYFromFile(file_path);
-    int y=size_y-1;
+    int size_y = getSizeYFromFile(file_path);
+    int y = size_y - 1;
 
     Grid grid(size_y, Row(0));
     Row row;
@@ -794,19 +726,19 @@ bool SavedMapBuilderFromStringRepresentation::buildGrid() {
     string line;
 
     //While th file has not ended
-    while(getline(file, line)){
+    while (getline(file, line)) {
         try {
             //Read the row and make the necessary checks
             row = parseGrid(line, map, y);
         }
 
         //If the row is invalid
-        catch(invalid_argument& e){
-            cout<<e.what()<<endl;
+        catch (invalid_argument &e) {
+            cout << e.what() << endl;
             return false;
         }
 
-        grid[y]=row;
+        grid[y] = row;
 
         y--;
     }
@@ -816,15 +748,14 @@ bool SavedMapBuilderFromStringRepresentation::buildGrid() {
     map.setName(map_name);
 
 
-    if(!map.getGrid().empty()){
+    if (!map.getGrid().empty()) {
         map.setSizeX(map.getGrid().size());
 
         map.setSizeY(map.getGrid()[0].size());
-
     }
 
     //If the map is not valid
-    if(!map.validateMap()){
+    if (!map.validateMap()) {
         return false;
     }
 
@@ -843,27 +774,26 @@ Map SavedMapBuilderFromStringRepresentation::getMap() {
 /**
  * @brief Director that constructs a saved map
  */
-bool MapDirector::constructSavedMap(MapBuilder& builder) {
-    if(builder.buildGrid()){
+bool MapDirector::constructSavedMap(MapBuilder &builder) {
+    if (builder.buildGrid()) {
         return true;
     }
 
-    else{
+    else {
         return false;
     }
-
 }
 
 
-ostream& Map::displayRevMap(ostream& os) const {
+ostream &Map::displayRevMap(ostream &os) const {
     Map reversed_map = *this;
 
     reverse(reversed_map.grid.begin(), reversed_map.grid.end());
 
     string map_str;
     map_str += string(reversed_map.size_x * 2 - 1, '-') + "\n";
-    for (auto& row : reversed_map.grid) {
-        for (auto& cell : row) {
+    for (auto &row: reversed_map.grid) {
+        for (auto &cell: row) {
             if (cell == nullptr) {
                 map_str += "- ";
             } else if (shared_ptr<Wall> wall = dynamic_pointer_cast<Wall>(cell)) {
@@ -901,36 +831,35 @@ ostream& Map::displayRevMap(ostream& os) const {
  * @brief Test function for the map builder
  * @return
  */
-bool Map::mapBuilderTest(){
+bool Map::mapBuilderTest() {
     SavedMapBuilderFromStringRepresentation builder;
 
     MapDirector director;
 
-    if(!director.constructSavedMap(builder)){
+    if (!director.constructSavedMap(builder)) {
         return false;
     }
-    ostream& ostream1=cout;
+    ostream &ostream1 = cout;
 
-    Map map=builder.getMap();
+    Map map = builder.getMap();
     map.displayRevMap(ostream1);
 
-    map.specialPlace(Wall(),Position(1,1));
-    map.specialPlace(Wall(),Position(1,0));
+    map.specialPlace(Wall(), Vector2i(1, 1));
+    map.specialPlace(Wall(), Vector2i(1, 0));
 
-    map.displayRevMap(ostream1);
-
-    map.validateMap();
-
-    map.specialPlace(Wall(),Position(0,1));
     map.displayRevMap(ostream1);
 
     map.validateMap();
 
-    map.specialMove(Position(0,1),Position(4,1));
+    map.specialPlace(Wall(), Vector2i(0, 1));
     map.displayRevMap(ostream1);
 
     map.validateMap();
 
+    map.specialMove(Vector2i(0, 1), Vector2i(4, 1));
+    map.displayRevMap(ostream1);
+
+    map.validateMap();
 
 
     return true;

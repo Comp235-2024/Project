@@ -18,14 +18,15 @@
 
 //#include "Cell.h"
 #include "../../Characters/include/Character.h"
-#include "../../Items/include/Item.h"
-#include "../../ItemContainers/include/TreasureChest.h"
 #include "../../ItemContainers/include/ItemContainer.h"
+#include "../../ItemContainers/include/TreasureChest.h"
+#include "../../Items/include/Item.h"
 
 #include "../../Items/include/Movable.h"
 #include "Door.h"
 #include "Observable.h"
-#include "Position.h"
+#include "SFML/Graphics/Texture.hpp"
+#include "SFML/System/Vector2.hpp"
 #include "Wall.h"
 #include <memory>
 #include <ostream>
@@ -33,11 +34,40 @@
 #include <strstream>
 #include <vector>
 
+class Cell {
+public:
+    std::shared_ptr<Movable> movable;
+    sf::Vector2i position;// position of the cell in the grid, as a backup
 
-/**
- * @brief Alias for a shared pointer to a Movable object.
- */
-using Cell = std::shared_ptr<Movable>;
+    Cell() : movable(nullptr) {}
+    Cell(sf::Texture &texture) : movable(nullptr), texture(make_shared<sf::Texture>(texture)) {}
+
+    void setTexture(sf::Texture &texture) {
+        this->texture = make_shared<sf::Texture>(texture);
+    }
+
+    shared_ptr<sf::Texture> &getTexture() {
+        return this->texture;
+    }
+
+    /**
+     * @brief Copy Constructor.
+     * @param movable The movable object to place in the cell.
+     */
+    Cell &operator=(const Cell &other) {
+        if (this == &other) {
+            return *this;
+        }
+        this->movable = std::move(other.movable);
+        return *this;
+    }
+
+
+
+private:
+    shared_ptr<sf::Texture> texture;
+};
+
 /**
  * @brief Alias for a row of cells in a map.
  */
@@ -49,7 +79,6 @@ using Row = std::vector<Cell>;
  * It is used to represent the map grid.
  */
 using Grid = std::vector<Row>;
-
 
 
 /**
@@ -76,7 +105,7 @@ public:
     Map(int size_x, int size_y);
 
 
-    Map& operator=(const Map& other);
+    Map &operator=(const Map &other);
 
     /**
      * @brief Default Constructor.
@@ -90,7 +119,7 @@ public:
      * @brief Copy Constructor.
      * @param other The Map object to copy.
      */
-    Map(const Map& other);
+    Map(const Map &other);
 
     /**
      * @brief Setter for the size of the X-axis
@@ -120,7 +149,7 @@ public:
      * @brief Setter for the grid of the map
      * @param grid
      */
-    void setGrid(const Grid& grid);
+    void setGrid(const Grid &grid);
 
     /**
      * @brief Getter for the grid of the map
@@ -133,31 +162,31 @@ public:
      * @param row The row of cells to set.
      * @param y The y-coordinate of the row.
      */
-    void setRow(const Row& row, int y);
+    void setRow(const Row &row, int y);
 
     /**
      * @brief Setter for the start cell of the map
      * @param startCell
      */
-    void setStartCell(const Position& startCell);
+    void setStartCell(const sf::Vector2i &startCell);
 
     /**
      * @brief Getter for the start cell of the map
      * @return
      */
-    Position getStartCell() const;
+    sf::Vector2i getStartCell() const;
 
     /**
      * @brief Setter for the end cell of the map
      * @param endCell
      */
-    void setEndCell(const Position& endCell);
+    void setEndCell(const sf::Vector2i &endCell);
 
     /**
      * @brief Getter for the end cell of the map
      * @return
      */
-    Position getEndCell() const;
+    sf::Vector2i getEndCell() const;
 
     /**
      * @brief Getter for the name of the map
@@ -175,10 +204,10 @@ public:
      * @brief Gets a constant reference to the map grid.
      * @return Constant reference to the map grid.
      */
-    const Grid& getMap() const;
+    const Grid &getMap() const;
 
     //TODO IMPLEMENT THIS METHOD FOR CHARACTER TO KNOW WHO IS AROUND THEM
-    Position** getAroundACharacter(Character &character);
+    sf::Vector2i **getAroundACharacter(Character &character);
 
     /**
      * @brief Validates the map by checking if it meets certain criteria.
@@ -190,24 +219,24 @@ public:
      * @brief Places a movable object on the map at the specified position.
      * @tparam T The type of the movable object.
      * @param obj The movable object to place on the map.
-     * @param Position The position at which to place the object.
+     * @param sf::Vector2i The position at which to place the object.
      * @return True if the object was successfully placed, false otherwise.
      */
     template<typename T>
 
-//    template<typename T, typename std::enable_if<std::is_base_of<Movable, T>::value, T>::type*>
+    //    template<typename T, typename std::enable_if<std::is_base_of<Movable, T>::value, T>::type*>
 
-    bool place(const T& obj, const Position& Position);
+    bool place(const T &obj, const sf::Vector2i &position);
 
-    bool place(Character &obj, const Position &Position);
+    bool place(Character &obj, const sf::Vector2i &position);
 
-    bool place(const shared_ptr<TreasureChest>& obj, const Position &Position);
+    bool place(const shared_ptr<TreasureChest> &obj, const sf::Vector2i &position);
     /**
      * @brief Removes a movable object from the map at the specified position.
-     * @param Position The position from which to remove the object.
+     * @param sf::Vector2i The position from which to remove the object.
      * @return True if the object was successfully removed, false otherwise.
      */
-    bool remove(const Position& Position);
+    bool remove(const sf::Vector2i &position);
 
     /**
      * @brief Moves a movable object from one position to another on the map.
@@ -215,9 +244,34 @@ public:
      * @param pos_end The ending position of the object.
      * @return True if the object was successfully moved, false otherwise.
      */
-    bool move(const Position& pos_start, const Position& pos_end);
+    bool move(const sf::Vector2i &pos_start, const sf::Vector2i &pos_end);
 
-    bool move(const sf::Vector2f&_pos_start, const sf::Vector2f&_pos_end);
+    // /**
+    //  * @brief Checks if a position on the map is valid.
+    //  * @param max_x The maximum x-coordinate of the map.
+    //  * @param max_y The maximum y-coordinate of the map.
+    //  * @param x The x-coordinate of the position to check.
+    //  * @param y The y-coordinate of the position to check.
+    //  * @return True if the position is valid, false otherwise.
+    //  */
+    // static bool checkValidity(int max_x, int max_y, int x, int y);
+
+    // /**
+    //  * @brief Checks if a position on the map is valid.
+    //  * @param max_x The maximum x-coordinate of the map.
+    //  * @param max_y The maximum y-coordinate of the map.
+    //  * @param pos The position to check.
+    //  * @return True if the position is valid, false otherwise.
+    //  */
+    // static bool checkValidity(int max_x, int max_y, sf::Vector2i pos);
+
+    /**
+     * @brief Checks if a position on the map is valid. Uses the size of the map to check.
+     * @param pos The position to check.
+     *
+     * @return True if the position is valid, false otherwise.
+     */
+    bool checkValidity(const sf::Vector2i& pos) const;
 
     /**
      * @brief Calculates the distance between two positions on the map.
@@ -225,14 +279,14 @@ public:
      * @param pos_end The ending position.
      * @return The distance between the two positions.
      */
-    int getDistance(const Position& pos_start, const Position& pos_end) const;
+    int getDistance(const sf::Vector2i &pos_start, const sf::Vector2i &pos_end) const;
 
     /**
      * @brief Checks if a position on the map is empty.
      * @param pos The position to check.
      * @return True if the position is empty, false otherwise.
      */
-    bool checkEmpty(const Position& pos) const;
+    bool checkEmpty(const sf::Vector2i &pos) const;
 
     /**
      * @brief Finds a path from the start position to the end position on the map.
@@ -240,49 +294,49 @@ public:
      * @param end The ending position.
      * @return A vector of positions representing the path from start to end.
      */
-    std::vector<Position> findPath(Position start, Position end) const;
+    std::vector<sf::Vector2i> findPath(sf::Vector2i start, sf::Vector2i end) const;
 
     /**
      * @brief Less than comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is less than the rhs map, false otherwise.
      */
-    bool operator<(const Map& rhs) const;
+    bool operator<(const Map &rhs) const;
 
     /**
      * @brief Greater than comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is greater than the rhs map, false otherwise.
      */
-    bool operator>(const Map& rhs) const;
+    bool operator>(const Map &rhs) const;
 
     /**
      * @brief Less than or equal to comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is less than or equal to the rhs map, false otherwise.
      */
-    bool operator<=(const Map& rhs) const;
+    bool operator<=(const Map &rhs) const;
 
     /**
      * @brief Greater than or equal to comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is greater than or equal to the rhs map, false otherwise.
      */
-    bool operator>=(const Map& rhs) const;
+    bool operator>=(const Map &rhs) const;
 
     /**
      * @brief Equality comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is equal to the rhs map, false otherwise.
      */
-    bool operator==(const Map& rhs) const;
+    bool operator==(const Map &rhs) const;
 
     /**
      * @brief Inequality comparison operator for Map class.
      * @param rhs The Map object to compare with.
      * @return True if this map is not equal to the rhs map, false otherwise.
      */
-    bool operator!=(const Map& rhs) const;
+    bool operator!=(const Map &rhs) const;
 
     /**
      * @brief Overloaded stream insertion operator for Map class.
@@ -290,22 +344,22 @@ public:
      * @param map The Map object to insert into the stream.
      * @return Reference to the output stream.
      */
-    friend std::ostream& operator<<(std::ostream& os, const Map& map);
+    friend std::ostream &operator<<(std::ostream &os, const Map &map);
 
     /**
      * @brief Gets a random cell position on the map.
      * @return A random cell position.
      */
-    Position getRandomCell() const;
+    sf::Vector2i getRandomCell() const;
 
-    ostream& displayRevMap(ostream& os) const;
+    ostream &displayRevMap(ostream &os) const;
 
     static bool mapBuilderTest();
 
     template<typename T>
-    bool specialPlace(const T &obj, const Position &Position);
+    bool specialPlace(const T &obj, const sf::Vector2i &position);
 
-    bool specialMove(const Position &pos_start, const Position &pos_end);
+    bool specialMove(const sf::Vector2i &pos_start, const sf::Vector2i &pos_end);
 
 private:
     /**
@@ -325,11 +379,13 @@ private:
      */
     int size_y;
 
+    sf::Vector2i size_map;
+
     /**
      * @brief The start cell of the map.
      * @brief The end cell of the map.
      */
-    Position startCell{}, endCell{};
+    sf::Vector2i startCell, endCell;
 
     //Made grid a private member
     /**
@@ -343,9 +399,6 @@ private:
      * @return true if the test passes, false otherwise.
      */
     static bool map_test();
-
-
-
 };
 
 /**
@@ -360,94 +413,89 @@ public:
     virtual bool buildGrid() = 0;
 
     //TODO virtual void placeCharacter()=0;
-    };
+};
 
 /**
  * @brief DefaultMapBuilder class acts as Concrete Map Builder to implement the MapBuilder interface.
 
  */
 class DefaultMapBuilder : public MapBuilder {
-    private:
+private:
     /**
      * @brief The map to build.
      */
     Map map;
 
-    public:
-        /**
+public:
+    /**
          * @brief Builds the grid of the map.
          * @return True if the grid was successfully built, false otherwise.
          */
-        bool buildGrid() override;
+    bool buildGrid() override;
 
-        /**
+    /**
          * @brief Gets the map that was built.
          * @return The map that was built.
          */
-        Map getMap();
+    Map getMap();
 };
 
 /**
  * @brief SavedMapBuilder class acts as Concrete Map Builder to implement the MapBuilder interface.
  */
 class SavedMapBuilderFromStringRepresentation : public MapBuilder {
-    private:
+private:
     /**
      * @brief The map to build.
      */
     Map map;
 
-    public:
-
-        /**
+public:
+    /**
          * @Asks the user to choose a map from the list of saved maps.
          * @return
          */
-        static string chooseMap();
+    static string chooseMap();
 
-        /**
+    /**
          * @brief Builds the grid of the map.
          * @return True if the grid was successfully built, false otherwise.
          */
-        bool buildGrid() override;
+    bool buildGrid() override;
 
-        /**
+    /**
          * @brief Reads a string representation of a Row and parses it into a Row object along with its position.
          * @param line the string representation of the row.
          * @param map the map to build
          * @param y the y-coordinate of the row.
          * @return The parsed row.
          */
-        Row parseGrid(const string& line, Map& map, int y);
+    Row parseGrid(const string &line, Map &map, int y);
 
-        /**
+    /**
          * @brief Gets the map that was built.
          * @return The map that was built.
          */
-        Map getMap();
-
-
+    Map getMap();
 };
 
 /**
  * @brief MapDirector class to use the implemented Builder Pattern to build specific Maps.
  */
-class MapDirector{
-    public:
+class MapDirector {
+public:
     /**
      * @brief Constructs a map using the SavedMapBuilderFromStringRepresentation.
      * @param builder The MapBuilder to use.
      */
-    bool constructSavedMap(MapBuilder& builder);
+    bool constructSavedMap(MapBuilder &builder);
 
     /**
      * @brief Constructs a map using the DefaultMapBuilder.
      * @param builder The MapBuilder to use.
      */
-    bool constructDefaultMap(MapBuilder& builder);
-
+    bool constructDefaultMap(MapBuilder &builder);
 };
-
 
 
 #endif
