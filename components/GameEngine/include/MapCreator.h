@@ -17,23 +17,42 @@ public:
     void Update(float deltaTime) override;
     void Draw(float deltaTime) override;
 
-private:
 
-    struct PlaceableObject {
-        sf::Sprite sprite; // Sprite for the object
-        int type; // Identifies the object type
-        int nbPremitted; // Number of objects of this type that can be placed
+
+private:
+    static int nbSavedMaps; /**< The number of maps in the campaign. */
+
+    string mapName; /**< The name of the map. */
+
+    bool isHolding = false; // Flag to indicate if an object is being held
+
+    struct SidebarItem {
+        sf::Sprite item;
+        std::string name;
+        int permittedCount;
+        sf::Text countText;
+        sf::RectangleShape countBackground;
+
+        SidebarItem(const sf::Sprite& item, const std::string& name, int permittedCount, const sf::Font& font, float xPosition, float yPosition);
     };
 
-    std::vector<PlaceableObject> sidebarObjects; // List of objects in the sidebar
-    PlaceableObject* selectedObject = nullptr; // Pointer to the currently selected object
+    MapObserver mapObserver; /**< The map observer. */
 
+    std::vector<SidebarItem> sidebarObjects; // List of objects in the sidebar
+    SidebarItem* selectedObject = nullptr; // Pointer to the currently selected object
+
+    sf::Text itemPermittedCount; // To display the number of this object type that can be placed
     sf::RectangleShape sidebar; // To represent the sidebar area
     std::vector<sf::RectangleShape> itemContainers;
     std::vector<sf::Sprite> sidebarObjectsSprites; // To store sprites for items to be placed on the sidebar
 
     sf::RectangleShape mapArea; // The map area
-    sf::RectangleShape characterArea; // The character area
+
+    sf::RectangleShape buttonContainer; // The container for the buttons
+    sf::RectangleShape clearButton; // The clear button
+    sf::RectangleShape saveButton; // The save button
+    sf::Text clearButtonText; // The text for the clear button
+    sf::Text saveButtonText; // The text for the save button
 
     MainDataRef _data; /**< The main data reference. */
 
@@ -54,24 +73,6 @@ private:
      *
      * This function generates the texture for rendering the map.
      */
-    void initMapEditingInterface();
-
-    /**
-     * @brief Sets up the buttons on the game screen.
-     *
-     * This function sets up the buttons on the game screen, including their positions and appearance.
-     */
-    void SetButtons();
-
-    /**
-     * @brief Generates a button with the given font, name, position, and size.
-     * @param font The font for the button text.
-     * @param name The name of the button.
-     * @param button The button shape.
-     * @param buttonText The button text.
-     * @param position The position of the button.
-     */
-    static void GenerateButton(const Font &font, const string &name, RectangleShape &button, Text &buttonText, Vector2f position);
 
     /**
      * @brief Calculates the sizes of the textures based on the window size.
@@ -87,6 +88,24 @@ private:
 
     void initSideBar();
 
+    void drawSideBar();
+
     Position askForSize();
+
+    void initButtons();
+
+    void drawButtons();
+
+    void clearMap();
+
+    void Run();
+
+    void selectObjectFromSidebar(const Vector2f &mousePos);
+
+    void placeObjectOnMap(const Vector2f &mousePos);
+    void processClickActions(const Vector2f &mousePos);
+    void handleCloseEvent();
+    void handleMouseButtonPressedEvent(const Event &event);
+
 };
 #endif MAPCREATOR_H

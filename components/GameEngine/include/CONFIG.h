@@ -24,6 +24,7 @@
 #define GAME_BG_IMAGE_PATH "../../assets/images/grass_game_bg.jpg"
 #define MENU_ICON_PATH "../../assets/images/menu_icon.png"
 
+#define PLAYER_IMAGE_PATH "../../assets/images/frames/knight_f_idle_anim_f0.png"
 #define CHEST_IMAGE_PATH "../../assets/images/frames/chest_empty_open_anim_f0.png"
 #define WALL_IMAGE_PATH "../../assets/images/frames/wall_mid.png"
 #define SKELETON_IMAGE_PATH "../../assets/images/frames/skelet_idle_anim_f0.png"
@@ -32,7 +33,7 @@
 
 #pragma region MapCreator
 #define CELL_SIZE 32
-#define SIDEBAR_RATIO 0.2
+#define SIDEBAR_RATIO 0.15
 #define SIDEBAR_ITEM_RATIO 0.8
 #define SIDEBAR_ITEM_PADDING 0.01
 
