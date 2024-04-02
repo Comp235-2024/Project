@@ -23,6 +23,8 @@
 #define GAME_BG_IMAGE_PATH "../../assets/images/grass_game_bg.jpg"
 #define MENU_ICON_PATH "../../assets/images/menu_icon.png"
 
+#define IMAGES_PATH "../../assets/images/frames/"
+
 //#define SIZE_MULT 30.0f /**< The size multiplier for the map display. */
 
 

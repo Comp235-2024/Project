@@ -12,6 +12,7 @@
 #include "../../Log/include/LogObservable.h"
 #include "SFML/Graphics.hpp"
 #include <map>
+#include "CONFIG.h"
 using namespace std;
 using namespace sf;
 

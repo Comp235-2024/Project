@@ -308,7 +308,7 @@ bool HumanPlayerStrategy::play() {
     MapObserver observer(map, &_mapTexture);
 
     Character mike(5);
-    map->place(mike,{0,1});
+    map->place(mike,Position{0,1});
     auto chest = make_shared<TreasureChest>("chest1", 20);
 
     map->place(chest, Position{5, 5});

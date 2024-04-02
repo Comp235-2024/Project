@@ -40,6 +40,8 @@ public:
     // copy constructor
     ItemContainer(const ItemContainer& other);
 
+    string textureName = "crate";
+
     /**
          * @brief Destroy the Item Container object
          *

@@ -5,6 +5,7 @@
 #ifndef A3_POSITION_H
 #define A3_POSITION_H
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 /**
  * @struct Position
@@ -22,6 +23,11 @@ struct Position {
     bool checkValidity(int max_x, int max_y) const;
     Position(int x, int y);
     Position();
+    Position(sf::Vector2i vector){
+        x = vector.x;
+        y = vector.y;
+    }
+
     struct Position& operator=(const Position& other);
     bool operator==(const Position& other) const;
     bool operator!=(const Position& other) const;

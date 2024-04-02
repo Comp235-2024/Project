@@ -79,6 +79,9 @@ public:
     Item();
 
 
+    string textureName;
+
+
     Item& operator=(const Item& other) ;
 
     /**
