@@ -253,19 +253,19 @@ vector<Position> Map::findPath(Position start, Position end) const {
 //                                 T>::type * = nullptr>
 //
 template<typename T>
-bool Map::place(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
+bool Map::place(const T &obj, const Position &pos) {
+    if (checkEmpty(pos)) {
+        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
         notify();
         return true;
     }
     return false;
 }
 
-bool Map::place(Character &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        obj.position = sf::Vector2f(Position.x, Position.y);
-        grid[Position.y][Position.x] = make_shared<Character>(std::move(obj));
+bool Map::place(Character &obj, const Position &pos) {
+    if (checkEmpty(pos)) {
+        obj.position = sf::Vector2i(pos.x, pos.y);
+        grid[pos.y][pos.x] = make_shared<Character>(std::move(obj));
         notify();
         return true;
     }
@@ -273,9 +273,9 @@ bool Map::place(Character &obj, const Position &Position) {
 }
 
 
-bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = obj;
+bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &pos) {
+    if (checkEmpty(pos)) {
+        grid[pos.y][pos.x] = obj;
         notify();
         return true;
     }
@@ -283,9 +283,9 @@ bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) 
 }
 
 template<typename T>
-bool Map::specialPlace(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
+bool Map::specialPlace(const T &obj, const Position &pos) {
+    if (checkEmpty(pos)) {
+        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
         return true;
     }
     return false;
@@ -297,9 +297,9 @@ bool Map::specialPlace(const T &obj, const Position &Position) {
  * @param Position The position from which to remove the object.
  * @return True if the object was successfully removed, false otherwise.
  */
-bool Map::remove(const Position &Position) {
-    if (!checkEmpty(Position)) {
-        grid[Position.y][Position.x] = nullptr;
+bool Map::remove(const Position &pos) {
+    if (!checkEmpty(pos)) {
+        grid[pos.y][pos.x] = nullptr;
         notify();
         return true;
     }
@@ -332,28 +332,6 @@ bool Map::move(const Position &pos_start, const Position &pos_end) {
     // distance not to big
     // TODO add some sort of logging in the future
     // TODO add path tracing on move
-
-    if (!pos_start.checkValidity(size_x, size_y) ||
-        !pos_end.checkValidity(size_x, size_y)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_start)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_end)) {
-        grid[pos_end.y][pos_end.x] = std::move(grid[pos_start.y][pos_start.x]);
-        grid[pos_start.y][pos_start.x] = nullptr;// clear the initial Position
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::move(const sf::Vector2f &_pos_start, const sf::Vector2f &_pos_end) {
-    Position pos_start = Position(_pos_start.x, _pos_start.y);
-    Position pos_end = Position(_pos_end.x, _pos_end.y);
 
     if (!pos_start.checkValidity(size_x, size_y) ||
         !pos_end.checkValidity(size_x, size_y)) {

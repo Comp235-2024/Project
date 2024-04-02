@@ -63,7 +63,7 @@ public:
      */
     void interactiveAbilityScoresTest();
 
-    sf::Vector2f position;
+    sf::Vector2i position;
 
     // Getters
 
