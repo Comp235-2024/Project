@@ -28,7 +28,9 @@ const Vector2f gameSize = {WINDOW_WIDTH, WINDOW_HEIGHT};
 void diceLogTest();
 int main(){
 
+
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
+
 
     return EXIT_SUCCESS;
 }

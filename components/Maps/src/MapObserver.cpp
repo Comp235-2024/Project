@@ -1,7 +1,12 @@
 
 
 #include "../include/MapObserver.h"
+#include "SFML/Graphics/Texture.hpp"
+#include <cmath>
+#include <cstdlib>
 #include <format>
+#include <memory>
+#include <random>
 using namespace sf;
 using namespace std;
 
@@ -13,7 +18,6 @@ void MapObserver::updateMapOnly(RenderTexture *_window) {
 
     RectangleShape mapBg(Vector2f{static_cast<float>(window_size_x), static_cast<float>(window_size_y)});
     mapBg.setPosition(0, 0);
-//    mapBg.setFillColor(Color(30, 31, 34));
 
     RectangleShape lineHorizontal(Vector2f(window_size_x, 1));// Horizontal lineHorizontal
     RectangleShape lineVertical(Vector2f(1, window_size_y));  // Vertical lineHorizontal
@@ -25,9 +29,17 @@ void MapObserver::updateMapOnly(RenderTexture *_window) {
     drawMap(_window);
 }
 
-MapObserver::MapObserver(shared_ptr<Map> map, sf::RenderTexture *window) : grid(map), window(window), window_size_x(window->getSize().x), window_size_y(window->getSize().y) {
+MapObserver::MapObserver(shared_ptr<Map> map, sf::RenderTexture *window, MainDataRef data) : grid(map), window(window), window_size_x(window->getSize().x), window_size_y(window->getSize().y), _data(data) {
     grid->attach(this);
     this->SIZE_MULT = (float) window_size_x / grid->getSizeX();
+    generateFloorTextureHashMap();
+}
+
+MapObserver::MapObserver(shared_ptr<Map> sharedPtr, RenderTexture *pTexture) {
+
+    grid->attach(this);
+    this->SIZE_MULT = (float) window_size_x / grid->getSizeX();
+    generateFloorTextureHashMap();
 }
 
 MapObserver::~MapObserver() {
@@ -102,18 +114,40 @@ void MapObserver::drawBox(RenderWindow *pWindow, const Color color, float x, flo
     pWindow->draw(rectangle);
 }
 
-void MapObserver::drawImage(RenderTexture *pWindow, const char *pathToImage, float x, float y) {
+void MapObserver::drawImage(RenderTexture *pWindow, const char *imageName, float x, float y) {
     float squareX = x * SIZE_MULT;
     float squareY = y * SIZE_MULT;
 
     float targetX = SIZE_MULT + 1;
     float targetY = SIZE_MULT + 1;
 
-    Texture texture;
-    if (!texture.loadFromFile(pathToImage)) {
-        cout << "Image Failed to load" << endl;
-        throw std::invalid_argument("No image found");
+    Texture texture = _data->assets.GetTexture(imageName);
+    if (texture.getSize().x == 0 && texture.getSize().y == 0){
+        _data->assets.LoadTexture(imageName, imageName);
+        texture = _data->assets.GetTexture(imageName);
     }
+
+    Sprite sprite;
+    sprite.setTexture(texture);
+
+    float scaleX = targetX / sprite.getLocalBounds().width;
+    float scaleY = targetY / sprite.getLocalBounds().height;
+
+
+    sprite.setPosition(squareX, squareY);
+    sprite.setScale(scaleX, scaleY);
+
+    pWindow->draw(sprite);
+}
+
+void MapObserver::drawFloor(RenderTexture *pWindow, float x, float y) {
+    float squareX = x * SIZE_MULT;
+    float squareY = y * SIZE_MULT;
+
+    float targetX = SIZE_MULT + 1;
+    float targetY = SIZE_MULT + 1;
+
+    const Texture& texture = getTextureForCell(x, y);
 
     Sprite sprite;
     sprite.setTexture(texture);
@@ -134,22 +168,17 @@ void MapObserver::drawMap(RenderTexture *_window) {
     for (auto &row: grid->getGrid()) {
         x = 0;
         for (auto &cell: row) {
-            string path = "../../assets/images/frames/floor_1.png";
-            drawImage(window, path.c_str(), x, y);
+            drawFloor(_window, x, y);
 
             if (cell == nullptr) {
-                string path = "../../assets/images/frames/floor_1.png";
-                drawImage(window, path.c_str(), x, y);
-            } else if (dynamic_cast<Wall*>(cell.get())) {
-                drawImage(window, "../../assets/images/frames/wall_mid.png", x, y);
+            } else if (auto wall = dynamic_cast<Wall*>(cell.get())) {
+                drawImage(window, wall->textureName.c_str(), x, y);
             } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
-                drawImage(window, "../../assets/images/frames/knight_m_idle_anim_f0.png", x, y);
+                drawImage(window, player->textureName.c_str(), x, y);
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
-                drawImage(window, "../../assets/images/frames/crate.png", x, y);
+                drawImage(window, item->textureName.c_str(), x, y);
             } else {
                 cout << "Type id " << typeid(*cell).name() << endl;
-                string path = "../../assets/images/frames/floor_1.png";
-                drawImage(window, path.c_str(), x, y);
             }
             ++x;
         }
@@ -164,4 +193,38 @@ int MapObserver::getWindowSizeY() const {
 }
 float MapObserver::getSizeMult() const {
     return SIZE_MULT;
+}
+void MapObserver::generateFloorTextureHashMap() {
+    mt19937 rng(random_device{}());
+    uniform_int_distribution<int> dist(1, 8);
+    int file = dist(rng);
+    for (int i = 0; i < grid->getSizeX(); ++i) {
+        for (int j = 0; j < grid->getSizeY(); ++j) {
+            //randomly assign a texture to each cell
+            if (_data) {
+                assignTextureToCell(i, j, _data->assets.GetTexture(format("floor_{}", file)));
+                file = dist(rng);
+            } else {
+                Texture texture;
+                string pathToImage = "../../assets/images/frames/floor_1.png";
+                if (!texture.loadFromFile(pathToImage)) {
+                    cout << "Image Failed to load" << endl;
+                    throw std::invalid_argument("No image found");
+                }
+            }
+        }
+    }
+
+}
+void MapObserver::assignTextureToCell(int x, int y, const Texture &tex) {
+    textureMap[{x, y}] = tex;
+}
+
+const Texture& MapObserver::getTextureForCell(int x, int y) const {
+    auto it = textureMap.find({x, y});
+    if (it != textureMap.end()) {
+        return it->second;
+    }
+    throw std::invalid_argument("No texture found for cell");
+
 }

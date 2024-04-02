@@ -20,9 +20,14 @@
 
 #include "../../Functionalities/include/Dice.h"
 #include "CONFIG.h"
+#include "GameLooptyLoop.h"
+#include "LogObserver.h"
 #include "Map.h"
 #include "Observer.h"
+#include "SFML/Graphics/Texture.hpp"
 #include <SFML/Graphics.hpp>
+#include <memory>
+#include <unordered_map>
 using namespace sf;
 
 /**
@@ -32,7 +37,7 @@ using namespace sf;
  * The MapObserver class is responsible for observing and displaying a map using SFML.
  * It inherits from the Observer class.
  */
-class MapObserver : public Observer{
+class MapObserver : public Observer, public LogObservable{
 
 public:
     /**
@@ -40,10 +45,12 @@ public:
      * @param map A pointer to the map object.
      * @param window A pointer to the SFML render window.
      */
-    MapObserver(shared_ptr<Map> map, sf::RenderTexture *window);
+    MapObserver(shared_ptr<Map> map, sf::RenderTexture *window, MainDataRef data);
 
     MapObserver() = default;
 
+
+    MapObserver(shared_ptr<Map> sharedPtr, RenderTexture *pTexture);
     /**
      * @brief Destroys the MapObserver object.
      */
@@ -86,7 +93,25 @@ public:
      */
     float getSizeMult() const;
 
+    void assignTextureToCell(int x, int y, const Texture& tex);
+
+    const Texture& getTextureForCell(int x, int y) const;
+
+
 private:
+
+    MainDataRef _data;
+
+    struct pair_hash {
+        template<class T1, class T2>
+        size_t operator () (const pair<T1, T2> &pair) const {
+            auto hash1 = hash<T1>{}(pair.first);
+            auto hash2 = hash<T2>{}(pair.second);
+            return hash1 ^ hash2;
+        }
+    };
+    
+    unordered_map<pair<int, int>, Texture, pair_hash> textureMap;
     shared_ptr<Map> grid; /**< A pointer to the map object. */
     sf::RenderTexture* window; /**< A pointer to the SFML render window. */
     int window_size_x{}; /**< The width of the render window. */
@@ -138,6 +163,9 @@ private:
      * @param y The y-coordinate of the position.
      */
     void drawImage(RenderTexture *pWindow, const char *pathToImage, float x, float y);
+    void drawFloor(RenderTexture *pWindow, float x, float y);
+
+    void generateFloorTextureHashMap();
 };
 
 #endif //A3_MAPOBSERVER_H

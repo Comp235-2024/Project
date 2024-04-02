@@ -23,7 +23,8 @@ void GameScreen::Init() {
 
     calculateTextureSizes();
     _currentMap = this->_data->campaign->getMap(0);
-    this->mapObserver = MapObserver(_currentMap, &_mapTexture);
+    this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
+    this->mapObserver.attach(this->_data->log);
     findPlayerCharacter();
 
     generateMapTexture();
@@ -67,22 +68,22 @@ void GameScreen::HandleInput() {
         // don't pass a true to the AddState method, because we don't want to remove the previous state.
         // I haven't tested going back yet so exit the game and run it again if you want to go back to the previous state.
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x, _player->position.y - 1})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y - 1})) {
                 _player->position.y -= 1;
                 this->notify("Player moved up", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x, _player->position.y + 1})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y + 1})) {
                 _player->position.y += 1;
                 this->notify("Player moved down", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x - 1, _player->position.y})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x - 1, _player->position.y})) {
                 _player->position.x -= 1;
                 this->notify("Player moved left", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x + 1, _player->position.y})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x + 1, _player->position.y})) {
                 _player->position.x += 1;
                 this->notify("Player moved right", "Character");
             }
