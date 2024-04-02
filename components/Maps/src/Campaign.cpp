@@ -2,6 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-10.
 //
 #include "Campaign.h"
+#include "Pillar.h"
 #include "fstream"
 #include <algorithm>
 
@@ -219,31 +220,57 @@ void Campaign::defaultLevel3() {
 
     Map map(20, 20);
 
-    // hard enemy
-    Character enemy1{2};
-    map.place(enemy1, Position{7, 8});
-
-    // easy enemy
-    Character enemy2{2};
-    map.place(enemy2, Position{13, 4});
-
-    Character mike{5};
-    map.place(mike, Position{9, 0});
 
 
     Wall wall;
 
-    for (int i = 4; i < 20; ++i) {
-        map.place(wall, Position{i, 17});
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{0, i});
     }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{i, 0});
+    }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{19, i});
+    }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{i, 19});
+    }
+
+    shared_ptr<Pillar> pillar = make_shared<Pillar>();
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{4, i});
+        map.place(pillar, Position{5, i});
+    }
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{i, 4});
+        map.place(pillar, Position{i, 5});
+    }
+    for (int i = 4; i < 6; ++i) {
+        map.place(pillar, Position{i, 4});
+        map.place(pillar, Position{i, 5});
+    }
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{14, i});
+        map.place(pillar, Position{15, i});
+    }
+
+    Character mike{5};
+    map.place(mike, Position{12, 12});
+    // boss
+    Character boss{2};
+    map.place(boss, Position{9, 9});
+
+    this->addMap(map);
+
 }
 
 void Campaign::defaultLevel1(){
     maps = std::vector<Map>();
 
-    Character mike{5};
-
     Map map(20, 20);
+
+    Character mike{5};
     map.place(mike, Position{0, 0});
 
     //    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);

@@ -25,6 +25,7 @@
 #include "../../Items/include/Movable.h"
 #include "Door.h"
 #include "Observable.h"
+#include "Pillar.h"
 #include "Position.h"
 #include "Wall.h"
 #include <memory>
@@ -202,6 +203,8 @@ public:
     bool place(Character &obj, const Position &Position);
 
     bool place(const shared_ptr<Door>& obj, const Position &Position);
+
+    bool place(const shared_ptr<Pillar>& obj, const Position &Position);
 
     bool place(const shared_ptr<TreasureChest>& obj, const Position &Position);
     /**

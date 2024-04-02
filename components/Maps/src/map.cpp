@@ -5,6 +5,7 @@
  */
 
 #include "../include/Map.h"
+#include "Pillar.h"
 #include <algorithm>
 #include <cassert>
 #include <cstdint>
@@ -273,6 +274,15 @@ bool Map::place(Character &obj, const Position &Position) {
 }
 
 bool Map::place(const shared_ptr<Door> &obj, const Position &Position) {
+    if (checkEmpty(Position)) {
+        grid[Position.y][Position.x] = obj;
+        notify();
+        return true;
+    }
+    return false;
+}
+
+bool Map::place(const shared_ptr<Pillar> &obj, const Position &Position) {
     if (checkEmpty(Position)) {
         grid[Position.y][Position.x] = obj;
         notify();

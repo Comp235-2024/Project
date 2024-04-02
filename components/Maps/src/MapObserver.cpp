@@ -1,6 +1,7 @@
 
 
 #include "../include/MapObserver.h"
+#include "Pillar.h"
 #include <format>
 using namespace sf;
 using namespace std;
@@ -152,6 +153,9 @@ void MapObserver::drawMap(RenderTexture *_window) {
             }
             else if (dynamic_cast<Door*>(cell.get())) {
                 drawImage(window, "../../assets/images/frames/doors_leaf_closed.png", x, y);
+            }
+            else if (dynamic_cast<Pillar*>(cell.get())) {
+                drawImage(window, "../../assets/images/frames/column_wall.png", x, y);
             }
             else {
                 cout << "Type id " << typeid(*cell).name() << endl;
