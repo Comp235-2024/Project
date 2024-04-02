@@ -201,6 +201,8 @@ public:
 
     bool place(Character &obj, const Position &Position);
 
+    bool place(const shared_ptr<Door>& obj, const Position &Position);
+
     bool place(const shared_ptr<TreasureChest>& obj, const Position &Position);
     /**
      * @brief Removes a movable object from the map at the specified position.

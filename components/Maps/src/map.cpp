@@ -272,6 +272,14 @@ bool Map::place(Character &obj, const Position &Position) {
     return false;
 }
 
+bool Map::place(const shared_ptr<Door> &obj, const Position &Position) {
+    if (checkEmpty(Position)) {
+        grid[Position.y][Position.x] = obj;
+        notify();
+        return true;
+    }
+    return false;
+}
 
 bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) {
     if (checkEmpty(Position)) {

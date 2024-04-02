@@ -140,13 +140,20 @@ void MapObserver::drawMap(RenderTexture *_window) {
             if (cell == nullptr) {
                 string path = "../../assets/images/frames/floor_1.png";
                 drawImage(window, path.c_str(), x, y);
-            } else if (dynamic_cast<Wall*>(cell.get())) {
+            }
+            else if (dynamic_cast<Wall*>(cell.get())) {
                 drawImage(window, "../../assets/images/frames/wall_mid.png", x, y);
-            } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
+            }
+            else if (auto* player = dynamic_cast<Character*>(cell.get())) {
                 drawImage(window, "../../assets/images/frames/knight_m_idle_anim_f0.png", x, y);
-            } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
+            }
+            else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, "../../assets/images/frames/crate.png", x, y);
-            } else {
+            }
+            else if (dynamic_cast<Door*>(cell.get())) {
+                drawImage(window, "../../assets/images/frames/doors_leaf_closed.png", x, y);
+            }
+            else {
                 cout << "Type id " << typeid(*cell).name() << endl;
                 string path = "../../assets/images/frames/floor_1.png";
                 drawImage(window, path.c_str(), x, y);
