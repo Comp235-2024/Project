@@ -28,17 +28,7 @@ const Vector2f gameSize = {WINDOW_WIDTH, WINDOW_HEIGHT};
 void diceLogTest();
 int main(){
 
-
-    Character::testLevelUpProcess();
-    diceLogTest();
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
-
-    Player player;
-    auto* humanPlayerStrategy = new HumanPlayerStrategy(&player);
-    player.setStrategy(humanPlayerStrategy);
-
-    player.getStrategy()->play();
-
 
     return EXIT_SUCCESS;
 }

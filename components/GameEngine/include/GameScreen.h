@@ -8,10 +8,10 @@
 #ifndef A3_GAMESCREEN_H
 #define A3_GAMESCREEN_H
 
-
 #include "CONFIG.h"
 #include "GameLooptyLoop.h"
 #include "MapObserver.h"
+#include "Player.h"
 #include "State.h"
 
 /**
@@ -28,7 +28,7 @@ public:
      * @brief Constructs a GameScreen object with the given main data.
      * @param data The main data reference.
      */
-    explicit GameScreen(MainDataRef data);
+    explicit GameScreen(MainDataRef& data);
 
     /**
      * @brief Initializes the game screen.
@@ -77,6 +77,7 @@ private:
     Sprite _bg; /**< The background sprite. */
     Vector2<unsigned int> _windowSize; /**< The window size. */
 
+    //MODIFIED THIS TO BE A PLAYER AND NOT CHARACTER
     shared_ptr<Character> _player; /**< The player character. */
 
     MapObserver mapObserver; /**< The map observer. */

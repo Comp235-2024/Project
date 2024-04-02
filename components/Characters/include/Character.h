@@ -22,6 +22,8 @@
 #include <ctime>  // For time()
 #include <iostream>
 
+using namespace sf;
+
 
 class CharacterStrategy;
 /**
@@ -252,6 +254,8 @@ private:
 
     //TODO implement health logic
     int health;
+
+    Sprite sprite;
 
     int abilityScores[6]; // 0: Strength, 1: Dexterity, 2: Constitution, 3:
                          // Intelligence, 4: Wisdom, 5: Charisma

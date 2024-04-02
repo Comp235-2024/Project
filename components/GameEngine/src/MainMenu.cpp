@@ -7,6 +7,7 @@
 
 #include "MainMenu.h"
 #include "GameScreen.h"
+#include "MapCreator.h"
 
 MainMenu::MainMenu(MainDataRef data) : _data(data) {}
 
@@ -47,18 +48,30 @@ void MainMenu::HandleInput() {
         if (Event::Closed == event.type) {
             this->_data->window.close();
         }
-        // TODO Implement the button click handling accourding to your needs
+        // TODO Implement the button click handling according to your needs
         // For transition to another state use the WelcomeScreen.cpp as an example. However,
         // don't pass a true to the AddState method, because we don't want to remove the previous state.
         // I haven't tested going back yet so exit the game and run it again if you want to go back to the previous state.
+
+        //Play
         if (_data->inputs.IsButtonClicked(buttons->play, Mouse::Left, _data->window)) {
             this->notify("Switching to game", "System");
             _data->stateMachine.AddState(StateRef(new GameScreen(_data)), false, _data->log);
-        } else if (_data->inputs.IsButtonClicked(buttons->editMap, Mouse::Left, _data->window)) {
+        }
+
+        //Map Creator
+        else if (_data->inputs.IsButtonClicked(buttons->editMap, Mouse::Left, _data->window)) {
             this->notify("Switching to map editor", "System");
-        } else if (_data->inputs.IsButtonClicked(buttons->editCharacter, Mouse::Left, _data->window)) {
+            _data->stateMachine.AddState(StateRef(new MapCreator(_data)), false, _data->log);
+        }
+
+        //Character Creator
+        else if (_data->inputs.IsButtonClicked(buttons->editCharacter, Mouse::Left, _data->window)) {
             this->notify("Switching to character editor", "System");
-        } else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
+        }
+
+        //Load Previous Game
+        else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
             this->notify("Switching to load menu", "System");
         }
 
@@ -68,12 +81,15 @@ void MainMenu::HandleInput() {
 void MainMenu::SetButtons() {
 
     Font& font = _data->assets.GetFont("My Font");
-    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.4f);
+    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.5f);
+
+    //This is the spacing between the buttons
+    //Changed it to be a seventh of the window height to make it less hard coded
+    Vector2f spacing = Vector2f(0, _data->window.getSize().y/6);
 
     GenerateButton(font, "Play", buttons->play, buttons->playText, position);
-    GenerateButton(font, "Edit Map", buttons->editMap, buttons->editMapText, position + Vector2f(0, 100));
-    GenerateButton(font, "Edit Character", buttons->editCharacter, buttons->editCharacterText, position + Vector2f(0, 200));
-    GenerateButton(font, "Load Map", buttons->load, buttons->loadText, position + Vector2f(0, 300));
+    GenerateButton(font, "Edit Map", buttons->editMap, buttons->editMapText, position + Vector2f(0, spacing.y));
+    GenerateButton(font, "Edit Character", buttons->editCharacter, buttons->editCharacterText, position + Vector2f(0, 2*spacing.y));
 
 }
 
@@ -89,22 +105,23 @@ void MainMenu::SetButtons() {
  */
 void MainMenu::GenerateButton(const Font &font, const string& name, RectangleShape &button, Text &buttonText, Vector2f position) {
 
-    Vector2f size = Vector2f(300, 50);
+    //Changed the size of the button to be a third of the window width and a tenth of the window height Meaning making them less hard coded
+    Vector2f size = Vector2f(WINDOW_WIDTH/2.0f, WINDOW_HEIGHT/10.0f);
     button.setSize(size);
-    button.setOrigin(size.x/2.0f, size.y/2.0f);
+    button.setOrigin(size.x / 2.0f, size.y / 2.0f);
     button.setPosition(position);
     button.setFillColor(Color(0x3f3a4daa));
-    // TODO Maybe add a hover color
-
-
 
     buttonText.setString(name);
     buttonText.setFont(font);
-    buttonText.setCharacterSize(MENU_CHAR_SIZE);
+
+    //Made a specific size for titles
+    buttonText.setCharacterSize(MENU_CHAR_TITLE_SIZE);
     buttonText.setFillColor(Color::White);
+
+    // Adjust the text position to be centered in the new, larger button
     FloatRect textBounds = buttonText.getLocalBounds();
-    buttonText.setOrigin(textBounds.width/2.0f, textBounds.height/2.0f);
-    buttonText.setPosition(position.x + size.x/2.0f, position.y + size.y/2.0f);
+    buttonText.setOrigin(textBounds.width / 2.0f, textBounds.height / 2.0f + textBounds.top / 2.0f); // Adjust for vertical centering
     buttonText.setPosition(position);
 
 }

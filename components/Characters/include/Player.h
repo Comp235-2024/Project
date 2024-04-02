@@ -3,8 +3,9 @@
 
 #include "../../Items/include/Item.h"
 #include "Character.h"
-#include "../../ItemContainers/include/Backpack.h"
-#include "../../ItemContainers/include/WornItems.h"
+#include "Backpack.h"
+#include "WornItems.h"
+
 
 class Player : public Character{
 private:
@@ -21,6 +22,7 @@ public:
     Player();
 
 
+    Player getPlayer();
 
     //TODO STANDARDIZED THIS METHOD (SEE DEFINITION) IT NOW ASSUMES THAT THE ITEM IN HAND IS AT INDEX 3
     Item* getItemInHand();
