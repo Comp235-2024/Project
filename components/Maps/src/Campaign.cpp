@@ -95,6 +95,7 @@ Campaign::Campaign() {
     maps = std::vector<Map>();
 
     Character mike{5};
+    mike.textureName = "imp";
 
     Map map(20, 20);
     map.place(mike, Position{9, 9});

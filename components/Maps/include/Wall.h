@@ -9,6 +9,7 @@ public:
     Wall() = default;
     ~Wall() override = default;
     //Wall logic
+    string textureName = "wall_mid";
 };
 
 

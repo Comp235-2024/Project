@@ -171,12 +171,12 @@ void MapObserver::drawMap(RenderTexture *_window) {
             drawFloor(_window, x, y);
 
             if (cell == nullptr) {
-            } else if (dynamic_cast<Wall*>(cell.get())) {
-                drawImage(window, "wall_mid", x, y);
+            } else if (auto wall = dynamic_cast<Wall*>(cell.get())) {
+                drawImage(window, wall->textureName.c_str(), x, y);
             } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
-                drawImage(window, "knight", x, y);
+                drawImage(window, player->textureName.c_str(), x, y);
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
-                drawImage(window, "crate", x, y);
+                drawImage(window, item->textureName.c_str(), x, y);
             } else {
                 cout << "Type id " << typeid(*cell).name() << endl;
             }

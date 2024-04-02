@@ -4,6 +4,7 @@
 #include "TankBuilder.h"
 #include "../../Functionalities/include/Dice.h"
 #include <iostream>
+#include <utility>
 
 Character::Character(){
 health = 100;
@@ -39,6 +40,16 @@ Character::Character(int level) : level(1), hitPoints(10), attackBonus(0), numbe
     calculateDamageBonus();
 }
 
+
+Character::Character(int level, string _textureName) : level(1), hitPoints(10), attackBonus(0), numberOfAttacks(1), textureName(std::move(_textureName)) {
+    generateAbilityScores();
+    calculateAbilityModifiers();
+    calculateHitPoints();
+    calculateArmorClass();
+    calculateAttackBonus();
+    calculateDamageBonus();
+
+}
 
 /**
  * @brief Generates random ability scores for the character.
@@ -687,6 +698,3 @@ void displayCharacterAttributes(const Character& character) {
      std::cout << "Tank Attributes After Leveling Up: ";
      displayCharacterAttributes(tank);
 }
-
-
-
