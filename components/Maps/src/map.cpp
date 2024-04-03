@@ -252,15 +252,6 @@ vector<Position> Map::findPath(Position start, Position end) const {
 //         typename std::enable_if<std::is_base_of<Movable, T>::value,
 //                                 T>::type * = nullptr>
 //
-template<typename T>
-bool Map::place(const T &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
 
 bool Map::place(Character &obj, const Position &pos) {
     if (checkEmpty(pos)) {
@@ -282,14 +273,7 @@ bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &pos) {
     return false;
 }
 
-template<typename T>
-bool Map::specialPlace(const T &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
-        return true;
-    }
-    return false;
-}
+
 
 
 /**
@@ -391,7 +375,7 @@ int Map::getDistance(const Position &pos_start, const Position &pos_end) const {
  * @return True if the position is empty, false otherwise.
  */
 bool Map::checkEmpty(const Position &pos) const {
-    return grid[pos.y][pos.x] == nullptr;
+    return (grid[pos.y][pos.x] == nullptr || dynamic_pointer_cast<Movable>(grid[pos.y][pos.x])==nullptr); ;
 }
 
 #pragma region Map

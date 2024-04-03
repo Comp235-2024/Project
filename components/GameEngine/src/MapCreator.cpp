@@ -9,7 +9,7 @@ void MapCreator::calculateTextureSizes(int x, int y) {
     _data->window.setSize(Vector2u(calibrated_X, calibrated_Y));
     _windowSize = _data->window.getSize();
 
-    // TODO make the console and character view sizes dynamic
+
     //This adjusts the size of the map texture to be 80% of the window size since sidebar takes up 20%
     _mapTexture.create(_windowSize.x*(1-SIDEBAR_RATIO), _windowSize.y*(1-SIDEBAR_RATIO));
 
@@ -101,12 +101,14 @@ void MapCreator::handleMouseButtonPressedEvent(const sf::Event& event) {
 void MapCreator::processClickActions(const sf::Vector2f& mousePos) {
     if (clearButton.getGlobalBounds().contains(mousePos)) {
         clearMap();
-        mapObserver.update();
+
     } else if (saveButton.getGlobalBounds().contains(mousePos)) {
         //TODO save map to file
         //saveMapToFile();
     } else if (selectedObject != nullptr && mapArea.getGlobalBounds().contains(mousePos)) {
         placeObjectOnMap(mousePos);
+
+
     } else {
         selectObjectFromSidebar(mousePos);
     }
@@ -118,23 +120,52 @@ void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
     int cellY = static_cast<int>(mapPos.y / CELL_SIZE);
 
     Position pos = {cellX, cellY};
-    //TODO FIX PLACE METHOD
-    //_currentMap->place(*selectedObject, pos);
-    mapObserver.update();
 
-    this->notify("Object placed on map", "System");
 
-    Draw(0.0f); // Consider renaming this method to follow naming conventions, e.g., draw
+    if(_currentMap->place(*selectedObject, pos)){
+        mapObserver.update();
+
+            this->notify("Object placed on map at position (" + to_string(cellX) + ", " + to_string(cellY) + ")", "System");
+
+            isHolding = false;
+            selectedObject = nullptr;
+    }
+
+    else{
+        this->notify("Cannot place object at position (" + to_string(cellX) + ", " + to_string(cellY) + ")", "System");
+    }
 }
 
 void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
-    for (size_t i = 0; i < itemContainers.size(); ++i) {
-        if (itemContainers[i].getGlobalBounds().contains(mousePos)) {
-            selectedObject = &sidebarObjects[i];
+    try {
+        for (size_t i = 0; i < itemContainers.size(); ++i) {
+            if (itemContainers[i].getGlobalBounds().contains(mousePos)) {
 
-            isHolding = true;
-            break;
+                string type = itemNames[i];
+
+                if (type == "Wall") {
+                    selectedObject = make_shared<Wall>();
+                } //TODO IMPLEMENT OGRE CLASS
+                /*else if (type == "Ogre") {
+                    selectedObject = make_shared<Ogre>();
+                }*/
+                else if (type == "Player") {
+                    selectedObject = make_shared<Player>();
+                } else if (type == "Chest") {
+                    selectedObject = make_shared<TreasureChest>();
+                } else if (type == "Door") {
+                    selectedObject = make_shared<Door>();
+                }
+
+                this->notify("Object selected: " + type, "System");
+
+                isHolding = true;
+                break;
+            }
         }
+    } catch (const std::exception& e) {
+        std::cerr << "Exception caught in selectObjectFromSidebar: " << e.what() << '\n';
+        // Handle exception or recovery
     }
 }
 
@@ -154,7 +185,7 @@ void MapCreator::Draw(float deltaTime) {
     _data->window.display();
 }
 
-//TODO CHANGE THIS METHOD SO IT CREATES A NEW ARE FOR THE SIDEBAR INSTEAD OF USING THE MAP'S WINDOW
+
 /**
  * @brief Initializes the sidebar on the right side of the window with the objects that can be placed on the map.
  */
@@ -171,6 +202,7 @@ void MapCreator::initSideBar() {
     float sidebarHeight = _mapTexture.getSize().y; // Sidebar height matches the map texture, not the window
     float sidebarWidth = windowWidth * SIDEBAR_RATIO;
     const float padding = sidebarHeight*SIDEBAR_ITEM_PADDING; // Define padding around sidebar items
+    Font font = this->_data->assets.GetFont(FONT_PATH);
 
     // Predefined colors for readability and consistency
     const sf::Color sidebarColor = sf::Color(50, 50, 50); // Dark gray
@@ -184,12 +216,12 @@ void MapCreator::initSideBar() {
     sidebarObjectsSprites.clear();
     itemContainers.clear();
 
-    std::vector<std::string> itemNames = {"Wall", "Ogre", "Player", "Chest", "Door"};
     float itemHeight = (sidebarHeight - padding * (itemNames.size() + 1)) / itemNames.size();
 
     float yOffset = padding;
 
-    for (const auto& itemName : itemNames) {
+    for (const string& itemName : itemNames) {
+
         sf::Sprite item(this->_data->assets.GetTexture(itemName));
 
         // Scale calculation remains the same
@@ -215,8 +247,19 @@ void MapCreator::initSideBar() {
         container.setOutlineColor(itemContainerOutlineColor);
         container.setOutlineThickness(-1); // Inside outline for a cleaner look
 
+        //TODO CHANGE MAX NUMBER OF SOME ITEMS
+
+        int maxnb=(itemName=="Player"||itemName=="Door")?1:99;
+
+        auto* item_name = const_cast<string *>(&itemName);
+
         sidebarObjectsSprites.push_back(item);
         itemContainers.push_back(container);
+
+        MapCreator::SidebarItem sidebarObject= SidebarItem(*item_name, maxnb);
+
+        sidebarObjects.push_back(sidebarObject);
+
 
         // Move to the next item position, including the padding
         yOffset += itemHeight + padding;
@@ -269,7 +312,7 @@ Position MapCreator::askForSize() {
     yInputText.setPosition(10.f, 180.f);
 
     std::string mapNameInput = "", xInput = "", yInput = "";
-    bool enterPressed = false, focusOnName = true, focusOnX = false;
+    bool enterPressed = false, focusOnName = true, focusOnX = false, focusOnY = false;
 
     while (this->_data->window.isOpen()) {
         sf::Event event;
@@ -277,15 +320,18 @@ Position MapCreator::askForSize() {
             if (event.type == sf::Event::Closed) this->_data->window.close();
 
             if (!enterPressed && event.type == sf::Event::TextEntered) {
-                if (event.text.unicode == '\b') {
+                if (event.text.unicode == '\b') { // Backspace
                     if (focusOnName && !mapNameInput.empty()) mapNameInput.pop_back();
                     else if (focusOnX && !xInput.empty()) xInput.pop_back();
-                    else if (!focusOnX && !yInput.empty()) yInput.pop_back();
-                } else if ((event.text.unicode >= '0' && event.text.unicode <= '9') || event.text.unicode >= 32 && event.text.unicode < 128) {
-                    if (focusOnName) mapNameInput += static_cast<char>(event.text.unicode);
-                    else if (focusOnX) xInput += static_cast<char>(event.text.unicode);
-                    else yInput += static_cast<char>(event.text.unicode);
-                } else if (event.text.unicode == '\r') {
+                    else if (focusOnY && !yInput.empty()) yInput.pop_back();
+                } else if (focusOnName && (event.text.unicode >= 32 && event.text.unicode < 128)) {
+                    // Allow any printable character for the map name, including numbers
+                    mapNameInput += static_cast<char>(event.text.unicode);
+                } else if ((focusOnX || focusOnY) && (event.text.unicode >= '0' && event.text.unicode <= '9')) {
+                    // Only allow numeric input for x and y
+                    if (focusOnX) xInput += static_cast<char>(event.text.unicode);
+                    if (focusOnY) yInput += static_cast<char>(event.text.unicode);
+                } else if (event.text.unicode == '\r') { // Enter key to switch focus or submit
                     if (focusOnName) {
                         focusOnName = false;
                         focusOnX = true;
@@ -293,13 +339,17 @@ Position MapCreator::askForSize() {
                         activeIndicator.setPosition(10.f, 120.f);
                     } else if (focusOnX) {
                         focusOnX = false;
+                        focusOnY = true;
                         activeIndicator.setFillColor(sf::Color(250, 100, 100, 100));
                         activeIndicator.setPosition(10.f, 170.f);
-                    } else enterPressed = true;
+                    } else {
+                        enterPressed = true;
+                    }
                 }
             }
         }
 
+        // Drawing section remains the same
         this->_data->window.clear();
         this->_data->window.draw(background);
         this->_data->window.draw(activeIndicator);
@@ -313,23 +363,28 @@ Position MapCreator::askForSize() {
         this->_data->window.draw(yInputText);
         this->_data->window.display();
 
+        // Submission and validation logic remains the same
         if (enterPressed) {
             try {
                 int width = std::stoi(xInput.empty() ? "0" : xInput);
                 int height = std::stoi(yInput.empty() ? "0" : yInput);
+                // Ensure map name is not empty and dimensions are within expected range
                 if (!mapNameInput.empty() && width > 0 && height > 0 && width <= 50 && height <= 30) {
                     this->mapName = mapNameInput;
-
                     return {width, height};
                 } else {
                     instructionText.setString("Invalid input. Please enter a map name and positive numbers for dimensions.");
                     enterPressed = false;
+                    // Reset focus to start correctly after invalid input
                     focusOnName = true;
+                    focusOnX = false;
+                    focusOnY = false;
+                    activeIndicator.setPosition(10.f, 70.f); // Reset position to map name input
+                    activeIndicator.setFillColor(sf::Color(100, 100, 250, 100));
+                    // Clear inputs for re-entry
                     mapNameInput = "";
                     xInput = "";
                     yInput = "";
-                    activeIndicator.setPosition(10.f, 70.f);
-                    activeIndicator.setFillColor(sf::Color(100, 100, 250, 100));
                 }
             } catch (std::exception& e) {
                 std::cerr << "Error: " << e.what() << std::endl;
@@ -352,8 +407,8 @@ void MapCreator::initButtons() {
     buttonContainer.setFillColor(sf::Color(50, 50, 50, 200)); // Semi-transparent dark background
 
     // Define button dimensions and calculate spacing for centering
-    float buttonWidth = 200; // Fixed width for buttons
-    float buttonHeight = 40; // Fixed height for buttons
+    float buttonWidth = _windowSize.x*BOTTOMBAR_BUTTON_WIDTH_RATIO; // Fixed width for buttons
+    float buttonHeight = buttonContainerHeight*BOTTOMBAR_BUTTON_HEIGHT_RATIO; // Fixed height for buttons
     float gap = (_windowSize.x - 2 * buttonWidth) / 3; // Space between buttons and window edges
 
     // Initialize the "Clear" button
@@ -377,13 +432,13 @@ void MapCreator::initButtons() {
 
     // Assuming `_data->assets.GetFont("Font")` is valid and has been loaded earlier
     // Initialize and position the text for "Clear" button
-    sf::Text clearButtonText("Clear", this->_data->assets.GetFont("Font"), 20);
+    sf::Text clearButtonText("Clear", this->_data->assets.GetFont("Font"), buttonWidth*0.2);
     clearButtonText.setPosition(
             clearButton.getPosition().x + (buttonWidth - clearButtonText.getLocalBounds().width) / 2,
             clearButton.getPosition().y + (buttonHeight - clearButtonText.getLocalBounds().height) / 2 - 5);
 
     // Initialize and position the text for "Save" button
-    sf::Text saveButtonText("Save", this->_data->assets.GetFont("Font"), 20);
+    sf::Text saveButtonText("Save", this->_data->assets.GetFont("Font"), buttonWidth*0.2);
     saveButtonText.setPosition(
             saveButton.getPosition().x + (buttonWidth - saveButtonText.getLocalBounds().width) / 2,
             saveButton.getPosition().y + (buttonHeight - saveButtonText.getLocalBounds().height) / 2 - 5);
@@ -407,7 +462,7 @@ void MapCreator::drawButtons(){
 
 
 //TODO USE THIS TO CREATE A SIDEBAR OBJECT INSTEAD OF INPUTTING THE OBJECTS MANUALLY
-MapCreator::SidebarItem::SidebarItem(const Sprite &item, const string &name, int permittedCount, const Font &font, float xPosition, float yPosition)
+/*MapCreator::SidebarItem::SidebarItem(const Sprite &item, const string &name, int permittedCount, const Font &font, float xPosition, float yPosition)
 : item(item), name(name), permittedCount(permittedCount)
 {// Setup count text
     countText.setFont(font);
@@ -421,4 +476,15 @@ MapCreator::SidebarItem::SidebarItem(const Sprite &item, const string &name, int
     countBackground.setFillColor(sf::Color(0, 0, 0, 150)); // Semi-transparent black
     countBackground.setPosition(xPosition - 60, yPosition); // Positioned left to the text
 
+}*/
+
+/*
+ * MapCreator::SidebarItem MapCreator::getSidebarObject(const int index) const  {
+        return sidebarObjects[index];
+ */
+
+
+MapCreator::SidebarItem::SidebarItem(const string &name, const int permittedCount) {
+    this->name = name;
+    this->permittedCount = permittedCount;
 }

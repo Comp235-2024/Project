@@ -6,6 +6,8 @@
 #include "MapObserver.h"
 #include "Player.h"
 #include "State.h"
+#include "Movable.h"
+#include "TreasureChest.h"
 
 class MapCreator : public State {
 public:
@@ -17,7 +19,17 @@ public:
     void Update(float deltaTime) override;
     void Draw(float deltaTime) override;
 
+    Placeable getSidebarObject(const int index) const;
 
+    struct SidebarItem :public Movable{
+        sf::Sprite sprite;
+        std::string name;
+        int permittedCount;
+        sf::Text countText;
+        sf::RectangleShape countBackground;
+
+        SidebarItem(const std::string &name, int permittedCount);
+    };
 
 private:
     static int nbSavedMaps; /**< The number of maps in the campaign. */
@@ -26,21 +38,13 @@ private:
 
     bool isHolding = false; // Flag to indicate if an object is being held
 
-    struct SidebarItem {
-        sf::Sprite item;
-        std::string name;
-        int permittedCount;
-        sf::Text countText;
-        sf::RectangleShape countBackground;
-
-        SidebarItem(const sf::Sprite& item, const std::string& name, int permittedCount, const sf::Font& font, float xPosition, float yPosition);
-    };
-
     MapObserver mapObserver; /**< The map observer. */
 
     std::vector<SidebarItem> sidebarObjects; // List of objects in the sidebar
-    SidebarItem* selectedObject = nullptr; // Pointer to the currently selected object
 
+    shared_ptr<Movable> selectedObject = nullptr; // Pointer to the currently selected object
+
+    std::vector<std::string> itemNames = {"Wall", "Player", "Chest", "Door","Ogre"};
     sf::Text itemPermittedCount; // To display the number of this object type that can be placed
     sf::RectangleShape sidebar; // To represent the sidebar area
     std::vector<sf::RectangleShape> itemContainers;

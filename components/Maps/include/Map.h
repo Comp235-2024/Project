@@ -202,10 +202,14 @@ public:
      * @return True if the object was successfully placed, false otherwise.
      */
     template<typename T>
-
-//    template<typename T, typename std::enable_if<std::is_base_of<Movable, T>::value, T>::type*>
-
-    bool place(const T& obj, const Position& position);
+    bool place(const T &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
+            notify();
+            return true;
+        }
+        return false;
+    }
 
     template<typename T>
     bool place(const T& obj, const sf::Vector2i& position){
@@ -335,7 +339,13 @@ public:
     static bool mapBuilderTest();
 
     template<typename T>
-    bool specialPlace(const T &obj, const Position &position);
+    bool specialPlace(const T &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
+            return true;
+        }
+        return false;
+    }
 
     bool specialMove(const Position &pos_start, const Position &pos_end);
 
