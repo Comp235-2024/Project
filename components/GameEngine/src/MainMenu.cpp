@@ -67,7 +67,7 @@ void MainMenu::HandleInput() {
         } else if (_data->inputs.IsButtonClicked(buttons->options, Mouse::Left, _data->window)) {
             this->notify("Switching to options menu", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->quit, Mouse::Left, _data->window)) {
-            exit(0);
+            _data->window.close();
         }
 
 
