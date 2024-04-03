@@ -20,17 +20,34 @@ using namespace sf;
 #include "../include/CONFIG.h"
 #include "SFML/Graphics.hpp"
 #include "nlohmann/json.hpp"
-
-
+#include <SFML/Audio.hpp>
+#include <SFML/Audio/Music.hpp>
+#include <SFML/Audio/Listener.hpp>
 const Vector2f gameSize = {WINDOW_WIDTH, WINDOW_HEIGHT};
 
 
 void diceLogTest();
 int main(){
 
+    //Character::testLevelUpProcess();
+    //diceLogTest();
+    Music music;
 
-//    Character::testLevelUpProcess();
-//    diceLogTest();
+    if (!music.openFromFile("../../assets/audios/music1.ogg"))
+    {
+        std::cerr << "Error while loading background music file" << std::endl;
+        return -1;
+    }
+
+    music.setVolume(100.f);
+    music.setLoop(true);
+    music.play();
+
+
+
+    Character::testLevelUpProcess();
+    diceLogTest();
+
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
 
 //    Player player;

@@ -42,6 +42,10 @@ private:
         Text editCharacterText;
         RectangleShape load;
         Text loadText;
+        RectangleShape options;
+        Text optionsText;
+        RectangleShape quit;
+        Text quitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>();
