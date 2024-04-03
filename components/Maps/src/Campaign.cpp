@@ -106,6 +106,7 @@ void Campaign::defaultLevel2(){
 
     Character mike{5};
     map.place(mike, Position{9, 0});
+    mike.textureName = "imp";
 
 
 
@@ -256,7 +257,9 @@ void Campaign::defaultLevel3() {
     }
 
     Character mike{5};
+
     map.place(mike, Position{12, 12});
+    mike.textureName = "imp";
     // boss
     Character boss{2};
     map.place(boss, Position{9, 9});
@@ -272,6 +275,7 @@ void Campaign::defaultLevel1(){
 
     Character mike{5};
     map.place(mike, Position{0, 0});
+    mike.textureName = "imp";
 
     //    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
     //    map.place(chest, Position{5, 5});

@@ -42,6 +42,9 @@ public:
      */
     // Constructor
     explicit Character(int level);
+
+    Character(int level, string _textureName);
+
     Character();
 
     /**
@@ -63,7 +66,9 @@ public:
      */
     void interactiveAbilityScoresTest();
 
-    sf::Vector2f position;
+    sf::Vector2i position;
+
+    std::string textureName = "knight";
 
     // Getters
 

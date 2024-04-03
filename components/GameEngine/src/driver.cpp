@@ -44,13 +44,17 @@ int main(){
     music.play();
 
 
+
+    Character::testLevelUpProcess();
+    diceLogTest();
+
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
 
-    Player player;
-    auto* humanPlayerStrategy = new HumanPlayerStrategy(&player);
-    player.setStrategy(humanPlayerStrategy);
-
-    player.getStrategy()->play();
+//    Player player;
+//    auto* humanPlayerStrategy = new HumanPlayerStrategy(&player);
+//    player.setStrategy(humanPlayerStrategy);
+//
+//    player.getStrategy()->play();
 
 
     return EXIT_SUCCESS;
