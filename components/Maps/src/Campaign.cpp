@@ -357,9 +357,9 @@ void Campaign::defaultLevel1(){
 }
 
 Campaign::Campaign() {
-    //defaultLevel1();
+    defaultLevel1();
     //defaultLevel2();
-    defaultLevel3();
+    //defaultLevel3();
 }
 
 shared_ptr<Map> Campaign::getMap(int index) const {

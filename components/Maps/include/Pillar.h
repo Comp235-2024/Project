@@ -8,6 +8,7 @@ public:
     explicit Pillar(const Movable& movable) : Movable(movable) {}
     Pillar() = default;
     ~Pillar() override = default;
+    string textureName = "column_wall";
 };
 
 
