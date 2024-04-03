@@ -123,6 +123,7 @@ void GameScreen::findPlayerCharacter() {
             if (dynamic_cast<Character*>(cell.get())) {
                 //                this->_player = cell.get();
                 this->_player = dynamic_pointer_cast<Character>(cell);
+                this->_player->position = Vector2i{x, y};
 
             }
             ++x;

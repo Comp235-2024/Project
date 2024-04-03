@@ -14,7 +14,7 @@ void MapCreator::calculateTextureSizes(int x, int y) {
     _mapTexture.create(_windowSize.x*(1-SIDEBAR_RATIO), _windowSize.y*(1-SIDEBAR_RATIO));
 
     // Set the map area size to the size of the map texture
-    mapArea.setSize(Vector2f(_mapTexture.getSize().x, _mapTexture.getSize().y));
+    mapArea.setSize(Vector2f(_mapTexture.getSize()));
 
     this->notify("Map texture created, size: " + to_string(_mapTexture.getSize().x) + " by " + to_string(_mapTexture.getSize().y), "System");
 }
@@ -56,6 +56,10 @@ void MapCreator::Init() {
 
     _mapTexture.clear(Color::Transparent);
 
+    Character mike{5};
+    mike.textureName = "imp";
+
+    _currentMap->place(mike, Position{9, 9});
     mapObserver.update();
 
     initSideBar();
@@ -122,13 +126,13 @@ void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
     Position pos = {cellX, cellY};
 
 
-    if(_currentMap->place(*selectedObject, pos)){
+    if (_currentMap->place(selectedObject, pos)) {
+
         mapObserver.update();
+        this->notify("Object placed on map at position (" + to_string(cellX) + ", " + to_string(cellY) + ")", "System");
 
-            this->notify("Object placed on map at position (" + to_string(cellX) + ", " + to_string(cellY) + ")", "System");
-
-            isHolding = false;
-            selectedObject = nullptr;
+        isHolding = false;
+        selectedObject = nullptr;
     }
 
     else{
@@ -142,19 +146,21 @@ void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
             if (itemContainers[i].getGlobalBounds().contains(mousePos)) {
 
                 string type = itemNames[i];
+                Wall wall;
+                wall.textureName = "wall_mid";
 
                 if (type == "Wall") {
-                    selectedObject = make_shared<Wall>();
+                    selectedObject = make_shared<Wall>(wall);
                 } //TODO IMPLEMENT OGRE CLASS
                 /*else if (type == "Ogre") {
                     selectedObject = make_shared<Ogre>();
                 }*/
                 else if (type == "Player") {
-                    selectedObject = make_shared<Player>();
+                    selectedObject = make_shared<Player>(Player());
                 } else if (type == "Chest") {
-                    selectedObject = make_shared<TreasureChest>();
+                    selectedObject = make_shared<TreasureChest>(TreasureChest());
                 } else if (type == "Door") {
-                    selectedObject = make_shared<Door>();
+                    selectedObject = make_shared<Door>(Door());
                 }
 
                 this->notify("Object selected: " + type, "System");

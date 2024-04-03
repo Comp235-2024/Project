@@ -100,7 +100,7 @@ Campaign::Campaign() {
     Map map(20, 20);
     map.place(mike, Position{9, 9});
 
-    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
+    TreasureChest chest{"chest1", 20};
     map.place(chest, Position{5, 5});
 
     Wall wall;

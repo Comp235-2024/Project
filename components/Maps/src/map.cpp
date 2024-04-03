@@ -253,26 +253,26 @@ vector<Position> Map::findPath(Position start, Position end) const {
 //                                 T>::type * = nullptr>
 //
 
-bool Map::place(Character &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        obj.position = sf::Vector2i(pos.x, pos.y);
-        grid[pos.y][pos.x] = make_shared<Character>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
-
-
-bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = obj;
-        notify();
-        return true;
-    }
-    return false;
-}
-
+//bool Map::place(Character &obj, const Position &pos) {
+//    if (checkEmpty(pos)) {
+//        obj.position = sf::Vector2i(pos.x, pos.y);
+//        grid[pos.y][pos.x] = make_shared<Character>(std::move(obj));
+//        notify();
+//        return true;
+//    }
+//    return false;
+//}
+//
+//
+//bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &pos) {
+//    if (checkEmpty(pos)) {
+//        grid[pos.y][pos.x] = obj;
+//        notify();
+//        return true;
+//    }
+//    return false;
+//}
+//
 
 
 

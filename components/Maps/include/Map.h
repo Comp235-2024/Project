@@ -212,21 +212,31 @@ public:
     }
 
     template<typename T>
+    bool place(const shared_ptr<T> &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = obj;
+            notify();
+            return true;
+        }
+        return false;
+    }
+
+    template<typename T>
     bool place(const T& obj, const sf::Vector2i& position){
         return place(obj, Position(position));
     }
 
-    bool place(Character &obj, const Position &position);
-
-    bool place(Character &obj, const sf::Vector2i &position){
-        return place(obj, Position(position));
-    }
-
-    bool place(const shared_ptr<TreasureChest>& obj, const Position &position);
-
-    bool place(const shared_ptr<TreasureChest>& obj, const sf::Vector2i &position){
-        return place(obj, Position(position));
-    }
+//    bool place(Character &obj, const Position &position);
+//
+//    bool place(Character &obj, const sf::Vector2i &position){
+//        return place(obj, Position(position));
+//    }
+//
+//    bool place(const shared_ptr<TreasureChest>& obj, const Position &position);
+//
+//    bool place(const shared_ptr<TreasureChest>& obj, const sf::Vector2i &position){
+//        return place(obj, Position(position));
+//    }
 
     /**
      * @brief Removes a movable object from the map at the specified position.
