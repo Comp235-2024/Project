@@ -20,7 +20,7 @@ public:
     void HandleInput() override;
     void Update(float deltaTime) override;
     void Draw(float deltaTime) override;
-    void CreateCharacter(const std::string& type);
+    static void CreateCharacter(const std::string& type);
 
 private:
     shared_ptr<Map> _currentMap; /**< The current map. */

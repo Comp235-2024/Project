@@ -688,5 +688,11 @@ void displayCharacterAttributes(const Character& character) {
      displayCharacterAttributes(tank);
 }
 
+CharacterType Character::getCharacterType() const { return characterType; }
+
+void Character::setCharacterType(CharacterType type) {
+    this->characterType = type;
+}
+
 
 

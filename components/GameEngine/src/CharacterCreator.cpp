@@ -6,7 +6,9 @@
 #include "BullyBuilder.h"
 #include "NimbleBuilder.h"
 #include "TankBuilder.h"
-
+#include "MapObserver.h"
+#include "GameScreen.h"
+#include "GameScreenType.h"
 
 CharacterCreator::CharacterCreator(MainDataRef data) : _data(data) {}
 
@@ -26,10 +28,18 @@ void CharacterCreator::HandleInput() {
         }
         if (_data->inputs.IsButtonClicked(buttons->CreateBully, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Bully");
+            this->notify("Creating Bully character", "System");
+            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Bully")), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->CreateNimble, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Nimble");
+            this->notify("Creating Nimble character", "System");
+            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Nimble")), false, _data->log);
+
         } else if (_data->inputs.IsButtonClicked(buttons->CreateTank, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Tank");
+            this->notify("Creating Tank character", "System");
+            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Tank")), false, _data->log);
+
         }
     }
 }
@@ -44,16 +54,22 @@ void CharacterCreator::CreateCharacter(const std::string& type) {
     Character* newCharacter = nullptr;
     if (type == "Bully") {
         BullyBuilder bullyBuilder;
+        Character bully(1);
         bullyBuilder.buildAbilityScores();
-        newCharacter = bullyBuilder.getCharacter();
+        bullyBuilder.buildHitPoints(bully);
+        bully.setCharacterType(CharacterType::Bully);
     } else if (type == "Nimble") {
         NimbleBuilder nimbleBuilder;
+        Character nimble(1);
         nimbleBuilder.buildAbilityScores();
-        newCharacter = nimbleBuilder.getCharacter();
+        nimbleBuilder.buildHitPoints(nimble);
+        nimble.setCharacterType(CharacterType::Bully);
     } else if (type == "Tank") {
         TankBuilder TankBuilder;
+        Character tank(1);
         TankBuilder.buildAbilityScores();
-        newCharacter = TankBuilder.getCharacter();
+        TankBuilder.buildHitPoints(tank);
+        tank.setCharacterType(CharacterType::Bully);
     }
 
     // Assume _characterSprite is an sf::Sprite attribute of CharacterCreator
@@ -96,10 +112,9 @@ void CharacterCreator::SetButtons() {
     Font& font = _data->assets.GetFont("My Font");
     Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.4f);
 
-    GenerateButton(font, "Play", buttons->CreateNimble, buttons->CreateNimbleText, position);
-    GenerateButton(font, "Edit Map", buttons->CreateBully, buttons->CreateBullyText, position + Vector2f(0, 100));
-    GenerateButton(font, "Create Character", buttons->CreateTank, buttons->CreateTankText, position + Vector2f(0, 200));
-
+    GenerateButton(font, "Create Nimble ", buttons->CreateNimble, buttons->CreateNimbleText, position);
+    GenerateButton(font, "Create Bully", buttons->CreateBully, buttons->CreateBullyText, position + Vector2f(0, 100));
+    GenerateButton(font, "Create Tank", buttons->CreateTank, buttons->CreateTankText, position + Vector2f(0, 200));
 
 }
 

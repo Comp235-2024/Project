@@ -60,8 +60,8 @@ void MainMenu::HandleInput() {
         } else if (_data->inputs.IsButtonClicked(buttons->editMap, Mouse::Left, _data->window)) {
             this->notify("Switching to map editor", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->CreateCharacter, Mouse::Left, _data->window)) {
-            _data->stateMachine.AddState(StateRef(new CharacterCreator(_data)), false, _data->log);
             this->notify("Switching to character Creator", "System");
+            _data->stateMachine.AddState(StateRef(new CharacterCreator(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->editCharacter, Mouse::Left, _data->window)) {
             this->notify("Switching to character editor", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
