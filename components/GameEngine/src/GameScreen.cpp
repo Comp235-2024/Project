@@ -23,7 +23,8 @@ void GameScreen::Init() {
 
     calculateTextureSizes();
     _currentMap = this->_data->campaign->getMap(0);
-    this->mapObserver = MapObserver(_currentMap, &_mapTexture);
+    this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
+    this->mapObserver.attach(this->_data->log);
     findPlayerCharacter();
 
     generateMapTexture();
@@ -33,6 +34,12 @@ void GameScreen::Init() {
 }
 
 void GameScreen::Update(float deltaTime) {
+    // TODO implement nearby detection
+    scanForNearbyObjects();
+
+
+
+    // implement
 
 }
 
@@ -66,22 +73,22 @@ void GameScreen::HandleInput() {
         // don't pass a true to the AddState method, because we don't want to remove the previous state.
         // I haven't tested going back yet so exit the game and run it again if you want to go back to the previous state.
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x, _player->position.y - 1})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y - 1})) {
                 _player->position.y -= 1;
                 this->notify("Player moved up", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x, _player->position.y + 1})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y + 1})) {
                 _player->position.y += 1;
                 this->notify("Player moved down", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x - 1, _player->position.y})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x - 1, _player->position.y})) {
                 _player->position.x -= 1;
                 this->notify("Player moved left", "Character");
             }
         } else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-            if (_currentMap->move(_player->position, Vector2f{_player->position.x + 1, _player->position.y})) {
+            if (_currentMap->move(_player->position, Vector2i{_player->position.x + 1, _player->position.y})) {
                 _player->position.x += 1;
                 this->notify("Player moved right", "Character");
             }
@@ -124,4 +131,21 @@ void GameScreen::findPlayerCharacter() {
         }
         ++y;
     }
+}
+void GameScreen::scanForNearbyObjects() {
+    vector<Vector2i> directions = {Vector2i{0, 1}, Vector2i{0, -1}, Vector2i{1, 0}, Vector2i{-1, 0}};
+
+    for (auto &dir: directions) {
+        Vector2i newPos = _player->position + dir;
+        if (_currentMap->isInBounds(newPos)) {
+            if (dynamic_cast<TreasureChest*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+                this->notify("Chest detected nearby", "System");
+            } else if (dynamic_cast<Door*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+                this->notify("Door detected nearby", "System");
+            } else if (dynamic_cast<Character*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+                this->notify("Character detected nearby", "System");
+            }
+        }
+    }
+
 }

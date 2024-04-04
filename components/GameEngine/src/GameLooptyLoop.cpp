@@ -9,6 +9,7 @@
 #include "WelcomeScreen.h"
 #include "MainMenu.h"
 #include "../../Log/include/LogObserver.h"
+#include <format>
 
 
 
@@ -19,6 +20,22 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
 //    _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false);
     _data->assets.LoadFont("My Font", FONT_PATH);
 
+    // Load floor textures
+    string path = "../../assets/images/frames/floor_1.png";
+    for (int i = 1; i < 9; ++i) {
+        _data->assets.LoadTexture(format("floor_{}", i), format("../../assets/images/frames/floor_{}.png", i));
+    }
+    _data->assets.LoadTexture("knight", "../../assets/images/frames/knight_m_idle_anim_f0.png");
+    _data->assets.LoadTexture("wizard", "../../assets/images/frames/wizzard_m_idle_anim_f0.png");
+    //tiny_zombie, skelet, pumpkin_dude, orc_warrior, knight_m, wizard_f, orc_shaman, orge, necromancer, masked_orc, lizard, imp, goblin, elf_f, dwarf_m, doc, big_demon, angel
+    string characters[] = {"tiny_zombie", "skelet", "pumpkin_dude", "orc_warrior", "knight_m", "wizzard_f", "orc_shaman", "ogre", "masked_orc", "lizard_f", "imp", "goblin", "elf_f", "dwarf_m", "doc", "big_demon", "angel"};
+    for (auto &character : characters) {
+        _data->assets.LoadTexture(character, format("../../assets/images/frames/{}_idle_anim_f0.png", character));
+    }
+    _data->assets.LoadTexture("wall_mid", "../../assets/images/frames/wall_mid.png");
+    _data->assets.LoadTexture("crate", "../../assets/images/frames/crate.png");
+    _data->assets.LoadTexture("doors_leaf_closed", "../../assets/images/frames/doors_leaf_closed.png");
+    _data->assets.LoadTexture("column_wall", "../../assets/images/frames/column_wall.png");
     _data->log = new LogObserver("log.txt");
 //    log->enabledModules.disableAll();
     if(_data->log->enabledModules.system) {

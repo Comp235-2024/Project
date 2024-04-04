@@ -39,8 +39,9 @@ public:
     Campaign();
 
     std::unique_ptr<std::vector<Map>> getCampaign() const;
-
-
+    void defaultLevel1();
+    void defaultLevel2();
+    void defaultLevel3();
     /**
      * @brief Adds a map to the campaign.
      * @param map The map to be added.

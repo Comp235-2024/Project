@@ -2,6 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-10.
 //
 #include "Campaign.h"
+#include "Pillar.h"
 #include "fstream"
 #include <algorithm>
 
@@ -89,34 +90,276 @@ std::unique_ptr<std::vector<Map>> Campaign::getCampaign() const {
     return std::make_unique<std::vector<Map>>(maps);
 }
 
-
-Campaign::Campaign() {
-    // Placeholder for now
+void Campaign::defaultLevel2(){
     maps = std::vector<Map>();
 
-    Character mike{5};
 
     Map map(20, 20);
-    map.place(mike, Position{9, 9});
 
-    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
-    map.place(chest, Position{5, 5});
+    // hard enemy
+    Character enemy1{2};
+    map.place(enemy1, Position{7, 8});
+
+    // easy enemy
+    Character enemy2{2};
+        map.place(enemy2, Position{13, 4});
+
+    Character mike{5};
+    map.place(mike, Position{9, 0});
+    mike.textureName = "imp";
+
+
 
     Wall wall;
 
-    for (int i = 0; i < 12; ++i) {
-        map.place(wall, Position{1, i});
+    for (int i = 4; i < 20; ++i) {
+        map.place(wall, Position{i, 17});
+        map.place(wall, Position{i, 18});
+        map.place(wall, Position{i, 19});
+    }
+    for (int i = 10; i < 20; ++i) {
+        for(int j = 11; j < 17; j++)
+            map.place(wall, Position{i, j});
     }
 
-    for (int i = 0; i < 12; ++i) {
-        map.place(wall, Position{15, i});
+    map.place(wall, Position{2, 17});
+    map.place(wall, Position{3, 17});
+    map.place(wall, Position{2, 18});
+
+    Door door1;
+    map.place(door1, Position{3, 18});
+
+    for (int i = 0; i < 8; ++i) {
+        map.place(wall, Position{i, 14});
+    }
+
+    for (int i = 0; i < 5; ++i) {
         map.place(wall, Position{i, 12});
     }
+    for (int i = 1; i < 5; ++i) {
+        map.place(wall, Position{i, 10});
+    }
+    map.place(wall, Position{4, 11});
 
+    for (int i = 10; i < 13; ++i) {
+        map.place(wall, Position{6, i});
+    }
+    map.place(wall, Position{7, 10});
+    for (int i = 9; i < 14; ++i) {
+        map.place(wall, Position{8, i});
+    }
+    for (int i = 0; i < 8; ++i) {
+        map.place(wall, Position{8, i});
+    }
+    map.place(wall, Position{7, 7});
+    for (int i = 4; i < 7; ++i) {
+        map.place(wall, Position{6, i});
+    }
+    for (int i = 4; i < 9; ++i) {
+        map.place(wall, Position{1, i});
+    }
+    for (int i = 1; i < 7; ++i) {
+        map.place(wall, Position{i, 4});
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        map.place(wall, Position{10, i});
+    }
+    for (int i = 5; i < 11; ++i) {
+        map.place(wall, Position{10, i});
+    }
+    for (int i = 5; i < 7; ++i) {
+        map.place(wall, Position{11, i});
+    }
+    map.place(wall, Position{19, 1});
+    map.place(wall, Position{18, 8});
+
+
+    for (int i = 11; i < 18; ++i) {
+        map.place(wall, Position{i, 0});
+    }
+    for (int i = 13; i < 15; ++i) {
+        map.place(wall, Position{i, 2});
+    }
+    for (int i = 11; i < 15; ++i) {
+        map.place(wall, Position{i, 3});
+    }
+    for (int i = 13; i < 20; ++i) {
+        map.place(wall, Position{i, 5});
+    }
+    for (int i = 12; i < 19; ++i) {
+        map.place(wall, Position{i, 7});
+    }
+    for (int i = 12; i < 19; ++i) {
+        map.place(wall, Position{i, 9});
+    }
+
+//    shared_ptr<Door> door2 = make_shared<Door>();
+//    map.place(door2, Position{9, 13});
+//
+//    //TODO KEY
+//    shared_ptr<Door> key2 = make_shared<Door>();
+//    map.place(key2, Position{7, 6});
+//
+//    shared_ptr<Door> key1 = make_shared<Door>();
+//    map.place(key1, Position{3, 11});
+//    //
+
+    TreasureChest chest1 {"chest1", 20};
+    map.place(chest1, Position{17, 8});
+    TreasureChest chest2 {"chest2", 20};
+    map.place(chest2, Position{11, 2});
+    TreasureChest chest3 {"chest3", 20};
+    map.place(chest3, Position{12, 2});
+    this->addMap(map);
+
+}
+
+void Campaign::defaultLevel3() {
+    maps = std::vector<Map>();
+
+
+    Map map(20, 20);
+
+
+
+    Wall wall;
+
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{0, i});
+    }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{i, 0});
+    }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{19, i});
+    }
+    for (int i = 0; i < 20; ++i) {
+        map.place(wall, Position{i, 19});
+    }
+
+    Pillar pillar;
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{4, i});
+        map.place(pillar, Position{5, i});
+    }
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{i, 4});
+        map.place(pillar, Position{i, 5});
+    }
+    for (int i = 4; i < 6; ++i) {
+        map.place(pillar, Position{i, 4});
+        map.place(pillar, Position{i, 5});
+    }
+    for (int i = 14; i < 16; ++i) {
+        map.place(pillar, Position{14, i});
+        map.place(pillar, Position{15, i});
+    }
+
+    Character mike{5};
+
+    map.place(mike, Position{12, 12});
+    mike.textureName = "imp";
+    // boss
+    Character boss{2};
+    map.place(boss, Position{9, 9});
+
+    this->addMap(map);
+
+}
+
+void Campaign::defaultLevel1(){
+    maps = std::vector<Map>();
+
+    Map map(20, 20);
+
+    Character mike{5};
+    map.place(mike, Position{0, 0});
+    mike.textureName = "imp";
+
+    TreasureChest chest{"chest1", 20};
+    map.place(chest, Position{5, 0});
+
+
+    Wall wall;
+
+    for (int i = 1; i < 10; ++i) {
+        map.place(wall, Position{1, i});
+        map.place(wall, Position{2, i});
+    }
+
+    for (int i = 11; i < 19; ++i) {
+        map.place(wall, Position{1, i});
+        map.place(wall, Position{2, i});
+    }
+
+    for (int i = 3; i < 11; ++i) {
+        map.place(wall, Position{i, 17});
+        map.place(wall, Position{i, 18});
+    }
+    for (int i = 3; i < 20; ++i) {
+        map.place(wall, Position{i, 12});
+        map.place(wall, Position{i, 11});
+    }
+    map.place(wall, Position{19, 10});
+    map.place(wall, Position{13, 19});
+    for (int i = 13; i < 19; ++i) {
+        map.place(wall, Position{i, 17});
+        map.place(wall, Position{i, 18});
+    }
+
+    for (int i = 3; i < 19; ++i) {
+        map.place(wall, Position{i, 9});
+        map.place(wall, Position{i, 8});
+    }
+
+    Door door;
+    map.place(door, Position{14, 19});
+
+//    shared_ptr<Door> door2 = make_shared<Door>();
+//    map.place(door2, Position{0, 11});
+
+    for (int i = 3; i < 10; ++i) {
+        map.place(wall, Position{i, 1});
+        map.place(wall, Position{i, 2});
+    }
+
+
+    for (int i = 0; i < 4; ++i) {
+        map.place(wall, Position{12, i});
+        map.place(wall, Position{13, i});
+    }
+    map.place(wall, Position{14, 3});
+    map.place(wall, Position{15, 3});
+    map.place(wall, Position{14, 4});
+    map.place(wall, Position{15, 4});
+
+
+//    // TODO KEYS
+//    shared_ptr<Door> key1 = make_shared<Door>();
+//    map.place(key1, Position{14, 2});
+//
+//    shared_ptr<Door> key2 = make_shared<Door>();
+//    map.place(key2, Position{19, 6});
+//    //
+
+
+    map.place(wall, Position{16, 5});
+    map.place(wall, Position{17, 5});
+    map.place(wall, Position{16, 6});
+    map.place(wall, Position{17, 6});
+    map.place(wall, Position{18, 5});
+    map.place(wall, Position{18, 6});
 
 
     this->addMap(map);
 
+}
+
+Campaign::Campaign() {
+    defaultLevel1();
+    //defaultLevel2();
+    //defaultLevel3();
 }
 
 shared_ptr<Map> Campaign::getMap(int index) const {

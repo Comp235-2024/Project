@@ -5,6 +5,7 @@
  */
 
 #include "../include/Map.h"
+#include "Pillar.h"
 #include <algorithm>
 #include <cassert>
 #include <cstdint>
@@ -238,54 +239,11 @@ vector<Position> Map::findPath(Position start, Position end) const {
     return path;
 }
 
-/**
- * Places a movable object at the specified position on the map.
- *
- * @tparam T The type of the object to be placed. Can only be a subclass of
- * Movable.
- * @param obj The object to be placed.
- * @param position The position where the object should be placed.
- * @return True if the object was successfully placed, false otherwise.
- */
-
-//template<typename T,
-//         typename std::enable_if<std::is_base_of<Movable, T>::value,
-//                                 T>::type * = nullptr>
-//
-template<typename T>
-bool Map::place(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::place(Character &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        obj.position = sf::Vector2f(Position.x, Position.y);
-        grid[Position.y][Position.x] = make_shared<Character>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
-
-
-bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = obj;
-        notify();
-        return true;
-    }
-    return false;
-}
 
 template<typename T>
-bool Map::specialPlace(const T &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = make_shared<T>(std::move(obj));
+bool Map::specialPlace(const T &obj, const Position &pos) {
+    if (checkEmpty(pos)) {
+        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
         return true;
     }
     return false;
@@ -297,9 +255,9 @@ bool Map::specialPlace(const T &obj, const Position &Position) {
  * @param Position The position from which to remove the object.
  * @return True if the object was successfully removed, false otherwise.
  */
-bool Map::remove(const Position &Position) {
-    if (!checkEmpty(Position)) {
-        grid[Position.y][Position.x] = nullptr;
+bool Map::remove(const Position &pos) {
+    if (!checkEmpty(pos)) {
+        grid[pos.y][pos.x] = nullptr;
         notify();
         return true;
     }
@@ -332,28 +290,6 @@ bool Map::move(const Position &pos_start, const Position &pos_end) {
     // distance not to big
     // TODO add some sort of logging in the future
     // TODO add path tracing on move
-
-    if (!pos_start.checkValidity(size_x, size_y) ||
-        !pos_end.checkValidity(size_x, size_y)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_start)) {
-        return false;
-    }
-
-    if (checkEmpty(pos_end)) {
-        grid[pos_end.y][pos_end.x] = std::move(grid[pos_start.y][pos_start.x]);
-        grid[pos_start.y][pos_start.x] = nullptr;// clear the initial Position
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::move(const sf::Vector2f &_pos_start, const sf::Vector2f &_pos_end) {
-    Position pos_start = Position(_pos_start.x, _pos_start.y);
-    Position pos_end = Position(_pos_end.x, _pos_end.y);
 
     if (!pos_start.checkValidity(size_x, size_y) ||
         !pos_end.checkValidity(size_x, size_y)) {
@@ -934,4 +870,11 @@ bool Map::mapBuilderTest(){
 
 
     return true;
+}
+
+bool Map::isInBounds(const sf::Vector2i &pos) const {
+    if (pos.x >= 0 && pos.x < size_x && pos.y >= 0 && pos.y < size_y) {
+        return true;
+    }
+    return false;
 }

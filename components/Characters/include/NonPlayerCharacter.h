@@ -15,7 +15,7 @@ private:
     Item* item_in_hand;
 
 public:
-    virtual ~NonPlayerCharacter() {}
+    ~NonPlayerCharacter();
 
     //TODO: IMPLEMENT DEFAULT CONSTRUCTOR (IT WAS CAUSING A VTABLE ERROR)
     NonPlayerCharacter();

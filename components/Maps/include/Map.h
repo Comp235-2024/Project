@@ -18,9 +18,6 @@
 
 //#include "Cell.h"
 #include "../../Characters/include/Character.h"
-#include "../../Characters/include/BullyBuilder.h"
-#include "../../Characters/include/NimbleBuilder.h"
-#include "../../Characters/include/TankBuilder.h"
 #include "../../Items/include/Item.h"
 #include "../../ItemContainers/include/TreasureChest.h"
 #include "../../ItemContainers/include/ItemContainer.h"
@@ -28,6 +25,7 @@
 #include "../../Items/include/Movable.h"
 #include "Door.h"
 #include "Observable.h"
+#include "Pillar.h"
 #include "Position.h"
 #include "Wall.h"
 #include <memory>
@@ -144,6 +142,10 @@ public:
      */
     void setStartCell(const Position& startCell);
 
+    void setStartCell(const sf::Vector2i& startCell){
+        setStartCell(Position(startCell));
+    }
+
     /**
      * @brief Getter for the start cell of the map
      * @return
@@ -155,6 +157,10 @@ public:
      * @param endCell
      */
     void setEndCell(const Position& endCell);
+
+    void setEndCell(const sf::Vector2i& endCell){
+        setEndCell(Position(endCell));
+    }
 
     /**
      * @brief Getter for the end cell of the map
@@ -197,20 +203,41 @@ public:
      * @return True if the object was successfully placed, false otherwise.
      */
     template<typename T>
+    bool place(const T &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
+            notify();
+            return true;
+        }
+        return false;
+    }
 
-//    template<typename T, typename std::enable_if<std::is_base_of<Movable, T>::value, T>::type*>
+    template<typename T>
+    bool place(const shared_ptr<T> &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = obj;
+            notify();
+            return true;
+        }
+        return false;
+    }
 
-    bool place(const T& obj, const Position& Position);
+    template<typename T>
+    bool place(const T& obj, const sf::Vector2i& position){
+        return place(obj, Position(position));
+    }
 
-    bool place(Character &obj, const Position &Position);
 
-    bool place(const shared_ptr<TreasureChest>& obj, const Position &Position);
     /**
      * @brief Removes a movable object from the map at the specified position.
      * @param Position The position from which to remove the object.
      * @return True if the object was successfully removed, false otherwise.
      */
-    bool remove(const Position& Position);
+    bool remove(const Position& position);
+
+    bool remove(const sf::Vector2i& position){
+        return remove(Position(position));
+    }
 
     /**
      * @brief Moves a movable object from one position to another on the map.
@@ -220,7 +247,9 @@ public:
      */
     bool move(const Position& pos_start, const Position& pos_end);
 
-    bool move(const sf::Vector2f&_pos_start, const sf::Vector2f&_pos_end);
+    bool move(const sf::Vector2i&_pos_start, const sf::Vector2i&_pos_end){
+        return move(Position(_pos_start), Position(_pos_end));
+    }
 
     /**
      * @brief Calculates the distance between two positions on the map.
@@ -229,6 +258,10 @@ public:
      * @return The distance between the two positions.
      */
     int getDistance(const Position& pos_start, const Position& pos_end) const;
+
+    int getDistance(const sf::Vector2i& pos_start, const sf::Vector2i& pos_end) const{
+        return getDistance(Position(pos_start), Position(pos_end));
+    }
 
     /**
      * @brief Checks if a position on the map is empty.
@@ -306,9 +339,11 @@ public:
     static bool mapBuilderTest();
 
     template<typename T>
-    bool specialPlace(const T &obj, const Position &Position);
+    bool specialPlace(const T &obj, const Position &position);
 
     bool specialMove(const Position &pos_start, const Position &pos_end);
+
+    bool isInBounds(const sf::Vector2i &pos) const;
 
 private:
     /**

@@ -38,12 +38,14 @@ private:
         Text playText;
         RectangleShape editMap;
         Text editMapText;
-        RectangleShape CreateCharacter;
-        Text CreateCharacterText;
         RectangleShape editCharacter;
         Text editCharacterText;
         RectangleShape load;
         Text loadText;
+        RectangleShape options;
+        Text optionsText;
+        RectangleShape quit;
+        Text quitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>();
