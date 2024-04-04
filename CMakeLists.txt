@@ -41,11 +41,7 @@ file(GLOB_RECURSE SOURCES
 
 
 # Define the executable
-add_executable(Project ${SOURCES}
-        components/GameEngine/include/CharacterCreator.h
-        components/GameEngine/src/CharacterCreator.cpp
-        components/GameEngine/include/GameScreenType.h
-        components/GameEngine/src/GameScreenType.cpp)
+add_executable(Project ${SOURCES})
 
 # Link the executable with the SFML and JSON libraries
 target_link_libraries(Project PRIVATE sfml-graphics sfml-audio nlohmann_json::nlohmann_json)

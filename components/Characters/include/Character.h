@@ -33,9 +33,6 @@ class CharacterStrategy;
  * provides methods to generate ability scores and calculate ability modifiers,
  * hit points, armor class, attack bonus, and damage bonus.
  */
-
-enum class CharacterType { Bully, Nimble, Tank };
-
 class Character : public Movable,  public Observable{
 public:
     /**
@@ -251,17 +248,12 @@ public:
     static void displayCharacterStats(const Character& character);
     static void testLevelUpProcess();
 
-    CharacterType getCharacterType() const;
-    void setCharacterType(CharacterType type);
-
 
 private:
 
     CharacterStrategy* strategy;
 
     Position location;
-    CharacterType characterType;
-
 
     //TODO implement health logic
     int health;

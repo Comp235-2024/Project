@@ -187,20 +187,6 @@ void MapObserver::drawMap(RenderTexture *_window) {
                 drawImage(window, wall->textureName.c_str(), x, y);
             } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
                 drawImage(window, player->textureName.c_str(), x, y);
-                switch (player->getCharacterType()) {
-                    case CharacterType::Bully:
-                        drawImage(window, "../../assets/images/frames/wizzard_f_hit_anim_f0.png", x, y);
-                        break;
-                    case CharacterType::Nimble:
-                        drawImage(window, "../../assets/images/frames/lizard_f_hit_anim_f0.png", x, y);
-                        break;
-                    case CharacterType::Tank:
-                        drawImage(window, "../../assets/images/frames/ice_zombie_anim_f0.png", x, y);
-                        break;
-                    default:
-                        drawImage(window, "../../assets/images/frames/knight_m_idle_anim_f0.png", x, y);
-                        break;
-                }
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, item->textureName.c_str(), x, y);
             } else {

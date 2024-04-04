@@ -18,9 +18,6 @@
 
 //#include "Cell.h"
 #include "../../Characters/include/Character.h"
-#include "../../Characters/include/BullyBuilder.h"
-#include "../../Characters/include/NimbleBuilder.h"
-#include "../../Characters/include/TankBuilder.h"
 #include "../../Items/include/Item.h"
 #include "../../ItemContainers/include/TreasureChest.h"
 #include "../../ItemContainers/include/ItemContainer.h"

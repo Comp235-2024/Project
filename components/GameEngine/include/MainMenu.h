@@ -38,8 +38,6 @@ private:
         Text playText;
         RectangleShape editMap;
         Text editMapText;
-        RectangleShape CreateCharacter;
-        Text CreateCharacterText;
         RectangleShape editCharacter;
         Text editCharacterText;
         RectangleShape load;
