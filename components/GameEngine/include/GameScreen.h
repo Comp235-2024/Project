@@ -138,6 +138,8 @@ private:
      * This function finds the player character in the current map and sets it as the active character.
      */
     void findPlayerCharacter();
+
+    void scanForNearbyChests();
 };
 
 #endif

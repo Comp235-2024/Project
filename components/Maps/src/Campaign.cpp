@@ -126,7 +126,7 @@ void Campaign::defaultLevel2(){
     map.place(wall, Position{3, 17});
     map.place(wall, Position{2, 18});
 
-    shared_ptr<Door> door1 = make_shared<Door>();
+    Door door1;
     map.place(door1, Position{3, 18});
 
     for (int i = 0; i < 8; ++i) {
@@ -277,8 +277,8 @@ void Campaign::defaultLevel1(){
     map.place(mike, Position{0, 0});
     mike.textureName = "imp";
 
-    //    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
-    //    map.place(chest, Position{5, 5});
+    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
+    map.place(chest, Position{5, 0});
 
 
     Wall wall;
@@ -358,7 +358,7 @@ void Campaign::defaultLevel1(){
 
 Campaign::Campaign() {
     defaultLevel1();
-    //defaultLevel2();
+//    defaultLevel2();
     //defaultLevel3();
 }
 

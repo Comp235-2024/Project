@@ -239,66 +239,6 @@ vector<Position> Map::findPath(Position start, Position end) const {
     return path;
 }
 
-/**
- * Places a movable object at the specified position on the map.
- *
- * @tparam T The type of the object to be placed. Can only be a subclass of
- * Movable.
- * @param obj The object to be placed.
- * @param position The position where the object should be placed.
- * @return True if the object was successfully placed, false otherwise.
- */
-
-//template<typename T,
-//         typename std::enable_if<std::is_base_of<Movable, T>::value,
-//                                 T>::type * = nullptr>
-//
-template<typename T>
-bool Map::place(const T &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::place(Character &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        obj.position = sf::Vector2i(pos.x, pos.y);
-        grid[pos.y][pos.x] = make_shared<Character>(std::move(obj));
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::place(const shared_ptr<Door> &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = obj;
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::place(const shared_ptr<Pillar> &obj, const Position &Position) {
-    if (checkEmpty(Position)) {
-        grid[Position.y][Position.x] = obj;
-        notify();
-        return true;
-    }
-    return false;
-}
-
-bool Map::place(const shared_ptr<TreasureChest>& obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = obj;
-        notify();
-        return true;
-    }
-    return false;
-}
 
 template<typename T>
 bool Map::specialPlace(const T &obj, const Position &pos) {
@@ -930,4 +870,11 @@ bool Map::mapBuilderTest(){
 
 
     return true;
+}
+
+bool Map::isInBounds(const sf::Vector2i &pos) const {
+    if (pos.x >= 0 && pos.x < size_x && pos.y >= 0 && pos.y < size_y) {
+        return true;
+    }
+    return false;
 }
