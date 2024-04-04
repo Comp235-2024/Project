@@ -49,8 +49,8 @@ void MapCreator::Init() {
     loadTextures();
 
     // Adjust the view if the window size has been changed
-//    sf::View view(sf::FloatRect(0, 0, static_cast<float>(size.x * CELL_SIZE), static_cast<float>(size.y * CELL_SIZE)));
-//    this->_data->window.setView(view);
+    sf::View view(sf::FloatRect(0, 0, static_cast<float>(size.x * CELL_SIZE), static_cast<float>(size.y * CELL_SIZE)));
+    this->_data->window.setView(view);
 
     _currentMap=make_shared<Map>(size.x, size.y);
 
@@ -111,20 +111,18 @@ void MapCreator::processClickActions(const sf::Vector2f& mousePos) {
     } else if (selectedObject != nullptr && mapArea.getGlobalBounds().contains(mousePos)) {
         placeObjectOnMap(mousePos);
 
-
     } else {
         selectObjectFromSidebar(mousePos);
     }
 }
 
 void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
-    sf::Vector2f mapPos = mousePos - mapArea.getPosition();
-    int cellX = static_cast<int>(mapPos.x / CELL_SIZE);
-    int cellY = static_cast<int>(mapPos.y / CELL_SIZE);
+
+    double notMap=1-SIDEBAR_RATIO;
+    int cellX = static_cast<int>(ceil(mousePos.x) / (CELL_SIZE*notMap));
+    int cellY = static_cast<int>(ceil(mousePos.y) / (CELL_SIZE*notMap));
 
     Vector2i pos = {cellX, cellY};
-//    Position pos = {cellX, cellY};
-
 
     if (_currentMap->place(selectedObject, pos)) {
 
@@ -204,11 +202,15 @@ void MapCreator::Draw(float deltaTime) {
 void MapCreator::clearMap() {
 
     _currentMap=std::make_shared<Map>(_currentMap->getSizeX(), _currentMap->getSizeY());
+
     _mapTexture.clear(Color::Transparent);
+    mapObserver.update();
 
     _data->window.clear();
 
-    mapObserver.update();
+    _mapTexture.display();
+
+    _data->window.display();
 
     this->notify("Map cleared", "System");
 
@@ -289,9 +291,12 @@ void MapCreator::drawSideBar(){
     // Draw the sidebar and its items
     _data->window.draw(sidebar);
 
+    //Draw the rectangles around the items
     for (const auto& container : itemContainers) {
         _data->window.draw(container);
     }
+
+    //Draw the items themselves
     for (const auto& item : sidebarObjectsSprites) {
         _data->window.draw(item);
     }

@@ -9,6 +9,7 @@
 #include "Movable.h"
 #include "TreasureChest.h"
 #include "GameLooptyLoop.h"
+#include <math.h>
 
 class MapCreator : public State {
 public:
