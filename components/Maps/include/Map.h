@@ -345,6 +345,8 @@ public:
 
     bool specialMove(const Position &pos_start, const Position &pos_end);
 
+    bool isInBounds(const sf::Vector2i &pos) const;
+
 private:
     /**
      * @brief The name of the map.

@@ -174,8 +174,8 @@ void MapObserver::drawMap(RenderTexture *_window) {
             drawFloor(_window, x, y);
 
             if (cell == nullptr) {
-                string path = "../../assets/images/frames/floor_1.png";
-                drawImage(window, path.c_str(), x, y);
+//                string path = "../../assets/images/frames/floor_1.png";
+//                drawImage(window, path.c_str(), x, y);
             }
             else if (auto* door = dynamic_cast<Door*>(cell.get())) {
                 drawImage(window, door->textureName.c_str(), x, y);

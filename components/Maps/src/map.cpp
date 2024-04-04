@@ -931,3 +931,10 @@ bool Map::mapBuilderTest(){
 
     return true;
 }
+
+bool Map::isInBounds(const sf::Vector2i &pos) const {
+    if (pos.x >= 0 && pos.x < size_x && pos.y >= 0 && pos.y < size_y) {
+        return true;
+    }
+    return false;
+}

@@ -31,22 +31,22 @@ int main(){
 
     //Character::testLevelUpProcess();
     //diceLogTest();
-    Music music;
+//    Music music;
+//
+//    if (!music.openFromFile("../../assets/audios/music1.ogg"))
+//    {
+//        std::cerr << "Error while loading background music file" << std::endl;
+//        return -1;
+//    }
+//
+//    music.setVolume(100.f);
+//    music.setLoop(true);
+//    music.play();
 
-    if (!music.openFromFile("../../assets/audios/music1.ogg"))
-    {
-        std::cerr << "Error while loading background music file" << std::endl;
-        return -1;
-    }
 
-    music.setVolume(100.f);
-    music.setLoop(true);
-    music.play();
-
-
-
-    Character::testLevelUpProcess();
-    diceLogTest();
+//
+//    Character::testLevelUpProcess();
+//    diceLogTest();
 
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
 
