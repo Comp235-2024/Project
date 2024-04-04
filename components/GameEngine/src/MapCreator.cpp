@@ -129,8 +129,6 @@ void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
         mapObserver.update();
         this->notify("Object placed on map at position (" + to_string(cellX) + ", " + to_string(cellY) + ")", "System");
 
-        isHolding = false;
-        selectedObject = nullptr;
     }
 
     else{
@@ -178,10 +176,8 @@ void MapCreator::Update(float deltaTime) {}
 void MapCreator::Draw(float deltaTime) {
 
     _mapTexture.clear(Color::Transparent);
+    _data->window.clear(Color::Transparent);
     mapObserver.update();
-    _mapTexture.display();
-
-    _data->window.clear();
 
     Texture texture = _mapTexture.getTexture();
     Sprite sprite(texture);
@@ -191,6 +187,7 @@ void MapCreator::Draw(float deltaTime) {
 
     drawButtons();
 
+    _mapTexture.display();
     _data->window.display();
 }
 
@@ -200,21 +197,17 @@ void MapCreator::Draw(float deltaTime) {
  */
 
 void MapCreator::clearMap() {
+    if (_currentMap) {
+        // Reset the map with a new instance
+        _currentMap = std::make_shared<Map>(_currentMap->getSizeX(), _currentMap->getSizeY());
+        mapObserver.detach(_data->log);
 
-    _currentMap=std::make_shared<Map>(_currentMap->getSizeX(), _currentMap->getSizeY());
+        this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
 
-    _mapTexture.clear(Color::Transparent);
-    mapObserver.update();
+        Draw(0.0f);
 
-    _data->window.clear();
-
-    _mapTexture.display();
-
-    _data->window.display();
-
-    this->notify("Map cleared", "System");
-
-
+        this->notify("Map cleared", "System");
+    }
 
 }
 
