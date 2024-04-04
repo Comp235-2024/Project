@@ -49,8 +49,8 @@ void MapCreator::Init() {
     loadTextures();
 
     // Adjust the view if the window size has been changed
-    sf::View view(sf::FloatRect(0, 0, static_cast<float>(size.x * CELL_SIZE), static_cast<float>(size.y * CELL_SIZE)));
-    this->_data->window.setView(view);
+//    sf::View view(sf::FloatRect(0, 0, static_cast<float>(size.x * CELL_SIZE), static_cast<float>(size.y * CELL_SIZE)));
+//    this->_data->window.setView(view);
 
     _currentMap=make_shared<Map>(size.x, size.y);
 
@@ -122,7 +122,8 @@ void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
     int cellX = static_cast<int>(mapPos.x / CELL_SIZE);
     int cellY = static_cast<int>(mapPos.y / CELL_SIZE);
 
-    Position pos = {cellX, cellY};
+    Vector2i pos = {cellX, cellY};
+//    Position pos = {cellX, cellY};
 
 
     if (_currentMap->place(selectedObject, pos)) {
@@ -177,11 +178,16 @@ void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
 void MapCreator::Update(float deltaTime) {}
 
 void MapCreator::Draw(float deltaTime) {
+
+    _mapTexture.clear(Color::Transparent);
+    mapObserver.update();
+    _mapTexture.display();
+
     _data->window.clear();
 
     Texture texture = _mapTexture.getTexture();
-    Sprite mapSprite(texture);
-    _data->window.draw(mapSprite);
+    Sprite sprite(texture);
+    _data->window.draw(sprite);
 
     drawSideBar();
 

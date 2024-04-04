@@ -50,7 +50,7 @@ void MapObserver::draw() {
 
 //    if (!window->isOpen()) return;
 //    window->clear(Color(30, 31, 34));
-//    window->clear();
+    window->clear();
     // draw
 
     RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
