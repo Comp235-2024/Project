@@ -194,22 +194,22 @@ void Campaign::defaultLevel2(){
         map.place(wall, Position{i, 9});
     }
 
-    shared_ptr<Door> door2 = make_shared<Door>();
-    map.place(door2, Position{9, 13});
+//    shared_ptr<Door> door2 = make_shared<Door>();
+//    map.place(door2, Position{9, 13});
+//
+//    //TODO KEY
+//    shared_ptr<Door> key2 = make_shared<Door>();
+//    map.place(key2, Position{7, 6});
+//
+//    shared_ptr<Door> key1 = make_shared<Door>();
+//    map.place(key1, Position{3, 11});
+//    //
 
-    //TODO KEY
-    shared_ptr<Door> key2 = make_shared<Door>();
-    map.place(key2, Position{7, 6});
-
-    shared_ptr<Door> key1 = make_shared<Door>();
-    map.place(key1, Position{3, 11});
-    //
-
-    shared_ptr<TreasureChest> chest1 = make_shared<TreasureChest>("chest1", 20);
+    TreasureChest chest1 {"chest1", 20};
     map.place(chest1, Position{17, 8});
-    shared_ptr<TreasureChest> chest2 = make_shared<TreasureChest>("chest1", 20);
+    TreasureChest chest2 {"chest2", 20};
     map.place(chest2, Position{11, 2});
-    shared_ptr<TreasureChest> chest3 = make_shared<TreasureChest>("chest1", 20);
+    TreasureChest chest3 {"chest3", 20};
     map.place(chest3, Position{12, 2});
     this->addMap(map);
 
@@ -238,7 +238,7 @@ void Campaign::defaultLevel3() {
         map.place(wall, Position{i, 19});
     }
 
-    shared_ptr<Pillar> pillar = make_shared<Pillar>();
+    Pillar pillar;
     for (int i = 14; i < 16; ++i) {
         map.place(pillar, Position{4, i});
         map.place(pillar, Position{5, i});
@@ -277,7 +277,7 @@ void Campaign::defaultLevel1(){
     map.place(mike, Position{0, 0});
     mike.textureName = "imp";
 
-    shared_ptr<TreasureChest> chest = make_shared<TreasureChest>("chest1", 20);
+    TreasureChest chest{"chest1", 20};
     map.place(chest, Position{5, 0});
 
 
@@ -313,11 +313,11 @@ void Campaign::defaultLevel1(){
         map.place(wall, Position{i, 8});
     }
 
-    shared_ptr<Door> door1 = make_shared<Door>();
-    map.place(door1, Position{14, 19});
+    Door door;
+    map.place(door, Position{14, 19});
 
-    shared_ptr<Door> door2 = make_shared<Door>();
-    map.place(door2, Position{0, 11});
+//    shared_ptr<Door> door2 = make_shared<Door>();
+//    map.place(door2, Position{0, 11});
 
     for (int i = 3; i < 10; ++i) {
         map.place(wall, Position{i, 1});
@@ -335,13 +335,13 @@ void Campaign::defaultLevel1(){
     map.place(wall, Position{15, 4});
 
 
-    // TODO KEYS
-    shared_ptr<Door> key1 = make_shared<Door>();
-    map.place(key1, Position{14, 2});
-
-    shared_ptr<Door> key2 = make_shared<Door>();
-    map.place(key2, Position{19, 6});
-    //
+//    // TODO KEYS
+//    shared_ptr<Door> key1 = make_shared<Door>();
+//    map.place(key1, Position{14, 2});
+//
+//    shared_ptr<Door> key2 = make_shared<Door>();
+//    map.place(key2, Position{19, 6});
+//    //
 
 
     map.place(wall, Position{16, 5});
@@ -357,8 +357,8 @@ void Campaign::defaultLevel1(){
 }
 
 Campaign::Campaign() {
-    defaultLevel1();
-//    defaultLevel2();
+    //defaultLevel1();
+    defaultLevel2();
     //defaultLevel3();
 }
 

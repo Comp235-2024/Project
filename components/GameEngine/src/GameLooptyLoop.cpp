@@ -34,8 +34,8 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     }
     _data->assets.LoadTexture("wall_mid", "../../assets/images/frames/wall_mid.png");
     _data->assets.LoadTexture("crate", "../../assets/images/frames/crate.png");
-
-
+    _data->assets.LoadTexture("doors_leaf_closed", "../../assets/images/frames/doors_leaf_closed.png");
+    _data->assets.LoadTexture("column_wall", "../../assets/images/frames/column_wall.png");
     _data->log = new LogObserver("log.txt");
 //    log->enabledModules.disableAll();
     if(_data->log->enabledModules.system) {
