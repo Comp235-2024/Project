@@ -8,7 +8,6 @@
 #include "TankBuilder.h"
 #include "MapObserver.h"
 #include "GameScreen.h"
-#include "GameScreenType.h"
 
 CharacterCreator::CharacterCreator(MainDataRef data) : _data(data) {}
 
@@ -29,17 +28,13 @@ void CharacterCreator::HandleInput() {
         if (_data->inputs.IsButtonClicked(buttons->CreateBully, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Bully");
             this->notify("Creating Bully character", "System");
-            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Bully")), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->CreateNimble, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Nimble");
             this->notify("Creating Nimble character", "System");
-            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Nimble")), false, _data->log);
 
         } else if (_data->inputs.IsButtonClicked(buttons->CreateTank, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Tank");
             this->notify("Creating Tank character", "System");
-            _data->stateMachine.AddState(StateRef(new GameScreenType(_data, "Tank")), false, _data->log);
-
         }
     }
 }
@@ -58,6 +53,7 @@ void CharacterCreator::CreateCharacter(const std::string& type) {
         bullyBuilder.buildAbilityScores();
         bullyBuilder.buildHitPoints(bully);
         bully.setCharacterType(CharacterType::Bully);
+
     } else if (type == "Nimble") {
         NimbleBuilder nimbleBuilder;
         Character nimble(1);
