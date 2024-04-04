@@ -35,7 +35,7 @@ void GameScreen::Init() {
 
 void GameScreen::Update(float deltaTime) {
     // TODO implement nearby detection
-    scanForNearbyChests();
+    scanForNearbyObjects();
 
 
 
@@ -132,7 +132,7 @@ void GameScreen::findPlayerCharacter() {
         ++y;
     }
 }
-void GameScreen::scanForNearbyChests() {
+void GameScreen::scanForNearbyObjects() {
     vector<Vector2i> directions = {Vector2i{0, 1}, Vector2i{0, -1}, Vector2i{1, 0}, Vector2i{-1, 0}};
 
     for (auto &dir: directions) {
@@ -140,6 +140,10 @@ void GameScreen::scanForNearbyChests() {
         if (_currentMap->isInBounds(newPos)) {
             if (dynamic_cast<TreasureChest*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
+            } else if (dynamic_cast<Door*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+                this->notify("Door detected nearby", "System");
+            } else if (dynamic_cast<Character*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+                this->notify("Character detected nearby", "System");
             }
         }
     }
