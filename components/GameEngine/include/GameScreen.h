@@ -139,7 +139,7 @@ private:
      */
     void findPlayerCharacter();
 
-    void scanForNearbyChests();
+    void scanForNearbyObjects();
 };
 
 #endif
