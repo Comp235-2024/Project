@@ -698,3 +698,13 @@ void displayCharacterAttributes(const Character& character) {
      std::cout << "Tank Attributes After Leveling Up: ";
      displayCharacterAttributes(tank);
 }
+
+
+CharacterType Character::getCharacterType() const { return characterType; }
+
+void Character::setCharacterType(CharacterType type) {
+    this->characterType = type;
+}
+
+
+
