@@ -20,6 +20,8 @@ public:
     bool getIsOpen() const;
     bool getIsLocked() const;
 
+    std::string textureName = "Door";
+
 private:
     bool start;
     bool exit;

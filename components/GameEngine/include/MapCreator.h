@@ -8,6 +8,7 @@
 #include "State.h"
 #include "Movable.h"
 #include "TreasureChest.h"
+#include "GameLooptyLoop.h"
 
 class MapCreator : public State {
 public:
@@ -44,7 +45,7 @@ private:
 
     shared_ptr<Movable> selectedObject = nullptr; // Pointer to the currently selected object
 
-    std::vector<std::string> itemNames = {"Wall", "Player", "Chest", "Door","Ogre"};
+    std::vector<std::string> itemNames = {"Wall", "Player", "Chest", "Door","Ogre","Lever"};
     sf::Text itemPermittedCount; // To display the number of this object type that can be placed
     sf::RectangleShape sidebar; // To represent the sidebar area
     std::vector<sf::RectangleShape> itemContainers;
@@ -101,6 +102,10 @@ private:
     void drawButtons();
 
     void clearMap();
+
+    void drawMap();
+
+
 
     void Run();
 

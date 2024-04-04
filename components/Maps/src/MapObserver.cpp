@@ -177,7 +177,9 @@ void MapObserver::drawMap(RenderTexture *_window) {
                 drawImage(window, player->textureName.c_str(), x, y);
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, item->textureName.c_str(), x, y);
-            } else {
+            }else if(auto* item=dynamic_cast<Door*>(cell.get())){
+                drawImage(window, item->textureName.c_str(), x, y);
+            }else {
                 cout << "Type id " << typeid(*cell).name() << endl;
             }
             ++x;

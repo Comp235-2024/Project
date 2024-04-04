@@ -17,6 +17,8 @@ private:
     Item* item_in_hand;
 
 public:
+    std::string textureName = "knight";
+
     ~Player() override=default;
 
     Player();

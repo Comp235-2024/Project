@@ -1,5 +1,7 @@
 #include "MapCreator.h"
 
+#include <memory>
+
 MapCreator::MapCreator(MainDataRef& data) : _data(data) {};
 
 void MapCreator::calculateTextureSizes(int x, int y) {
@@ -28,9 +30,10 @@ void MapCreator::loadTextures() {
     this->_data->assets.LoadTexture("Wall", WALL_IMAGE_PATH);
     this->_data->assets.LoadTexture("Ogre", OGRE_IMAGE_PATH);
     this->_data->assets.LoadTexture("Skeleton", SKELETON_IMAGE_PATH);
-    this->_data->assets.LoadTexture("Player", PLAYER_IMAGE_PATH);
+    this->_data->assets.LoadTexture("Player", PLAYER_KNIGHT_IMAGE_PATH);
     this->_data->assets.LoadTexture("Chest", CHEST_IMAGE_PATH);
     this->_data->assets.LoadTexture("Door", DOOR_IMAGE_PATH);
+    this->_data->assets.LoadTexture("Lever", LEVER_IMAGE_PATH);
 }
 
 /**
@@ -56,10 +59,6 @@ void MapCreator::Init() {
 
     _mapTexture.clear(Color::Transparent);
 
-    Character mike{5};
-    mike.textureName = "imp";
-
-    _currentMap->place(mike, Position{9, 9});
     mapObserver.update();
 
     initSideBar();
@@ -70,7 +69,7 @@ void MapCreator::Init() {
 
     this->notify("Map creator initialized", "System");
 
-    Draw(0.0f);
+
 }
 
 void MapCreator::HandleInput() {
@@ -197,11 +196,19 @@ void MapCreator::Draw(float deltaTime) {
  */
 
 void MapCreator::clearMap() {
-    _currentMap=make_shared<Map>(_currentMap->getSizeX(), _currentMap->getSizeY());
-    mapObserver.update();
-    this->notify("Map cleared", "System");
-}
 
+    _currentMap=std::make_shared<Map>(_currentMap->getSizeX(), _currentMap->getSizeY());
+    _mapTexture.clear(Color::Transparent);
+
+    _data->window.clear();
+
+    mapObserver.update();
+
+    this->notify("Map cleared", "System");
+
+
+
+}
 
 void MapCreator::initSideBar() {
     float windowWidth = _windowSize.x;
