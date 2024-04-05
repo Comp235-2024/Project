@@ -10,25 +10,34 @@
 GameScreen::GameScreen(MainDataRef data) : _data(data) {}
 
 void GameScreen::Init() {
+    if(_mapIndex != 0) {
+        this->mapObserver.detach(this->_data->log);
+    }
     this->_data->assets.LoadTexture("Game Background", GAME_BG_IMAGE_PATH);
     this->_data->assets.LoadFont("Font", FONT_PATH);
     _bg.setTexture(this->_data->assets.GetTexture("Game Background"));
     _bg.setTextureRect(IntRect(0,0, this->_data->window.getSize().x, this->_data->window.getSize().y));
     if (this->_data->campaign == nullptr) {
-        Campaign _campaign;
+
         _campaign.attach(this->_data->log);
         this->_data->campaign = make_unique<Campaign>(_campaign);
     }
 
-
     calculateTextureSizes();
-    _currentMap = this->_data->campaign->getMap(0);
+    _currentMap = this->_data->campaign->getMap(_mapIndex);
     this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
     this->mapObserver.attach(this->_data->log);
+    if(_mapIndex != 0) {
+        _currentMap->place(_campaign.mike, Position{0, 0});
+        _campaign.mike.textureName = "imp";
+    }
+
     findPlayerCharacter();
 
-    generateMapTexture();
 
+
+    generateMapTexture();
+    _mapIndex++;
 
 
 }
@@ -142,6 +151,7 @@ void GameScreen::scanForNearbyObjects() {
                 this->notify("Chest detected nearby", "System");
             } else if (dynamic_cast<Door*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
+                this->Init();
             } else if (dynamic_cast<Character*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Character detected nearby", "System");
             }
