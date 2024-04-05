@@ -31,6 +31,8 @@ void MainMenu::Draw(float deltaTime) {
     _data->window.draw(buttons->playText);
     _data->window.draw(buttons->editMap);
     _data->window.draw(buttons->editMapText);
+    _data->window.draw(buttons->createCharacter);
+    _data->window.draw(buttons->createCharacterText);
     _data->window.draw(buttons->editCharacter);
     _data->window.draw(buttons->editCharacterText);
     _data->window.draw(buttons->load);
@@ -60,6 +62,9 @@ void MainMenu::HandleInput() {
             _data->stateMachine.AddState(StateRef(new GameScreen(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->editMap, Mouse::Left, _data->window)) {
             this->notify("Switching to map editor", "System");
+        } else if (_data->inputs.IsButtonClicked(buttons->createCharacter, Mouse::Left, _data->window)) {
+            this->notify("Switching to character creator", "System");
+            _data->stateMachine.AddState(StateRef(new CharacterCreator(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->editCharacter, Mouse::Left, _data->window)) {
             this->notify("Switching to character editor", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
@@ -82,10 +87,11 @@ void MainMenu::SetButtons() {
 
     GenerateButton(font, "Play", buttons->play, buttons->playText, position);
     GenerateButton(font, "Edit Map", buttons->editMap, buttons->editMapText, position + Vector2f(0, 100));
-    GenerateButton(font, "Edit Character", buttons->editCharacter, buttons->editCharacterText, position + Vector2f(0, 200));
-    GenerateButton(font, "Load Map", buttons->load, buttons->loadText, position + Vector2f(0, 300));
-    GenerateButton(font, "Options", buttons->options, buttons->optionsText, position + Vector2f(0, 400));
-    GenerateButton(font, "Quit", buttons->quit, buttons->quitText, position + Vector2f(0, 500));
+    GenerateButton(font, "Create Character", buttons->createCharacter, buttons->createCharacterText, position + Vector2f(0, 200));
+    GenerateButton(font, "Edit Character", buttons->editCharacter, buttons->editCharacterText, position + Vector2f(0, 300));
+    GenerateButton(font, "Load Map", buttons->load, buttons->loadText, position + Vector2f(0, 400));
+    GenerateButton(font, "Options", buttons->options, buttons->optionsText, position + Vector2f(0, 500));
+    GenerateButton(font, "Quit", buttons->quit, buttons->quitText, position + Vector2f(0, 600));
 
 }
 

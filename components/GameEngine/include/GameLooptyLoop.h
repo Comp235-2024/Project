@@ -13,6 +13,7 @@
 #include "AssetManager.h"
 #include "Campaign.h"
 #include "InputManager.h"
+#include "Player.h"
 #include "SFML/Graphics.hpp"
 #include "State.h"
 #include "StateMachine.h"
@@ -26,6 +27,7 @@ struct MainData{
     InputManager inputs;
     LogObserver* log;
     unique_ptr<Campaign> campaign;
+    Character player;
 };
 
 typedef shared_ptr<MainData> MainDataRef;

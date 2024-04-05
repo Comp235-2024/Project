@@ -108,8 +108,6 @@ void Campaign::defaultLevel2(){
     map.place(mike, Position{9, 0});
     mike.textureName = "imp";
 
-
-
     Wall wall;
 
     for (int i = 4; i < 20; ++i) {

@@ -19,6 +19,29 @@ void CharacterCreator::Init() {
     SetButtons();
 }
 
+void CharacterCreator::DisplayCreationMessage(const std::string& message) {
+    // Set up a text object to display the message
+    sf::Text creationMessage;
+    creationMessage.setFont(_data->assets.GetFont("My Font"));
+    creationMessage.setString(message);
+    creationMessage.setCharacterSize(MENU_CHAR_SIZE); // Use the same size as your menu items for consistency
+    creationMessage.setFillColor(sf::Color::White);
+
+    // Center the message on the screen
+    sf::FloatRect messageBounds = creationMessage.getLocalBounds();
+    creationMessage.setOrigin(messageBounds.width / 2, messageBounds.height / 2);
+    creationMessage.setPosition(_data->window.getSize().x / 2.0f, _data->window.getSize().y / 2.0f);
+
+    // Draw the message
+    _data->window.clear();
+    _data->window.draw(_bg); // Draw the background first
+    _data->window.draw(creationMessage); // Draw the message on top
+    _data->window.display();
+
+    // Wait for a short time to display the message
+    sf::sleep(sf::seconds(1.5)); // For example, wait for 1.5 seconds
+}
+
 void CharacterCreator::HandleInput() {
     Event event{};
     while (this->_data->window.pollEvent(event)) {
@@ -27,14 +50,19 @@ void CharacterCreator::HandleInput() {
         }
         if (_data->inputs.IsButtonClicked(buttons->CreateBully, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Bully");
+            CharacterCreator::DisplayCreationMessage("Nimble Character Created");
             this->notify("Creating Bully character", "System");
+            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->CreateNimble, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Nimble");
+            CharacterCreator::DisplayCreationMessage("Bully Character Created");
             this->notify("Creating Nimble character", "System");
-
+            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->CreateTank, sf::Mouse::Left, _data->window)) {
             CreateCharacter("Tank");
+            CharacterCreator::DisplayCreationMessage("Tank Character Created");
             this->notify("Creating Tank character", "System");
+            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         }
     }
 }
@@ -52,20 +80,22 @@ void CharacterCreator::CreateCharacter(const std::string& type) {
         Character bully(1);
         bullyBuilder.buildAbilityScores();
         bullyBuilder.buildHitPoints(bully);
-        bully.setCharacterType(CharacterType::Bully);
+        bully.textureName = 'lizard_f';
+        this->_data->player = bully;
 
     } else if (type == "Nimble") {
         NimbleBuilder nimbleBuilder;
         Character nimble(1);
         nimbleBuilder.buildAbilityScores();
         nimbleBuilder.buildHitPoints(nimble);
-        nimble.setCharacterType(CharacterType::Bully);
+        this->_data->player = nimble;
+
     } else if (type == "Tank") {
         TankBuilder TankBuilder;
         Character tank(1);
         TankBuilder.buildAbilityScores();
         TankBuilder.buildHitPoints(tank);
-        tank.setCharacterType(CharacterType::Bully);
+        this->_data->player = tank;
     }
 
     // Assume _characterSprite is an sf::Sprite attribute of CharacterCreator
@@ -77,10 +107,10 @@ void CharacterCreator::Draw(float deltaTime) {
     _data->window.clear();
     _data->window.draw(_bg);
 
-    _data->window.draw(buttons->CreateNimble);
-    _data->window.draw(buttons->CreateNimbleText);
     _data->window.draw(buttons->CreateBully);
     _data->window.draw(buttons->CreateBullyText);
+    _data->window.draw(buttons->CreateNimble);
+    _data->window.draw(buttons->CreateNimbleText);
     _data->window.draw(buttons->CreateTank);
     _data->window.draw(buttons->CreateTankText);
 
@@ -108,8 +138,8 @@ void CharacterCreator::SetButtons() {
     Font& font = _data->assets.GetFont("My Font");
     Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.4f);
 
-    GenerateButton(font, "Create Nimble ", buttons->CreateNimble, buttons->CreateNimbleText, position);
-    GenerateButton(font, "Create Bully", buttons->CreateBully, buttons->CreateBullyText, position + Vector2f(0, 100));
+    GenerateButton(font, "Create Nimble ", buttons->CreateBully, buttons->CreateBullyText, position);
+    GenerateButton(font, "Create Bully", buttons->CreateNimble, buttons->CreateNimbleText, position + Vector2f(0, 100));
     GenerateButton(font, "Create Tank", buttons->CreateTank, buttons->CreateTankText, position + Vector2f(0, 200));
 
 }
