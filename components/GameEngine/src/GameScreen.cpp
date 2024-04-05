@@ -49,7 +49,6 @@ void GameScreen::Init() {
 }
 
 void GameScreen::Update(float deltaTime) {
-    // TODO implement nearby detection
     scanForNearbyObjects();
 
 
@@ -130,11 +129,7 @@ void GameScreen::HandleInput() {
 
 void GameScreen::generateMapTexture() {
     _mapTexture.clear(Color::Transparent);
-    //TODO implement complex maps and their rendering
 
-    //
-
-//    mapObserver.updateMapOnly(&_mapTexture);
     mapObserver.update();
 
     _mapTexture.display();
@@ -144,6 +139,7 @@ void GameScreen::generateMapTexture() {
 }
 void GameScreen::calculateTextureSizes() {
     _windowSize = _data->window.getSize();
+    _data->window.setSize(Vector2u{1200, 900});
     // TODO make the console and character view sizes dynamic
     _mapTexture.create(_windowSize.x, _windowSize.y);
     this->notify("Map texture created, size: " + to_string(_mapTexture.getSize().x) + " by " + to_string(_mapTexture.getSize().y), "System");

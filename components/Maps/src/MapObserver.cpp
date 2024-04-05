@@ -57,11 +57,11 @@ void MapObserver::draw() {
 //    window->clear();
     // draw
 
-    RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
-    RectangleShape line_v(Vector2f(1, window_size_y));// Vertical line
-    line.setFillColor(Color::White);
-
-    drawGridLines(window, line, line_v);
+//    RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
+//    RectangleShape line_v(Vector2f(1, window_size_y));// Vertical line
+//    line.setFillColor(Color::White);
+//
+//    drawGridLines(window, line, line_v);
     drawMap(window);
 
 //    window->display();
