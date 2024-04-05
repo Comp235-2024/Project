@@ -31,9 +31,10 @@ class Campaign : public LogObservable{
 private:
     std::vector<Map> maps; // Container for storing maps
     std::unordered_map<int, std::vector<int>> adjacencies; // Map index to list of adjacent map indices
+    int ind;
 
 public:
-
+    Character mike;
     /**
      * @brief Default constructor for Campaign class. Generates a default campaign.
      */
@@ -48,8 +49,8 @@ public:
      * @param map The map to be added.
      */
     void addMap(const Map& map);
-
-
+    void loadNextMap();
+    bool loadMap = true;
     shared_ptr<Map> getMap(int index) const;
 
     /**

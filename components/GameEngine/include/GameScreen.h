@@ -65,10 +65,9 @@ public:
     void Draw(float deltaTime) override;
 
 
-
 private:
     MainDataRef _data; /**< The main data reference. */
-
+    int _mapIndex = 0;
     Clock _clock; /**< Keeps track of time passed. */
 
     shared_ptr<Map> _currentMap; /**< The current map. */
@@ -81,8 +80,10 @@ private:
 
     //MODIFIED THIS TO BE A PLAYER AND NOT CHARACTER
     shared_ptr<Character> _player; /**< The player character. */
-
+    Campaign _campaign;
     MapObserver mapObserver; /**< The map observer. */
+
+    int _diceModifier; /**< The dice modifier for the player character. */
 
     /**
      * @struct MapPosition
@@ -143,6 +144,7 @@ private:
     void findPlayerCharacter();
 
     void scanForNearbyObjects();
+    static Vector2i positionToVector2i(Position position);
 };
 
 #endif
