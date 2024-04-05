@@ -29,6 +29,9 @@ void GameScreen::Init() {
 
     generateMapTexture();
 
+    _player->textureName = "pumpkin_dude";
+
+    _diceModifier = 3; // TODO needs to be dynamic and changed with each dice roll
 
 
 }
@@ -59,7 +62,7 @@ void GameScreen::Draw(float deltaTime) {
 //
 //        // draw possible attacks
 //    }
-    mapObserver.drawCircleAroundPos(_player->position, 5, Color::Red, &_mapTexture);
+    mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
 
 
     Texture texture = _mapTexture.getTexture();
@@ -105,6 +108,19 @@ void GameScreen::HandleInput() {
             if (_currentMap->move(_player->position, Vector2i{_player->position.x + 1, _player->position.y})) {
                 _player->position.x += 1;
                 this->notify("Player moved right", "Character");
+            }
+        } else if (Mouse::isButtonPressed(Mouse::Left)) {
+            Vector2i mousePos = Mouse::getPosition(_data->window);
+            Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
+            Vector2i gridPos = Vector2i{static_cast<int>(worldPos.x / mapObserver.SIZE_MULT), static_cast<int>(worldPos.y / mapObserver.SIZE_MULT)};
+            vector<Position> path = _currentMap->findPath(_player->position, gridPos);
+            this->notify("Path found: " + to_string(path.size()), "System");
+
+            if (path.size() < _diceModifier + 2 && path.size() > 0) {
+                if (_currentMap->move(_player->position, gridPos)) {
+                    _player->position = gridPos;
+                    this->notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
+                }
             }
         }
 

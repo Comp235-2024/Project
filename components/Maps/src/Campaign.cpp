@@ -101,7 +101,7 @@ void Campaign::defaultLevel1(){
     map.place(mike, Position{5, 5});
 
     TreasureChest chest{"chest1", 20};
-    map.place(chest, Position{5, 0});
+    map.place(chest, Position{5, 7});
 
 
     Wall wall;

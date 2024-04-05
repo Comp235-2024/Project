@@ -235,72 +235,6 @@ const Texture& MapObserver::getTextureForCell(int x, int y) const {
 
 }
 void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color color, RenderTexture *_window) {
-//    vector<Vector2i> directions = {Vector2i{0, i}, Vector2i{0, -i}, Vector2i{i, 0}, Vector2i{-i, 0}};
-//    int j_limit = i;
-//    int k_limit = i;
-//
-//    for (int j = 0; j < j_limit; ++j) {
-//        for (int k = 0; k < k_limit; ++k) {
-//            Vector2i newPos = position + Vector2i(k, j);
-//
-//            if (!grid->isInBounds(newPos)) continue;
-//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
-//                    drawBorderAroundCell(newPos, color, _window);
-//            } else {
-//                break;
-//            }
-//
-//        }
-//        --k_limit;
-//    }
-//    k_limit = i;
-//    for (int j = 0; j < j_limit; ++j) {
-//        for (int k = 0; k < k_limit; ++k) {
-//            Vector2i newPos = position - Vector2i(j, k);
-//
-//            if (!grid->isInBounds(newPos)) continue;
-//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
-//                drawBorderAroundCell(newPos, color, _window);
-//            } else {
-//                break;
-//            }
-//
-//        }
-//        --k_limit;
-//    }
-//    k_limit = i;
-//    for (int j = 0; j < j_limit; ++j) {
-//        for (int k = 0; k < k_limit; ++k) {
-//            Vector2i newPos = position + Vector2i(k, -j);
-//
-//            if (!grid->isInBounds(newPos)) continue;
-//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
-//                drawBorderAroundCell(newPos, color, _window);
-//            } else {
-//                break;
-//            }
-//
-//        }
-//        --k_limit;
-//    }
-//    k_limit = i;
-//    for (int j = 0; j < j_limit; ++j) {
-//        for (int k = 0; k < k_limit; ++k) {
-//            Vector2i newPos = position + Vector2i(-j, k);
-//
-//            if (!grid->isInBounds(newPos)) continue;
-//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
-//                drawBorderAroundCell(newPos, color, _window);
-//            } else {
-//                break;
-//            }
-//
-//        }
-//        --k_limit;
-//    }
-//
-//
-//    drawBorderAroundCell(position, color, _window);
     int steps = i;
     vector<Vector2i> directions = {Vector2i{1, 0}, Vector2i{-1, 0}, Vector2i{0, 1}, Vector2i{0, -1}};
     queue<pair<Vector2i, int>> q; // Pair of position and steps taken
@@ -313,7 +247,7 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
         if (!grid->isInBounds(currentPos) || currentSteps > steps) continue;
 
         auto cell = grid->getGrid()[currentPos.y][currentPos.x];
-        if (!dynamic_cast<Wall*>(cell.get())) {
+        if (cell.get() == nullptr || dynamic_cast<Character*>(cell.get())) {
             drawBorderAroundCell(currentPos, color, _window);
 
             if (currentSteps < steps) {

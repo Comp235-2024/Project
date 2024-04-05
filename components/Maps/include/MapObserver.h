@@ -100,6 +100,8 @@ public:
 
     void drawCircleAroundPos(Vector2i position, int i, const Color color, RenderTexture *_window);
 
+    float SIZE_MULT = 30; /**< The size multiplier for the map display. */
+
 private:
 
     MainDataRef _data;
@@ -119,7 +121,6 @@ private:
     int window_size_x{}; /**< The width of the render window. */
     int window_size_y{}; /**< The height of the render window. */
 
-    float SIZE_MULT = 30; /**< The size multiplier for the map display. */
 
     /**
      * @brief Draws the map observer's display.
