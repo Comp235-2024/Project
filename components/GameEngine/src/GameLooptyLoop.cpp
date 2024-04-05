@@ -37,6 +37,7 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     _data->assets.LoadTexture("crate", CHEST_IMAGE_PATH);
     _data->assets.LoadTexture("door", DOOR_IMAGE_PATH);
     _data->assets.LoadTexture("lever", LEVER_IMAGE_PATH);
+    _data->assets.LoadTexture("column_wall", "../../assets/images/frames/column_wall.png");
 
     _data->log = new LogObserver("log.txt");
 //    log->enabledModules.disableAll();

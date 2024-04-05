@@ -21,7 +21,7 @@ public:
     bool getIsOpen() const;
     bool getIsLocked() const;
 
-    std::string textureName = "Door";
+    std::string textureName = "door";
 
 private:
     bool start;

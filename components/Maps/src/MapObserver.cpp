@@ -182,15 +182,15 @@ void MapObserver::drawMap(RenderTexture *_window) {
 
                 //TODO FIND A BETTER WAY TO DRAW CHARACTERS OR ADD MORE DYNAMIC CASTS
             } else if (auto* character = dynamic_cast<Character*>(cell.get())) {
-                if(auto* player = dynamic_cast<Player*>(character))
+                if(auto* player = dynamic_cast<Player*>(character)) {
                     drawImage(window, player->textureName.c_str(), x, y);
-
-                else if(auto* ogre=dynamic_cast<Ogre*>(character))
+                }
+                else if(auto* ogre=dynamic_cast<Ogre*>(character)) {
                     drawImage(window, ogre->textureName.c_str(), x, y);
-
-                else
+                }
+                else {
                     drawImage(window, character->textureName.c_str(), x, y);
-
+                }
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, item->textureName.c_str(), x, y);
 
