@@ -9,6 +9,7 @@
 
 #include <format>
 #include <memory>
+#include <queue>
 #include <random>
 using namespace sf;
 using namespace std;
@@ -108,14 +109,7 @@ void MapObserver::drawRedX(RenderWindow *window, float posX, float posY) const {
 RenderTexture *MapObserver::getWindow() {
     return window;
 }
-void MapObserver::drawBox(RenderWindow *pWindow, const Color color, float x, float y) const {
-    float squareX = x * SIZE_MULT + 1;
-    float squareY = y * SIZE_MULT + 1;
-    RectangleShape rectangle(Vector2f(SIZE_MULT - 1, SIZE_MULT - 1));
-    rectangle.setFillColor(color);
-    rectangle.setPosition(squareX, squareY);
-    pWindow->draw(rectangle);
-}
+
 
 void MapObserver::drawImage(RenderTexture *pWindow, const char *imageName, float x, float y) {
     float squareX = x * SIZE_MULT;
@@ -239,4 +233,119 @@ const Texture& MapObserver::getTextureForCell(int x, int y) const {
     }
     throw std::invalid_argument("No texture found for cell");
 
+}
+void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color color, RenderTexture *_window) {
+//    vector<Vector2i> directions = {Vector2i{0, i}, Vector2i{0, -i}, Vector2i{i, 0}, Vector2i{-i, 0}};
+//    int j_limit = i;
+//    int k_limit = i;
+//
+//    for (int j = 0; j < j_limit; ++j) {
+//        for (int k = 0; k < k_limit; ++k) {
+//            Vector2i newPos = position + Vector2i(k, j);
+//
+//            if (!grid->isInBounds(newPos)) continue;
+//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
+//                    drawBorderAroundCell(newPos, color, _window);
+//            } else {
+//                break;
+//            }
+//
+//        }
+//        --k_limit;
+//    }
+//    k_limit = i;
+//    for (int j = 0; j < j_limit; ++j) {
+//        for (int k = 0; k < k_limit; ++k) {
+//            Vector2i newPos = position - Vector2i(j, k);
+//
+//            if (!grid->isInBounds(newPos)) continue;
+//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
+//                drawBorderAroundCell(newPos, color, _window);
+//            } else {
+//                break;
+//            }
+//
+//        }
+//        --k_limit;
+//    }
+//    k_limit = i;
+//    for (int j = 0; j < j_limit; ++j) {
+//        for (int k = 0; k < k_limit; ++k) {
+//            Vector2i newPos = position + Vector2i(k, -j);
+//
+//            if (!grid->isInBounds(newPos)) continue;
+//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
+//                drawBorderAroundCell(newPos, color, _window);
+//            } else {
+//                break;
+//            }
+//
+//        }
+//        --k_limit;
+//    }
+//    k_limit = i;
+//    for (int j = 0; j < j_limit; ++j) {
+//        for (int k = 0; k < k_limit; ++k) {
+//            Vector2i newPos = position + Vector2i(-j, k);
+//
+//            if (!grid->isInBounds(newPos)) continue;
+//            if (!dynamic_cast<Wall*>(grid->getGrid()[newPos.y][newPos.x].get())) {
+//                drawBorderAroundCell(newPos, color, _window);
+//            } else {
+//                break;
+//            }
+//
+//        }
+//        --k_limit;
+//    }
+//
+//
+//    drawBorderAroundCell(position, color, _window);
+    int steps = i;
+    vector<Vector2i> directions = {Vector2i{1, 0}, Vector2i{-1, 0}, Vector2i{0, 1}, Vector2i{0, -1}};
+    queue<pair<Vector2i, int>> q; // Pair of position and steps taken
+    q.emplace(position, 0);
+
+    while (!q.empty()) {
+        auto [currentPos, currentSteps] = q.front();
+        q.pop();
+
+        if (!grid->isInBounds(currentPos) || currentSteps > steps) continue;
+
+        auto cell = grid->getGrid()[currentPos.y][currentPos.x];
+        if (!dynamic_cast<Wall*>(cell.get())) {
+            drawBorderAroundCell(currentPos, color, _window);
+
+            if (currentSteps < steps) {
+                for (const auto& dir : directions) {
+                    Vector2i nextPos = currentPos + dir;
+                    q.emplace(nextPos, currentSteps + 1);
+                }
+            }
+        }
+    }
+}
+void MapObserver::drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window) const {
+
+
+    float squareX = position.x * SIZE_MULT;
+    float squareY = position.y * SIZE_MULT;
+
+    float targetX = SIZE_MULT + 1;
+    float targetY = SIZE_MULT + 1;
+
+    RectangleShape rectangle(Vector2f(SIZE_MULT - 1, SIZE_MULT - 1));
+    rectangle.setFillColor(Color::Transparent);
+    rectangle.setOutlineThickness(1);
+    rectangle.setOutlineColor(color);
+    rectangle.setPosition(squareX, squareY);
+
+
+    float scaleX = targetX / rectangle.getLocalBounds().width;
+    float scaleY = targetY / rectangle.getLocalBounds().height;
+
+    rectangle.setPosition(squareX, squareY);
+    rectangle.setScale(scaleX, scaleY);
+
+    _window->draw(rectangle);
 }

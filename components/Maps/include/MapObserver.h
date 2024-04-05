@@ -98,6 +98,8 @@ public:
     const Texture& getTextureForCell(int x, int y) const;
 
 
+    void drawCircleAroundPos(Vector2i position, int i, const Color color, RenderTexture *_window);
+
 private:
 
     MainDataRef _data;
@@ -141,15 +143,6 @@ private:
     void drawRedX(sf::RenderWindow *window, float posX, float posY) const;
 
     /**
-     * @brief Draws a box with the specified color at the specified position on the map display.
-     * @param pWindow A pointer to the SFML render window.
-     * @param color The color of the box.
-     * @param x The x-coordinate of the position.
-     * @param y The y-coordinate of the position.
-     */
-    void drawBox(sf::RenderWindow *pWindow, sf::Color color, float x, float y) const;
-
-    /**
      * @brief Draws the map on the map display.
      * @param _window A pointer to the SFML render window.
      */
@@ -166,6 +159,7 @@ private:
     void drawFloor(RenderTexture *pWindow, float x, float y);
 
     void generateFloorTextureHashMap();
+    void drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window) const;
 };
 
 #endif //A3_MAPOBSERVER_H

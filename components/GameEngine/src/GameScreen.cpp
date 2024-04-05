@@ -48,6 +48,20 @@ void GameScreen::Draw(float deltaTime) {
     _data->window.clear();
     _data->window.draw(_bg);
     // draw map view
+
+//    bool drawPossibleMoves = true;
+//
+//    if (drawPossibleMoves) {
+//        // draw possible moves
+//        int steps = 5;
+//
+//
+//
+//        // draw possible attacks
+//    }
+    mapObserver.drawCircleAroundPos(_player->position, 5, Color::Red, &_mapTexture);
+
+
     Texture texture = _mapTexture.getTexture();
     Sprite mapSprite(texture);
     _data->window.draw(mapSprite);
@@ -123,8 +137,10 @@ void GameScreen::findPlayerCharacter() {
         x = 0;
         for (auto &cell: row) {
             if (dynamic_cast<Character*>(cell.get())) {
-//                this->_player = cell.get();
-                this->_player = dynamic_pointer_cast<Character>(cell);
+               this->_player = dynamic_pointer_cast<Character>(cell);
+               this->_player->position = Vector2i{x, y};
+               this->notify("Player character found at " + to_string(x) + ", " + to_string(y), "System");
+               return;
 
             }
             ++x;
