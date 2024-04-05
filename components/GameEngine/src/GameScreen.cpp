@@ -27,12 +27,16 @@ void GameScreen::Init() {
     _currentMap = this->_data->campaign->getMap(_mapIndex);
     this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
     this->mapObserver.attach(this->_data->log);
-    if(_mapIndex != 0) {
-        _currentMap->place(_campaign.mike, Position{0, 0});
-        _campaign.mike.textureName = "imp";
-    }
 
-    findPlayerCharacter();
+    Vector2i start = positionToVector2i(_currentMap->getStartCell());
+    if (_mapIndex == 0) {
+        _campaign.mike = Character(5, "imp");
+    }
+    _currentMap->place(_campaign.mike, start);
+    _campaign.mike.position = start;
+    _player = make_shared<Character>(_campaign.mike);
+
+//    findPlayerCharacter();
 
 
 
@@ -158,4 +162,7 @@ void GameScreen::scanForNearbyObjects() {
         }
     }
 
+}
+Vector2i GameScreen::positionToVector2i(Position position) {
+    return Vector2i{position.x, position.y};
 }

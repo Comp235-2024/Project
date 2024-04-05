@@ -140,6 +140,7 @@ private:
     void findPlayerCharacter();
 
     void scanForNearbyObjects();
+    static Vector2i positionToVector2i(Position position);
 };
 
 #endif

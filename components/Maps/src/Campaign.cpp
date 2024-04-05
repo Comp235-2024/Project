@@ -105,6 +105,7 @@ void Campaign::defaultLevel2(){
    // map.place(mike, Position{9, 0});
     //mike.textureName = "imp";
 
+    map.setStartCell(Position{0, 0});
 
 
     Wall wall;
@@ -216,8 +217,7 @@ void Campaign::defaultLevel3() {
 
 
     Map map(20, 20);
-
-
+    map.setStartCell(Position{3, 3});
 
     Wall wall;
 
@@ -268,9 +268,10 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
-    mike = Character(5);
-    map.place(mike, Position{0, 0});
-    mike.textureName = "imp";
+//    mike = Character(5);
+//    map.place(mike, Position{0, 0});
+//    mike.textureName = "imp";
+    map.setStartCell(Position{0, 0});
 
     TreasureChest chest{"chest1", 20};
     map.place(chest, Position{5, 0});
