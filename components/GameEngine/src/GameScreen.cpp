@@ -30,7 +30,7 @@ void GameScreen::Init() {
 
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
-        _campaign.mike = Character(5, "imp");
+        _campaign.mike = Character(5, "pumpkin_dude");
     }
     _currentMap->place(_campaign.mike, start);
     _campaign.mike.position = start;
@@ -41,8 +41,6 @@ void GameScreen::Init() {
 
 
     generateMapTexture();
-
-    _player->textureName = "pumpkin_dude";
 
     _diceModifier = 3; // TODO needs to be dynamic and changed with each dice roll
     _mapIndex++;
@@ -64,18 +62,7 @@ void GameScreen::Draw(float deltaTime) {
     generateMapTexture();
     _data->window.clear();
     _data->window.draw(_bg);
-    // draw map view
 
-//    bool drawPossibleMoves = true;
-//
-//    if (drawPossibleMoves) {
-//        // draw possible moves
-//        int steps = 5;
-//
-//
-//
-//        // draw possible attacks
-//    }
     mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
 
 
