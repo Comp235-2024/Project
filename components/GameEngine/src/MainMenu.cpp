@@ -36,6 +36,10 @@ void MainMenu::Draw(float deltaTime) {
     _data->window.draw(buttons->editCharacterText);
     _data->window.draw(buttons->load);
     _data->window.draw(buttons->loadText);
+    _data->window.draw(buttons->options);
+    _data->window.draw(buttons->optionsText);
+    _data->window.draw(buttons->quit);
+    _data->window.draw(buttons->quitText);
 
     // add our names
     _data->window.display();
@@ -73,23 +77,35 @@ void MainMenu::HandleInput() {
         //Load Previous Game
         else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
             this->notify("Switching to load menu", "System");
+        } else if (_data->inputs.IsButtonClicked(buttons->options, Mouse::Left, _data->window)) {
+            this->notify("Switching to options menu", "System");
+        } else if (_data->inputs.IsButtonClicked(buttons->quit, Mouse::Left, _data->window)) {
+            _data->window.close();
         }
+
+
 
     }
 }
 
 void MainMenu::SetButtons() {
 
+    int nbButtons = 5;
+
     Font& font = _data->assets.GetFont("My Font");
-    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.5f);
+    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/6.0f);
 
     //This is the spacing between the buttons
     //Changed it to be a seventh of the window height to make it less hard coded
-    Vector2f spacing = Vector2f(0, _data->window.getSize().y/6);
+    Vector2f spacing = Vector2f(0, _data->window.getSize().y/6.0f);
 
     GenerateButton(font, "Play", buttons->play, buttons->playText, position);
     GenerateButton(font, "Edit Map", buttons->editMap, buttons->editMapText, position + Vector2f(0, spacing.y));
     GenerateButton(font, "Edit Character", buttons->editCharacter, buttons->editCharacterText, position + Vector2f(0, 2*spacing.y));
+
+    GenerateButton(font, "Options", buttons->options, buttons->optionsText, position + Vector2f(0, 3*spacing.y));
+    GenerateButton(font, "Quit", buttons->quit, buttons->quitText, position + Vector2f(0, 4* spacing.y));
+
 
 }
 

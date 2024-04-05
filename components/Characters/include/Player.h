@@ -23,6 +23,7 @@ public:
 
     Player();
 
+    explicit Player(int level);
 
     Player getPlayer();
 

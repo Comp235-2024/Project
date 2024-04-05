@@ -25,6 +25,7 @@
 #include "../../Items/include/Movable.h"
 #include "Door.h"
 #include "Observable.h"
+#include "Pillar.h"
 #include "Position.h"
 #include "Wall.h"
 #include <memory>
@@ -226,18 +227,6 @@ public:
         return place(obj, Position(position));
     }
 
-//    bool place(Character &obj, const Position &position);
-//
-//    bool place(Character &obj, const sf::Vector2i &position){
-//        return place(obj, Position(position));
-//    }
-//
-//    bool place(const shared_ptr<TreasureChest>& obj, const Position &position);
-//
-//    bool place(const shared_ptr<TreasureChest>& obj, const sf::Vector2i &position){
-//        return place(obj, Position(position));
-//    }
-
     /**
      * @brief Removes a movable object from the map at the specified position.
      * @param Position The position from which to remove the object.
@@ -358,6 +347,8 @@ public:
     }
 
     bool specialMove(const Position &pos_start, const Position &pos_end);
+
+    bool isInBounds(const sf::Vector2i &pos) const;
 
 private:
     /**

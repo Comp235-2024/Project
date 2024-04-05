@@ -6,7 +6,8 @@
 #define A3_DOOR_H
 
 #include "../../Items/include/Movable.h"
-
+#include <string>
+using namespace std;
 class Door : public Movable {
 public:
     explicit Door(const Movable& movable) : Movable(movable) {}

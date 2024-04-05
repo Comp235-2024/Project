@@ -10,6 +10,10 @@ Player::Player():Character(){
 
 }
 
+Player::Player(int level):Character(level){
+    item_in_hand = nullptr;
+}
+
 Player Player::getPlayer(){
     return *this;
 }

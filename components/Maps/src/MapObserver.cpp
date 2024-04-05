@@ -1,9 +1,12 @@
 
 
 #include "../include/MapObserver.h"
+
+#include "Pillar.h"
 #include "SFML/Graphics/Texture.hpp"
 #include <cmath>
 #include <cstdlib>
+
 #include <format>
 #include <memory>
 #include <random>
@@ -171,7 +174,16 @@ void MapObserver::drawMap(RenderTexture *_window) {
             drawFloor(_window, x, y);
 
             if (cell == nullptr) {
-            } else if (auto wall = dynamic_cast<Wall*>(cell.get())) {
+//                string path = "../../assets/images/frames/floor_1.png";
+//                drawImage(window, path.c_str(), x, y);
+            }
+            else if (auto* door = dynamic_cast<Door*>(cell.get())) {
+                drawImage(window, door->textureName.c_str(), x, y);
+            }
+            else if (auto* pillar = dynamic_cast<Pillar*>(cell.get())) {
+                drawImage(window, pillar->textureName.c_str(), x, y);
+            }
+            else if (auto* wall = dynamic_cast<Wall*>(cell.get())) {
                 drawImage(window, wall->textureName.c_str(), x, y);
 
                 //TODO FIND A BETTER WAY TO DRAW CHARACTERS OR ADD MORE DYNAMIC CASTS
@@ -181,6 +193,9 @@ void MapObserver::drawMap(RenderTexture *_window) {
 
                 else if(auto* ogre=dynamic_cast<Ogre*>(character))
                     drawImage(window, ogre->textureName.c_str(), x, y);
+
+                else
+                    drawImage(window, character->textureName.c_str(), x, y);
 
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, item->textureName.c_str(), x, y);

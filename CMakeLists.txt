@@ -44,7 +44,7 @@ file(GLOB_RECURSE SOURCES
 add_executable(Project ${SOURCES})
 
 # Link the executable with the SFML and JSON libraries
-target_link_libraries(Project PRIVATE sfml-graphics nlohmann_json::nlohmann_json)
+target_link_libraries(Project PRIVATE sfml-graphics sfml-audio nlohmann_json::nlohmann_json)
 
 if(WIN32)
     add_custom_command(
