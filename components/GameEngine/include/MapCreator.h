@@ -9,7 +9,10 @@
 #include "Movable.h"
 #include "TreasureChest.h"
 #include "GameLooptyLoop.h"
-#include <math.h>
+#include <cmath>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 class MapCreator : public State {
 public:

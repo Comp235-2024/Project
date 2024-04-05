@@ -107,7 +107,7 @@ void MapCreator::processClickActions(const sf::Vector2f& mousePos) {
 
     } else if (saveButton.getGlobalBounds().contains(mousePos)) {
         //TODO save map to file
-        //saveMapToFile();
+        saveMapToFile();
     } else if (selectedObject != nullptr && mapArea.getGlobalBounds().contains(mousePos)) {
         placeObjectOnMap(mousePos);
 
@@ -478,30 +478,51 @@ void MapCreator::drawButtons(){
 }
 
 
-//TODO USE THIS TO CREATE A SIDEBAR OBJECT INSTEAD OF INPUTTING THE OBJECTS MANUALLY
-/*MapCreator::SidebarItem::SidebarItem(const Sprite &item, const string &name, int permittedCount, const Font &font, float xPosition, float yPosition)
-: item(item), name(name), permittedCount(permittedCount)
-{// Setup count text
-    countText.setFont(font);
-    countText.setString(std::to_string(permittedCount));
-    countText.setCharacterSize(20); // Smaller font size for count
-    countText.setFillColor(sf::Color::White);
-    countText.setPosition(xPosition, yPosition); // Adjust as necessary
-
-    // Setup background rectangle for the count
-    countBackground.setSize(sf::Vector2f(50, 24)); // Adjust size as needed
-    countBackground.setFillColor(sf::Color(0, 0, 0, 150)); // Semi-transparent black
-    countBackground.setPosition(xPosition - 60, yPosition); // Positioned left to the text
-
-}*/
-
-/*
- * MapCreator::SidebarItem MapCreator::getSidebarObject(const int index) const  {
-        return sidebarObjects[index];
- */
-
-
 MapCreator::SidebarItem::SidebarItem(const string &name, const int permittedCount) {
     this->name = name;
     this->permittedCount = permittedCount;
+}
+
+void MapCreator::saveMapToFile() {
+    json mapData;
+    mapData["name"] = this->mapName;
+    mapData["width"] = this->_currentMap->getSizeX();
+    mapData["height"] = this->_currentMap->getSizeY();
+    mapData["objects"] = json::array();
+
+    for (const auto& row : this->_currentMap->getGrid()) {
+        for(const auto& cell : row){
+            if (auto wall = dynamic_cast<Wall*>(cell.get())) {
+                mapData["objects"].push_back("Wall");
+            } else if (auto* player = dynamic_cast<Player*>(cell.get())) {
+                mapData["objects"].push_back("Player");
+            } else if (auto* item = dynamic_cast<TreasureChest*>(cell.get())) {
+                mapData["objects"].push_back("Chest");
+            }else if(auto* item=dynamic_cast<Door*>(cell.get())){
+                mapData["objects"].push_back("Door");
+            }
+
+            else {
+                mapData["objects"].push_back(nullptr);
+            }
+        }
+    }
+
+    std::string directory = "../../SavedMaps/";
+    std::string filename = directory + this->mapName + ".json";
+
+    // Ensure the directory exists
+    std::filesystem::create_directories(directory);
+
+    std::ofstream file(filename, std::ios::out | std::ios::trunc); // Open with truncation mode
+
+    if (file) {
+        file << mapData.dump(4);
+        file.close();
+        this->notify("Map saved to file: " + filename, "System");
+    } else {
+        // In case of failure, which is unlikely if the directories were correctly created and there are permissions
+        this->notify("Failed to save map to file: " + filename, "System");
+    }
+
 }
