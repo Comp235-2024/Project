@@ -91,23 +91,21 @@ std::unique_ptr<std::vector<Map>> Campaign::getCampaign() const {
 }
 
 void Campaign::defaultLevel2(){
-    maps = std::vector<Map>();
-
-
     Map map(20, 20);
 
     // hard enemy
-    Character enemy1{2};
-    map.place(enemy1, Position{7, 8});
+//    Character enemy1{2};
+//    map.place(enemy1, Position{7, 8});
+//
+//    // easy enemy
+//    Character enemy2{2};
+//        map.place(enemy2, Position{13, 4});
 
-    // easy enemy
-    Character enemy2{2};
-        map.place(enemy2, Position{13, 4});
 
-    Character mike{5};
-    map.place(mike, Position{9, 0});
-    mike.textureName = "imp";
+   // map.place(mike, Position{9, 0});
+    //mike.textureName = "imp";
 
+    map.setStartCell(Position{0, 9});
 
 
     Wall wall;
@@ -216,12 +214,10 @@ void Campaign::defaultLevel2(){
 }
 
 void Campaign::defaultLevel3() {
-    maps = std::vector<Map>();
 
 
     Map map(20, 20);
-
-
+    map.setStartCell(Position{3, 3});
 
     Wall wall;
 
@@ -256,26 +252,26 @@ void Campaign::defaultLevel3() {
         map.place(pillar, Position{15, i});
     }
 
-    Character mike{5};
-
-    map.place(mike, Position{12, 12});
-    mike.textureName = "imp";
-    // boss
-    Character boss{2};
-    map.place(boss, Position{9, 9});
+//    Character mike{5};
+//
+//    map.place(mike, Position{12, 12});
+//    mike.textureName = "imp";
+//    // boss
+//    Character boss{2};
+//    map.place(boss, Position{9, 9});
 
     this->addMap(map);
 
 }
 
 void Campaign::defaultLevel1(){
-    maps = std::vector<Map>();
 
     Map map(20, 20);
 
-    Character mike{5};
-    map.place(mike, Position{0, 0});
-    mike.textureName = "imp";
+//    mike = Character(5);
+//    map.place(mike, Position{0, 0});
+//    mike.textureName = "imp";
+    map.setStartCell(Position{0, 0});
 
     TreasureChest chest{"chest1", 20};
     map.place(chest, Position{5, 0});
@@ -315,6 +311,7 @@ void Campaign::defaultLevel1(){
 
     Door door;
     map.place(door, Position{14, 19});
+    //map.place(door, Position{0, 5});
 
 //    shared_ptr<Door> door2 = make_shared<Door>();
 //    map.place(door2, Position{0, 11});
@@ -357,9 +354,28 @@ void Campaign::defaultLevel1(){
 }
 
 Campaign::Campaign() {
+    maps = std::vector<Map>();
+    ind = 1;
     defaultLevel1();
-    //defaultLevel2();
-    //defaultLevel3();
+    defaultLevel2();
+    defaultLevel3();
+    loadMap = true;
+}
+
+void Campaign::loadNextMap() {
+    if(loadMap) {
+        ind++;
+        //removeMap(0);
+        if (ind == 2) {
+            defaultLevel2();
+        } else if (ind == 3) {
+            defaultLevel3();
+        } else {
+            exit(0);
+        }
+        loadMap = false;
+    }
+
 }
 
 shared_ptr<Map> Campaign::getMap(int index) const {
