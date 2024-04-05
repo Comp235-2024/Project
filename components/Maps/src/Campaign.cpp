@@ -181,23 +181,24 @@ void Campaign::defaultLevel1(){
 }
 
 void Campaign::defaultLevel2(){
-    maps = std::vector<Map>();
-
-
     Map map(20, 20);
 
     // hard enemy
-    Character enemy1{2};
-    map.place(enemy1, Position{7, 8});
+//    Character enemy1{2};
+//    map.place(enemy1, Position{7, 8});
+//
+//    // easy enemy
+//    Character enemy2{2};
+//        map.place(enemy2, Position{13, 4});
 
     // easy enemy
     Character enemy2{2};
     map.place(enemy2, Position{13, 4});
 
-    Character mike{5};
-    map.place(mike, Position{9, 0});
-    mike.textureName = "imp";
+   // map.place(mike, Position{9, 0});
+    //mike.textureName = "imp";
 
+    map.setStartCell(Position{0, 9});
 
 
     Wall wall;
@@ -306,12 +307,10 @@ void Campaign::defaultLevel2(){
 }
 
 void Campaign::defaultLevel3() {
-    maps = std::vector<Map>();
 
 
     Map map(20, 20);
-
-
+    map.setStartCell(Position{3, 3});
 
     Wall wall;
 
@@ -346,22 +345,130 @@ void Campaign::defaultLevel3() {
         map.place(pillar, Position{15, i});
     }
 
-    Character mike{5};
+//    Character mike{5};
+//
+//    map.place(mike, Position{12, 12});
+//    mike.textureName = "imp";
+//    // boss
+//    Character boss{2};
+//    map.place(boss, Position{9, 9});
 
-    map.place(mike, Position{12, 12});
-    mike.textureName = "imp";
-    // boss
-    Character boss{2};
-    map.place(boss, Position{9, 9});
+    this->addMap(map);
+
+}
+
+void Campaign::defaultLevel1(){
+
+    Map map(20, 20);
+
+//    mike = Character(5);
+//    map.place(mike, Position{0, 0});
+//    mike.textureName = "imp";
+    map.setStartCell(Position{0, 0});
+
+    TreasureChest chest{"chest1", 20};
+    map.place(chest, Position{5, 0});
+
+
+    Wall wall;
+
+    for (int i = 1; i < 10; ++i) {
+        map.place(wall, Position{1, i});
+        map.place(wall, Position{2, i});
+    }
+
+    for (int i = 11; i < 19; ++i) {
+        map.place(wall, Position{1, i});
+        map.place(wall, Position{2, i});
+    }
+
+    for (int i = 3; i < 11; ++i) {
+        map.place(wall, Position{i, 17});
+        map.place(wall, Position{i, 18});
+    }
+    for (int i = 3; i < 20; ++i) {
+        map.place(wall, Position{i, 12});
+        map.place(wall, Position{i, 11});
+    }
+    map.place(wall, Position{19, 10});
+    map.place(wall, Position{13, 19});
+    for (int i = 13; i < 19; ++i) {
+        map.place(wall, Position{i, 17});
+        map.place(wall, Position{i, 18});
+    }
+
+    for (int i = 3; i < 19; ++i) {
+        map.place(wall, Position{i, 9});
+        map.place(wall, Position{i, 8});
+    }
+
+    Door door;
+    map.place(door, Position{14, 19});
+    //map.place(door, Position{0, 5});
+
+//    shared_ptr<Door> door2 = make_shared<Door>();
+//    map.place(door2, Position{0, 11});
+
+    for (int i = 3; i < 10; ++i) {
+        map.place(wall, Position{i, 1});
+        map.place(wall, Position{i, 2});
+    }
+
+
+    for (int i = 0; i < 4; ++i) {
+        map.place(wall, Position{12, i});
+        map.place(wall, Position{13, i});
+    }
+    map.place(wall, Position{14, 3});
+    map.place(wall, Position{15, 3});
+    map.place(wall, Position{14, 4});
+    map.place(wall, Position{15, 4});
+
+
+//    // TODO KEYS
+//    shared_ptr<Door> key1 = make_shared<Door>();
+//    map.place(key1, Position{14, 2});
+//
+//    shared_ptr<Door> key2 = make_shared<Door>();
+//    map.place(key2, Position{19, 6});
+//    //
+
+
+    map.place(wall, Position{16, 5});
+    map.place(wall, Position{17, 5});
+    map.place(wall, Position{16, 6});
+    map.place(wall, Position{17, 6});
+    map.place(wall, Position{18, 5});
+    map.place(wall, Position{18, 6});
+
 
     this->addMap(map);
 
 }
 
 Campaign::Campaign() {
+    maps = std::vector<Map>();
+    ind = 1;
+    defaultLevel1();
     defaultLevel2();
     defaultLevel3();
-    defaultLevel1();
+    loadMap = true;
+}
+
+void Campaign::loadNextMap() {
+    if(loadMap) {
+        ind++;
+        //removeMap(0);
+        if (ind == 2) {
+            defaultLevel2();
+        } else if (ind == 3) {
+            defaultLevel3();
+        } else {
+            exit(0);
+        }
+        loadMap = false;
+    }
+
 }
 
 shared_ptr<Map> Campaign::getMap(int index) const {

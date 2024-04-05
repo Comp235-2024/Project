@@ -10,28 +10,42 @@
 GameScreen::GameScreen(MainDataRef data) : _data(data) {}
 
 void GameScreen::Init() {
+    if(_mapIndex != 0) {
+        this->mapObserver.detach(this->_data->log);
+    }
     this->_data->assets.LoadTexture("Game Background", GAME_BG_IMAGE_PATH);
     this->_data->assets.LoadFont("Font", FONT_PATH);
     _bg.setTexture(this->_data->assets.GetTexture("Game Background"));
     _bg.setTextureRect(IntRect(0,0, this->_data->window.getSize().x, this->_data->window.getSize().y));
     if (this->_data->campaign == nullptr) {
-        Campaign _campaign;
+
         _campaign.attach(this->_data->log);
         this->_data->campaign = make_unique<Campaign>(_campaign);
     }
 
-
     calculateTextureSizes();
-    _currentMap = this->_data->campaign->getMap(0);
+    _currentMap = this->_data->campaign->getMap(_mapIndex);
     this->mapObserver = MapObserver(_currentMap, &_mapTexture, _data);
     this->mapObserver.attach(this->_data->log);
-    findPlayerCharacter();
+
+    Vector2i start = positionToVector2i(_currentMap->getStartCell());
+    if (_mapIndex == 0) {
+        _campaign.mike = Character(5, "imp");
+    }
+    _currentMap->place(_campaign.mike, start);
+    _campaign.mike.position = start;
+    _player = make_shared<Character>(_campaign.mike);
+
+//    findPlayerCharacter();
+
+
 
     generateMapTexture();
 
     _player->textureName = "pumpkin_dude";
 
     _diceModifier = 3; // TODO needs to be dynamic and changed with each dice roll
+    _mapIndex++;
 
 
 }
@@ -174,10 +188,14 @@ void GameScreen::scanForNearbyObjects() {
                 this->notify("Chest detected nearby", "System");
             } else if (dynamic_cast<Door*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
+                this->Init();
             } else if (dynamic_cast<Character*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Character detected nearby", "System");
             }
         }
     }
 
+}
+Vector2i GameScreen::positionToVector2i(Position position) {
+    return Vector2i{position.x, position.y};
 }

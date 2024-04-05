@@ -67,7 +67,7 @@ public:
 
 private:
     MainDataRef _data; /**< The main data reference. */
-
+    int _mapIndex = 0;
     Clock _clock; /**< Keeps track of time passed. */
 
     shared_ptr<Map> _currentMap; /**< The current map. */
@@ -79,7 +79,7 @@ private:
     Vector2<unsigned int> _windowSize; /**< The window size. */
 
     shared_ptr<Character> _player; /**< The player character. */
-
+    Campaign _campaign;
     MapObserver mapObserver; /**< The map observer. */
 
     int _diceModifier; /**< The dice modifier for the player character. */
@@ -143,6 +143,7 @@ private:
     void findPlayerCharacter();
 
     void scanForNearbyObjects();
+    static Vector2i positionToVector2i(Position position);
 };
 
 #endif
