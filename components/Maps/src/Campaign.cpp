@@ -105,7 +105,7 @@ void Campaign::defaultLevel2(){
    // map.place(mike, Position{9, 0});
     //mike.textureName = "imp";
 
-    map.setStartCell(Position{0, 0});
+    map.setStartCell(Position{0, 9});
 
 
     Wall wall;
@@ -310,8 +310,8 @@ void Campaign::defaultLevel1(){
     }
 
     Door door;
-    //map.place(door, Position{14, 19});
-    map.place(door, Position{0, 5});
+    map.place(door, Position{14, 19});
+    //map.place(door, Position{0, 5});
 
 //    shared_ptr<Door> door2 = make_shared<Door>();
 //    map.place(door2, Position{0, 11});
