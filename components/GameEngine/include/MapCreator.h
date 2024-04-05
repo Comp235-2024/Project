@@ -9,6 +9,9 @@
 #include "Movable.h"
 #include "TreasureChest.h"
 #include "GameLooptyLoop.h"
+#include "NonPlayerCharacter.h"
+#include "../../Maps/include/Lever.h"
+
 #include <cmath>
 #include <nlohmann/json.hpp>
 
@@ -17,14 +20,31 @@ using json = nlohmann::json;
 class MapCreator : public State {
 public:
 
+
     MapCreator(MainDataRef& data);
 
+    /**
+     * @brief Initializes the map creator by asking the user for the map size&name then, load all the Textures.
+     */
     void Init() override;
+
+    /**
+     * @brief Handles the inputs (clicks) of the user on the window and updates the game logic.
+     * @brief Either select an item from the sidebar
+     * @brief Or place an item on the map
+     * @brief Or clear the map
+     * @brief Or save the map
+     */
     void HandleInput() override;
+
     void Update(float deltaTime) override;
+
+    /**
+     * @brief Clear the window and then Draw all the components.
+     * @param deltaTime
+     */
     void Draw(float deltaTime) override;
 
-    Placeable getSidebarObject(const int index) const;
 
     struct SidebarItem :public Movable{
         sf::Sprite sprite;

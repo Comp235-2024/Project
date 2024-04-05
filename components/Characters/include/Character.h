@@ -25,6 +25,7 @@
 using namespace sf;
 
 
+
 class CharacterStrategy;
 /**
  * @class Character
@@ -37,6 +38,7 @@ class CharacterStrategy;
  */
 class Character : public Movable,  public Observable{
 public:
+    std::string textureName;
     /**
      * @brief Constructs a Character object with the specified level.
      *
@@ -70,7 +72,7 @@ public:
 
     sf::Vector2i position;
 
-    std::string textureName = "knight";
+
 
     // Getters
 
@@ -249,6 +251,7 @@ public:
     static void testCharacterCreation();
     static void displayCharacterStats(const Character& character);
     static void testLevelUpProcess();
+
 
 
 private:

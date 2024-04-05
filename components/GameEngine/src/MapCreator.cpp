@@ -147,18 +147,18 @@ void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
 
                 if (type == "Wall") {
                     selectedObject = make_shared<Wall>(wall);
-                } //TODO IMPLEMENT OGRE CLASS
-                /*else if (type == "Ogre") {
-                    selectedObject = make_shared<Ogre>();
-                }*/
-                else if (type == "Player") {
+                }
+                else if (type == "Ogre") {
+                    selectedObject = make_shared<Ogre>(Ogre());
+                }else if (type == "Player") {
                     selectedObject = make_shared<Player>(Player());
                 } else if (type == "Chest") {
                     selectedObject = make_shared<TreasureChest>(TreasureChest());
                 } else if (type == "Door") {
                     selectedObject = make_shared<Door>(Door());
+                }else if(type=="Lever") {
+                    selectedObject = make_shared<Lever>(Lever());
                 }
-
                 this->notify("Object selected: " + type, "System");
 
                 isHolding = true;
@@ -520,6 +520,11 @@ void MapCreator::saveMapToFile() {
         file << mapData.dump(4);
         file.close();
         this->notify("Map saved to file: " + filename, "System");
+
+        sf::View view(sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+        this->_data->window.setSize(Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
+        this->_data->window.setView(view);
+        this->_data->stateMachine.RemoveState();
     } else {
         // In case of failure, which is unlikely if the directories were correctly created and there are permissions
         this->notify("Failed to save map to file: " + filename, "System");
