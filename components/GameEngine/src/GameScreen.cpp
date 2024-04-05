@@ -7,7 +7,7 @@
 
 #include "GameScreen.h"
 
-GameScreen::GameScreen(MainDataRef data) : _data(data) {}
+GameScreen::GameScreen(MainDataRef& data) : _data(data) {}
 
 void GameScreen::Init() {
     if(_mapIndex != 0) {
@@ -56,6 +56,7 @@ void GameScreen::Update(float deltaTime) {
     // implement
 
 }
+
 
 void GameScreen::Draw(float deltaTime) {
     generateMapTexture();
@@ -144,16 +145,21 @@ void GameScreen::calculateTextureSizes() {
     _mapTexture.create(_windowSize.x, _windowSize.y);
     this->notify("Map texture created, size: " + to_string(_mapTexture.getSize().x) + " by " + to_string(_mapTexture.getSize().y), "System");
 }
+
+//TODO Update to use Player instead of Character and Player's location instead of searching for the character
 void GameScreen::findPlayerCharacter() {
     int x = 0, y = 0;
+
     for (auto &row: _currentMap->getGrid()) {
         x = 0;
         for (auto &cell: row) {
             if (dynamic_cast<Character*>(cell.get())) {
+
                this->_player = dynamic_pointer_cast<Character>(cell);
                this->_player->position = Vector2i{x, y};
                this->notify("Player character found at " + to_string(x) + ", " + to_string(y), "System");
                return;
+
 
             }
             ++x;

@@ -54,7 +54,7 @@ void MapObserver::draw() {
 
 //    if (!window->isOpen()) return;
 //    window->clear(Color(30, 31, 34));
-//    window->clear();
+    window->clear();
     // draw
 
 //    RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
@@ -179,11 +179,28 @@ void MapObserver::drawMap(RenderTexture *_window) {
             }
             else if (auto* wall = dynamic_cast<Wall*>(cell.get())) {
                 drawImage(window, wall->textureName.c_str(), x, y);
-            } else if (auto* player = dynamic_cast<Character*>(cell.get())) {
-                drawImage(window, player->textureName.c_str(), x, y);
+
+                //TODO FIND A BETTER WAY TO DRAW CHARACTERS OR ADD MORE DYNAMIC CASTS
+            } else if (auto* character = dynamic_cast<Character*>(cell.get())) {
+                if(auto* player = dynamic_cast<Player*>(character)) {
+                    drawImage(window, player->textureName.c_str(), x, y);
+                }
+                else if(auto* ogre=dynamic_cast<Ogre*>(character)) {
+                    drawImage(window, ogre->textureName.c_str(), x, y);
+                }
+                else {
+                    drawImage(window, character->textureName.c_str(), x, y);
+                }
             } else if (auto* item = dynamic_cast<ItemContainer*>(cell.get())) {
                 drawImage(window, item->textureName.c_str(), x, y);
-            } else {
+
+            }else if(auto* item=dynamic_cast<Door*>(cell.get())){
+                drawImage(window, item->textureName.c_str(), x, y);
+
+            }else if(auto* item=dynamic_cast<Lever*>(cell.get())) {
+                drawImage(window, item->textureName.c_str(), x, y);
+
+            }else {
                 cout << "Type id " << typeid(*cell).name() << endl;
             }
             ++x;

@@ -95,6 +95,7 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
+
 //    mike = Character(5);
 //    map.place(mike, Position{0, 0});
 //    mike.textureName = "imp";
@@ -187,6 +188,7 @@ void Campaign::defaultLevel1(){
 void Campaign::defaultLevel2(){
     Map map(20, 20);
 
+
     // hard enemy
 //    Character enemy1{2};
 //    map.place(enemy1, Position{7, 8});
@@ -203,7 +205,6 @@ void Campaign::defaultLevel2(){
     //mike.textureName = "imp";
 
     map.setStartCell(Position{0, 9});
-
 
     Wall wall;
 
@@ -349,13 +350,16 @@ void Campaign::defaultLevel3() {
         map.place(pillar, Position{15, i});
     }
 
-//    Character mike{5};
-//
-//    map.place(mike, Position{12, 12});
-//    mike.textureName = "imp";
-//    // boss
-//    Character boss{2};
-//    map.place(boss, Position{9, 9});
+    //TODO CHANGE TO PLAYER
+    Character mike{5};
+    //Changed this to put it in the Character constructor
+    //mike.textureName = "imp";
+
+    map.place(mike, Position{12, 12});
+
+    //TODO CHANGE TO AN NPC TYPE
+    Character boss{2};
+    map.place(boss, Position{9, 9});
 
     this->addMap(map);
 

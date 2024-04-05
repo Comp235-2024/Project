@@ -12,6 +12,7 @@ creating connections between maps, editing maps, and saving/loading the campaign
 #include "../../Log/include/LogObservable.h"
 #include "Map.h"                                                     // Include the "Map.h" header
 #include "../../../cmake-build-debug/_deps/json-src/include/nlohmann/json.hpp"// Include the "nlohmann/json.hpp" header
+#include "Player.h"
 #include <iostream>
 #include <unordered_map>
 #include <vector>
