@@ -270,6 +270,9 @@ public:
      */
     bool checkEmpty(const Position& pos) const;
 
+    bool checkEmpty(const sf::Vector2i pos) const{
+        return checkEmpty(Position(pos));
+    }
     /**
      * @brief Finds a path from the start position to the end position on the map.
      * @param start The starting position.

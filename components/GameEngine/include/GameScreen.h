@@ -64,6 +64,7 @@ public:
      */
     void Draw(float deltaTime) override;
 
+
 private:
     MainDataRef _data; /**< The main data reference. */
     int _mapIndex = 0;
@@ -80,6 +81,8 @@ private:
     shared_ptr<Character> _player; /**< The player character. */
     Campaign _campaign;
     MapObserver mapObserver; /**< The map observer. */
+
+    int _diceModifier; /**< The dice modifier for the player character. */
 
     /**
      * @struct MapPosition
