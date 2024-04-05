@@ -32,10 +32,12 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     for (auto &character : characters) {
         _data->assets.LoadTexture(character, format("../../assets/images/frames/{}_idle_anim_f0.png", character));
     }
-    _data->assets.LoadTexture("wall_mid", "../../assets/images/frames/wall_mid.png");
-    _data->assets.LoadTexture("crate", "../../assets/images/frames/crate.png");
-    _data->assets.LoadTexture("doors_leaf_closed", "../../assets/images/frames/doors_leaf_closed.png");
-    _data->assets.LoadTexture("column_wall", "../../assets/images/frames/column_wall.png");
+
+    _data->assets.LoadTexture("wall_mid", WALL_IMAGE_PATH);
+    _data->assets.LoadTexture("crate", CHEST_IMAGE_PATH);
+    _data->assets.LoadTexture("door", DOOR_IMAGE_PATH);
+    _data->assets.LoadTexture("lever", LEVER_IMAGE_PATH);
+
     _data->log = new LogObserver("log.txt");
 //    log->enabledModules.disableAll();
     if(_data->log->enabledModules.system) {

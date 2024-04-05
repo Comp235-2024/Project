@@ -309,7 +309,7 @@ bool HumanPlayerStrategy::play() {
 
     Character mike(5);
     map->place(mike,Position{0,1});
-    auto chest = make_shared<TreasureChest>("chest1", 20);
+    auto chest = TreasureChest("chest1", 20);
 
     map->place(chest, Position{5, 5});
 

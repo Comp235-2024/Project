@@ -240,16 +240,6 @@ vector<Position> Map::findPath(Position start, Position end) const {
 }
 
 
-template<typename T>
-bool Map::specialPlace(const T &obj, const Position &pos) {
-    if (checkEmpty(pos)) {
-        grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
-        return true;
-    }
-    return false;
-}
-
-
 /**
  * @brief Removes a movable object from the map at the specified position.
  * @param Position The position from which to remove the object.
@@ -349,7 +339,7 @@ int Map::getDistance(const Position &pos_start, const Position &pos_end) const {
  * @return True if the position is empty, false otherwise.
  */
 bool Map::checkEmpty(const Position &pos) const {
-    return grid[pos.y][pos.x] == nullptr;
+    return (grid[pos.y][pos.x] == nullptr || dynamic_pointer_cast<Movable>(grid[pos.y][pos.x])==nullptr); ;
 }
 
 #pragma region Map

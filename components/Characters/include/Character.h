@@ -22,6 +22,9 @@
 #include <ctime>  // For time()
 #include <iostream>
 
+using namespace sf;
+
+
 
 class CharacterStrategy;
 /**
@@ -35,6 +38,7 @@ class CharacterStrategy;
  */
 class Character : public Movable,  public Observable{
 public:
+    std::string textureName;
     /**
      * @brief Constructs a Character object with the specified level.
      *
@@ -68,7 +72,7 @@ public:
 
     sf::Vector2i position;
 
-    std::string textureName = "knight";
+
 
     // Getters
 
@@ -249,6 +253,7 @@ public:
     static void testLevelUpProcess();
 
 
+
 private:
 
     CharacterStrategy* strategy;
@@ -257,6 +262,8 @@ private:
 
     //TODO implement health logic
     int health;
+
+    Sprite sprite;
 
     int abilityScores[6]; // 0: Strength, 1: Dexterity, 2: Constitution, 3:
                          // Intelligence, 4: Wisdom, 5: Charisma

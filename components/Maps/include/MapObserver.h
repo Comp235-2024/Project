@@ -24,6 +24,9 @@
 #include "LogObserver.h"
 #include "Map.h"
 #include "Observer.h"
+#include "NonPlayerCharacter.h"
+#include "Player.h"
+#include "Lever.h"
 #include "SFML/Graphics/Texture.hpp"
 #include <SFML/Graphics.hpp>
 #include <memory>
