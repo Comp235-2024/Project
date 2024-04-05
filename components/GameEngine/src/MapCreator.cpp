@@ -496,10 +496,14 @@ void MapCreator::saveMapToFile() {
                 mapData["objects"].push_back("Wall");
             } else if (auto* player = dynamic_cast<Player*>(cell.get())) {
                 mapData["objects"].push_back("Player");
-            } else if (auto* item = dynamic_cast<TreasureChest*>(cell.get())) {
+            } else if (auto* chest = dynamic_cast<TreasureChest*>(cell.get())) {
                 mapData["objects"].push_back("Chest");
-            }else if(auto* item=dynamic_cast<Door*>(cell.get())){
+            }else if(auto* door=dynamic_cast<Door*>(cell.get())){
                 mapData["objects"].push_back("Door");
+            }else if (auto* ogre = dynamic_cast<Ogre*>(cell.get())) {
+                mapData["objects"].push_back("Ogre");
+            }else if(auto* lever=dynamic_cast<Lever*>(cell.get())){
+                mapData["objects"].push_back("Lever");
             }
 
             else {
