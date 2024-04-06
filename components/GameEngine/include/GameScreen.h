@@ -91,6 +91,13 @@ private:
     bool _moveEnabled = false; /**< Indicates whether the move button is enabled. */
     bool _attackEnabled = false; /**< Indicates whether the attack button is enabled. */
 
+    std::array<std::pair<Keyboard::Key, Vector2i>, 4> movementBindings = {
+            {{Keyboard::Up,    {0, -1}},
+             {Keyboard::Down,  {0, 1}},
+             {Keyboard::Left,  {-1, 0}},
+             {Keyboard::Right, {1, 0}}}
+    };
+
     /**
      * @struct MapPosition
      * @brief Represents the position and size of a map.
@@ -196,6 +203,10 @@ private:
      * This function generates the texture for rendering the console view.
      */
     void generateConsoleTexture();
+    void movePlayer(Vector2i dir);
+    void handleKeyboardArrows();
+    void handleMouseButtonMap();
+    void onMoveOrAttack();
 };
 
 #endif // GAME_SCREEN_H

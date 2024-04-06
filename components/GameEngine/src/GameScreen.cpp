@@ -21,9 +21,8 @@ void GameScreen::Init() {
     _bg.setTextureRect(IntRect(0, 0, this->_data->window.getSize().x, this->_data->window.getSize().y));
 
     if (this->_data->campaign == nullptr) {
-
-        _campaign.attach(this->_data->log);
         this->_data->campaign = make_unique<Campaign>(_campaign);
+        this->_data->campaign->attach(this->_data->log);
     }
 
     calculateTextureSizes();
@@ -49,10 +48,13 @@ void GameScreen::Init() {
 }
 
 void GameScreen::Update(float deltaTime) {
-    scanForNearbyObjects();
+
 
 
     // implement
+}
+void GameScreen::onMoveOrAttack() {
+    scanForNearbyObjects();
 }
 
 
@@ -97,60 +99,18 @@ void GameScreen::HandleInput() {
             this->_data->window.close();
             this->notify("Window closed", "System");
         }
-        // TODO Implement the button click handling accourding to your needs
-        // For transition to another state use the WelcomeScreen.cpp as an example. However,
-        // don't pass a true to the AddState method, because we don't want to remove the previous state.
-        // I haven't tested going back yet so exit the game and run it again if you want to go back to the previous state.
-        if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y - 1})) {
-                _player->position.y -= 1;
-                this->notify("Player moved up", "Character");
-            }
-        } else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-            if (_currentMap->move(_player->position, Vector2i{_player->position.x, _player->position.y + 1})) {
-                _player->position.y += 1;
-                this->notify("Player moved down", "Character");
-            }
-        } else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-            if (_currentMap->move(_player->position, Vector2i{_player->position.x - 1, _player->position.y})) {
-                _player->position.x -= 1;
-                this->notify("Player moved left", "Character");
-            }
-        } else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-            if (_currentMap->move(_player->position, Vector2i{_player->position.x + 1, _player->position.y})) {
-                _player->position.x += 1;
-                this->notify("Player moved right", "Character");
-            }
-        } else if (Mouse::isButtonPressed(Mouse::Left) && (_moveEnabled || _attackEnabled)) {
-            Vector2i mousePos = Mouse::getPosition(_data->window);
-            Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
-            Vector2i gridPos = Vector2i{static_cast<int>(worldPos.x / _mapObserver.SIZE_MULT), static_cast<int>(worldPos.y / _mapObserver.SIZE_MULT)};
-            if (_moveEnabled) {
-                vector<Position> path = _currentMap->findPath(_player->position, gridPos);
-                if (path.size() < _diceModifier + 2 && path.size() > 0) {
-                    if (_currentMap->move(_player->position, gridPos)) {
-                        _player->position = gridPos;
-                        this->notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
-                        _moveEnabled = false;
-                    }
-                }
-            } else if (_attackEnabled) {
-                shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
-                if (target != nullptr) {
-                    this->notify("Player attacked target", "Character");
-                    _attackEnabled = false;
-                    this->notify("Enemy died due to an unbelievably strong blow", "Character");
-                    _currentMap->remove(gridPos);
-                }
-            }
-        }
+        handleKeyboardArrows();
+
+        handleMouseButtonMap();
 
         if (_data->inputs.IsButtonClicked(buttons->move, Mouse::Left, _data->window, _sideBarPosition)) {
             this->notify("Move button clicked", "Character");
+            onMoveOrAttack();
             _moveEnabled = true;
             _attackEnabled = false;
         } else if (_data->inputs.IsButtonClicked(buttons->attack, Mouse::Left, _data->window, _sideBarPosition)) {
             this->notify("Attack button clicked", "Character");
+            onMoveOrAttack();
             _attackEnabled = true;
             _moveEnabled = false;
         } else if (_data->inputs.IsButtonClicked(buttons->rollDice, Mouse::Left, _data->window, _sideBarPosition)) {
@@ -159,6 +119,60 @@ void GameScreen::HandleInput() {
         } else if (_data->inputs.IsButtonClicked(buttons->exit, Mouse::Left, _data->window, _sideBarPosition)) {
             this->notify("Exiting Game", "System");
             _data->stateMachine.RemoveState();
+        }
+    }
+}
+void GameScreen::handleMouseButtonMap() {
+    if (Mouse::isButtonPressed(Mouse::Left) && (_moveEnabled || _attackEnabled)) {
+        Vector2i mousePos = Mouse::getPosition(_data->window);
+        Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
+        Vector2i gridPos = Vector2i{static_cast<int>(worldPos.x / _mapObserver.SIZE_MULT), static_cast<int>(worldPos.y / _mapObserver.SIZE_MULT)};
+        if (_moveEnabled) {
+            vector<Position> path = _currentMap->findPath(_player->position, gridPos);
+            if (path.size() < _diceModifier + 2 && path.size() > 0) {
+                if (_currentMap->move(_player->position, gridPos)) {
+                    _player->position = gridPos;
+                    notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
+                    _moveEnabled = false;
+                }
+            }
+        } else if (_attackEnabled) {
+            shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+            if (target != nullptr) {
+                notify("Player attacked target", "Character");
+                _attackEnabled = false;
+                notify("Enemy died due to an unbelievably strong blow", "Character");
+                _currentMap->remove(gridPos);
+            } else {
+                notify("No target found", "Character");
+            }
+        }
+    }
+}
+void GameScreen::handleKeyboardArrows() {
+    for (const auto& [key, direction] : movementBindings) {
+        if (Keyboard::isKeyPressed(key)) {
+            Vector2i newPosition = _player->position + direction;
+            onMoveOrAttack();
+            if (_currentMap->move(_player->position, newPosition)) {
+                _player->position = newPosition;
+                notify("Player moved", "Character");
+                break;
+            }
+        }
+    }
+}
+void GameScreen::movePlayer(Vector2i dir) {
+    if (_currentMap->move(_player->position, _player->position + dir)) {
+        _player->position += dir;
+        if (dir == Vector2i{0, -1}) {
+            this->notify("Player moved up", "Character");
+        } else if (dir == Vector2i{0, 1}) {
+            this->notify("Player moved down", "Character");
+        } else if (dir == Vector2i{-1, 0}) {
+            this->notify("Player moved left", "Character");
+        } else if (dir == Vector2i{1, 0}) {
+            this->notify("Player moved right", "Character");
         }
     }
 }
