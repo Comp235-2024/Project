@@ -1,7 +1,3 @@
-//
-// Created by ricka on 2024-03-12.
-//
-
 #include "../include/Door.h"
 
 Door::Door(bool start, bool exit){

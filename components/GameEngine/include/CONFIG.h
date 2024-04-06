@@ -45,7 +45,6 @@
 
 #define IMAGES_PATH "../../assets/images/frames/"
 
-//#define SIZE_MULT 30.0f /**< The size multiplier for the map display. */
 
 
 #endif//A2_CONFIG_H
