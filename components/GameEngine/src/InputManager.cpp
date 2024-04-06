@@ -8,12 +8,11 @@
 #include "InputManager.h"
 bool InputManager::IsSpriteClicked(const Sprite& sprite, Mouse::Button button, RenderWindow &window) {
     if (Mouse::isButtonPressed(button)) {
-        IntRect buttonRect(
-                sprite.getPosition().x,
-                sprite.getPosition().y,
-                sprite.getGlobalBounds().width,
-                sprite.getGlobalBounds().height);
-        if (buttonRect.contains(Mouse::getPosition(window))) {
+
+        auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
+        auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+        if(sprite.getGlobalBounds().contains(translated_pos)) // Rectangle-contains-point check
+        {
             return true;
         }
     }

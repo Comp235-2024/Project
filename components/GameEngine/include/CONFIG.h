@@ -28,4 +28,8 @@
 //#define SIZE_MULT 30.0f /**< The size multiplier for the map display. */
 
 #define MUSIC1_PATH "../../assets/audios/music1.ogg"
+#define MUSIC2_PATH "../../assets/audios/2.ogg"
+#define MUSIC3_PATH "../../assets/audios/3.ogg"
+#define MUSIC4_PATH "../../assets/audios/4.ogg"
+#define DEFAULT_MUSIC_VOL 5.f
 #endif//A2_CONFIG_H

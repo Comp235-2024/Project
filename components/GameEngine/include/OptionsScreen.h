@@ -26,18 +26,25 @@ private:
     Texture _bgTexture;
     Sprite _bg;
     struct Buttons {
-        RectangleShape mute;
-        Text muteText;
-        RectangleShape back;
-        Text backText;
-
+        Sprite mute;
+        Sprite back;
+        Sprite music1;
+        Sprite music2;
+        Sprite music3;
+        Sprite music4;
+        RectangleShape music;
+        Text musicText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>();
 
+    void handleMusic();
 
     void SetButtons();
 
+    void changeMusic(string fileName);
+
+    static void GenerateButton(Sprite& button, Vector2f position, Texture& texture);
     static void GenerateButton(const Font &font, const string &name, RectangleShape &button, Text &buttonText, Vector2f position);
 };
 

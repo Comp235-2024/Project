@@ -36,6 +36,7 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     _data->assets.LoadTexture("crate", "../../assets/images/frames/crate.png");
     _data->assets.LoadTexture("doors_leaf_closed", "../../assets/images/frames/doors_leaf_closed.png");
     _data->assets.LoadTexture("column_wall", "../../assets/images/frames/column_wall.png");
+
     _data->log = new LogObserver("log.txt");
 //    log->enabledModules.disableAll();
     if(_data->log->enabledModules.system) {
@@ -52,7 +53,7 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
         cerr << "Error while loading background music file" << endl;
     }
     else {
-        _data->music.setVolume(10.f);
+        _data->music.setVolume(DEFAULT_MUSIC_VOL);
         _data->music.setLoop(true);
         _data->music.play();
     }
