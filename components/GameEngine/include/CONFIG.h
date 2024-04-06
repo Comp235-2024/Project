@@ -27,5 +27,5 @@
 
 //#define SIZE_MULT 30.0f /**< The size multiplier for the map display. */
 
-
+#define MUSIC1_PATH "../../assets/audios/music1.ogg"
 #endif//A2_CONFIG_H
