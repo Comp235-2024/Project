@@ -32,6 +32,7 @@
 #define OGRE_IMAGE_PATH "../../assets/images/frames/ogre_idle_anim_f0.png"
 #define DOOR_IMAGE_PATH "../../assets/images/frames/doorS_leaf_closed.png"
 #define LEVER_IMAGE_PATH "../../assets/images/frames/lever_left.png"
+#define MONEY_IMAGE_PATH "../../assets/images/money.png"
 
 #pragma region MapCreator
 #define CELL_SIZE 32

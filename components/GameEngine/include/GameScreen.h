@@ -73,7 +73,8 @@ private:
     shared_ptr<Map> _currentMap; /**< The current map. */
     RenderTexture _mapTexture; /**< The texture for rendering the map. */
     RenderTexture _characterView; /**< The texture for rendering the character view. */
-    RenderTexture _consoleView; /**< The texture for rendering the console view. */
+    RenderTexture _consoleTexture; /**< The texture for rendering the console view. */
+    Vector2f _consolePosition; /**< The position of the console view. */
     RenderTexture _sideBarTexture; /**< The texture for rendering the sidebar. */
     Vector2<float> _sideBarPosition;
     Texture _bgTexture; /**< The background texture. */
@@ -115,6 +116,8 @@ private:
         Text inventoryText;
         RectangleShape rollDice;
         Text rollDiceText;
+        RectangleShape exit;
+        Text exitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -162,6 +165,7 @@ private:
     static Vector2i positionToVector2i(Position position);
     void generateSideBarTexture();
     void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos);
+    void generateConsoleTexture();
 };
 
 #endif

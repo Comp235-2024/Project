@@ -361,7 +361,7 @@ void Campaign::defaultLevel3() {
 Campaign::Campaign() {
     maps = std::vector<Map>();
     ind = 1;
-    defaultLevel1();
+//    defaultLevel1();
     defaultLevel2();
     defaultLevel3();
     loadMap = true;

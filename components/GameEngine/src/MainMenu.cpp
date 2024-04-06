@@ -43,6 +43,26 @@ void MainMenu::Draw(float deltaTime) {
     _data->window.draw(buttons->quit);
     _data->window.draw(buttons->quitText);
 
+    Vector2i mousePos = Mouse::getPosition(_data->window);
+    Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
+
+    if (worldPos.x > 0 && worldPos.y > 0 && worldPos.y < 20 && worldPos.x < 20){
+        //showMoney
+        Texture tex;
+        if (tex.loadFromFile(MONEY_IMAGE_PATH)){
+            Sprite money(tex);
+            money.setPosition(0,0);
+
+            float scaleX = _data->window.getSize().x / money.getLocalBounds().width;
+            float scaleY = _data->window.getSize().y / money.getLocalBounds().height;
+
+
+            money.setScale(scaleX, scaleY);
+
+            _data->window.draw(money);
+        }
+    }
+
     // add our names
     _data->window.display();
 
@@ -83,8 +103,12 @@ void MainMenu::HandleInput() {
         } else if (_data->inputs.IsButtonClicked(buttons->options, Mouse::Left, _data->window)) {
             this->notify("Switching to options menu", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->quit, Mouse::Left, _data->window)) {
+            this->notify("Quitting game", "System");
             _data->window.close();
         }
+
+
+
 
 
 
