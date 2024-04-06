@@ -227,7 +227,6 @@ public:
         return place(obj, Position(position));
     }
 
-
     /**
      * @brief Removes a movable object from the map at the specified position.
      * @param Position The position from which to remove the object.
@@ -270,6 +269,9 @@ public:
      */
     bool checkEmpty(const Position& pos) const;
 
+    bool checkEmpty(const sf::Vector2i pos) const{
+        return checkEmpty(Position(pos));
+    }
     /**
      * @brief Finds a path from the start position to the end position on the map.
      * @param start The starting position.
@@ -339,7 +341,13 @@ public:
     static bool mapBuilderTest();
 
     template<typename T>
-    bool specialPlace(const T &obj, const Position &position);
+    bool specialPlace(const T &obj, const Position &pos) {
+        if (checkEmpty(pos)) {
+            grid[pos.y][pos.x] = make_shared<T>(std::move(obj));
+            return true;
+        }
+        return false;
+    }
 
     bool specialMove(const Position &pos_start, const Position &pos_end);
 

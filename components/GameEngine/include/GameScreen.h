@@ -8,10 +8,10 @@
 #ifndef A3_GAMESCREEN_H
 #define A3_GAMESCREEN_H
 
-
 #include "CONFIG.h"
 #include "GameLooptyLoop.h"
 #include "MapObserver.h"
+#include "Player.h"
 #include "State.h"
 
 /**
@@ -28,7 +28,7 @@ public:
      * @brief Constructs a GameScreen object with the given main data.
      * @param data The main data reference.
      */
-    explicit GameScreen(MainDataRef data);
+    explicit GameScreen(MainDataRef& data);
 
     /**
      * @brief Initializes the game screen.
@@ -64,9 +64,10 @@ public:
      */
     void Draw(float deltaTime) override;
 
+
 private:
     MainDataRef _data; /**< The main data reference. */
-
+    int _mapIndex = 0;
     Clock _clock; /**< Keeps track of time passed. */
 
     shared_ptr<Map> _currentMap; /**< The current map. */
@@ -77,9 +78,12 @@ private:
     Sprite _bg; /**< The background sprite. */
     Vector2<unsigned int> _windowSize; /**< The window size. */
 
+    //MODIFIED THIS TO BE A PLAYER AND NOT CHARACTER
     shared_ptr<Character> _player; /**< The player character. */
-
+    Campaign _campaign;
     MapObserver mapObserver; /**< The map observer. */
+
+    int _diceModifier; /**< The dice modifier for the player character. */
 
     /**
      * @struct MapPosition
@@ -140,6 +144,7 @@ private:
     void findPlayerCharacter();
 
     void scanForNearbyObjects();
+    static Vector2i positionToVector2i(Position position);
 };
 
 #endif

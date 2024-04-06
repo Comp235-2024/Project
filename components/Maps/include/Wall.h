@@ -1,7 +1,7 @@
 #ifndef A3_WALL_H
 #define A3_WALL_H
 
-#include "../../Items/include/Movable.h"
+#include "Movable.h"
 
 class Wall : public Movable {
 public:
