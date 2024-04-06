@@ -32,6 +32,8 @@ void MainMenu::Draw(float deltaTime) {
     _data->window.draw(buttons->playText);
     _data->window.draw(buttons->editMap);
     _data->window.draw(buttons->editMapText);
+    _data->window.draw(buttons->createCharacter);
+    _data->window.draw(buttons->createCharacterText);
     _data->window.draw(buttons->editCharacter);
     _data->window.draw(buttons->editCharacterText);
     _data->window.draw(buttons->load);
@@ -72,6 +74,7 @@ void MainMenu::HandleInput() {
         //Character Creator
         else if (_data->inputs.IsButtonClicked(buttons->editCharacter, Mouse::Left, _data->window)) {
             this->notify("Switching to character editor", "System");
+            _data->stateMachine.AddState(StateRef(new CharacterCreator(_data)), false, _data->log);
         }
 
         //Load Previous Game
