@@ -12,6 +12,7 @@
 
 #include "AssetManager.h"
 #include "Campaign.h"
+#include "Dice.h"
 #include "InputManager.h"
 #include "Player.h"
 #include "SFML/Graphics.hpp"
@@ -27,6 +28,7 @@ struct MainData{
     InputManager inputs;
     LogObserver* log;
     unique_ptr<Campaign> campaign;
+    Dice dice;
     Character player;
 };
 

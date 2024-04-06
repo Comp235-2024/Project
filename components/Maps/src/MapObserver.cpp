@@ -35,7 +35,7 @@ void MapObserver::updateMapOnly(RenderTexture *_window) {
 
 MapObserver::MapObserver(shared_ptr<Map> map, sf::RenderTexture *window, MainDataRef data) : grid(map), window(window), window_size_x(window->getSize().x), window_size_y(window->getSize().y), _data(data) {
     grid->attach(this);
-    this->SIZE_MULT = (float) window_size_x / grid->getSizeX();
+    this->SIZE_MULT = (float) window->getSize().x / grid->getSizeX();
     generateFloorTextureHashMap();
 }
 
@@ -57,11 +57,11 @@ void MapObserver::draw() {
     window->clear();
     // draw
 
-    RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
-    RectangleShape line_v(Vector2f(1, window_size_y));// Vertical line
-    line.setFillColor(Color::White);
-
-    drawGridLines(window, line, line_v);
+//    RectangleShape line(Vector2f(window_size_x, 1));  // Horizontal line
+//    RectangleShape line_v(Vector2f(1, window_size_y));// Vertical line
+//    line.setFillColor(Color::White);
+//
+//    drawGridLines(window, line, line_v);
     drawMap(window);
 
 //    window->display();
@@ -264,8 +264,12 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
         if (!grid->isInBounds(currentPos) || currentSteps > steps) continue;
 
         auto cell = grid->getGrid()[currentPos.y][currentPos.x];
+        if (dynamic_cast<NonPlayerCharacter*>(cell.get())) {
+            drawBorderAroundCell(currentPos, Color::Red, _window, 1);
+            continue;
+        }
         if (cell.get() == nullptr || dynamic_cast<Character*>(cell.get())) {
-            drawBorderAroundCell(currentPos, color, _window);
+            drawBorderAroundCell(currentPos, color, _window, 1);
 
             if (currentSteps < steps) {
                 for (const auto& dir : directions) {
@@ -276,18 +280,20 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
         }
     }
 }
-void MapObserver::drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window) const {
+void MapObserver::drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window, int _thickness) const {
 
 
-    float squareX = position.x * SIZE_MULT;
-    float squareY = position.y * SIZE_MULT;
+    float squareX = position.x * SIZE_MULT -1;
+    float squareY = position.y * SIZE_MULT -1;
 
-    float targetX = SIZE_MULT + 1;
-    float targetY = SIZE_MULT + 1;
+//    float targetX = SIZE_MULT + 1;
+//    float targetY = SIZE_MULT + 1;
+    float targetX = SIZE_MULT;
+    float targetY = SIZE_MULT;
 
-    RectangleShape rectangle(Vector2f(SIZE_MULT - 1, SIZE_MULT - 1));
+    RectangleShape rectangle(Vector2f(SIZE_MULT - 2, SIZE_MULT - 2));
     rectangle.setFillColor(Color::Transparent);
-    rectangle.setOutlineThickness(1);
+    rectangle.setOutlineThickness(_thickness);
     rectangle.setOutlineColor(color);
     rectangle.setPosition(squareX, squareY);
 

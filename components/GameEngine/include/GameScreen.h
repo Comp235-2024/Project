@@ -73,17 +73,24 @@ private:
     shared_ptr<Map> _currentMap; /**< The current map. */
     RenderTexture _mapTexture; /**< The texture for rendering the map. */
     RenderTexture _characterView; /**< The texture for rendering the character view. */
-    RenderTexture _consoleView; /**< The texture for rendering the console view. */
+    RenderTexture _consoleTexture; /**< The texture for rendering the console view. */
+    Vector2f _consolePosition; /**< The position of the console view. */
+    RenderTexture _sideBarTexture; /**< The texture for rendering the sidebar. */
+    Vector2<float> _sideBarPosition;
     Texture _bgTexture; /**< The background texture. */
-    Sprite _bg; /**< The background sprite. */
-    Vector2<unsigned int> _windowSize; /**< The window size. */
+    RectangleShape _bg; /**< The background shape. */
+    Vector2u _windowSize; /**< The window size. */
 
     //MODIFIED THIS TO BE A PLAYER AND NOT CHARACTER
     shared_ptr<Character> _player; /**< The player character. */
     Campaign _campaign;
-    MapObserver mapObserver; /**< The map observer. */
+    MapObserver _mapObserver; /**< The map observer. */
 
     int _diceModifier; /**< The dice modifier for the player character. */
+    string _diceType = "1d6"; /**< The dice type for the player character. */
+
+    bool _moveEnabled = false; /**< Indicates whether the move button is enabled. */
+    bool _attackEnabled = false; /**< Indicates whether the attack button is enabled. */
 
     /**
      * @struct MapPosition
@@ -100,6 +107,17 @@ private:
      */
     struct Buttons {
         RectangleShape menu; /**< The menu button. */
+        Text menuText;
+        RectangleShape move;
+        Text moveText;
+        RectangleShape attack;
+        Text attackText;
+        RectangleShape inventory;
+        Text inventoryText;
+        RectangleShape rollDice;
+        Text rollDiceText;
+        RectangleShape exit;
+        Text exitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -145,6 +163,9 @@ private:
 
     void scanForNearbyObjects();
     static Vector2i positionToVector2i(Position position);
+    void generateSideBarTexture();
+    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos);
+    void generateConsoleTexture();
 };
 
 #endif

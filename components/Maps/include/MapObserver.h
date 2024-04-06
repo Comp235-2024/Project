@@ -163,7 +163,7 @@ private:
     void drawFloor(RenderTexture *pWindow, float x, float y);
 
     void generateFloorTextureHashMap();
-    void drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window) const;
+    void drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window, int _thickness) const;
 };
 
 #endif //A3_MAPOBSERVER_H
