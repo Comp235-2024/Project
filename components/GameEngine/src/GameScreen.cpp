@@ -8,17 +8,17 @@
 #include "GameScreen.h"
 #include <format>
 
-GameScreen::GameScreen(MainDataRef& data) : _data(data) {}
+GameScreen::GameScreen(MainDataRef &data) : _data(data) {}
 
 void GameScreen::Init() {
-    if(_mapIndex != 0) {
+    if (_mapIndex != 0) {
         this->_mapObserver.detach(this->_data->log);
     }
     this->_data->assets.LoadTexture("Game Background", GAME_BG_IMAGE_PATH);
     this->_data->assets.LoadFont("Font", FONT_PATH);
-//    _bg.setTexture(this->_data->assets.GetTexture("Game Background"));
+    //    _bg.setTexture(this->_data->assets.GetTexture("Game Background"));
     _bg.setFillColor(Color(72, 59, 58));
-    _bg.setTextureRect(IntRect(0,0, this->_data->window.getSize().x, this->_data->window.getSize().y));
+    _bg.setTextureRect(IntRect(0, 0, this->_data->window.getSize().x, this->_data->window.getSize().y));
 
     if (this->_data->campaign == nullptr) {
 
@@ -39,25 +39,20 @@ void GameScreen::Init() {
     _campaign.mike.position = start;
     _player = make_shared<Character>(_campaign.mike);
 
-//    findPlayerCharacter();
-
+    //    findPlayerCharacter();
 
 
     generateMapTexture();
 
-    _diceModifier = 3; // TODO needs to be dynamic and changed with each dice roll
+    _diceModifier = 3;// TODO needs to be dynamic and changed with each dice roll
     _mapIndex++;
-
-
 }
 
 void GameScreen::Update(float deltaTime) {
     scanForNearbyObjects();
 
 
-
     // implement
-
 }
 
 
@@ -92,7 +87,6 @@ void GameScreen::Draw(float deltaTime) {
 
     // add our names
     _data->window.display();
-
 }
 
 
@@ -140,7 +134,7 @@ void GameScreen::HandleInput() {
                         _moveEnabled = false;
                     }
                 }
-            } else if (_attackEnabled){
+            } else if (_attackEnabled) {
                 shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
                 if (target != nullptr) {
                     this->notify("Player attacked target", "Character");
@@ -166,7 +160,6 @@ void GameScreen::HandleInput() {
             this->notify("Exiting Game", "System");
             _data->stateMachine.RemoveState();
         }
-
     }
 }
 
@@ -176,9 +169,6 @@ void GameScreen::generateMapTexture() {
     _mapObserver.update();
 
     _mapTexture.display();
-
-
-
 }
 void GameScreen::calculateTextureSizes() {
     _windowSize = _data->window.getSize();
@@ -191,7 +181,7 @@ void GameScreen::calculateTextureSizes() {
 
 
     //This adjusts the size of the map texture to be 80% of the window size since sidebar takes up 20%
-    _mapTexture.create(_windowSize.x*(1-SIDEBAR_RATIO), _windowSize.y*(1-SIDEBAR_RATIO));
+    _mapTexture.create(_windowSize.x * (1 - SIDEBAR_RATIO), _windowSize.y * (1 - SIDEBAR_RATIO));
     this->notify("Map texture created, size: " + to_string(_mapTexture.getSize().x) + " by " + to_string(_mapTexture.getSize().y), "System");
 
     _sideBarTexture.create(sidebarWidth, sidebarHeight);
@@ -208,14 +198,12 @@ void GameScreen::findPlayerCharacter() {
     for (auto &row: _currentMap->getGrid()) {
         x = 0;
         for (auto &cell: row) {
-            if (dynamic_cast<Character*>(cell.get())) {
+            if (dynamic_cast<Character *>(cell.get())) {
 
-               this->_player = dynamic_pointer_cast<Character>(cell);
-               this->_player->position = Vector2i{x, y};
-               this->notify("Player character found at " + to_string(x) + ", " + to_string(y), "System");
-               return;
-
-
+                this->_player = dynamic_pointer_cast<Character>(cell);
+                this->_player->position = Vector2i{x, y};
+                this->notify("Player character found at " + to_string(x) + ", " + to_string(y), "System");
+                return;
             }
             ++x;
         }
@@ -228,17 +216,16 @@ void GameScreen::scanForNearbyObjects() {
     for (auto &dir: directions) {
         Vector2i newPos = _player->position + dir;
         if (_currentMap->isInBounds(newPos)) {
-            if (dynamic_cast<TreasureChest*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+            if (dynamic_cast<TreasureChest *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
-            } else if (dynamic_cast<Door*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+            } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
                 this->Init();
-            } else if (dynamic_cast<Character*>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+            } else if (dynamic_cast<Character *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Character detected nearby", "System");
             }
         }
     }
-
 }
 Vector2i GameScreen::positionToVector2i(Position position) {
     return Vector2i{position.x, position.y};
@@ -270,11 +257,11 @@ void GameScreen::generateSideBarTexture() {
 }
 
 void GameScreen::generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos) {
-    Font& font = _data->assets.GetFont("My Font");
-    Vector2f position = Vector2f(_sideBarTexture.getSize().x/2.0f, _sideBarTexture.getSize().y/6.0f * (buttonPos+1));
+    Font &font = _data->assets.GetFont("My Font");
+    Vector2f position = Vector2f(_sideBarTexture.getSize().x / 2.0f, _sideBarTexture.getSize().y / 6.0f * (buttonPos + 1));
 
     //Changed the size of the button to be a third of the window width and a tenth of the window height Meaning making them less hard coded
-    Vector2f size = Vector2f(_sideBarTexture.getSize().x*0.9f, _sideBarTexture.getSize().y/20.0f);
+    Vector2f size = Vector2f(_sideBarTexture.getSize().x * 0.9f, _sideBarTexture.getSize().y / 20.0f);
     button.setSize(size);
     button.setOrigin(size.x / 2.0f, size.y / 2.0f);
     button.setPosition(position);
