@@ -1,9 +1,21 @@
+/**
+* @file MapCreator.h
+* @author Ricardo Raji Chahine 40234410
+* @brief This class is called from the main menu and allows the user to create a map by placing objects on a grid and then either save or clear that map.
+* @brief The user can place walls, doors, levers, chests, players, and npcs on the map.
+* @brief The maps are saved as .json files in the Saved Maps directory.
+*/
 #include "MapCreator.h"
 
 #include <memory>
 
 MapCreator::MapCreator(MainDataRef& data) : _data(data) {};
 
+/**
+ * @brief Calculates the size of the map texture based on the Input from the user.
+ * @param x Width of the map.
+ * @param y Height of the map.
+ */
 void MapCreator::calculateTextureSizes(int x, int y) {
     int calibrated_X = x*CELL_SIZE;
     int calibrated_Y = y*CELL_SIZE;
@@ -72,6 +84,12 @@ void MapCreator::Init() {
 
 }
 
+/**
+ * @brief Handles the input from the user.
+ * It handles the window close event, mouse button pressed event, and other events.
+ * It processes the click actions based on the mouse position.
+ * It places the object on the map if an object is selected and the mouse position is on the map.
+ */
 void MapCreator::HandleInput() {
     sf::Event event;
 
@@ -94,6 +112,10 @@ void MapCreator::handleCloseEvent() {
     this->notify("Window closed", "System");
 }
 
+/**
+ * @brief Checks if the left mouse button was pressed and processes the click actions based on the mouse position.
+ * @param event
+ */
 void MapCreator::handleMouseButtonPressedEvent(const sf::Event& event) {
     if (event.mouseButton.button == sf::Mouse::Left) {
         sf::Vector2f mousePos = this->_data->window.mapPixelToCoords(sf::Mouse::getPosition(this->_data->window));
@@ -101,13 +123,21 @@ void MapCreator::handleMouseButtonPressedEvent(const sf::Event& event) {
     }
 }
 
+/**
+ * @brief Processes the click actions based on the mouse position.
+ * It calls a method to clear the map if the clear button is clicked.
+ * It calls a method to save the map to a file if the save button is clicked.
+ * It calls a method to place the object on the map if an object is selected and the mouse position is on the map.
+ * It calls a method to select an object from the sidebar if the mouse position is on the sidebar.
+ * @param mousePos
+ */
 void MapCreator::processClickActions(const sf::Vector2f& mousePos) {
     if (clearButton.getGlobalBounds().contains(mousePos)) {
         clearMap();
 
     } else if (saveButton.getGlobalBounds().contains(mousePos)) {
-        //TODO save map to file
         saveMapToFile();
+
     } else if (selectedObject != nullptr && mapArea.getGlobalBounds().contains(mousePos)) {
         placeObjectOnMap(mousePos);
 
@@ -116,8 +146,14 @@ void MapCreator::processClickActions(const sf::Vector2f& mousePos) {
     }
 }
 
+/**
+ * @brief Calculates the cell position based on the mouse position and places the object on the map.
+ * It notifies the user if the object was placed on the map or if it cannot be placed at the position.
+ * @param mousePos
+ */
 void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
 
+    /** The map is scaled to SIDEBAR_RATIO % of the window size, so we need to adjust the mouse position accordingly */
     double notMap=1-SIDEBAR_RATIO;
     int cellX = static_cast<int>(ceil(mousePos.x) / (CELL_SIZE*notMap));
     int cellY = static_cast<int>(ceil(mousePos.y) / (CELL_SIZE*notMap));
@@ -136,17 +172,19 @@ void MapCreator::placeObjectOnMap(const sf::Vector2f& mousePos) {
     }
 }
 
+/**
+ * @brief Selects an object from the sidebar based on the mouse click position.
+ * @param mousePos
+ */
 void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
     try {
         for (size_t i = 0; i < itemContainers.size(); ++i) {
             if (itemContainers[i].getGlobalBounds().contains(mousePos)) {
 
                 string type = itemNames[i];
-                Wall wall;
-                wall.textureName = "wall_mid";
 
                 if (type == "Wall") {
-                    selectedObject = make_shared<Wall>(wall);
+                    selectedObject = make_shared<Wall>(Wall());
                 }
                 else if (type == "Ogre") {
                     selectedObject = make_shared<Ogre>(Ogre());
@@ -173,6 +211,10 @@ void MapCreator::selectObjectFromSidebar(const sf::Vector2f& mousePos) {
 
 void MapCreator::Update(float deltaTime) {}
 
+/**
+ * @brief Clears the window and then draws all the components.
+ * @param deltaTime How often
+ */
 void MapCreator::Draw(float deltaTime) {
 
     _mapTexture.clear(Color::Transparent);
@@ -192,10 +234,10 @@ void MapCreator::Draw(float deltaTime) {
 }
 
 
-/**
- * @brief Initializes the sidebar on the right side of the window with the objects that can be placed on the map.
- */
 
+/**
+ * @brief Assigns the current map a new default map and attaches the map observer to the new default map.
+ */
 void MapCreator::clearMap() {
     if (_currentMap) {
         // Reset the map with a new instance
@@ -211,6 +253,9 @@ void MapCreator::clearMap() {
 
 }
 
+/**
+ * @brief Initializes the sidebar with the items that can be placed on the map to the right of the window.
+ */
 void MapCreator::initSideBar() {
     float windowWidth = _windowSize.x;
     float sidebarHeight = _mapTexture.getSize().y; // Sidebar height matches the map texture, not the window
@@ -280,6 +325,9 @@ void MapCreator::initSideBar() {
     }
 }
 
+/**
+ * @brief Draws the sidebar and its items.
+ */
 void MapCreator::drawSideBar(){
     // Draw the sidebar and its items
     _data->window.draw(sidebar);
@@ -297,7 +345,7 @@ void MapCreator::drawSideBar(){
 }
 
 /**
- * @brief Asks the user for the size of the map.
+ * @brief Asks the user for the name and size of the map.
  * @return Size of the map as a Position struct.
  */
 Position MapCreator::askForSize() {
@@ -413,6 +461,9 @@ Position MapCreator::askForSize() {
     return {-1, -1};
 }
 
+/**
+ * @brief Initializes the buttons (Their texture and position) for clearing the map and saving the map.
+ */
 void MapCreator::initButtons() {
     // Button container at the bottom of the window
     float buttonContainerHeight = _windowSize.y*SIDEBAR_RATIO; // Fixed height for button area
@@ -465,6 +516,9 @@ void MapCreator::initButtons() {
     this->saveButtonText = saveButtonText;
 }
 
+/**
+ * @brief Draws the buttons for clearing the map and saving the map.
+ */
 void MapCreator::drawButtons(){
     // Make sure to call this in your main drawing function, after drawing the map and before displaying the window
     _data->window.draw(buttonContainer);
@@ -483,6 +537,11 @@ MapCreator::SidebarItem::SidebarItem(const string &name, const int permittedCoun
     this->permittedCount = permittedCount;
 }
 
+
+/**
+ * @brief Goes through the grid of the map looking at each cell and saving the object type to a json file.
+ */
+ //TODO SAVE THE LOCATION OF THE PLAYER
 void MapCreator::saveMapToFile() {
     json mapData;
     mapData["name"] = this->mapName;

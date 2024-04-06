@@ -1,3 +1,11 @@
+/**
+ * @file MapCreator.h
+ * @author Ricardo Raji Chahine 40234410
+ * @brief This class is called from the main menu and allows the user to create a map by placing objects on a grid and then either save or clear that map.
+ * @brief The user can place walls, doors, levers, chests, players, and npcs on the map.
+ * @brief The maps are saved as .json files in the Saved Maps directory.
+ */
+
 #ifndef MAPCREATOR_H
 #define MAPCREATOR_H
 
@@ -46,6 +54,9 @@ public:
     void Draw(float deltaTime) override;
 
 
+    /**
+     * @brief Struct to designate Items that are to be placed on the sidebar.
+     */
     struct SidebarItem :public Movable{
         sf::Sprite sprite;
         std::string name;
@@ -57,31 +68,57 @@ public:
     };
 
 private:
-    static int nbSavedMaps; /**< The number of maps in the campaign. */
+    /** The number of maps in the campaign. */
+    static int nbSavedMaps;
 
-    string mapName; /**< The name of the map. */
+    /** The name of the map. */
+    string mapName;
 
-    bool isHolding = false; // Flag to indicate if an object is being held
+    /** Flag to indicate if an object is being held */
+    bool isHolding = false;
 
-    MapObserver mapObserver; /**< The map observer. */
+    /** The map observer. */
+    MapObserver mapObserver;
 
-    std::vector<SidebarItem> sidebarObjects; // List of objects in the sidebar
+    /** The objects on the sidebar. */
+    std::vector<SidebarItem> sidebarObjects;
 
-    shared_ptr<Movable> selectedObject = nullptr; // Pointer to the currently selected object
+    /** The selected object from the sidebar. */
+    shared_ptr<Movable> selectedObject = nullptr;
 
-    std::vector<std::string> itemNames = {"Wall", "Player", "Chest", "Door","Ogre","Lever"};
-    sf::Text itemPermittedCount; // To display the number of this object type that can be placed
-    sf::RectangleShape sidebar; // To represent the sidebar area
+    /** Items that can be placed on the map. */
+    std::vector<std::string> itemNames = {"Wall", "Player", "Lever","Chest", "Door","Ogre"};
+
+    //TODO ADD ITEM PLACEMENT LIMIT
+    /** Maximum number of a specific item that can be placed on the map. */
+    sf::Text itemPermittedCount;
+
+    /** The sidebar shape/space. */
+    sf::RectangleShape sidebar;
+
+    /** Background of each item in the sidebar. */
     std::vector<sf::RectangleShape> itemContainers;
-    std::vector<sf::Sprite> sidebarObjectsSprites; // To store sprites for items to be placed on the sidebar
 
+    /** The sprites for the items to be placed on the sidebar. */
+    std::vector<sf::Sprite> sidebarObjectsSprites;
+
+    /** The map shape/space. */
     sf::RectangleShape mapArea; // The map area
 
-    sf::RectangleShape buttonContainer; // The container for the buttons
-    sf::RectangleShape clearButton; // The clear button
-    sf::RectangleShape saveButton; // The save button
-    sf::Text clearButtonText; // The text for the clear button
-    sf::Text saveButtonText; // The text for the save button
+    /** The container for the buttons. */
+    sf::RectangleShape buttonContainer;
+
+    /** The clear button. */
+    sf::RectangleShape clearButton;
+
+    /** The save button. */
+    sf::RectangleShape saveButton;
+
+    /** The text for the clear button. */
+    sf::Text clearButtonText;
+
+    /** The text for the save button. */
+    sf::Text saveButtonText;
 
     MainDataRef _data; /**< The main data reference. */
 
@@ -98,12 +135,6 @@ private:
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
 
     /**
-     * @brief Generates the texture for the map.
-     *
-     * This function generates the texture for rendering the map.
-     */
-
-    /**
      * @brief Calculates the sizes of the textures based on the window size.
      *
      * This function calculates the sizes of the map texture, character view texture, and console view texture
@@ -111,33 +142,73 @@ private:
      */
     void calculateTextureSizes(int x, int y);
 
+    /**
+     * @brief Loads the textures for the map creator interface.
+     */
     void loadTextures();
 
+    /**
+     * @brief Saves the edited map to a file in the Saved Maps directory as a .json file.
+     */
     void saveMapToFile();
 
+    /**
+     * @brief Initializes the sidebar by specifying size and textures.
+     */
     void initSideBar();
 
+    /**
+     * @brief Draws the sidebar.
+     */
     void drawSideBar();
 
+    /**
+     * @brief Asks the use to enter the name and size of the map in order to resize the window and create said map.
+     */
     Position askForSize();
 
+    /**
+     * @brief Initializes the buttons on the screen by specifying their sizes and their textures.
+     */
     void initButtons();
 
+    /**
+     * @brief Draws the buttons on the screen.
+     */
     void drawButtons();
 
+    /**
+     * @brief Assigns the current map a new default one and, detaches the observer from the old map and attaches it to the new one.
+     */
     void clearMap();
 
-    void drawMap();
-
-
-
-    void Run();
-
+    /**
+     * @brief Based a click on the passed mouse position, selects an object from the sidebar.
+     * @param mousePos
+     */
     void selectObjectFromSidebar(const Vector2f &mousePos);
 
+    /**
+     * @brief Places an object on the map based on the passed mouse position, using the method in Map.h.
+     * @param mousePos
+     */
     void placeObjectOnMap(const Vector2f &mousePos);
+
+    /**
+     * @brief Checks where the user clicked on the screen eg. sidebar, map, buttons and calls the appropriate function.
+     * @param mousePos Position of the click
+     */
     void processClickActions(const Vector2f &mousePos);
+
+    /**
+     * @brief closes the window when the user clicks the close button.
+     */
     void handleCloseEvent();
+
+    /**
+     * @brief Checks whether the event on the window was a click.
+     * @param event
+     */
     void handleMouseButtonPressedEvent(const Event &event);
 
 };

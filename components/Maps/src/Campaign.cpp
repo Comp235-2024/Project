@@ -188,15 +188,6 @@ void Campaign::defaultLevel1(){
 void Campaign::defaultLevel2(){
     Map map(20, 20);
 
-
-    // hard enemy
-//    Character enemy1{2};
-//    map.place(enemy1, Position{7, 8});
-//
-//    // easy enemy
-//    Character enemy2{2};
-//        map.place(enemy2, Position{13, 4});
-
     // easy enemy
     Character enemy2{2};
     map.place(enemy2, Position{13, 4});
