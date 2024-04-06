@@ -30,3 +30,11 @@ int main(){
     GameLooptyLoop game(gameSize.x, gameSize.y, "DND");
     return EXIT_SUCCESS;
 }
+void diceLogTest() {
+    LogObserver log = LogObserver("log.txt");
+
+    Dice d;
+    d.attach(&log);
+    Dice::test(d);
+
+}

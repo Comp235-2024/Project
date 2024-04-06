@@ -14,6 +14,7 @@
 #include "State.h"
 #include "sstream"
 #include <iostream>
+#include "CharacterCreator.h"
 using namespace sf;
 
 
@@ -38,6 +39,8 @@ private:
         Text playText;
         RectangleShape editMap;
         Text editMapText;
+        RectangleShape createCharacter;
+        Text createCharacterText;
         RectangleShape editCharacter;
         Text editCharacterText;
         RectangleShape load;

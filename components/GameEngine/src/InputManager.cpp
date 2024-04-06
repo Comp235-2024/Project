@@ -34,3 +34,19 @@ bool InputManager::IsButtonClicked(const RectangleShape &rectangleShape, Mouse::
     }
     return false;
 }
+bool InputManager::IsButtonClicked(const RectangleShape &rectangleShape, Mouse::Button button, RenderWindow &window, const Vector2f &renderTexturePosition) {
+    if (Mouse::isButtonPressed(button)) {
+
+        Vector2i mousePos = Mouse::getPosition(window);
+        Vector2f mousePosFloat = window.mapPixelToCoords(mousePos);
+
+        mousePosFloat.x -= renderTexturePosition.x;
+        mousePosFloat.y -= renderTexturePosition.y;
+        FloatRect buttonGlobalBounds = rectangleShape.getGlobalBounds();
+
+        if (buttonGlobalBounds.contains(mousePosFloat)) {
+            return true;
+        }
+    }
+    return false;
+}

@@ -10,7 +10,7 @@
 #include "../include/LogObserver.h"
 #include <chrono>
 
-LogObserver::LogObserver(const string &filename) : log(filename , std::ios::app) {
+LogObserver::LogObserver(const string &filename) : log(filename , std::ios::out) {
     write("Start logging");
 }
 

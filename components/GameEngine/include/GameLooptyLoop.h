@@ -12,7 +12,9 @@
 
 #include "AssetManager.h"
 #include "Campaign.h"
+#include "Dice.h"
 #include "InputManager.h"
+#include "Player.h"
 #include "SFML/Graphics.hpp"
 #include "State.h"
 #include "StateMachine.h"
@@ -28,6 +30,8 @@ struct MainData{
     LogObserver* log;
     unique_ptr<Campaign> campaign;
     Music music;
+    Dice dice;
+    Character player;
 };
 
 typedef shared_ptr<MainData> MainDataRef;

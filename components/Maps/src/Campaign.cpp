@@ -2,6 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-10.
 //
 #include "Campaign.h"
+#include "NonPlayerCharacter.h"
 #include "Pillar.h"
 #include "fstream"
 #include <algorithm>
@@ -95,6 +96,7 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
+
 //    mike = Character(5);
 //    map.place(mike, Position{0, 0});
 //    mike.textureName = "imp";
@@ -187,23 +189,14 @@ void Campaign::defaultLevel1(){
 void Campaign::defaultLevel2(){
     Map map(20, 20);
 
-    // hard enemy
-//    Character enemy1{2};
-//    map.place(enemy1, Position{7, 8});
-//
-//    // easy enemy
-//    Character enemy2{2};
-//        map.place(enemy2, Position{13, 4});
-
     // easy enemy
-    Character enemy2{2};
+    Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
 
    // map.place(mike, Position{9, 0});
     //mike.textureName = "imp";
 
     map.setStartCell(Position{0, 9});
-
 
     Wall wall;
 
@@ -349,13 +342,16 @@ void Campaign::defaultLevel3() {
         map.place(pillar, Position{15, i});
     }
 
+    //TODO CHANGE TO PLAYER
 //    Character mike{5};
-//
-//    map.place(mike, Position{12, 12});
-//    mike.textureName = "imp";
-//    // boss
-//    Character boss{2};
-//    map.place(boss, Position{9, 9});
+    //Changed this to put it in the Character constructor
+    //mike.textureName = "imp";
+
+    map.place(mike, Position{12, 12});
+
+    //TODO CHANGE TO AN NPC TYPE
+    Ogre boss{};
+    map.place(boss, Position{9, 9});
 
     this->addMap(map);
 
@@ -365,7 +361,7 @@ void Campaign::defaultLevel3() {
 Campaign::Campaign() {
     maps = std::vector<Map>();
     ind = 1;
-    defaultLevel1();
+//    defaultLevel1();
     defaultLevel2();
     defaultLevel3();
     loadMap = true;

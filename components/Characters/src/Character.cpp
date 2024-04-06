@@ -32,6 +32,8 @@ for(int i=0;i<6;i++){
  * @param level The level of the character.
  */
 Character::Character(int level) : level(1), hitPoints(10), attackBonus(0), numberOfAttacks(1) {
+    textureName = "imp";
+
     generateAbilityScores();
     calculateAbilityModifiers();
     calculateHitPoints();

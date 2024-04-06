@@ -46,6 +46,8 @@ public:
      */
     static bool IsButtonClicked(const RectangleShape& rectangleShape, Mouse::Button button, RenderWindow& window);
 
+    static bool IsButtonClicked(const RectangleShape& rectangleShape, Mouse::Button button, RenderWindow& window, const Vector2f &renderTexturePosition);
+
     /**
      * @brief Gets the current mouse position relative to the specified render window.
      * @param window The render window to get the mouse position from.
