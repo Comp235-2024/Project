@@ -7,6 +7,7 @@
 
 #include "MainMenu.h"
 #include "GameScreen.h"
+#include "OptionsScreen.h"
 #include "MapCreator.h"
 
 MainMenu::MainMenu(MainDataRef data) : _data(data) {}
@@ -102,6 +103,7 @@ void MainMenu::HandleInput() {
             this->notify("Switching to load menu", "System");
         } else if (_data->inputs.IsButtonClicked(buttons->options, Mouse::Left, _data->window)) {
             this->notify("Switching to options menu", "System");
+            _data->stateMachine.AddState(StateRef(new OptionsScreen(_data)), false, _data->log);
         } else if (_data->inputs.IsButtonClicked(buttons->quit, Mouse::Left, _data->window)) {
             this->notify("Quitting game", "System");
             _data->window.close();

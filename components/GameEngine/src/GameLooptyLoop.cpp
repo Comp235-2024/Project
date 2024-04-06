@@ -46,9 +46,21 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
         _data->assets.attach(_data->log);
         _data->stateMachine.attach(_data->log);
         _data->stateMachine.AddState(StateRef(new WelcomeScreen(_data)), false, _data->log);
-    } else {
+    }
+    else {
         _data->stateMachine.AddState(StateRef(new WelcomeScreen(_data)), false);
     }
+
+    if (!_data->music.openFromFile(MUSIC1_PATH))
+    {
+        cerr << "Error while loading background music file" << endl;
+    }
+    else {
+        _data->music.setVolume(DEFAULT_MUSIC_VOL);
+        _data->music.setLoop(true);
+        _data->music.play();
+    }
+
     if (_data->log->enabledModules.dice) {
         _data->dice.attach(_data->log);
     }

@@ -20,7 +20,8 @@
 #include "StateMachine.h"
 #include <memory>
 #include <string>
-
+#include <SFML/Audio.hpp>
+#include <SFML/Audio/Music.hpp>
 struct MainData{
     StateMachine stateMachine;
     RenderWindow window;
@@ -28,6 +29,7 @@ struct MainData{
     InputManager inputs;
     LogObserver* log;
     unique_ptr<Campaign> campaign;
+    Music music;
     Dice dice;
     Character player;
 };
@@ -49,7 +51,6 @@ private:
     const float deltaTime = 1.0f / 60.0f;
     Clock _clock;
     MainDataRef _data = make_shared<MainData>();
-
     /**
      * @brief Runs the game loop.
      * 

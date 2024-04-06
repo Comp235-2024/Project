@@ -41,7 +41,9 @@ file(GLOB_RECURSE SOURCES
 
 
 # Define the executable
-add_executable(Project ${SOURCES})
+add_executable(Project ${SOURCES}
+        components/GameEngine/src/OptionsScreen.cpp
+        components/GameEngine/include/OptionsScreen.h)
 
 # Link the executable with the SFML and JSON libraries
 target_link_libraries(Project PRIVATE sfml-graphics sfml-audio nlohmann_json::nlohmann_json)
