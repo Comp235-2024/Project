@@ -33,7 +33,7 @@ void GameScreen::Init() {
 
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
-        _campaign.mike = Character(5, "pumpkin_dude");
+        _campaign.mike = Character(5, "knight");
     }
     _currentMap->place(_campaign.mike, start);
     _campaign.mike.position = start;
