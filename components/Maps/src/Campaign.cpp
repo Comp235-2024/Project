@@ -2,6 +2,7 @@
 // Created by Khalil Azaiez on 2024-03-10.
 //
 #include "Campaign.h"
+#include "NonPlayerCharacter.h"
 #include "Pillar.h"
 #include "fstream"
 #include <algorithm>
@@ -198,7 +199,7 @@ void Campaign::defaultLevel2(){
 //        map.place(enemy2, Position{13, 4});
 
     // easy enemy
-    Character enemy2{2};
+    Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
 
    // map.place(mike, Position{9, 0});
@@ -351,14 +352,14 @@ void Campaign::defaultLevel3() {
     }
 
     //TODO CHANGE TO PLAYER
-    Character mike{5};
+//    Character mike{5};
     //Changed this to put it in the Character constructor
     //mike.textureName = "imp";
 
     map.place(mike, Position{12, 12});
 
     //TODO CHANGE TO AN NPC TYPE
-    Character boss{2};
+    Ogre boss{};
     map.place(boss, Position{9, 9});
 
     this->addMap(map);

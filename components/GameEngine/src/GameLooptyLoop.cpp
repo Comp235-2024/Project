@@ -49,6 +49,9 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     } else {
         _data->stateMachine.AddState(StateRef(new WelcomeScreen(_data)), false);
     }
+    if (_data->log->enabledModules.dice) {
+        _data->dice.attach(_data->log);
+    }
 
     Run();
 }

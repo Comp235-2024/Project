@@ -35,7 +35,7 @@ void MapObserver::updateMapOnly(RenderTexture *_window) {
 
 MapObserver::MapObserver(shared_ptr<Map> map, sf::RenderTexture *window, MainDataRef data) : grid(map), window(window), window_size_x(window->getSize().x), window_size_y(window->getSize().y), _data(data) {
     grid->attach(this);
-    this->SIZE_MULT = (float) window_size_x / grid->getSizeX();
+    this->SIZE_MULT = (float) window->getSize().x / grid->getSizeX();
     generateFloorTextureHashMap();
 }
 
@@ -264,6 +264,10 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
         if (!grid->isInBounds(currentPos) || currentSteps > steps) continue;
 
         auto cell = grid->getGrid()[currentPos.y][currentPos.x];
+        if (dynamic_cast<NonPlayerCharacter*>(cell.get())) {
+            drawBorderAroundCell(currentPos, Color::Red, _window);
+            continue;
+        }
         if (cell.get() == nullptr || dynamic_cast<Character*>(cell.get())) {
             drawBorderAroundCell(currentPos, color, _window);
 

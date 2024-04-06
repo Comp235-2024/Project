@@ -46,7 +46,7 @@ public:
 
 class Ogre : public NonPlayerCharacter{
 public:
-    std::string textureName = "Ogre";
+    std::string textureName = "ogre";
 
     Ogre()=default;
     ~Ogre() override =default;
