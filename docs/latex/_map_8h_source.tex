@@ -1,0 +1,235 @@
+\doxysection{Map.\+h}
+\hypertarget{_map_8h_source}{}\label{_map_8h_source}\index{components/Maps/include/Map.h@{components/Maps/include/Map.h}}
+\mbox{\hyperlink{_map_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ A3\_MAP\_H}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ A3\_MAP\_H}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_character_8h}{../../Characters/include/Character.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{../../Items/include/Item.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}../../ItemContainers/include/TreasureChest.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}../../ItemContainers/include/ItemContainer.h"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}../../Items/include/Movable.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}Door.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}Observable.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}Pillar.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}Position.h"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <strstream>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_map_8h_aa4c381b31c9528f45a77b40a4f7639bc}{Cell}}\ =\ std::shared\_ptr<Movable>;}
+\DoxyCodeLine{00045\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_map_8h_a5769460e932913b4b91e2f0dc9996a89}{Row}}\ =\ std::vector<Cell>;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}}\ =\ std::vector<Row>;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map}{Map}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_observable}{Observable}}\ \{}
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\_x}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\_y}});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ other);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_map_af19b58ddac9be188873d8e24133dd95b}{Map}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ other);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_ab29fa78eab1ec17bb1a679ce709ff5df}{setSizeX}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\_x}});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a029d08333409582b16f1d8a280c20d70}{getSizeX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a6770664caffcea9a86674f9d12c44d45}{setSizeY}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\_y}});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_ae2afa547489749ea7c483685283f26d0}{getSizeY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_af8750c88fc95140e8a55c3435d67c1f2}{setGrid}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}}\&\ \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}});}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}}\ \mbox{\hyperlink{class_map_adcd58ec88c474db17dbb177915ac747b}{getGrid}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a7a73b479f1745e958d832180c450af2e}{setRow}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_map_8h_a5769460e932913b4b91e2f0dc9996a89}{Row}}\&\ row,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a99b8363c8d6d2a4f93296a9876d65f0a}{setStartCell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ \mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{startCell}});}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a99b8363c8d6d2a4f93296a9876d65f0a}{setStartCell}}(\textcolor{keyword}{const}\ sf::Vector2i\&\ \mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{startCell}})\{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_a99b8363c8d6d2a4f93296a9876d65f0a}{setStartCell}}(\mbox{\hyperlink{struct_position}{Position}}(\mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{startCell}}));}
+\DoxyCodeLine{00147\ \ \ \ \ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}\ \mbox{\hyperlink{class_map_a20a323aff50bce9bae9dc2bc3bfe28d1}{getStartCell}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a183491dcadedcb55268f613af3747aab}{setEndCell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ endCell);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a183491dcadedcb55268f613af3747aab}{setEndCell}}(\textcolor{keyword}{const}\ sf::Vector2i\&\ endCell)\{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_a183491dcadedcb55268f613af3747aab}{setEndCell}}(\mbox{\hyperlink{struct_position}{Position}}(endCell));}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}\ \mbox{\hyperlink{class_map_aa6f6641f640b34fda1d12e486bce8499}{getEndCell}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_map_acc786779458400a075f74bd0edc355d1}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a830a96fc12056dcb076200b139adc7de}{setName}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_map_a8ef4167655c9bc62b7b1c9a28c4467f8}{name}});}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}}\&\ \mbox{\hyperlink{class_map_a1d52a71a8ecae8039d879888cb36b2b4}{getMap}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ THIS\ METHOD\ FOR\ CHARACTER\ TO\ KNOW\ WHO\ IS\ AROUND\ THEM}}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}**\ getAroundACharacter(\mbox{\hyperlink{class_character}{Character}}\ \&character);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_abe7c103671ba1ad802b29b80d2435ac6}{validateMap}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a6071e01439c1b98ceae86e4c58c49e80}{place}}(\textcolor{keyword}{const}\ T\ \&obj,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\ \&pos)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(pos))\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}}[pos.\mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}}][pos.\mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}]\ =\ make\_shared<T>(std::move(obj));}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}}();}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a6071e01439c1b98ceae86e4c58c49e80}{place}}(\textcolor{keyword}{const}\ shared\_ptr<T>\ \&obj,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\ \&pos)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(pos))\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}}[pos.\mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}}][pos.\mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}]\ =\ obj;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}}();}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a6071e01439c1b98ceae86e4c58c49e80}{place}}(\textcolor{keyword}{const}\ T\&\ obj,\ \textcolor{keyword}{const}\ sf::Vector2i\&\ position)\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_map_a6071e01439c1b98ceae86e4c58c49e80}{place}}(obj,\ \mbox{\hyperlink{struct_position}{Position}}(position));}
+\DoxyCodeLine{00228\ \ \ \ \ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a031ba6796aa440f43d4fc7e100e9e7e2}{remove}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ position);}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a031ba6796aa440f43d4fc7e100e9e7e2}{remove}}(\textcolor{keyword}{const}\ sf::Vector2i\&\ position)\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_map_a031ba6796aa440f43d4fc7e100e9e7e2}{remove}}(\mbox{\hyperlink{struct_position}{Position}}(position));}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_af9b547126251261f2902a0c41f2c40c4}{move}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ pos\_start,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ pos\_end);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_af9b547126251261f2902a0c41f2c40c4}{move}}(\textcolor{keyword}{const}\ sf::Vector2i\&\_pos\_start,\ \textcolor{keyword}{const}\ sf::Vector2i\&\_pos\_end)\{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_map_af9b547126251261f2902a0c41f2c40c4}{move}}(\mbox{\hyperlink{struct_position}{Position}}(\_pos\_start),\ \mbox{\hyperlink{struct_position}{Position}}(\_pos\_end));}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2}{getDistance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ pos\_start,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ pos\_end)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2}{getDistance}}(\textcolor{keyword}{const}\ sf::Vector2i\&\ pos\_start,\ \textcolor{keyword}{const}\ sf::Vector2i\&\ pos\_end)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2}{getDistance}}(\mbox{\hyperlink{struct_position}{Position}}(pos\_start),\ \mbox{\hyperlink{struct_position}{Position}}(pos\_end));}
+\DoxyCodeLine{00263\ \ \ \ \ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(\textcolor{keyword}{const}\ sf::Vector2i\ pos)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(\mbox{\hyperlink{struct_position}{Position}}(pos));}
+\DoxyCodeLine{00274\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ std::vector<Position>\ \mbox{\hyperlink{class_map_a1c7c8be8b581f707488ad8ba55e5a242}{findPath}}(\mbox{\hyperlink{struct_position}{Position}}\ start,\ \mbox{\hyperlink{struct_position}{Position}}\ end)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a555a8ecea4a0354e85b3807299697065}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a8ceed0e583aa5a9abf99ec3a0490a583}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a8b58af7d2985314254362d878ce6bfc7}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a21cf420c82ec625208d84fa6361ce7aa}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_af344bd0e92b995b351c5ecd907295393}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a11823708c63929b67a30fc9c2b2b665e}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{class_map_ad10367369e5767b30d792da3fbe4ebd5}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}\ \mbox{\hyperlink{class_map_a888b62928b147951b781ca390ae821a8}{getRandomCell}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \ \ \ \ ostream\&\ displayRevMap(ostream\&\ os)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_a10a4e88c5ec44666672e1d6ff934ccbe}{mapBuilderTest}}();}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keywordtype}{bool}\ specialPlace(\textcolor{keyword}{const}\ T\ \&obj,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\ \&pos)\ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{checkEmpty}}(pos))\ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}}[pos.\mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}}][pos.\mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}]\ =\ make\_shared<T>(std::move(obj));}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00350\ \ \ \ \ \}}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{bool}\ specialMove(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\ \&pos\_start,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\ \&pos\_end);}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInBounds(\textcolor{keyword}{const}\ sf::Vector2i\ \&pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_map_a8ef4167655c9bc62b7b1c9a28c4467f8}{name}};}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{comment}{//Removed\ const}}
+\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\_x}};}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{comment}{//Removed\ const}}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\_y}};}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00378\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}\ \mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{startCell}}\{\},\ endCell\{\};}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{comment}{//Made\ grid\ a\ private\ member}}
+\DoxyCodeLine{00384\ \ \ \ \ \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}}\ \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}};}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_afc194e8837354969f29117b4c107c9fb}{map\_test}}();}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \};}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00400\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map_builder}{MapBuilder}}\ \{}
+\DoxyCodeLine{00401\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_builder_aba373ce590afbb936ff83c54d5516708}{buildGrid}}()\ =\ 0;}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{comment}{//TODO\ virtual\ void\ placeCharacter()=0;}}
+\DoxyCodeLine{00409\ \ \ \ \ \};}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00415\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_default_map_builder}{DefaultMapBuilder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_map_builder}{MapBuilder}}\ \{}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00420\ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\ \mbox{\hyperlink{class_default_map_builder_a283d09bbf2bc6786317f031b23fd4077}{map}};}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_default_map_builder_a7f6a80b7a9a1d95acfdebdc71c3181c2}{buildGrid}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\ \mbox{\hyperlink{class_default_map_builder_a04d83ce94f066c2f1f50924544639b33}{getMap}}();}
+\DoxyCodeLine{00434\ \};}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00439\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_saved_map_builder_from_string_representation}{SavedMapBuilderFromStringRepresentation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_map_builder}{MapBuilder}}\ \{}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00444\ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a2e0675570fa8b957b8626639dcb29ff9}{map}};}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a17aa528dd0c36e3c18a2dfdb00cd012e}{chooseMap}}();}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_ac962e779a424151518a2f133815800b6}{buildGrid}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_map_8h_a5769460e932913b4b91e2f0dc9996a89}{Row}}\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a6d5c18cd7a0cb5bdf89e818753954f53}{parseGrid}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a2e0675570fa8b957b8626639dcb29ff9}{line}},\ \mbox{\hyperlink{class_map}{Map}}\&\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a2e0675570fa8b957b8626639dcb29ff9}{map}},\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\ \mbox{\hyperlink{class_saved_map_builder_from_string_representation_a61a321f12dd55d8fd8b75f6017b68071}{getMap}}();}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \};}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00481\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map_director}{MapDirector}}\{}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_director_a18483c41f45437d7471f1dfb111eed2f}{constructSavedMap}}(\mbox{\hyperlink{class_map_builder}{MapBuilder}}\&\ builder);}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_director_a41eb3a4a65a2ae0d410635befdd0e3af}{constructDefaultMap}}(\mbox{\hyperlink{class_map_builder}{MapBuilder}}\&\ builder);}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ \};}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

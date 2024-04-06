@@ -1,0 +1,43 @@
+\doxysection{State\+Machine.\+h}
+\hypertarget{_state_machine_8h_source}{}\label{_state_machine_8h_source}\index{components/GameEngine/include/StateMachine.h@{components/GameEngine/include/StateMachine.h}}
+\mbox{\hyperlink{_state_machine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A2\_STATEMACHINE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A2\_STATEMACHINE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observable_8h}{../../Log/include/LogObservable.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ unique\_ptr<State>\ StateRef;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state_machine}{StateMachine}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}\{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_state_machine_aa0cc151d06adbff09aaabe7fee51d862}{StateMachine}}()=\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_state_machine_ad1d3f6b69f8b36b0fd6a49443b22dd94}{\string~StateMachine}}()\ \textcolor{keyword}{override}=\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_machine_a3ba9ce4cc1b3b4b6000b64548904914c}{AddState}}(StateRef\ newState,\ \textcolor{keywordtype}{bool}\ isReplacing\ =\ \textcolor{keyword}{true},\ \mbox{\hyperlink{class_log_observer}{LogObserver}}\ *log\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_machine_aebefd3cef7db9e011e15f423061d1afc}{RemoveState}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_machine_ac5db136671d23fe23d0e1f22d77e3e67}{ProcessStateChanges}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ StateRef\ \&\mbox{\hyperlink{class_state_machine_a8ae5f91aa501e0fa07478d087814906e}{GetActiveState}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ stack<StateRef>\ \mbox{\hyperlink{class_state_machine_ad9e8b3d5a8d73d5b91c90846d98d2bc5}{\_states}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ StateRef\ \mbox{\hyperlink{class_state_machine_afb35f1067482fc3c0a3db16ac94ab60e}{\_newState}};\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_state_machine_a08cb3324baf98cd027565aaee67ab016}{\_isRemoving}}\{\};\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_state_machine_a806fb4068124f055f628e3563b4ca9b1}{\_isAdding}}\{\};\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_state_machine_abb01bcc9617e9978db7afc34e03ba8d8}{\_isReplacing}}\{\};\ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A2\_STATEMACHINE\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,60 @@
+\doxysection{Dice.\+h}
+\hypertarget{_dice_8h_source}{}\label{_dice_8h_source}\index{components/Functionalities/include/Dice.h@{components/Functionalities/include/Dice.h}}
+\mbox{\hyperlink{_dice_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifndef\ A3\_DICE\_H}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ A3\_DICE\_H}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observable_8h}{../../Log/include/LogObservable.h}}"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dice}{Dice}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//class\ Dice}}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_aacb88fcd837a117bb0c4db461fc94e1d}{number}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a2d7bc2cfe7b0c96d15974500d266f8ff}{kind}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a16a2a8de77a68bd9b67e9fcbe93f73cb}{addedValue}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_dice_a6b9eadd945ad8fd3840379c8824e5d48}{Dice}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_dice_a48e90392d2ff1e6736c88f22e8a87751}{\string~Dice}}()\{\};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_ac23d9322adbcaf18f0a3c4ba29d21aa4}{getNumber}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a60826424e0841cba3ffbc93ba08f94ad}{getKind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a898ffcc9376eb482a2af9041c0b654fb}{getAddedValue}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_a918d6953c8d622546f8703735147fda9}{setNumber}}(\textcolor{keywordtype}{int}\ \_number);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_ab64aa8ebfa909dc59e827770843e4262}{setKind}}(\textcolor{keywordtype}{int}\ \_kind);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_a916d9bb78896ed3e53dee7e0233a2743}{setAddedValue}}(\textcolor{keywordtype}{int}\ \_addedValue);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a8dca70574a5a71ef9c0c67a590404c8f}{convert}}(\textcolor{keywordtype}{string}\ str);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a9a2d5bbefd49741f0eaf2e83d8885a11}{generateNumber}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_a1d910412a8de7e5dc92790193bb85cb6}{parse}}(\textcolor{keywordtype}{string}\ rex);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_aa09f1850d597777c08e67cd0d9305244}{roll}}(\textcolor{keywordtype}{string}\ rex);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_dice_aa9c31e56111d6474cf489591db359acb}{checkKindOfDice}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_ac2f439b641b04804265b30c25fe2cc20}{test}}(\mbox{\hyperlink{class_dice}{Dice}}\ d);}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_a593bcdb69288dcb35d967707cdf40ebd}{roll4d6DropLowest}}();}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+\doxysection{Observer Class Reference}
+\hypertarget{class_observer}{}\label{class_observer}\index{Observer@{Observer}}
+
+
+The \doxylink{class_observer}{Observer} class is an abstract base class that defines the interface for observers.  
+
+
+
+
+{\ttfamily \#include $<$Observer.\+h$>$}
+
+
+
+Inheritance diagram for Observer\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_observer_a450645e61c136826f09940a1334c7f34}\label{class_observer_a450645e61c136826f09940a1334c7f34} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em This method is called by the subject to notify the observer of a state change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_observer_a19c43f80a38a332a6f694783df3c9835}\label{class_observer_a19c43f80a38a332a6f694783df3c9835} 
+{\bfseries Observer} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_observer}{Observer} class is an abstract base class that defines the interface for observers. 
+
+Observers are used in the \doxylink{class_observer}{Observer} design pattern to receive updates from a subject when its state changes. Any class that wants to be an observer should inherit from this class and implement the \doxylink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{update()} method. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}\label{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215} 
+\index{Observer@{Observer}!update@{update}}
+\index{update@{update}!Observer@{Observer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Observer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This method is called by the subject to notify the observer of a state change. 
+
+The observer should implement this method to perform any necessary actions when it receives an update. 
+
+Implemented in \mbox{\hyperlink{class_character_observer_a942b2ceca8c3b9997b7cb72b1894b6e8}{Character\+Observer}}, \mbox{\hyperlink{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a}{Log\+Observer}}, and \mbox{\hyperlink{class_map_observer_a8a3016364d12b7c647e35bb1f04bf4a2}{Map\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Log/include/\mbox{\hyperlink{_observer_8h}{Observer.\+h}}\item 
+components/\+Log/src/\mbox{\hyperlink{_observer_8cpp}{Observer.\+cpp}}\end{DoxyCompactItemize}

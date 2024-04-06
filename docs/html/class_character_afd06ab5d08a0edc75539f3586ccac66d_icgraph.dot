@@ -1,0 +1,19 @@
+digraph "Character::setHealth"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Character::setHealth",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="NonPlayerAggressorStrategy\l::attack",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_non_player_aggressor_strategy.html#ad2e7c45f9b31c30ff5a170a34fa928dc",tooltip="method that attacks the player if in range"];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="NonPlayerAggressorStrategy\l::play",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_non_player_aggressor_strategy.html#a3b1902a785f42d4f0926e2da6e270a3e",tooltip="method that plays the npc's turn depending on its strategy"];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="NonPlayerFriendlyStrategy\l::attack",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_non_player_friendly_strategy.html#af1341ac70cee3ad690fce32cd0723a04",tooltip="method that attacks the player if in range"];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="NonPlayerFriendlyStrategy\l::play",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_non_player_friendly_strategy.html#a8fd915ad9af156309e3babc9a2b85b95",tooltip="method that plays the npc's turn depending on its strategy"];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="HumanPlayerStrategy\l::attack",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_human_player_strategy.html#a28bb22557f3a90643955784b22e6b521",tooltip="method that attacks the npc"];
+}

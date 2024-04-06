@@ -1,0 +1,37 @@
+\doxysection{Position.\+h}
+\hypertarget{_position_8h_source}{}\label{_position_8h_source}\index{components/Maps/include/Position.h@{components/Maps/include/Position.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ ricka\ on\ 2024-\/03-\/18.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ A3\_POSITION\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ A3\_POSITION\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_position}{Position}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}\{\},\ \mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}}\{\};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_position_aa335200cd70b67078a12e3c153b7535b}{checkValidity}}(\textcolor{keywordtype}{int}\ max\_x,\ \textcolor{keywordtype}{int}\ max\_y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_position_a369a577425f8ba02e8750d04b6a088db}{Position}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}});}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_position_a369a577425f8ba02e8750d04b6a088db}{Position}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{struct_position_a369a577425f8ba02e8750d04b6a088db}{Position}}(sf::Vector2i\ vector)\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}\ =\ vector.x;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}}\ =\ vector.y;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_position}{Position}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ other);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_position}{Position}}\&\ position);}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A3\_POSITION\_H}}
+
+\end{DoxyCode}

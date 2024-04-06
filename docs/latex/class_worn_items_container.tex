@@ -1,0 +1,422 @@
+\doxysection{Worn\+Items\+Container Class Reference}
+\hypertarget{class_worn_items_container}{}\label{class_worn_items_container}\index{WornItemsContainer@{WornItemsContainer}}
+
+
+Class for \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects which may hold \doxylink{class_item}{Item} objects.  
+
+
+
+
+{\ttfamily \#include $<$Worn\+Items.\+h$>$}
+
+
+
+Inheritance diagram for Worn\+Items\+Container\+:
+% FIG 0
+
+
+Collaboration diagram for Worn\+Items\+Container\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{Worn\+Items\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_worn_items_container_aa9d96734545044e446817be11bb9a1b4}{Worn\+Items\+Container}} (int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_worn_items_container_a0da999bf9148b28bb7835a859ba5ff73}{Worn\+Items\+Container}} (int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}}, int \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_worn_items_container_a4b8565c34030ae124dd46274a2a8162b}{Worn\+Items\+Container}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}, int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}}, int \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_worn_items_container_a4274281390f26cec9e4b891047614e12}{Worn\+Items\+Container}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}, int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_worn_items_container_abb2f8879ff61f1041c74cf622db85dc4}\label{class_worn_items_container_abb2f8879ff61f1041c74cf622db85dc4} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Worn\+Items\+Container} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_worn_items_container_a4f2866a7a4b440f25a1f017074af380e}{get\+Worn\+Items\+Container\+Storage}} () const
+\begin{DoxyCompactList}\small\item\em Method to get the vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_worn_items_container_a72233ed948e742df2948fc9662caf060}{get\+Item}} (int index) const
+\begin{DoxyCompactList}\small\item\em Method to get an \doxylink{class_item}{Item} object from the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_worn_items_container_add38998b5b3900567fcab4a75d0bfd89}{get\+Item\+Index}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) const
+\begin{DoxyCompactList}\small\item\em Method to get the index of an \doxylink{class_item}{Item} object in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_worn_items_container_adf636df6f1721235a33b7d36078133b6}{add\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) override
+\begin{DoxyCompactList}\small\item\em Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_worn_items_container_afd49727256a5cf40bdc9ea9c8cb0236f}{remove\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) override
+\begin{DoxyCompactList}\small\item\em Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_worn_items_container_a419c854eb6a9c793c32158329618e017}{is\+Found}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) const override
+\begin{DoxyCompactList}\small\item\em Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_worn_items_container_a245fe345a6f8fc304ed3b36e0cf0d8d0}{print\+Items}} () const override
+\begin{DoxyCompactList}\small\item\em Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_worn_items_container_a5fb8548ebd6727594bb7f6a059ca1747}{print\+Sorted\+Items\+By\+Type}} (string type) const
+\begin{DoxyCompactList}\small\item\em Method that prints only the items in the \doxylink{class_worn_items_container}{Worn\+Items\+Container} from a specific type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_worn_items_container_a298c77fd491fb6cc4cc19895b1ca4ca4}{print\+Sorted\+Items\+By\+Name}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}) const
+\begin{DoxyCompactList}\small\item\em Method that prints only the items in the \doxylink{class_worn_items_container}{Worn\+Items\+Container} with a specific name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_item_container_a3ce79c8b4501fafc5ea369ef3b3c1bce}{Item\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+{\bfseries Item\+Container} (const \mbox{\hyperlink{class_item_container}{Item\+Container}} \&other)
+\item 
+\mbox{\hyperlink{class_item_container_aa5dc785d39ce72f3f4acebb112de18ca}{\texorpdfstring{$\sim$}{\string~}\+Item\+Container}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a38b9ae46b15636f5c6f9dd698afcb127}{is\+Full}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is full. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a6678de7feebddb9fa02b4b4e1d314832}{is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a2a90050c812ac3d9803287048a157084}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the Size attribute of the object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a36228ffa2b6b87e6491f45a736cd3557}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get the Capacity attribute of the object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_container_ae799330f7e9a4608d928e0f0d221d126}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name attribute of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_container_a0be2dfecbbe03b6840f5bbded7e7dbfc}{set\+Name}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name attribute of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_worn_items_container_adc01d65201eb30b97ed0fade237fb8a6}\label{class_worn_items_container_adc01d65201eb30b97ed0fade237fb8a6} 
+static void {\bfseries print\+Worn\+Items\+Container} ()
+\begin{DoxyCompactList}\small\item\em Method to print all the content of a \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_worn_items_container_ae15d7323dfc6ff6366fb9face6f599b1}{get\+Nb\+Worn\+Items\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Method to get the number of \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_worn_items_container_ac39367d8edb41d6943538ec60ea8d10b}\label{class_worn_items_container_ac39367d8edb41d6943538ec60ea8d10b} 
+vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries Worn\+Items\+Container\+Storage}
+\begin{DoxyCompactList}\small\item\em Vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_worn_items_container_ad6e4a0533692bce2ec67e6894a9a8d64}{nb\+Worn\+Items\+Container}} = 0
+\begin{DoxyCompactList}\small\item\em Static variable to keep track of the number of \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries texture\+Name} = "{}crate"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em The number of objects that the current \doxylink{class_item_container}{Item\+Container} object is holding. \end{DoxyCompactList}\item 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em The maximum number of objects that the current \doxylink{class_item_container}{Item\+Container} object can hold. \end{DoxyCompactList}\item 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em The name of the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects which may hold \doxylink{class_item}{Item} objects. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}\label{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37} 
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{WornItemsContainer()}{WornItemsContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily Worn\+Items\+Container\+::\+Worn\+Items\+Container (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Construct a new Worn Items Container\+:\+: Worn Items Container object with null values. \Hypertarget{class_worn_items_container_aa9d96734545044e446817be11bb9a1b4}\label{class_worn_items_container_aa9d96734545044e446817be11bb9a1b4} 
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{WornItemsContainer()}{WornItemsContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily Worn\+Items\+Container\+::\+Worn\+Items\+Container (\begin{DoxyParamCaption}\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Construct a new Worn Items Container\+:\+: Worn Items Container object with a given capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_worn_items_container_a0da999bf9148b28bb7835a859ba5ff73}\label{class_worn_items_container_a0da999bf9148b28bb7835a859ba5ff73} 
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{WornItemsContainer()}{WornItemsContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily Worn\+Items\+Container\+::\+Worn\+Items\+Container (\begin{DoxyParamCaption}\item[{int}]{capacity,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Construct a new Worn Items Container\+:\+: Worn Items Container object with a given capacity and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_worn_items_container_a4b8565c34030ae124dd46274a2a8162b}\label{class_worn_items_container_a4b8565c34030ae124dd46274a2a8162b} 
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{WornItemsContainer()}{WornItemsContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily Worn\+Items\+Container\+::\+Worn\+Items\+Container (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{capacity,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Construct a new Worn Items Container\+:\+: Worn Items Container object with a given name, capacity and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em capacity} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_worn_items_container_a4274281390f26cec9e4b891047614e12}\label{class_worn_items_container_a4274281390f26cec9e4b891047614e12} 
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\index{WornItemsContainer@{WornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{WornItemsContainer()}{WornItemsContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily Worn\+Items\+Container\+::\+Worn\+Items\+Container (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Construct a new Worn Items Container\+:\+: Worn Items Container object with a given name and capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em capacity} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_worn_items_container_adf636df6f1721235a33b7d36078133b6}\label{class_worn_items_container_adf636df6f1721235a33b7d36078133b6} 
+\index{WornItemsContainer@{WornItemsContainer}!addItem@{addItem}}
+\index{addItem@{addItem}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily void Worn\+Items\+Container\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Adds an item to the worn items container.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_item_container_a583a85144d7ee8be190ae6c114a208fc}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_worn_items_container_a72233ed948e742df2948fc9662caf060}\label{class_worn_items_container_a72233ed948e742df2948fc9662caf060} 
+\index{WornItemsContainer@{WornItemsContainer}!getItem@{getItem}}
+\index{getItem@{getItem}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{getItem()}{getItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} Worn\+Items\+Container\+::get\+Item (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Method to get an \doxylink{class_item}{Item} object from the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_worn_items_container_add38998b5b3900567fcab4a75d0bfd89}\label{class_worn_items_container_add38998b5b3900567fcab4a75d0bfd89} 
+\index{WornItemsContainer@{WornItemsContainer}!getItemIndex@{getItemIndex}}
+\index{getItemIndex@{getItemIndex}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{getItemIndex()}{getItemIndex()}}
+{\footnotesize\ttfamily int Worn\+Items\+Container\+::get\+Item\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption}) const}
+
+
+
+Method to get the index of an \doxylink{class_item}{Item} object in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_worn_items_container_ae15d7323dfc6ff6366fb9face6f599b1}\label{class_worn_items_container_ae15d7323dfc6ff6366fb9face6f599b1} 
+\index{WornItemsContainer@{WornItemsContainer}!getNbWornItemsContainer@{getNbWornItemsContainer}}
+\index{getNbWornItemsContainer@{getNbWornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{getNbWornItemsContainer()}{getNbWornItemsContainer()}}
+{\footnotesize\ttfamily int Worn\+Items\+Container\+::get\+Nb\+Worn\+Items\+Container (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method to get the number of \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects created. 
+
+Returns the number of worn items containers.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{class_worn_items_container_a4f2866a7a4b440f25a1f017074af380e}\label{class_worn_items_container_a4f2866a7a4b440f25a1f017074af380e} 
+\index{WornItemsContainer@{WornItemsContainer}!getWornItemsContainerStorage@{getWornItemsContainerStorage}}
+\index{getWornItemsContainerStorage@{getWornItemsContainerStorage}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{getWornItemsContainerStorage()}{getWornItemsContainerStorage()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ Worn\+Items\+Container\+::get\+Worn\+Items\+Container\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method to get the vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_worn_items_container_a419c854eb6a9c793c32158329618e017}\label{class_worn_items_container_a419c854eb6a9c793c32158329618e017} 
+\index{WornItemsContainer@{WornItemsContainer}!isFound@{isFound}}
+\index{isFound@{isFound}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{isFound()}{isFound()}}
+{\footnotesize\ttfamily bool Worn\+Items\+Container\+::is\+Found (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Returns whether an item is found in the worn items container.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_item_container_ae6a28c8d248d07d603c44d2000cf1044}{Item\+Container}}.
+
+\Hypertarget{class_worn_items_container_a245fe345a6f8fc304ed3b36e0cf0d8d0}\label{class_worn_items_container_a245fe345a6f8fc304ed3b36e0cf0d8d0} 
+\index{WornItemsContainer@{WornItemsContainer}!printItems@{printItems}}
+\index{printItems@{printItems}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{printItems()}{printItems()}}
+{\footnotesize\ttfamily void Worn\+Items\+Container\+::print\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Prints the items in the worn items container. 
+
+Implements \mbox{\hyperlink{class_item_container_a9be1857264e5f4a07bc129eacdf401bf}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_worn_items_container_a298c77fd491fb6cc4cc19895b1ca4ca4}\label{class_worn_items_container_a298c77fd491fb6cc4cc19895b1ca4ca4} 
+\index{WornItemsContainer@{WornItemsContainer}!printSortedItemsByName@{printSortedItemsByName}}
+\index{printSortedItemsByName@{printSortedItemsByName}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{printSortedItemsByName()}{printSortedItemsByName()}}
+{\footnotesize\ttfamily void Worn\+Items\+Container\+::print\+Sorted\+Items\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Method that prints only the items in the \doxylink{class_worn_items_container}{Worn\+Items\+Container} with a specific name. 
+
+Only Prints the items in the worn items container with a given name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+\Hypertarget{class_worn_items_container_a5fb8548ebd6727594bb7f6a059ca1747}\label{class_worn_items_container_a5fb8548ebd6727594bb7f6a059ca1747} 
+\index{WornItemsContainer@{WornItemsContainer}!printSortedItemsByType@{printSortedItemsByType}}
+\index{printSortedItemsByType@{printSortedItemsByType}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{printSortedItemsByType()}{printSortedItemsByType()}}
+{\footnotesize\ttfamily void Worn\+Items\+Container\+::print\+Sorted\+Items\+By\+Type (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption}) const}
+
+
+
+Method that prints only the items in the \doxylink{class_worn_items_container}{Worn\+Items\+Container} from a specific type. 
+
+Only Prints the items in the worn items container from a given type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 9
+\Hypertarget{class_worn_items_container_afd49727256a5cf40bdc9ea9c8cb0236f}\label{class_worn_items_container_afd49727256a5cf40bdc9ea9c8cb0236f} 
+\index{WornItemsContainer@{WornItemsContainer}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily void Worn\+Items\+Container\+::remove\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_worn_items_container}{Worn\+Items\+Container} object. 
+
+Removes an item from the worn items container.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_item_container_aed07c123252180bdc32dacd6da4fd766}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_worn_items_container_ad6e4a0533692bce2ec67e6894a9a8d64}\label{class_worn_items_container_ad6e4a0533692bce2ec67e6894a9a8d64} 
+\index{WornItemsContainer@{WornItemsContainer}!nbWornItemsContainer@{nbWornItemsContainer}}
+\index{nbWornItemsContainer@{nbWornItemsContainer}!WornItemsContainer@{WornItemsContainer}}
+\doxysubsubsection{\texorpdfstring{nbWornItemsContainer}{nbWornItemsContainer}}
+{\footnotesize\ttfamily int Worn\+Items\+Container\+::nb\+Worn\+Items\+Container = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static variable to keep track of the number of \doxylink{class_worn_items_container}{Worn\+Items\+Container} objects created. 
+
+Initializes the number of worn items containers to 0. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Item\+Containers/include/Worn\+Items.\+h\item 
+components/\+Item\+Containers/src/Worn\+Items.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,66 @@
+\doxysection{Map\+Director Class Reference}
+\hypertarget{class_map_director}{}\label{class_map_director}\index{MapDirector@{MapDirector}}
+
+
+\doxylink{class_map_director}{Map\+Director} class to use the implemented Builder Pattern to build specific Maps.  
+
+
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_map_director_a18483c41f45437d7471f1dfb111eed2f}{construct\+Saved\+Map}} (\mbox{\hyperlink{class_map_builder}{Map\+Builder}} \&builder)
+\begin{DoxyCompactList}\small\item\em Constructs a map using the \doxylink{class_saved_map_builder_from_string_representation}{Saved\+Map\+Builder\+From\+String\+Representation}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_director_a41eb3a4a65a2ae0d410635befdd0e3af}{construct\+Default\+Map}} (\mbox{\hyperlink{class_map_builder}{Map\+Builder}} \&builder)
+\begin{DoxyCompactList}\small\item\em Constructs a map using the \doxylink{class_default_map_builder}{Default\+Map\+Builder}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_map_director}{Map\+Director} class to use the implemented Builder Pattern to build specific Maps. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_director_a41eb3a4a65a2ae0d410635befdd0e3af}\label{class_map_director_a41eb3a4a65a2ae0d410635befdd0e3af} 
+\index{MapDirector@{MapDirector}!constructDefaultMap@{constructDefaultMap}}
+\index{constructDefaultMap@{constructDefaultMap}!MapDirector@{MapDirector}}
+\doxysubsubsection{\texorpdfstring{constructDefaultMap()}{constructDefaultMap()}}
+{\footnotesize\ttfamily bool Map\+Director\+::construct\+Default\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map_builder}{Map\+Builder}} \&}]{builder }\end{DoxyParamCaption})}
+
+
+
+Constructs a map using the \doxylink{class_default_map_builder}{Default\+Map\+Builder}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & The \doxylink{class_map_builder}{Map\+Builder} to use. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_director_a18483c41f45437d7471f1dfb111eed2f}\label{class_map_director_a18483c41f45437d7471f1dfb111eed2f} 
+\index{MapDirector@{MapDirector}!constructSavedMap@{constructSavedMap}}
+\index{constructSavedMap@{constructSavedMap}!MapDirector@{MapDirector}}
+\doxysubsubsection{\texorpdfstring{constructSavedMap()}{constructSavedMap()}}
+{\footnotesize\ttfamily bool Map\+Director\+::construct\+Saved\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map_builder}{Map\+Builder}} \&}]{builder }\end{DoxyParamCaption})}
+
+
+
+Constructs a map using the \doxylink{class_saved_map_builder_from_string_representation}{Saved\+Map\+Builder\+From\+String\+Representation}. 
+
+Director that constructs a saved map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & The \doxylink{class_map_builder}{Map\+Builder} to use. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/\mbox{\hyperlink{_map_8h}{Map.\+h}}\item 
+components/\+Maps/src/\mbox{\hyperlink{map_8cpp}{map.\+cpp}}\end{DoxyCompactItemize}

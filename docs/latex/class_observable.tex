@@ -1,0 +1,116 @@
+\doxysection{Observable Class Reference}
+\hypertarget{class_observable}{}\label{class_observable}\index{Observable@{Observable}}
+
+
+The \doxylink{class_observable}{Observable} class represents an object that can be observed by multiple observers.  
+
+
+
+
+{\ttfamily \#include $<$Observable.\+h$>$}
+
+
+
+Inheritance diagram for Observable\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_observable_af823886c69aa77b313c1d44b59fd7957}\label{class_observable_af823886c69aa77b313c1d44b59fd7957} 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_observable_ac8fb953f51d61621001011afe36c327f}\label{class_observable_ac8fb953f51d61621001011afe36c327f} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}} () const
+\begin{DoxyCompactList}\small\item\em Notifies all attached observers about a state change in the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_observable}{Observable} class represents an object that can be observed by multiple observers. 
+
+The \doxylink{class_observable}{Observable} class provides functionality to attach, detach, and notify observers. Observers can register themselves with an \doxylink{class_observable}{Observable} object to receive notifications when the object\textquotesingle{}s state changes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}\label{class_observable_a6efa28f8d9b8e5ab249533f684363a4f} 
+\index{Observable@{Observable}!attach@{attach}}
+\index{attach@{attach}!Observable@{Observable}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily void Observable\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attaches an observer to the \doxylink{class_observable}{Observable} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & A pointer to the observer object to be attached. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{Log\+Observable}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{class_observable_a242e67bc26e3934370e863af3c08d1cb}\label{class_observable_a242e67bc26e3934370e863af3c08d1cb} 
+\index{Observable@{Observable}!detach@{detach}}
+\index{detach@{detach}!Observable@{Observable}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily void Observable\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Detaches an observer from the \doxylink{class_observable}{Observable} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & A pointer to the observer object to be detached. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{Log\+Observable}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_observable_ae181cee45eafcdd3244f2385ac1357d7}\label{class_observable_ae181cee45eafcdd3244f2385ac1357d7} 
+\index{Observable@{Observable}!notify@{notify}}
+\index{notify@{notify}!Observable@{Observable}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily void Observable\+::notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Notifies all attached observers about a state change in the \doxylink{class_observable}{Observable} object. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{Log\+Observable}}.
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_observable_a89d14be9ababbc6f52d5075868cf7078}\label{class_observable_a89d14be9ababbc6f52d5075868cf7078} 
+\index{Observable@{Observable}!observers@{observers}}
+\index{observers@{observers}!Observable@{Observable}}
+\doxysubsubsection{\texorpdfstring{observers}{observers}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_observer}{Observer}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Observable\+::observers\hspace{0.3cm}{\ttfamily [protected]}}
+
+A list of pointers to the attached observers. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Log/include/Observable.\+h\item 
+components/\+Log/src/\mbox{\hyperlink{_observable_8cpp}{Observable.\+cpp}}\end{DoxyCompactItemize}

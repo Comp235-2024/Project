@@ -1,0 +1,34 @@
+digraph "GameScreen::scanForNearbyObjects"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="GameScreen::scanForNearby\lObjects",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Scans for nearby objects in the current map."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GameScreen::Init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a550dcdadec1a5757fea41af94d3e27b3",tooltip="Initializes the game screen."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="LogObservable::attach",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#ab029cc8742d65db69956fb9faeaa026a",tooltip="Attaches a LogObserver to the LogObservable."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="GameScreen::calculateTexture\lSizes",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#ac5770b3b0644b382b14969b689e0fc43",tooltip="Calculates the sizes of the textures based on the window size."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="LogObservable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#ad42f5e24118560f10123743dac922919",tooltip="Notifies the observers without any message. This function overrides the notify() function in the base..."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Observable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_observable.html#ae181cee45eafcdd3244f2385ac1357d7",tooltip="Notifies all attached observers about a state change in the Observable object."];
+  Node2 -> Node7 [id="edge6_Node000002_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="LogObservable::detach",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#a26c327e3611e8e2c816315398cbdfdc0",tooltip="Detaches a LogObserver from the LogObservable."];
+  Node2 -> Node8 [id="edge7_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="GameScreen::generateMapTexture",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a4b383128b32d81884a01f5092f22b68e",tooltip="Generates the texture for the map."];
+  Node8 -> Node9 [id="edge8_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="MapObserver::update",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a8a3016364d12b7c647e35bb1f04bf4a2",tooltip="Updates the map observer."];
+  Node9 -> Node10 [id="edge9_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="MapObserver::draw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a542a5301b3840038c00ea7b15a13ff70",tooltip="Draws the map observer's display."];
+  Node10 -> Node11 [id="edge10_Node000010_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="MapObserver::drawMap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a29d1924556a8da862ab5377d0324d287",tooltip="Draws the map on the map display."];
+  Node11 -> Node12 [id="edge11_Node000011_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="MapObserver::drawImage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#ab4ff967844677b764d7730ea417c5296",tooltip="Draws an image at the specified position on the map display."];
+  Node2 -> Node13 [id="edge12_Node000002_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="GameScreen::positionToVector2i",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#abddf8a4fe459ed78d9d108724c7ede12",tooltip="Converts a position to a Vector2i."];
+  Node1 -> Node5 [id="edge13_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+}

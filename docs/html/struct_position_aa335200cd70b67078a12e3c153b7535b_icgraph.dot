@@ -1,0 +1,25 @@
+digraph "Position::checkValidity"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Position::checkValidity",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Checks if the position is valid within the given boundaries."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Map::findPath",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#a1c7c8be8b581f707488ad8ba55e5a242",tooltip="Finds a path from the start position to the end position on the map."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Map::getDistance",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#a9bebc63dc3ba4255fc1281ace53bc4f2",tooltip="Calculates the distance between two positions on the map."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Map::map_test",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#afc194e8837354969f29117b4c107c9fb",tooltip="This function is used to test the functionality of the Map class."];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Map::validateMap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#abe7c103671ba1ad802b29b80d2435ac6",tooltip="Validates the map by checking if it meets certain criteria."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="SavedMapBuilderFromString\lRepresentation::buildGrid",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_saved_map_builder_from_string_representation.html#ac962e779a424151518a2f133815800b6",tooltip="Builds the grid of the map."];
+  Node5 -> Node4 [id="edge6_Node000005_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 -> Node7 [id="edge7_Node000005_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Map::mapBuilderTest",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#a10a4e88c5ec44666672e1d6ff934ccbe",tooltip="Test function for the map builder."];
+  Node1 -> Node8 [id="edge8_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Map::move",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map.html#af9b547126251261f2902a0c41f2c40c4",tooltip="Moves a movable object from one position to another on the map."];
+  Node8 -> Node4 [id="edge9_Node000008_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

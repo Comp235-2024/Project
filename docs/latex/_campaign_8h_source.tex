@@ -1,0 +1,58 @@
+\doxysection{Campaign.\+h}
+\hypertarget{_campaign_8h_source}{}\label{_campaign_8h_source}\index{components/Maps/include/Campaign.h@{components/Maps/include/Campaign.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ A3\_CAMPAIGN\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ A3\_CAMPAIGN\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observable_8h}{../../Log/include/LogObservable.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{Map.h}}"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Include\ the\ "{}Map.h"{}\ header}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../../../cmake-\/build-\/debug/\_deps/json-\/src/include/nlohmann/json.hpp"{}}\textcolor{comment}{//\ Include\ the\ "{}nlohmann/json.hpp"{}\ header}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }json\ =\ nlohmann::json;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_campaign}{Campaign}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}\{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<Map>\ maps;\ \textcolor{comment}{//\ Container\ for\ storing\ maps}}
+\DoxyCodeLine{00033\ \ \ \ \ std::unordered\_map<int,\ std::vector<int>>\ adjacencies;\ \textcolor{comment}{//\ Map\ index\ to\ list\ of\ adjacent\ map\ indices}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ ind;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}\ mike;}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_campaign_ae81c5b000e416b0ef31994efdf871c40}{Campaign}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ std::unique\_ptr<std::vector<Map>>\ getCampaign()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ defaultLevel1();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ defaultLevel2();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ defaultLevel3();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campaign_aaa2eff19343efacdd7c12f2d4cfb7c15}{addMap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ loadNextMap();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ loadMap\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00054\ \ \ \ \ shared\_ptr<Map>\ getMap(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campaign_abe4dc46337b1f50843ceac65e0413732}{removeMap}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campaign_a84857304bee9ed9d77b73ae7323c1a4b}{addPath}}(\textcolor{keywordtype}{int}\ fromIndex,\ \textcolor{keywordtype}{int}\ toIndex);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campaign_a808f488e32ff32d77addbb5a39f81dc6}{removePath}}(\textcolor{keywordtype}{int}\ fromIndex,\ \textcolor{keywordtype}{int}\ toIndex);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campaign_a6deb13c9d3a8ab78c0d5a99db9d96ca4}{editMap}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_map}{Map}}\&\ newMap);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_campaign_a7aafe34eb2919c0a3e8889b0bc8e6202}{getNumberOfMaps}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campaign_a9dc21e5dbfb2ea34fcaa0735ad803da9}{printCampaignDetails}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campaign_a0f14cc0143da3db4900b10a472bcc498}{saveToJson}}(\textcolor{keyword}{const}\ std::string\&\ filename)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campaign_ad02b195db7c0606201986c8a1bbe7ee5}{loadFromJson}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A3\_CAMPAIGN\_H}}
+\DoxyCodeLine{00112\ }
+
+\end{DoxyCode}

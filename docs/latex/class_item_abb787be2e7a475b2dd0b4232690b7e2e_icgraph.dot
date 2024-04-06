@@ -1,0 +1,23 @@
+digraph "Item::operator="
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Item::operator=",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Construct a new Item:: Item object with a given name, type, enchantment type and level."];
+  Node1 -> Node2 [id="edge8_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Armor::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_armor.html#af869d62e397cf11428724787c3795de6",tooltip="Assignment Operator for the Armor object."];
+  Node1 -> Node3 [id="edge9_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Belt::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_belt.html#ae9427f0dd7cdcf848a1edbd641c004c2",tooltip="Assignment Operator for the Belt object."];
+  Node1 -> Node4 [id="edge10_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Boots::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_boots.html#a4cbd7eac2391ebbb56057dc93c622bae",tooltip="Assignment Operator for the Boots object."];
+  Node1 -> Node5 [id="edge11_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Helmet::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_helmet.html#a03be7ef2e59d533a70dc0012df00871b",tooltip="Assignment Operator for the Helmet object."];
+  Node1 -> Node6 [id="edge12_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Ring::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_ring.html#a2e074f82bf94bca91e8233663f379164",tooltip="Assignment Operator for the Ring object."];
+  Node1 -> Node7 [id="edge13_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Shield::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_shield.html#ac5e915a27f9f356490d85875d8225ef1",tooltip="Assignment Operator for the Shield object."];
+  Node1 -> Node8 [id="edge14_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Weapon::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_weapon.html#a8f51ebd5789763dc5e9746ecccd4e34c",tooltip="Assignment Operator for the Weapon object."];
+}

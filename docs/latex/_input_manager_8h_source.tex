@@ -1,0 +1,30 @@
+\doxysection{Input\+Manager.\+h}
+\hypertarget{_input_manager_8h_source}{}\label{_input_manager_8h_source}\index{components/GameEngine/include/InputManager.h@{components/GameEngine/include/InputManager.h}}
+\mbox{\hyperlink{_input_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A2\_INPUTMANAGER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A2\_INPUTMANAGER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_manager}{InputManager}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_input_manager_ad87c25e67ad7234a8173ecabd816facd}{InputManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a2f60d1069836adec6d37f06d618d88bd}{\string~InputManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a547c83977172cdbe843e42aee0db05b1}{IsSpriteClicked}}(\textcolor{keyword}{const}\ Sprite\&\ sprite,\ Mouse::Button\ button,\ RenderWindow\&\ window);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a59afcd8ac114ce31aefe07ae1de53f7f}{IsButtonClicked}}(\textcolor{keyword}{const}\ RectangleShape\&\ rectangleShape,\ Mouse::Button\ button,\ RenderWindow\&\ window);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a59afcd8ac114ce31aefe07ae1de53f7f}{IsButtonClicked}}(\textcolor{keyword}{const}\ RectangleShape\&\ rectangleShape,\ Mouse::Button\ button,\ RenderWindow\&\ window,\ \textcolor{keyword}{const}\ Vector2f\ \&renderTexturePosition);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ Vector2i\ \mbox{\hyperlink{class_input_manager_a02cc1a66699ddcbb828866b8a17ab9bc}{GetMousePos}}(RenderWindow\&\ window);}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ A2\_INPUTMANAGER\_H}}
+
+\end{DoxyCode}

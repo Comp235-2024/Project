@@ -1,0 +1,42 @@
+\doxysection{Welcome\+Screen.\+h}
+\hypertarget{_welcome_screen_8h_source}{}\label{_welcome_screen_8h_source}\index{components/GameEngine/include/WelcomeScreen.h@{components/GameEngine/include/WelcomeScreen.h}}
+\mbox{\hyperlink{_welcome_screen_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A2\_WELCOMESCREEN\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A2\_WELCOMESCREEN\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}sstream"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_welcome_screen}{WelcomeScreen}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_welcome_screen_a2a599cfd80d70f117fea154bd75cac47}{WelcomeScreen}}(MainDataRef\ data);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_welcome_screen_a9aed68606842a06d4256f3dd767d9b83}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_welcome_screen_a31f249c6278c9c5e811e401f0f273e7d}{HandleInput}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_welcome_screen_a09b670080eeec868ab7b7124653f02ac}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_welcome_screen_ab8f4d2b87a5b3b6fa90efbc2c3a90ae6}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ MainDataRef\ \mbox{\hyperlink{class_welcome_screen_a7fc7853bfecf77fab497a822d2c560f9}{\_data}};\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ Clock\ \mbox{\hyperlink{class_welcome_screen_ae7be9a83432bb4926d409c6c1167fd4b}{\_clock}};\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ Texture\ \mbox{\hyperlink{class_welcome_screen_af37469d8ec873a2437512bf5526f8a8a}{\_bgTexture}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ Sprite\ \mbox{\hyperlink{class_welcome_screen_a69f0791005b7cdb1662f02b28e40075f}{\_bg}};\ }
+\DoxyCodeLine{00063\ \ \ \ \ Text\ \mbox{\hyperlink{class_welcome_screen_ab9a9a8175c3d18a408571780d3521f15}{text}};\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

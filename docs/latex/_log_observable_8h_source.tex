@@ -1,0 +1,39 @@
+\doxysection{Log\+Observable.\+h}
+\hypertarget{_log_observable_8h_source}{}\label{_log_observable_8h_source}\index{components/Log/include/LogObservable.h@{components/Log/include/LogObservable.h}}
+\mbox{\hyperlink{_log_observable_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A3\_LOGOBSERVABLE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A3\_LOGOBSERVABLE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Observable.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observer_8h}{../include/LogObserver.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_log_observer}{LogObserver}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_log_observable}{LogObservable}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_observable}{Observable}}\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_log_observable_ae3c128effb2dcc1e119ae7c29e758b00}{LogObservable}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_log_observable_a5f13e1aa82c61300e865325cd868028f}{\string~LogObservable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}}(\textcolor{keyword}{const}\ std::string\ \&message,\ \textcolor{keywordtype}{string}\ module\ =\ \textcolor{stringliteral}{"{}Map"{}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}}()\textcolor{keyword}{\ const\ override}\{\mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{Observable::notify}}();\}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}}(\mbox{\hyperlink{class_log_observer}{LogObserver}}\ *observer);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}}(\mbox{\hyperlink{class_observer}{Observer}}\ *observer)\textcolor{keyword}{\ override}\{\mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{Observable::attach}}(observer);\}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}}(\mbox{\hyperlink{class_log_observer}{LogObserver}}\ *observer);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}}(\mbox{\hyperlink{class_observer}{Observer}}\ *observer)\textcolor{keyword}{\ override}\{\mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{Observable::detach}}(observer);\}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::list<LogObserver*>\ *\mbox{\hyperlink{class_log_observable_a2d7c85d57ce3ba0782a1e91cc18d657e}{logObservers}}\{\};\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A3\_LOGOBSERVABLE\_H}}
+
+\end{DoxyCode}

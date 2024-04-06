@@ -1,0 +1,161 @@
+\doxysection{Asset\+Manager Class Reference}
+\hypertarget{class_asset_manager}{}\label{class_asset_manager}\index{AssetManager@{AssetManager}}
+
+
+The \doxylink{class_asset_manager}{Asset\+Manager} class is responsible for loading and managing game assets such as textures and fonts. It inherits from \doxylink{class_log_observable}{Log\+Observable} to provide logging functionality.  
+
+
+
+
+{\ttfamily \#include $<$Asset\+Manager.\+h$>$}
+
+
+
+Inheritance diagram for Asset\+Manager\+:
+% FIG 0
+
+
+Collaboration diagram for Asset\+Manager\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_asset_manager_a48938b146fa7ad19270a11be5363472a}\label{class_asset_manager_a48938b146fa7ad19270a11be5363472a} 
+{\bfseries Asset\+Manager} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_asset_manager}{Asset\+Manager}. \end{DoxyCompactList}\item 
+\Hypertarget{class_asset_manager_ab17d9f5830e73680f1d9dca961a79d82}\label{class_asset_manager_ab17d9f5830e73680f1d9dca961a79d82} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Asset\+Manager} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_asset_manager}{Asset\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_a05bcb77f216cf76b08d04e9c16b6346a}{Load\+Texture}} (const string \&name, const string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads a texture from a file and associates it with a name. \end{DoxyCompactList}\item 
+Texture \& \mbox{\hyperlink{class_asset_manager_ac81ecac92bc8627cab2c031ad673a4d7}{Get\+Texture}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Retrieves a texture associated with a given name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_ad9f67ea40315892cb27c06b2a41cad89}{Load\+Font}} (const string \&name, const string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads a font from a file and associates it with a name. \end{DoxyCompactList}\item 
+Font \& \mbox{\hyperlink{class_asset_manager_a27b4db52aa7fc680e1fce5b98b849dc7}{Get\+Font}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Retrieves a font associated with a given name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_asset_manager_ae8a08d88fa4364d774bb7e336efac105}\label{class_asset_manager_ae8a08d88fa4364d774bb7e336efac105} 
+map$<$ string, Texture $>$ {\bfseries \+\_\+textures}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_map}{Map} to store loaded textures. \end{DoxyCompactList}\item 
+\Hypertarget{class_asset_manager_a019529d3c72146a2edc2d2da1c7558d9}\label{class_asset_manager_a019529d3c72146a2edc2d2da1c7558d9} 
+map$<$ string, Font $>$ {\bfseries \+\_\+fonts}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_map}{Map} to store loaded fonts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_asset_manager}{Asset\+Manager} class is responsible for loading and managing game assets such as textures and fonts. It inherits from \doxylink{class_log_observable}{Log\+Observable} to provide logging functionality. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_asset_manager_a27b4db52aa7fc680e1fce5b98b849dc7}\label{class_asset_manager_a27b4db52aa7fc680e1fce5b98b849dc7} 
+\index{AssetManager@{AssetManager}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily Font \& Asset\+Manager\+::\+Get\+Font (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Retrieves a font associated with a given name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the font to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the requested font. 
+\end{DoxyReturn}
+\Hypertarget{class_asset_manager_ac81ecac92bc8627cab2c031ad673a4d7}\label{class_asset_manager_ac81ecac92bc8627cab2c031ad673a4d7} 
+\index{AssetManager@{AssetManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily Texture \& Asset\+Manager\+::\+Get\+Texture (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Retrieves a texture associated with a given name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the texture to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the requested texture. 
+\end{DoxyReturn}
+\Hypertarget{class_asset_manager_ad9f67ea40315892cb27c06b2a41cad89}\label{class_asset_manager_ad9f67ea40315892cb27c06b2a41cad89} 
+\index{AssetManager@{AssetManager}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily void Asset\+Manager\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads a font from a file and associates it with a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name to associate with the loaded font. \\
+\hline
+{\em filename} & The path to the file containing the font. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_asset_manager_a05bcb77f216cf76b08d04e9c16b6346a}\label{class_asset_manager_a05bcb77f216cf76b08d04e9c16b6346a} 
+\index{AssetManager@{AssetManager}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily void Asset\+Manager\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads a texture from a file and associates it with a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name to associate with the loaded texture. \\
+\hline
+{\em filename} & The path to the file containing the texture. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_asset_manager_8h}{Asset\+Manager.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_asset_manager_8cpp}{Asset\+Manager.\+cpp}}\end{DoxyCompactItemize}

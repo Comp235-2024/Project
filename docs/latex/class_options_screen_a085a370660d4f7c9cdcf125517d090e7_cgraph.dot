@@ -1,0 +1,18 @@
+digraph "OptionsScreen::HandleInput"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="OptionsScreen::HandleInput",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Handles the input for the options screen state."];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="OptionsScreen::changeMusic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_options_screen.html#a74a0ad7f44712fd33807fd5b8461b06a",tooltip="Changes the music on the options screen."];
+  Node1 -> Node3 [id="edge7_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="OptionsScreen::handleMusic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_options_screen.html#aa9cc1398800ab0a43e5c869ff78c28c1",tooltip="Handles the music on the options screen."];
+  Node3 -> Node4 [id="edge8_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="LogObservable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#ad42f5e24118560f10123743dac922919",tooltip="Notifies the observers without any message. This function overrides the notify() function in the base..."];
+  Node4 -> Node5 [id="edge9_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Observable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_observable.html#ae181cee45eafcdd3244f2385ac1357d7",tooltip="Notifies all attached observers about a state change in the Observable object."];
+  Node1 -> Node4 [id="edge10_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+}

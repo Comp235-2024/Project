@@ -1,0 +1,104 @@
+\doxysection{Enable\+Module Struct Reference}
+\hypertarget{struct_enable_module}{}\label{struct_enable_module}\index{EnableModule@{EnableModule}}
+
+
+Struct representing the enabled modules for logging.  
+
+
+
+
+{\ttfamily \#include $<$Log\+Observer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_enable_module_aaa1f70bd292088f9786210b4ac314ed7}{Enable\+Module}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{void}} \mbox{\hyperlink{struct_enable_module_a0d9c280a2cd2a4646499d6de21b1b6bc}{enable\+All}} ()
+\begin{DoxyCompactList}\small\item\em Enables all modules. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{void}} \mbox{\hyperlink{struct_enable_module_a1455cd05f5b6efe869a8cc530f773449}{disable\+All}} ()
+\begin{DoxyCompactList}\small\item\em Disables all modules. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{map}}
+\item 
+\mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} \mbox{\hyperlink{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}{character}}
+\item 
+\mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} \mbox{\hyperlink{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}{dice}}
+\item 
+\mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} \mbox{\hyperlink{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}{system}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct representing the enabled modules for logging. 
+
+This struct contains boolean flags for each module that can be enabled or disabled for logging. The default state is that all modules are enabled. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_enable_module_aaa1f70bd292088f9786210b4ac314ed7}\label{struct_enable_module_aaa1f70bd292088f9786210b4ac314ed7} 
+\index{EnableModule@{EnableModule}!EnableModule@{EnableModule}}
+\index{EnableModule@{EnableModule}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{EnableModule()}{EnableModule()}}
+{\footnotesize\ttfamily Enable\+Module\+::\+Enable\+Module (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+Initializes all module flags to true (enabled). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_enable_module_a1455cd05f5b6efe869a8cc530f773449}\label{struct_enable_module_a1455cd05f5b6efe869a8cc530f773449} 
+\index{EnableModule@{EnableModule}!disableAll@{disableAll}}
+\index{disableAll@{disableAll}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{disableAll()}{disableAll()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{void}} Enable\+Module\+::disable\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disables all modules. 
+
+Sets all module flags to false (disabled). \Hypertarget{struct_enable_module_a0d9c280a2cd2a4646499d6de21b1b6bc}\label{struct_enable_module_a0d9c280a2cd2a4646499d6de21b1b6bc} 
+\index{EnableModule@{EnableModule}!enableAll@{enableAll}}
+\index{enableAll@{enableAll}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{enableAll()}{enableAll()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{void}} Enable\+Module\+::enable\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enables all modules. 
+
+Sets all module flags to true (enabled). 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}\label{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d} 
+\index{EnableModule@{EnableModule}!character@{character}}
+\index{character@{character}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{character}{character}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} Enable\+Module\+::character}
+
+Flag indicating whether the character module is enabled for logging. \Hypertarget{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}\label{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8} 
+\index{EnableModule@{EnableModule}!dice@{dice}}
+\index{dice@{dice}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{dice}{dice}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} Enable\+Module\+::dice}
+
+Flag indicating whether the dice module is enabled for logging. \Hypertarget{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}\label{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7} 
+\index{EnableModule@{EnableModule}!map@{map}}
+\index{map@{map}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily bool Enable\+Module\+::map}
+
+Flag indicating whether the map module is enabled for logging. \Hypertarget{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}\label{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67} 
+\index{EnableModule@{EnableModule}!system@{system}}
+\index{system@{system}!EnableModule@{EnableModule}}
+\doxysubsubsection{\texorpdfstring{system}{system}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{bool}} Enable\+Module\+::system}
+
+Flag indicating whether the system module is enabled for logging. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Log/include/\mbox{\hyperlink{_log_observer_8h}{Log\+Observer.\+h}}\end{DoxyCompactItemize}

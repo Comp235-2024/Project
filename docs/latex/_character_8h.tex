@@ -1,0 +1,44 @@
+\doxysection{components/\+Characters/include/\+Character.h File Reference}
+\hypertarget{_character_8h}{}\label{_character_8h}\index{components/Characters/include/Character.h@{components/Characters/include/Character.h}}
+
+
+this file contains the declaration of the character class and related structures aliases @detail  
+
+
+{\ttfamily \#include "{}../../\+Items/include/\+Movable.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Maps/include/\+Position.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Log/include/\+Log\+Observable.\+h"{}}\newline
+{\ttfamily \#include "{}Observable.\+h"{}}\newline
+{\ttfamily \#include "{}SFML/\+Graphics.\+hpp"{}}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Character.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_character}{Character}}
+\begin{DoxyCompactList}\small\item\em Represents a character in a game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this file contains the declaration of the character class and related structures aliases @detail 
+
+this file contains the declaration of the \doxylink{class_campaign}{Campaign} class and related structures aliases @detail
+
+\begin{DoxyDate}{Date}
+25 february 2024, 11 March 2024
+\begin{DoxyEnumerate}
+\item The character is the main player of the game. Each character has a bunch of characteristics(attributes) and they can perform some actions as well(methods). If the character\textquotesingle{}s attributes gets updated, it will notify its \doxylink{class_character_observer}{Character\+Observer}.
+\item The design of the character class in two files\+: First is the .h file to define the attributes and .cpp to do the implementation of the methods which is the most basic design for each class.
+\item The libraries used are cstdlib for randomization of the ability score and iostream library for basic use of classes and functions. \doxylink{class_character}{Character} is movable because it can move and observable because it is observed by the \doxylink{class_character_observer}{Character\+Observer}.
+\end{DoxyEnumerate}
+
+25 february 2024, 11 March 2024
+\begin{DoxyEnumerate}
+\item The \doxylink{class_campaign}{Campaign} class is responsible for managing a campaign, including adding and removing maps, creating connections between maps, editing maps, and saving/loading the campaign to/from a JSON file. 
+\end{DoxyEnumerate}
+\end{DoxyDate}

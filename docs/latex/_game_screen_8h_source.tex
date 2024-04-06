@@ -1,0 +1,94 @@
+\doxysection{Game\+Screen.\+h}
+\hypertarget{_game_screen_8h_source}{}\label{_game_screen_8h_source}\index{components/GameEngine/include/GameScreen.h@{components/GameEngine/include/GameScreen.h}}
+\mbox{\hyperlink{_game_screen_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A3\_GAMESCREEN\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A3\_GAMESCREEN\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}MapObserver.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_screen}{GameScreen}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_game_screen_a2b6dd82d2265628dab8a0cda1d0a7f74}{GameScreen}}(MainDataRef\&\ data);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a550dcdadec1a5757fea41af94d3e27b3}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_ab0299f0189e42b844589c042b372d58e}{HandleInput}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_ae73ca8179f16069b52a8aca7254990b6}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a0b9d36c78d9cb37b7af9983eee99d458}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00069\ \ \ \ \ MainDataRef\ \mbox{\hyperlink{class_game_screen_a4f3851324811aeab47c005e9c10b685f}{\_data}};\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ \_mapIndex\ =\ 0;}
+\DoxyCodeLine{00071\ \ \ \ \ Clock\ \mbox{\hyperlink{class_game_screen_a9b206ef141f86131cf12df7b30c371b6}{\_clock}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ shared\_ptr<Map>\ \mbox{\hyperlink{class_game_screen_a6df20a69c2a5cbe5672beb6fe04f0323}{\_currentMap}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_game_screen_abcbca1bf2e8a86e0491f05a94eecb24b}{\_mapTexture}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_game_screen_ae8bba37f1edf13c68b25b7393e010f4d}{\_characterView}};\ }
+\DoxyCodeLine{00076\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_game_screen_a2441168d4b961ed54ce605f54c85ae63}{\_consoleTexture}};\ }
+\DoxyCodeLine{00077\ \ \ \ \ Vector2f\ \mbox{\hyperlink{class_game_screen_a81db620b425bf3166803122d4e68bc25}{\_consolePosition}};\ }
+\DoxyCodeLine{00078\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_game_screen_a5f5939b9d7a8ec925b462f08656ebc6c}{\_sideBarTexture}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ Vector2<float>\ \_sideBarPosition;}
+\DoxyCodeLine{00080\ \ \ \ \ Texture\ \mbox{\hyperlink{class_game_screen_a9ff61edf522780ed4254b0385f9d65eb}{\_bgTexture}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ RectangleShape\ \mbox{\hyperlink{class_game_screen_a5198d7d87922dcb52db5d6c2e5ac1041}{\_bg}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ Vector2u\ \mbox{\hyperlink{class_game_screen_a53a21f7b6b0ecdb861026da5f9c66508}{\_windowSize}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ shared\_ptr<Character>\ \mbox{\hyperlink{class_game_screen_a063932121bf6a25485769ce2e0069102}{\_player}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_campaign}{Campaign}}\ \_campaign;}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_map_observer}{MapObserver}}\ \mbox{\hyperlink{class_game_screen_ac444858fe75a4d87fc7f51ce40110bdd}{\_mapObserver}};\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_screen_ac1061e1c45525403d05e490ecf7979b1}{\_diceModifier}};\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_game_screen_ac787b8353a0f4dd94f053619cbe5185e}{\_diceType}}\ =\ \textcolor{stringliteral}{"{}1d6"{}};\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_screen_a6db39efc7eb492e90231e621489d923e}{\_moveEnabled}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_screen_a68868f361499f4c8d879b4cff76c894b}{\_attackEnabled}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game_screen_1_1_map_position}{MapPosition}}\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ Vector2f\ \mbox{\hyperlink{struct_game_screen_1_1_map_position_ae481c659584aebab1d9ecd17ec27946e}{position}};\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ Rect<float>\ \mbox{\hyperlink{struct_game_screen_1_1_map_position_a04d53524ee940a355750f78d0c5a4a63}{size}};\ }
+\DoxyCodeLine{00101\ \ \ \ \ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}}\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_game_screen_1_1_buttons_ae3d31e3dfca44d649ab4bae048b2bf22}{menu}};\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ Text\ menuText;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ RectangleShape\ move;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ Text\ moveText;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ RectangleShape\ attack;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ Text\ attackText;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ RectangleShape\ inventory;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ Text\ inventoryText;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ RectangleShape\ rollDice;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ Text\ rollDiceText;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ RectangleShape\ exit;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ Text\ exitText;}
+\DoxyCodeLine{00120\ \ \ \ \ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ shared\_ptr<Buttons>\ \mbox{\hyperlink{class_game_screen_a44a0b3d31318e2ee1cc2920be8917364}{buttons}}\ =\ make\_shared<Buttons>();\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a4b383128b32d81884a01f5092f22b68e}{generateMapTexture}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_aa80c5d455c0628acb636fefd545fb72d}{SetButtons}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a87901799bf15b3683b7f2ed29fb00ed2}{GenerateButton}}(\textcolor{keyword}{const}\ Font\ \&font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ RectangleShape\ \&button,\ Text\ \&buttonText,\ Vector2f\ position);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_ac5770b3b0644b382b14969b689e0fc43}{calculateTextureSizes}}();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a42848521aeda505f1c87c6c306a3b67e}{findPlayerCharacter}}();}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_aed3dd7f89b155ec7ecae084518336696}{scanForNearbyObjects}}();}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{static}\ Vector2i\ \mbox{\hyperlink{class_game_screen_abddf8a4fe459ed78d9d108724c7ede12}{positionToVector2i}}(\mbox{\hyperlink{struct_position}{Position}}\ position);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_aed848a4e269b5fa47f54eb9b9068866d}{generateSideBarTexture}}();}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_aa15c80859a9157bcbe3df04d1d6d8dc7}{generateButton}}(RectangleShape\ \&button,\ Text\ \&buttonText,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ \textcolor{keywordtype}{int}\ buttonPos);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_screen_a598336d6abe08f1dffa7d0c67b34859f}{generateConsoleTexture}}();}
+\DoxyCodeLine{00199\ \};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_SCREEN\_H}}
+
+\end{DoxyCode}

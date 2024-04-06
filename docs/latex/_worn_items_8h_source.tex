@@ -1,0 +1,58 @@
+\doxysection{Worn\+Items.\+h}
+\hypertarget{_worn_items_8h_source}{}\label{_worn_items_8h_source}\index{components/ItemContainers/include/WornItems.h@{components/ItemContainers/include/WornItems.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WORNITEMS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WORNITEMS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ItemContainer.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{Item.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Movable.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_worn_items_container}{WornItemsContainer}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_item_container}{ItemContainer}}\{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_worn_items_container_ad6e4a0533692bce2ec67e6894a9a8d64}{nbWornItemsContainer}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ \ \ \ \ vector\ <Item*>\ \mbox{\hyperlink{class_worn_items_container_ac39367d8edb41d6943538ec60ea8d10b}{WornItemsContainerStorage}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{WornItemsContainer}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{WornItemsContainer}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{WornItemsContainer}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{WornItemsContainer}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_a02ee2df7888f542199b67171ceab5b37}{WornItemsContainer}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_worn_items_container_abb2f8879ff61f1041c74cf622db85dc4}{\string~WornItemsContainer}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00077\ \ \ \ \ vector<Item*>\ \mbox{\hyperlink{class_worn_items_container_a4f2866a7a4b440f25a1f017074af380e}{getWornItemsContainerStorage}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_item}{Item}}*\ \mbox{\hyperlink{class_worn_items_container_a72233ed948e742df2948fc9662caf060}{getItem}}(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_worn_items_container_add38998b5b3900567fcab4a75d0bfd89}{getItemIndex}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_worn_items_container_adf636df6f1721235a33b7d36078133b6}{addItem}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_worn_items_container_afd49727256a5cf40bdc9ea9c8cb0236f}{removeItem}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_worn_items_container_a419c854eb6a9c793c32158329618e017}{isFound}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_worn_items_container_a245fe345a6f8fc304ed3b36e0cf0d8d0}{printItems}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_worn_items_container_adc01d65201eb30b97ed0fade237fb8a6}{printWornItemsContainer}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_worn_items_container_ae15d7323dfc6ff6366fb9face6f599b1}{getNbWornItemsContainer}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_worn_items_container_a5fb8548ebd6727594bb7f6a059ca1747}{printSortedItemsByType}}(\textcolor{keywordtype}{string}\ type)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_worn_items_container_a298c77fd491fb6cc4cc19895b1ca4ca4}{printSortedItemsByName}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00148\ \};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ "{}WORNITEMS\_H"{}}}
+
+\end{DoxyCode}

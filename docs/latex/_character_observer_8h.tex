@@ -1,0 +1,36 @@
+\doxysection{components/\+Characters/include/\+Character\+Observer.h File Reference}
+\hypertarget{_character_observer_8h}{}\label{_character_observer_8h}\index{components/Characters/include/CharacterObserver.h@{components/Characters/include/CharacterObserver.h}}
+
+
+This file contains the declaration of the \doxylink{class_character_observer}{Character\+Observer} class.  
+
+
+{\ttfamily \#include "{}Character.\+h"{}}\newline
+{\ttfamily \#include "{}Observer.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Character\+Observer.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_character_observer}{Character\+Observer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the declaration of the \doxylink{class_character_observer}{Character\+Observer} class. 
+
+\begin{DoxyAuthor}{Author}
+Melika Minaei Bidgoli 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11 March 2024
+\end{DoxyDate}
+
+\begin{DoxyEnumerate}
+\item \doxylink{class_character}{Character} \doxylink{class_observer}{Observer} inherits the \doxylink{class_observer}{Observer} class to observe the character
+\item The design of the \doxylink{class_character_observer}{Character\+Observer} is\+: It has a pointer to character attribute Upon instantiation, it attaches itself to a \doxylink{class_character}{Character} Upon destruction, it detaches itself from its \doxylink{class_character}{Character} Upon Update, it will draw the \doxylink{class_character}{Character}, by printing all of its attributes.
+\item The libraries used in this file are iostream for printing, and uses \doxylink{class_character}{Character} and \doxylink{class_observer}{Observer} header files. 
+\end{DoxyEnumerate}

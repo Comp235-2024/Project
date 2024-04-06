@@ -1,0 +1,119 @@
+\doxysection{Lever Class Reference}
+\hypertarget{class_lever}{}\label{class_lever}\index{Lever@{Lever}}
+
+
+Inheritance diagram for Lever\+:
+% FIG 0
+
+
+Collaboration diagram for Lever\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_lever_a1c50568739989db62979eb7767066b40}\label{class_lever_a1c50568739989db62979eb7767066b40} 
+{\bfseries Lever} (const \mbox{\hyperlink{class_lever}{Lever}} \&)=default
+\item 
+string \mbox{\hyperlink{class_lever_ac1c4d0e52e6cf218776d1925ec9f4787}{to\+String}} () override
+\begin{DoxyCompactList}\small\item\em To string method to print all the attributes of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Item} () override=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item_a297720c02984eab37332ae795d22189d}{Item}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} object with null values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item}{Item}} \& \mbox{\hyperlink{class_item_abb787be2e7a475b2dd0b4232690b7e2e}{operator=}} (const \mbox{\hyperlink{class_item}{Item}} \&other)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item}\+:\+: \doxylink{class_item}{Item} object with a given name, type, enchantment type and level. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a8d2b9d404f8e692f456af88a1eb1ce44}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_a5dcdff1db4c66ca22bd6a3f826c69644}{set\+Name}} (string \mbox{\hyperlink{class_item_a406cde7962a6b42a66b4a53c9a26db2c}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a581fa12e93282f8fa7fb9eaf6d5a08dc}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a2fbe1045a4271e867f98bc1bf7e79e08}{get\+Enchantment\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_ab57aa1f903c142a99d5d104008372d45}{get\+Enchantment\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ae00a79e0fdbfeeac5db57e0bd9fecb62}{set\+Enchantment\+Type}} (string \mbox{\hyperlink{class_item_a15d457837bb5bf3f32c38412501d02d3}{enchantment\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ad82d9dbe1e176a9555616194da821f7f}{set\+Enchantment\+Level}} (int \mbox{\hyperlink{class_item_a05b8e987ed10d3c7c68b381ece3fc856}{enchantment\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_a60c2a36c81df448c9bc013824c9e0ade}{is\+Placed}} () const
+\begin{DoxyCompactList}\small\item\em Whether the item is placed somewhere or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a5e4bbbe2b64328ac16b63d585f10e44c}{get\+Item\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{class_item}{Item} ID atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_lever_a2e8f5da49b7d2b4d16656e38077dad8c}\label{class_lever_a2e8f5da49b7d2b4d16656e38077dad8c} 
+std\+::string {\bfseries texture\+Name} = "{}Lever"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries texture\+Name}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{class_item_ac9fad565f6cecac54252284050ad01b0}{generate\+Probability}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random uniformely distributed probability between 0 and 1. \end{DoxyCompactList}\item 
+static int {\bfseries get\+Item\+Count} ()
+\item 
+static void {\bfseries item\+\_\+test} ()
+\begin{DoxyCompactList}\small\item\em This function is used to test the functionality of the item class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries Item\+ID}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its ID \end{DoxyCompactList}\item 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its name \end{DoxyCompactList}\item 
+string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its type \end{DoxyCompactList}\item 
+string {\bfseries enchantment\+\_\+type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment type \end{DoxyCompactList}\item 
+int {\bfseries enchantment\+\_\+level}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment level \end{DoxyCompactList}\item 
+bool {\bfseries placed}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of whether it is placed somewhere (Itemcontainer, map...) or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lever_ac1c4d0e52e6cf218776d1925ec9f4787}\label{class_lever_ac1c4d0e52e6cf218776d1925ec9f4787} 
+\index{Lever@{Lever}!toString@{toString}}
+\index{toString@{toString}!Lever@{Lever}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Lever\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+To string method to print all the attributes of the \doxylink{class_item}{Item} object. 
+
+Returns a string representation of the item.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_item_ac41cbc9e8df0411781652e645ca7747c}{Item}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/Lever.\+h\end{DoxyCompactItemize}

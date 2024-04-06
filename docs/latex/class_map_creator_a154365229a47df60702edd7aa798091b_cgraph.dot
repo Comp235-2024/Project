@@ -1,0 +1,38 @@
+digraph "MapCreator::Init"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="MapCreator::Init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Initializes the map creator by asking the user for the map size&name then, load all the Textures."];
+  Node1 -> Node2 [id="edge16_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MapCreator::askForSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a1981dc38d83b5e78e61031335eca5e01",tooltip="Asks the use to enter the name and size of the map in order to resize the window and create said map."];
+  Node1 -> Node3 [id="edge17_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="LogObservable::attach",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#ab029cc8742d65db69956fb9faeaa026a",tooltip="Attaches a LogObserver to the LogObservable."];
+  Node1 -> Node4 [id="edge18_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="MapCreator::calculateTexture\lSizes",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a809c50a621bd0e7d60405312be1c12c2",tooltip="Calculates the sizes of the textures based on the window size."];
+  Node4 -> Node5 [id="edge19_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="LogObservable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#ad42f5e24118560f10123743dac922919",tooltip="Notifies the observers without any message. This function overrides the notify() function in the base..."];
+  Node5 -> Node6 [id="edge20_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Observable::notify",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_observable.html#ae181cee45eafcdd3244f2385ac1357d7",tooltip="Notifies all attached observers about a state change in the Observable object."];
+  Node1 -> Node7 [id="edge21_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="MapCreator::drawButtons",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a40052c136ef4b93ca4040856b8c941d0",tooltip="Draws the buttons on the screen."];
+  Node1 -> Node8 [id="edge22_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="MapCreator::drawSideBar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#acbc17647359be9e23d91c725ffb92e76",tooltip="Draws the sidebar."];
+  Node1 -> Node9 [id="edge23_Node000001_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="MapCreator::initButtons",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a25464e4bd27f8b14ea4935e20f54cc40",tooltip="Initializes the buttons on the screen by specifying their sizes and their textures."];
+  Node1 -> Node10 [id="edge24_Node000001_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="MapCreator::initSideBar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a91143f9229e9fc4f180eaa2c7a79680c",tooltip="Initializes the sidebar by specifying size and textures."];
+  Node1 -> Node11 [id="edge25_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="MapCreator::loadTextures",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a7de69a7e80ee6f39b09ba144bd7c85be",tooltip="Loads the textures for the map creator interface."];
+  Node1 -> Node5 [id="edge26_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge27_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="MapObserver::update",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a8a3016364d12b7c647e35bb1f04bf4a2",tooltip="Updates the map observer."];
+  Node12 -> Node13 [id="edge28_Node000012_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="MapObserver::draw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a542a5301b3840038c00ea7b15a13ff70",tooltip="Draws the map observer's display."];
+  Node13 -> Node14 [id="edge29_Node000013_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="MapObserver::drawMap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#a29d1924556a8da862ab5377d0324d287",tooltip="Draws the map on the map display."];
+  Node14 -> Node15 [id="edge30_Node000014_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="MapObserver::drawImage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_observer.html#ab4ff967844677b764d7730ea417c5296",tooltip="Draws an image at the specified position on the map display."];
+}

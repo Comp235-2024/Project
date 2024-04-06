@@ -1,0 +1,75 @@
+\doxysection{Wall Class Reference}
+\hypertarget{class_wall}{}\label{class_wall}\index{Wall@{Wall}}
+
+
+Represents a wall object that inherits from the \doxylink{class_movable}{Movable} class.  
+
+
+
+
+{\ttfamily \#include $<$Wall.\+h$>$}
+
+
+
+Inheritance diagram for Wall\+:
+% FIG 0
+
+
+Collaboration diagram for Wall\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wall_a290bba81515876e6012d5f89d84d0952}{Wall}} (const \mbox{\hyperlink{class_movable}{Movable}} \&movable)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_wall}{Wall} object using a \doxylink{class_movable}{Movable} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_wall_a3762c8758f5c6c51478051272758f6bb}\label{class_wall_a3762c8758f5c6c51478051272758f6bb} 
+{\bfseries Wall} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_wall}{Wall} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_wall_a83de48a1c2e40ae804c1179ab8233b68}\label{class_wall_a83de48a1c2e40ae804c1179ab8233b68} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Wall} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for the \doxylink{class_wall}{Wall} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_wall_a440d658292f1e79345e50c74fb514791}\label{class_wall_a440d658292f1e79345e50c74fb514791} 
+string {\bfseries texture\+Name} = "{}wall\+\_\+mid"{}
+\begin{DoxyCompactList}\small\item\em The name of the texture used for rendering the wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a wall object that inherits from the \doxylink{class_movable}{Movable} class. 
+
+The \doxylink{class_wall}{Wall} class represents a wall object in a game. It inherits from the \doxylink{class_movable}{Movable} class and provides additional functionality specific to walls. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_wall_a290bba81515876e6012d5f89d84d0952}\label{class_wall_a290bba81515876e6012d5f89d84d0952} 
+\index{Wall@{Wall}!Wall@{Wall}}
+\index{Wall@{Wall}!Wall@{Wall}}
+\doxysubsubsection{\texorpdfstring{Wall()}{Wall()}}
+{\footnotesize\ttfamily Wall\+::\+Wall (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_movable}{Movable}} \&}]{movable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_wall}{Wall} object using a \doxylink{class_movable}{Movable} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em movable} & The \doxylink{class_movable}{Movable} object to initialize the \doxylink{class_wall}{Wall} with. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/Wall.\+h\end{DoxyCompactItemize}

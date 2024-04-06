@@ -1,0 +1,93 @@
+\doxysection{Character\+Observer Class Reference}
+\hypertarget{class_character_observer}{}\label{class_character_observer}\index{CharacterObserver@{CharacterObserver}}
+
+
+Inheritance diagram for Character\+Observer\+:
+% FIG 0
+
+
+Collaboration diagram for Character\+Observer\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_observer_a31670b18c38b7008d5619cdaaeb05376}{Character\+Observer}} (\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*}character)
+\item 
+\mbox{\hyperlink{class_character_observer_ab8b153a2d401c14ec26c34437a39232f}{\texorpdfstring{$\sim$}{\string~}\+Character\+Observer}} () override
+\item 
+void \mbox{\hyperlink{class_character_observer_a942b2ceca8c3b9997b7cb72b1894b6e8}{update}} () override
+\item 
+void \mbox{\hyperlink{class_character_observer_a7dbed4f59c198d3ac505a05831c97e21}{draw}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_observer_afbcba906ad97bd4481d3d04ba22b6161}\label{class_character_observer_afbcba906ad97bd4481d3d04ba22b6161} 
+\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+character}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observer} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_character_observer_a31670b18c38b7008d5619cdaaeb05376}\label{class_character_observer_a31670b18c38b7008d5619cdaaeb05376} 
+\index{CharacterObserver@{CharacterObserver}!CharacterObserver@{CharacterObserver}}
+\index{CharacterObserver@{CharacterObserver}!CharacterObserver@{CharacterObserver}}
+\doxysubsubsection{\texorpdfstring{CharacterObserver()}{CharacterObserver()}}
+{\footnotesize\ttfamily Character\+Observer\+::\+Character\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+Upon instantiation, attaches itself to a \doxylink{class_character}{Character} and sets its pointer to \doxylink{class_character}{Character} attribute to the passed character 
+\begin{DoxyParams}{Parameters}
+{\em c} & character \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{class_character_observer_ab8b153a2d401c14ec26c34437a39232f}\label{class_character_observer_ab8b153a2d401c14ec26c34437a39232f} 
+\index{CharacterObserver@{CharacterObserver}!````~CharacterObserver@{\texorpdfstring{$\sim$}{\string~}CharacterObserver}}
+\index{````~CharacterObserver@{\texorpdfstring{$\sim$}{\string~}CharacterObserver}!CharacterObserver@{CharacterObserver}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CharacterObserver()}{\string~CharacterObserver()}}
+{\footnotesize\ttfamily Character\+Observer\+::\texorpdfstring{$\sim$}{\string~}\+Character\+Observer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Upon destruction, detaches itself from its \doxylink{class_character}{Character} Here is the call graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_character_observer_a7dbed4f59c198d3ac505a05831c97e21}\label{class_character_observer_a7dbed4f59c198d3ac505a05831c97e21} 
+\index{CharacterObserver@{CharacterObserver}!draw@{draw}}
+\index{draw@{draw}!CharacterObserver@{CharacterObserver}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Character\+Observer\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints all the attributes\textquotesingle{} values of the character that it is observing Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_character_observer_a942b2ceca8c3b9997b7cb72b1894b6e8}\label{class_character_observer_a942b2ceca8c3b9997b7cb72b1894b6e8} 
+\index{CharacterObserver@{CharacterObserver}!update@{update}}
+\index{update@{update}!CharacterObserver@{CharacterObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Character\+Observer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+redraw \doxylink{class_character}{Character}\textquotesingle{}s info by calling \doxylink{class_character_observer_a7dbed4f59c198d3ac505a05831c97e21}{draw()} 
+
+Implements \mbox{\hyperlink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{Observer}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Characters/include/\mbox{\hyperlink{_character_observer_8h}{Character\+Observer.\+h}}\item 
+components/\+Characters/src/\mbox{\hyperlink{_character_observer_8cpp}{Character\+Observer.\+cpp}}\end{DoxyCompactItemize}

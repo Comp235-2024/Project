@@ -1,0 +1,190 @@
+\doxysection{Log\+Observable Class Reference}
+\hypertarget{class_log_observable}{}\label{class_log_observable}\index{LogObservable@{LogObservable}}
+
+
+The \doxylink{class_log_observable}{Log\+Observable} class is responsible for notifying its observers about log events. It inherits from the \doxylink{class_observable}{Observable} class.  
+
+
+
+
+{\ttfamily \#include $<$Log\+Observable.\+h$>$}
+
+
+
+Inheritance diagram for Log\+Observable\+:
+% FIG 0
+
+
+Collaboration diagram for Log\+Observable\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_log_observable_ae3c128effb2dcc1e119ae7c29e758b00}\label{class_log_observable_ae3c128effb2dcc1e119ae7c29e758b00} 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+\Hypertarget{class_log_observable_a5f13e1aa82c61300e865325cd868028f}\label{class_log_observable_a5f13e1aa82c61300e865325cd868028f} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ \mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_log_observable_a2d7c85d57ce3ba0782a1e91cc18d657e}{log\+Observers}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_log_observable}{Log\+Observable} class is responsible for notifying its observers about log events. It inherits from the \doxylink{class_observable}{Observable} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}\label{class_log_observable_ab029cc8742d65db69956fb9faeaa026a} 
+\index{LogObservable@{LogObservable}!attach@{attach}}
+\index{attach@{attach}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})}
+
+
+
+Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The \doxylink{class_log_observer}{Log\+Observer} to be attached. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_log_observable_a52ba9c1812485d6e429eb95657511e13}\label{class_log_observable_a52ba9c1812485d6e429eb95657511e13} 
+\index{LogObservable@{LogObservable}!attach@{attach}}
+\index{attach@{attach}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The \doxylink{class_observer}{Observer} to be attached. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{Observable}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}\label{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0} 
+\index{LogObservable@{LogObservable}!detach@{detach}}
+\index{detach@{detach}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})}
+
+
+
+Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The \doxylink{class_log_observer}{Log\+Observer} to be detached. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}\label{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9} 
+\index{LogObservable@{LogObservable}!detach@{detach}}
+\index{detach@{detach}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The \doxylink{class_observer}{Observer} to be detached. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{Observable}}.
+
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_log_observable_ad42f5e24118560f10123743dac922919}\label{class_log_observable_ad42f5e24118560f10123743dac922919} 
+\index{LogObservable@{LogObservable}!notify@{notify}}
+\index{notify@{notify}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{Observable}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}\label{class_log_observable_af6965fc04a80b12fd80fea9acef263eb} 
+\index{LogObservable@{LogObservable}!notify@{notify}}
+\index{notify@{notify}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Log\+Observable\+::notify (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{string}]{module = {\ttfamily "{}Map"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Notifies the observers with a log message and an optional module name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The log message to be notified. \\
+\hline
+{\em module} & The module name associated with the log message (default is "{}\+Map"{}). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_log_observable_a2d7c85d57ce3ba0782a1e91cc18d657e}\label{class_log_observable_a2d7c85d57ce3ba0782a1e91cc18d657e} 
+\index{LogObservable@{LogObservable}!logObservers@{logObservers}}
+\index{logObservers@{logObservers}!LogObservable@{LogObservable}}
+\doxysubsubsection{\texorpdfstring{logObservers}{logObservers}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{class_log_observer}{Log\+Observer}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Log\+Observable\+::log\+Observers \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+The list of Log\+Observers attached to the \doxylink{class_log_observable}{Log\+Observable}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Log/include/\mbox{\hyperlink{_log_observable_8h}{Log\+Observable.\+h}}\item 
+components/\+Log/src/\mbox{\hyperlink{_log_observable_8cpp}{Log\+Observable.\+cpp}}\end{DoxyCompactItemize}

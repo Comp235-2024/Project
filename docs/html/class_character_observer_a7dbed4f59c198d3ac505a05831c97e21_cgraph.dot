@@ -1,0 +1,23 @@
+digraph "CharacterObserver::draw"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="CharacterObserver::draw",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Character::getAbilityModifiers",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#a55be82a4cb649782e8aa7d25a51d7ee3",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Character::getAbilityScores",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#a07d5a321657a818aff46fbd160749fdd",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Character::getArmorClass",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#a6674dec79e4677370162aeb5674084bf",tooltip=" "];
+  Node1 -> Node5 [id="edge4_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Character::getAttackBonus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#a5d31d79ef0bc5d92cf61076a33a67858",tooltip=" "];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Character::getDamageBonus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#af644db086012065530259e6ba7da2f65",tooltip=" "];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Character::getHitPoints",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#ae8cdb23b41026ef3788e19993b1ea469",tooltip=" "];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Character::getLevel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character.html#a06713215a5850ec92194a1a711fb8cd7",tooltip=" "];
+}

@@ -1,0 +1,351 @@
+\doxysection{Dice Class Reference}
+\hypertarget{class_dice}{}\label{class_dice}\index{Dice@{Dice}}
+
+
+Class for the \doxylink{class_dice}{Dice} in the game.  
+
+
+
+
+{\ttfamily \#include $<$Dice.\+h$>$}
+
+
+
+Inheritance diagram for Dice\+:
+% FIG 0
+
+
+Collaboration diagram for Dice\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dice_a6b9eadd945ad8fd3840379c8824e5d48}{Dice}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_dice}{Dice} objectl. \end{DoxyCompactList}\item 
+\Hypertarget{class_dice_a48e90392d2ff1e6736c88f22e8a87751}\label{class_dice_a48e90392d2ff1e6736c88f22e8a87751} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Dice} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_dice}{Dice} object destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_ac23d9322adbcaf18f0a3c4ba29d21aa4}{get\+Number}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the number of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_a60826424e0841cba3ffbc93ba08f94ad}{get\+Kind}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the kind of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_a898ffcc9376eb482a2af9041c0b654fb}{get\+Added\+Value}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the added value of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dice_a918d6953c8d622546f8703735147fda9}{set\+Number}} (int \+\_\+number)
+\begin{DoxyCompactList}\small\item\em Set the number attribute of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dice_ab64aa8ebfa909dc59e827770843e4262}{set\+Kind}} (int \+\_\+kind)
+\begin{DoxyCompactList}\small\item\em Set the kind attribute of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dice_a916d9bb78896ed3e53dee7e0233a2743}{set\+Added\+Value}} (int \+\_\+added\+Value)
+\begin{DoxyCompactList}\small\item\em Set the added value attribute of the \doxylink{class_dice}{Dice} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_a8dca70574a5a71ef9c0c67a590404c8f}{convert}} (string str)
+\begin{DoxyCompactList}\small\item\em converts given string to integer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_a9a2d5bbefd49741f0eaf2e83d8885a11}{generate\+Number}} ()
+\begin{DoxyCompactList}\small\item\em picks a random number based on the number, kind and added value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dice_a1d910412a8de7e5dc92790193bb85cb6}{parse}} (string rex)
+\begin{DoxyCompactList}\small\item\em sets the \doxylink{class_dice_aacb88fcd837a117bb0c4db461fc94e1d}{number(x)}, \doxylink{class_dice_a2d7bc2cfe7b0c96d15974500d266f8ff}{kind(y)} and added\+Value of dice attributes based on the format xdy\mbox{[}+z\mbox{]} and checks for any errors in the rex \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_aa09f1850d597777c08e67cd0d9305244}{roll}} (string rex)
+\begin{DoxyCompactList}\small\item\em rolls the \doxylink{class_dice}{Dice} by parsing the passed rex string, and generating a random number based on it \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dice_aa9c31e56111d6474cf489591db359acb}{check\+Kind\+Of\+Dice}} () const
+\begin{DoxyCompactList}\small\item\em check if kind of dice is d4, d6, d8, d10, d12, d20, or d100 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dice_a593bcdb69288dcb35d967707cdf40ebd}{roll4d6\+Drop\+Lowest}} ()
+\begin{DoxyCompactList}\small\item\em Roll 4d6. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_dice_ac2f439b641b04804265b30c25fe2cc20}{test}} (\mbox{\hyperlink{class_dice}{Dice}} d)
+\begin{DoxyCompactList}\small\item\em test function for the \doxylink{class_dice}{Dice} class \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_dice_aacb88fcd837a117bb0c4db461fc94e1d}\label{class_dice_aacb88fcd837a117bb0c4db461fc94e1d} 
+int {\bfseries number}
+\begin{DoxyCompactList}\small\item\em int variable to keep track of the number of dice \end{DoxyCompactList}\item 
+\Hypertarget{class_dice_a2d7bc2cfe7b0c96d15974500d266f8ff}\label{class_dice_a2d7bc2cfe7b0c96d15974500d266f8ff} 
+int {\bfseries kind}
+\begin{DoxyCompactList}\small\item\em int variable to keep track of the kind of dice \end{DoxyCompactList}\item 
+\Hypertarget{class_dice_a16a2a8de77a68bd9b67e9fcbe93f73cb}\label{class_dice_a16a2a8de77a68bd9b67e9fcbe93f73cb} 
+int {\bfseries added\+Value}
+\begin{DoxyCompactList}\small\item\em int variable to keep track of the (possible) added value of dice \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the \doxylink{class_dice}{Dice} in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_dice_a6b9eadd945ad8fd3840379c8824e5d48}\label{class_dice_a6b9eadd945ad8fd3840379c8824e5d48} 
+\index{Dice@{Dice}!Dice@{Dice}}
+\index{Dice@{Dice}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{Dice()}{Dice()}}
+{\footnotesize\ttfamily Dice\+::\+Dice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_dice}{Dice} objectl. 
+
+Construct a new object \doxylink{class_dice}{Dice}\+:\+: initialize \doxylink{class_dice}{Dice} object with default 0 values. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_dice_aa9c31e56111d6474cf489591db359acb}\label{class_dice_aa9c31e56111d6474cf489591db359acb} 
+\index{Dice@{Dice}!checkKindOfDice@{checkKindOfDice}}
+\index{checkKindOfDice@{checkKindOfDice}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{checkKindOfDice()}{checkKindOfDice()}}
+{\footnotesize\ttfamily bool Dice\+::check\+Kind\+Of\+Dice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+check if kind of dice is d4, d6, d8, d10, d12, d20, or d100 
+
+\begin{DoxyReturn}{Returns}
+boolean valid or not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_dice_a8dca70574a5a71ef9c0c67a590404c8f}\label{class_dice_a8dca70574a5a71ef9c0c67a590404c8f} 
+\index{Dice@{Dice}!convert@{convert}}
+\index{convert@{convert}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{convert()}{convert()}}
+{\footnotesize\ttfamily int Dice\+::convert (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+converts given string to integer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & str \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int number 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_dice_a9a2d5bbefd49741f0eaf2e83d8885a11}\label{class_dice_a9a2d5bbefd49741f0eaf2e83d8885a11} 
+\index{Dice@{Dice}!generateNumber@{generateNumber}}
+\index{generateNumber@{generateNumber}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{generateNumber()}{generateNumber()}}
+{\footnotesize\ttfamily int Dice\+::generate\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+picks a random number based on the number, kind and added value 
+
+\begin{DoxyReturn}{Returns}
+int generated number 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_dice_a898ffcc9376eb482a2af9041c0b654fb}\label{class_dice_a898ffcc9376eb482a2af9041c0b654fb} 
+\index{Dice@{Dice}!getAddedValue@{getAddedValue}}
+\index{getAddedValue@{getAddedValue}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{getAddedValue()}{getAddedValue()}}
+{\footnotesize\ttfamily int Dice\+::get\+Added\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter function for the added value of the \doxylink{class_dice}{Dice} object. 
+
+Returns the added value of the dice object.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_dice_a60826424e0841cba3ffbc93ba08f94ad}\label{class_dice_a60826424e0841cba3ffbc93ba08f94ad} 
+\index{Dice@{Dice}!getKind@{getKind}}
+\index{getKind@{getKind}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{getKind()}{getKind()}}
+{\footnotesize\ttfamily int Dice\+::get\+Kind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter function for the kind of the \doxylink{class_dice}{Dice} object. 
+
+Returns the kind of the dice object.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{class_dice_ac23d9322adbcaf18f0a3c4ba29d21aa4}\label{class_dice_ac23d9322adbcaf18f0a3c4ba29d21aa4} 
+\index{Dice@{Dice}!getNumber@{getNumber}}
+\index{getNumber@{getNumber}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{getNumber()}{getNumber()}}
+{\footnotesize\ttfamily int Dice\+::get\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter function for the number of the \doxylink{class_dice}{Dice} object. 
+
+Returns the number of the dice object.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_dice_a1d910412a8de7e5dc92790193bb85cb6}\label{class_dice_a1d910412a8de7e5dc92790193bb85cb6} 
+\index{Dice@{Dice}!parse@{parse}}
+\index{parse@{parse}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily void Dice\+::parse (\begin{DoxyParamCaption}\item[{string}]{rex }\end{DoxyParamCaption})}
+
+
+
+sets the \doxylink{class_dice_aacb88fcd837a117bb0c4db461fc94e1d}{number(x)}, \doxylink{class_dice_a2d7bc2cfe7b0c96d15974500d266f8ff}{kind(y)} and added\+Value of dice attributes based on the format xdy\mbox{[}+z\mbox{]} and checks for any errors in the rex 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rex} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_dice_aa09f1850d597777c08e67cd0d9305244}\label{class_dice_aa09f1850d597777c08e67cd0d9305244} 
+\index{Dice@{Dice}!roll@{roll}}
+\index{roll@{roll}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{roll()}{roll()}}
+{\footnotesize\ttfamily int Dice\+::roll (\begin{DoxyParamCaption}\item[{string}]{rex }\end{DoxyParamCaption})}
+
+
+
+rolls the \doxylink{class_dice}{Dice} by parsing the passed rex string, and generating a random number based on it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rex} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{class_dice_a593bcdb69288dcb35d967707cdf40ebd}\label{class_dice_a593bcdb69288dcb35d967707cdf40ebd} 
+\index{Dice@{Dice}!roll4d6DropLowest@{roll4d6DropLowest}}
+\index{roll4d6DropLowest@{roll4d6DropLowest}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{roll4d6DropLowest()}{roll4d6DropLowest()}}
+{\footnotesize\ttfamily int Dice\+::roll4d6\+Drop\+Lowest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Roll 4d6. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 12
+\Hypertarget{class_dice_a916d9bb78896ed3e53dee7e0233a2743}\label{class_dice_a916d9bb78896ed3e53dee7e0233a2743} 
+\index{Dice@{Dice}!setAddedValue@{setAddedValue}}
+\index{setAddedValue@{setAddedValue}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{setAddedValue()}{setAddedValue()}}
+{\footnotesize\ttfamily void Dice\+::set\+Added\+Value (\begin{DoxyParamCaption}\item[{int}]{\+\_\+added\+Value }\end{DoxyParamCaption})}
+
+
+
+Set the added value attribute of the \doxylink{class_dice}{Dice} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+added\+Value} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{class_dice_ab64aa8ebfa909dc59e827770843e4262}\label{class_dice_ab64aa8ebfa909dc59e827770843e4262} 
+\index{Dice@{Dice}!setKind@{setKind}}
+\index{setKind@{setKind}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{setKind()}{setKind()}}
+{\footnotesize\ttfamily void Dice\+::set\+Kind (\begin{DoxyParamCaption}\item[{int}]{\+\_\+kind\+Of\+Dice }\end{DoxyParamCaption})}
+
+
+
+Set the kind attribute of the \doxylink{class_dice}{Dice} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+kind\+Of\+Dice} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{class_dice_a918d6953c8d622546f8703735147fda9}\label{class_dice_a918d6953c8d622546f8703735147fda9} 
+\index{Dice@{Dice}!setNumber@{setNumber}}
+\index{setNumber@{setNumber}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{setNumber()}{setNumber()}}
+{\footnotesize\ttfamily void Dice\+::set\+Number (\begin{DoxyParamCaption}\item[{int}]{\+\_\+number\+Of\+Dice }\end{DoxyParamCaption})}
+
+
+
+Set the number attribute of the \doxylink{class_dice}{Dice} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+number\+Of\+Dice} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{class_dice_ac2f439b641b04804265b30c25fe2cc20}\label{class_dice_ac2f439b641b04804265b30c25fe2cc20} 
+\index{Dice@{Dice}!test@{test}}
+\index{test@{test}!Dice@{Dice}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void Dice\+::test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_dice}{Dice}}}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test function for the \doxylink{class_dice}{Dice} class 
+
+for testing the functionality of \doxylink{class_dice}{Dice} class prints the attributes parsed from rex and the output for each test case
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 16
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Functionalities/include/\mbox{\hyperlink{_dice_8h}{Dice.\+h}}\item 
+components/\+Functionalities/src/\mbox{\hyperlink{dice_8cpp}{dice.\+cpp}}\end{DoxyCompactItemize}

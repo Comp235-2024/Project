@@ -1,0 +1,106 @@
+\doxysection{Input\+Manager Class Reference}
+\hypertarget{class_input_manager}{}\label{class_input_manager}\index{InputManager@{InputManager}}
+
+
+The \doxylink{class_input_manager}{Input\+Manager} class provides utility functions for handling user input.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_input_manager_ad87c25e67ad7234a8173ecabd816facd}\label{class_input_manager_ad87c25e67ad7234a8173ecabd816facd} 
+{\bfseries Input\+Manager} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_input_manager}{Input\+Manager}. \end{DoxyCompactList}\item 
+\Hypertarget{class_input_manager_a2f60d1069836adec6d37f06d618d88bd}\label{class_input_manager_a2f60d1069836adec6d37f06d618d88bd} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Input\+Manager} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_input_manager}{Input\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_input_manager_a547c83977172cdbe843e42aee0db05b1}{Is\+Sprite\+Clicked}} (const Sprite \&sprite, Mouse\+::\+Button button, Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if a sprite is clicked by the specified mouse button. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_input_manager_a59afcd8ac114ce31aefe07ae1de53f7f}{Is\+Button\+Clicked}} (const Rectangle\+Shape \&rectangle\+Shape, Mouse\+::\+Button button, Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if a button (represented by a rectangle shape) is clicked by the specified mouse button. \end{DoxyCompactList}\item 
+\Hypertarget{class_input_manager_a98936f7dbe170b6c2481f8a8c9e331a2}\label{class_input_manager_a98936f7dbe170b6c2481f8a8c9e331a2} 
+static bool {\bfseries Is\+Button\+Clicked} (const Rectangle\+Shape \&rectangle\+Shape, Mouse\+::\+Button button, Render\+Window \&window, const Vector2f \&render\+Texture\+Position)
+\item 
+static Vector2i \mbox{\hyperlink{class_input_manager_a02cc1a66699ddcbb828866b8a17ab9bc}{Get\+Mouse\+Pos}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Gets the current mouse position relative to the specified render window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_input_manager}{Input\+Manager} class provides utility functions for handling user input. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_input_manager_a02cc1a66699ddcbb828866b8a17ab9bc}\label{class_input_manager_a02cc1a66699ddcbb828866b8a17ab9bc} 
+\index{InputManager@{InputManager}!GetMousePos@{GetMousePos}}
+\index{GetMousePos@{GetMousePos}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{GetMousePos()}{GetMousePos()}}
+{\footnotesize\ttfamily Vector2i Input\+Manager\+::\+Get\+Mouse\+Pos (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the current mouse position relative to the specified render window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The render window to get the mouse position from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The current mouse position as a Vector2i object. 
+\end{DoxyReturn}
+\Hypertarget{class_input_manager_a59afcd8ac114ce31aefe07ae1de53f7f}\label{class_input_manager_a59afcd8ac114ce31aefe07ae1de53f7f} 
+\index{InputManager@{InputManager}!IsButtonClicked@{IsButtonClicked}}
+\index{IsButtonClicked@{IsButtonClicked}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{IsButtonClicked()}{IsButtonClicked()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Is\+Button\+Clicked (\begin{DoxyParamCaption}\item[{const Rectangle\+Shape \&}]{rectangle\+Shape,  }\item[{Mouse\+::\+Button}]{button,  }\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if a button (represented by a rectangle shape) is clicked by the specified mouse button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rectangle\+Shape} & The rectangle shape representing the button. \\
+\hline
+{\em button} & The mouse button to check. \\
+\hline
+{\em window} & The render window to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the button is clicked, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_input_manager_a547c83977172cdbe843e42aee0db05b1}\label{class_input_manager_a547c83977172cdbe843e42aee0db05b1} 
+\index{InputManager@{InputManager}!IsSpriteClicked@{IsSpriteClicked}}
+\index{IsSpriteClicked@{IsSpriteClicked}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{IsSpriteClicked()}{IsSpriteClicked()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Is\+Sprite\+Clicked (\begin{DoxyParamCaption}\item[{const Sprite \&}]{sprite,  }\item[{Mouse\+::\+Button}]{button,  }\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if a sprite is clicked by the specified mouse button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to check. \\
+\hline
+{\em button} & The mouse button to check. \\
+\hline
+{\em window} & The render window to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the sprite is clicked, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_input_manager_8h}{Input\+Manager.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_input_manager_8cpp}{Input\+Manager.\+cpp}}\end{DoxyCompactItemize}

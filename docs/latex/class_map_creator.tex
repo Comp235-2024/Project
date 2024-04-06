@@ -1,0 +1,616 @@
+\doxysection{Map\+Creator Class Reference}
+\hypertarget{class_map_creator}{}\label{class_map_creator}\index{MapCreator@{MapCreator}}
+
+
+Inheritance diagram for Map\+Creator\+:
+% FIG 0
+
+
+Collaboration diagram for Map\+Creator\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_map_creator_1_1_buttons}{Buttons}}
+\item 
+struct \mbox{\hyperlink{struct_map_creator_1_1_sidebar_item}{Sidebar\+Item}}
+\begin{DoxyCompactList}\small\item\em Struct to designate Items that are to be placed on the sidebar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_map_creator_a0ef364f45faf0d02a3f05c96e976850f}\label{class_map_creator_a0ef364f45faf0d02a3f05c96e976850f} 
+{\bfseries Map\+Creator} (Main\+Data\+Ref \&data)
+\item 
+void \mbox{\hyperlink{class_map_creator_a154365229a47df60702edd7aa798091b}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the map creator by asking the user for the map size\&name then, load all the Textures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a39254fe1fb7f9abe952ad5eb65ecf699}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the inputs (clicks) of the user on the window and updates the game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a20134fd1bd7c045eae7bb83428795be0}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a9d4223e79b231b9736429f54eae8fd6b}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Clear the window and then Draw all the components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_map_creator_a809c50a621bd0e7d60405312be1c12c2}{calculate\+Texture\+Sizes}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Calculates the sizes of the textures based on the window size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a7de69a7e80ee6f39b09ba144bd7c85be}{load\+Textures}} ()
+\begin{DoxyCompactList}\small\item\em Loads the textures for the map creator interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a4522812221edd19bf151c6e8818ace58}{save\+Map\+To\+File}} ()
+\begin{DoxyCompactList}\small\item\em Saves the edited map to a file in the Saved Maps directory as a .json file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a91143f9229e9fc4f180eaa2c7a79680c}{init\+Side\+Bar}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the sidebar by specifying size and textures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_acbc17647359be9e23d91c725ffb92e76}{draw\+Side\+Bar}} ()
+\begin{DoxyCompactList}\small\item\em Draws the sidebar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_map_creator_a1981dc38d83b5e78e61031335eca5e01}{ask\+For\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Asks the use to enter the name and size of the map in order to resize the window and create said map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a25464e4bd27f8b14ea4935e20f54cc40}{init\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the buttons on the screen by specifying their sizes and their textures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a40052c136ef4b93ca4040856b8c941d0}{draw\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Draws the buttons on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_aaf7d9b3c2754b5345f5cbd9e762c4968}{clear\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Assigns the current map a new default one and, detaches the observer from the old map and attaches it to the new one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a86989a32cc3277b24d105abd9866d4fb}{select\+Object\+From\+Sidebar}} (const Vector2f \&mouse\+Pos)
+\begin{DoxyCompactList}\small\item\em Based a click on the passed mouse position, selects an object from the sidebar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_aff37946b9d68adb304b73c1cb2934b2f}{place\+Object\+On\+Map}} (const Vector2f \&mouse\+Pos)
+\begin{DoxyCompactList}\small\item\em Places an object on the map based on the passed mouse position, using the method in \doxylink{_map_8h}{Map.\+h}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a054cb306e000f220c589b2464279ffbc}{process\+Click\+Actions}} (const Vector2f \&mouse\+Pos)
+\begin{DoxyCompactList}\small\item\em Checks where the user clicked on the screen eg. sidebar, map, buttons and calls the appropriate function. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_creator_ab5d39527ca7f5817a5d3b36e64f893b5}\label{class_map_creator_ab5d39527ca7f5817a5d3b36e64f893b5} 
+void {\bfseries handle\+Close\+Event} ()
+\begin{DoxyCompactList}\small\item\em closes the window when the user clicks the close button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_creator_a4b26477932cbed5df4f0c011fed84e39}{handle\+Mouse\+Button\+Pressed\+Event}} (const Event \&event)
+\begin{DoxyCompactList}\small\item\em Checks whether the event on the window was a click. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_map_creator_a2c667a6fb692cf47255afc4ad3161bd7}{map\+Name}}
+\item 
+bool \mbox{\hyperlink{class_map_creator_ae5d2833817f7cbece469fb788f9372be}{is\+Holding}} = false
+\item 
+\mbox{\hyperlink{class_map_observer}{Map\+Observer}} \mbox{\hyperlink{class_map_creator_a3f6c9f869838f7aa8e54531deadee07b}{map\+Observer}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_map_creator_1_1_sidebar_item}{Sidebar\+Item}} $>$ \mbox{\hyperlink{class_map_creator_a339fc4c05ea5541d10b712c9165c8cfa}{sidebar\+Objects}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_movable}{Movable}} $>$ \mbox{\hyperlink{class_map_creator_a9c441e49b76d5d35e5607876d2da410f}{selected\+Object}} = nullptr
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_map_creator_a09e0988e0be4ed6f79b2415359b0728e}{item\+Names}} = \{"{}Wall"{}, "{}Player"{}, "{}Lever"{},"{}Chest"{}, "{}Door"{},"{}Ogre"{}\}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_map_creator_ad9c8348e4ca7b9609d1a2bb7bcf01007}{item\+Permitted\+Count}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_map_creator_a7d83b5895277781962b2a279d6c47ba6}{sidebar}}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \mbox{\hyperlink{class_map_creator_a97295f1f071e485771cd70193b1e5c69}{item\+Containers}}
+\item 
+std\+::vector$<$ sf\+::\+Sprite $>$ \mbox{\hyperlink{class_map_creator_ab61ac659d3485283973456cfdf193f11}{sidebar\+Objects\+Sprites}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_map_creator_a79a2d2fef5866019c79fc917ddf0c579}{map\+Area}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_map_creator_a46098551ac6987a7f0ba9b3ec5efa0ef}{button\+Container}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_map_creator_a6b0f9ea7e43e7874adbe6275095360e0}{clear\+Button}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_map_creator_a2a54ec003b148140796bf9f810484f0f}{save\+Button}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_map_creator_ab0d07908fa1468d2d3c307b36b845636}{clear\+Button\+Text}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_map_creator_a6466aae464897e94aa1a6cb80fe1efc5}{save\+Button\+Text}}
+\item 
+Main\+Data\+Ref \mbox{\hyperlink{class_map_creator_a01f4f79e08b127728e4adf86ba5b1ee3}{\+\_\+data}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ \mbox{\hyperlink{class_map_creator_ae8f16c38ec19d534ef87772ada7496c1}{\+\_\+current\+Map}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_map_creator_a731883454708ceff88dd080fbd9770de}{\+\_\+map\+Texture}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_map_creator_a2bcfd59799b4260f6f3700000c4e6014}{\+\_\+character\+View}}
+\item 
+Sprite \mbox{\hyperlink{class_map_creator_ae634f8953880505d8b56f5b43a6e9874}{\+\_\+bg}}
+\item 
+Vector2$<$ unsigned int $>$ \mbox{\hyperlink{class_map_creator_a2c8fe1814f1096c3a382faff2a9eb197}{\+\_\+window\+Size}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_map_creator_1_1_buttons}{Buttons}} $>$ \mbox{\hyperlink{class_map_creator_af56c0f78ffcdf66af53ea0dfb214634f}{buttons}} = make\+\_\+shared$<$\mbox{\hyperlink{struct_map_creator_1_1_buttons}{Buttons}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_map_creator_a8bc71d7f1983d15c8afd55db6b618ef0}{nb\+Saved\+Maps}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_creator_a1981dc38d83b5e78e61031335eca5e01}\label{class_map_creator_a1981dc38d83b5e78e61031335eca5e01} 
+\index{MapCreator@{MapCreator}!askForSize@{askForSize}}
+\index{askForSize@{askForSize}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{askForSize()}{askForSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Map\+Creator\+::ask\+For\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Asks the use to enter the name and size of the map in order to resize the window and create said map. 
+
+Asks the user for the name and size of the map.
+
+\begin{DoxyReturn}{Returns}
+Size of the map as a \doxylink{struct_position}{Position} struct. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_map_creator_a809c50a621bd0e7d60405312be1c12c2}\label{class_map_creator_a809c50a621bd0e7d60405312be1c12c2} 
+\index{MapCreator@{MapCreator}!calculateTextureSizes@{calculateTextureSizes}}
+\index{calculateTextureSizes@{calculateTextureSizes}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{calculateTextureSizes()}{calculateTextureSizes()}}
+{\footnotesize\ttfamily void Map\+Creator\+::calculate\+Texture\+Sizes (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculates the sizes of the textures based on the window size. 
+
+Calculates the size of the map texture based on the Input from the user.
+
+This function calculates the sizes of the map texture, character view texture, and console view texture based on the window size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Width of the map. \\
+\hline
+{\em y} & Height of the map. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_map_creator_aaf7d9b3c2754b5345f5cbd9e762c4968}\label{class_map_creator_aaf7d9b3c2754b5345f5cbd9e762c4968} 
+\index{MapCreator@{MapCreator}!clearMap@{clearMap}}
+\index{clearMap@{clearMap}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{clearMap()}{clearMap()}}
+{\footnotesize\ttfamily void Map\+Creator\+::clear\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Assigns the current map a new default one and, detaches the observer from the old map and attaches it to the new one. 
+
+Assigns the current map a new default map and attaches the map observer to the new default map. Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{class_map_creator_a9d4223e79b231b9736429f54eae8fd6b}\label{class_map_creator_a9d4223e79b231b9736429f54eae8fd6b} 
+\index{MapCreator@{MapCreator}!Draw@{Draw}}
+\index{Draw@{Draw}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Map\+Creator\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clear the window and then Draw all the components. 
+
+Clears the window and then draws all the components.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & \\
+\hline
+{\em delta\+Time} & How often \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{class_map_creator_a40052c136ef4b93ca4040856b8c941d0}\label{class_map_creator_a40052c136ef4b93ca4040856b8c941d0} 
+\index{MapCreator@{MapCreator}!drawButtons@{drawButtons}}
+\index{drawButtons@{drawButtons}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{drawButtons()}{drawButtons()}}
+{\footnotesize\ttfamily void Map\+Creator\+::draw\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws the buttons on the screen. 
+
+Draws the buttons for clearing the map and saving the map. Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_map_creator_acbc17647359be9e23d91c725ffb92e76}\label{class_map_creator_acbc17647359be9e23d91c725ffb92e76} 
+\index{MapCreator@{MapCreator}!drawSideBar@{drawSideBar}}
+\index{drawSideBar@{drawSideBar}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{drawSideBar()}{drawSideBar()}}
+{\footnotesize\ttfamily void Map\+Creator\+::draw\+Side\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws the sidebar. 
+
+Draws the sidebar and its items. Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{class_map_creator_a39254fe1fb7f9abe952ad5eb65ecf699}\label{class_map_creator_a39254fe1fb7f9abe952ad5eb65ecf699} 
+\index{MapCreator@{MapCreator}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Map\+Creator\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the inputs (clicks) of the user on the window and updates the game logic. 
+
+Handles the input from the user. It handles the window close event, mouse button pressed event, and other events. It processes the click actions based on the mouse position. It places the object on the map if an object is selected and the mouse position is on the map.
+
+Either select an item from the sidebar
+
+Or place an item on the map
+
+Or clear the map
+
+Or save the map 
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 11
+\Hypertarget{class_map_creator_a4b26477932cbed5df4f0c011fed84e39}\label{class_map_creator_a4b26477932cbed5df4f0c011fed84e39} 
+\index{MapCreator@{MapCreator}!handleMouseButtonPressedEvent@{handleMouseButtonPressedEvent}}
+\index{handleMouseButtonPressedEvent@{handleMouseButtonPressedEvent}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{handleMouseButtonPressedEvent()}{handleMouseButtonPressedEvent()}}
+{\footnotesize\ttfamily void Map\+Creator\+::handle\+Mouse\+Button\+Pressed\+Event (\begin{DoxyParamCaption}\item[{const Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks whether the event on the window was a click. 
+
+Checks if the left mouse button was pressed and processes the click actions based on the mouse position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{class_map_creator_a154365229a47df60702edd7aa798091b}\label{class_map_creator_a154365229a47df60702edd7aa798091b} 
+\index{MapCreator@{MapCreator}!Init@{Init}}
+\index{Init@{Init}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Map\+Creator\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the map creator by asking the user for the map size\&name then, load all the Textures. 
+
+Initializes the map creator. It first asks the user for the size of the map, then calculates the texture sizes based on the window size. It then loads the textures needed for the map creator and scales the background texture to fit the window. It then initializes the map editing interface and the sidebar. 
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+\Hypertarget{class_map_creator_a25464e4bd27f8b14ea4935e20f54cc40}\label{class_map_creator_a25464e4bd27f8b14ea4935e20f54cc40} 
+\index{MapCreator@{MapCreator}!initButtons@{initButtons}}
+\index{initButtons@{initButtons}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{initButtons()}{initButtons()}}
+{\footnotesize\ttfamily void Map\+Creator\+::init\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes the buttons on the screen by specifying their sizes and their textures. 
+
+Initializes the buttons (Their texture and position) for clearing the map and saving the map. Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{class_map_creator_a91143f9229e9fc4f180eaa2c7a79680c}\label{class_map_creator_a91143f9229e9fc4f180eaa2c7a79680c} 
+\index{MapCreator@{MapCreator}!initSideBar@{initSideBar}}
+\index{initSideBar@{initSideBar}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{initSideBar()}{initSideBar()}}
+{\footnotesize\ttfamily void Map\+Creator\+::init\+Side\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes the sidebar by specifying size and textures. 
+
+Initializes the sidebar with the items that can be placed on the map to the right of the window. Here is the caller graph for this function\+:
+% FIG 16
+\Hypertarget{class_map_creator_a7de69a7e80ee6f39b09ba144bd7c85be}\label{class_map_creator_a7de69a7e80ee6f39b09ba144bd7c85be} 
+\index{MapCreator@{MapCreator}!loadTextures@{loadTextures}}
+\index{loadTextures@{loadTextures}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{loadTextures()}{loadTextures()}}
+{\footnotesize\ttfamily void Map\+Creator\+::load\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads the textures for the map creator interface. 
+
+Loads the textures needed for the map creator and scales the background texture to fit the window. Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{class_map_creator_aff37946b9d68adb304b73c1cb2934b2f}\label{class_map_creator_aff37946b9d68adb304b73c1cb2934b2f} 
+\index{MapCreator@{MapCreator}!placeObjectOnMap@{placeObjectOnMap}}
+\index{placeObjectOnMap@{placeObjectOnMap}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{placeObjectOnMap()}{placeObjectOnMap()}}
+{\footnotesize\ttfamily void Map\+Creator\+::place\+Object\+On\+Map (\begin{DoxyParamCaption}\item[{const Vector2f \&}]{mouse\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Places an object on the map based on the passed mouse position, using the method in \doxylink{_map_8h}{Map.\+h}. 
+
+Calculates the cell position based on the mouse position and places the object on the map. It notifies the user if the object was placed on the map or if it cannot be placed at the position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Pos} & \\
+\hline
+\end{DoxyParams}
+The map is scaled to SIDEBAR\+\_\+\+RATIO \% of the window size, so we need to adjust the mouse position accordinglyHere is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{class_map_creator_a054cb306e000f220c589b2464279ffbc}\label{class_map_creator_a054cb306e000f220c589b2464279ffbc} 
+\index{MapCreator@{MapCreator}!processClickActions@{processClickActions}}
+\index{processClickActions@{processClickActions}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{processClickActions()}{processClickActions()}}
+{\footnotesize\ttfamily void Map\+Creator\+::process\+Click\+Actions (\begin{DoxyParamCaption}\item[{const Vector2f \&}]{mouse\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks where the user clicked on the screen eg. sidebar, map, buttons and calls the appropriate function. 
+
+Processes the click actions based on the mouse position. It calls a method to clear the map if the clear button is clicked. It calls a method to save the map to a file if the save button is clicked. It calls a method to place the object on the map if an object is selected and the mouse position is on the map. It calls a method to select an object from the sidebar if the mouse position is on the sidebar.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Pos} & \doxylink{struct_position}{Position} of the click\\
+\hline
+{\em mouse\+Pos} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{class_map_creator_a4522812221edd19bf151c6e8818ace58}\label{class_map_creator_a4522812221edd19bf151c6e8818ace58} 
+\index{MapCreator@{MapCreator}!saveMapToFile@{saveMapToFile}}
+\index{saveMapToFile@{saveMapToFile}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{saveMapToFile()}{saveMapToFile()}}
+{\footnotesize\ttfamily void Map\+Creator\+::save\+Map\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Saves the edited map to a file in the Saved Maps directory as a .json file. 
+
+Goes through the grid of the map looking at each cell and saving the object type to a json file. Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\Hypertarget{class_map_creator_a86989a32cc3277b24d105abd9866d4fb}\label{class_map_creator_a86989a32cc3277b24d105abd9866d4fb} 
+\index{MapCreator@{MapCreator}!selectObjectFromSidebar@{selectObjectFromSidebar}}
+\index{selectObjectFromSidebar@{selectObjectFromSidebar}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{selectObjectFromSidebar()}{selectObjectFromSidebar()}}
+{\footnotesize\ttfamily void Map\+Creator\+::select\+Object\+From\+Sidebar (\begin{DoxyParamCaption}\item[{const Vector2f \&}]{mouse\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Based a click on the passed mouse position, selects an object from the sidebar. 
+
+Selects an object from the sidebar based on the mouse click position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Pos} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
+\Hypertarget{class_map_creator_a20134fd1bd7c045eae7bb83428795be0}\label{class_map_creator_a20134fd1bd7c045eae7bb83428795be0} 
+\index{MapCreator@{MapCreator}!Update@{Update}}
+\index{Update@{Update}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Map\+Creator\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the state. 
+
+This method is called every frame to update the state\textquotesingle{}s logic and data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last frame. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_map_creator_ae634f8953880505d8b56f5b43a6e9874}\label{class_map_creator_ae634f8953880505d8b56f5b43a6e9874} 
+\index{MapCreator@{MapCreator}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily Sprite Map\+Creator\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+The background sprite. \Hypertarget{class_map_creator_a2bcfd59799b4260f6f3700000c4e6014}\label{class_map_creator_a2bcfd59799b4260f6f3700000c4e6014} 
+\index{MapCreator@{MapCreator}!\_characterView@{\_characterView}}
+\index{\_characterView@{\_characterView}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_characterView}{\_characterView}}
+{\footnotesize\ttfamily Render\+Texture Map\+Creator\+::\+\_\+character\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the character view. \Hypertarget{class_map_creator_ae8f16c38ec19d534ef87772ada7496c1}\label{class_map_creator_ae8f16c38ec19d534ef87772ada7496c1} 
+\index{MapCreator@{MapCreator}!\_currentMap@{\_currentMap}}
+\index{\_currentMap@{\_currentMap}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_currentMap}{\_currentMap}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_map}{Map}}$>$ Map\+Creator\+::\+\_\+current\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+The current map. \Hypertarget{class_map_creator_a01f4f79e08b127728e4adf86ba5b1ee3}\label{class_map_creator_a01f4f79e08b127728e4adf86ba5b1ee3} 
+\index{MapCreator@{MapCreator}!\_data@{\_data}}
+\index{\_data@{\_data}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_data}{\_data}}
+{\footnotesize\ttfamily Main\+Data\+Ref Map\+Creator\+::\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+The main data reference. \Hypertarget{class_map_creator_a731883454708ceff88dd080fbd9770de}\label{class_map_creator_a731883454708ceff88dd080fbd9770de} 
+\index{MapCreator@{MapCreator}!\_mapTexture@{\_mapTexture}}
+\index{\_mapTexture@{\_mapTexture}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_mapTexture}{\_mapTexture}}
+{\footnotesize\ttfamily Render\+Texture Map\+Creator\+::\+\_\+map\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the map. \Hypertarget{class_map_creator_a2c8fe1814f1096c3a382faff2a9eb197}\label{class_map_creator_a2c8fe1814f1096c3a382faff2a9eb197} 
+\index{MapCreator@{MapCreator}!\_windowSize@{\_windowSize}}
+\index{\_windowSize@{\_windowSize}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{\_windowSize}{\_windowSize}}
+{\footnotesize\ttfamily Vector2$<$unsigned int$>$ Map\+Creator\+::\+\_\+window\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+The window size. \Hypertarget{class_map_creator_a46098551ac6987a7f0ba9b3ec5efa0ef}\label{class_map_creator_a46098551ac6987a7f0ba9b3ec5efa0ef} 
+\index{MapCreator@{MapCreator}!buttonContainer@{buttonContainer}}
+\index{buttonContainer@{buttonContainer}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{buttonContainer}{buttonContainer}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Map\+Creator\+::button\+Container\hspace{0.3cm}{\ttfamily [private]}}
+
+The container for the buttons. \Hypertarget{class_map_creator_af56c0f78ffcdf66af53ea0dfb214634f}\label{class_map_creator_af56c0f78ffcdf66af53ea0dfb214634f} 
+\index{MapCreator@{MapCreator}!buttons@{buttons}}
+\index{buttons@{buttons}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{struct_map_creator_1_1_buttons}{Buttons}}$>$ Map\+Creator\+::buttons = make\+\_\+shared$<$\mbox{\hyperlink{struct_map_creator_1_1_buttons}{Buttons}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+The buttons on the game screen. \Hypertarget{class_map_creator_a6b0f9ea7e43e7874adbe6275095360e0}\label{class_map_creator_a6b0f9ea7e43e7874adbe6275095360e0} 
+\index{MapCreator@{MapCreator}!clearButton@{clearButton}}
+\index{clearButton@{clearButton}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{clearButton}{clearButton}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Map\+Creator\+::clear\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+The clear button. \Hypertarget{class_map_creator_ab0d07908fa1468d2d3c307b36b845636}\label{class_map_creator_ab0d07908fa1468d2d3c307b36b845636} 
+\index{MapCreator@{MapCreator}!clearButtonText@{clearButtonText}}
+\index{clearButtonText@{clearButtonText}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{clearButtonText}{clearButtonText}}
+{\footnotesize\ttfamily sf\+::\+Text Map\+Creator\+::clear\+Button\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+The text for the clear button. \Hypertarget{class_map_creator_ae5d2833817f7cbece469fb788f9372be}\label{class_map_creator_ae5d2833817f7cbece469fb788f9372be} 
+\index{MapCreator@{MapCreator}!isHolding@{isHolding}}
+\index{isHolding@{isHolding}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{isHolding}{isHolding}}
+{\footnotesize\ttfamily bool Map\+Creator\+::is\+Holding = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag to indicate if an object is being held \Hypertarget{class_map_creator_a97295f1f071e485771cd70193b1e5c69}\label{class_map_creator_a97295f1f071e485771cd70193b1e5c69} 
+\index{MapCreator@{MapCreator}!itemContainers@{itemContainers}}
+\index{itemContainers@{itemContainers}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{itemContainers}{itemContainers}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Map\+Creator\+::item\+Containers\hspace{0.3cm}{\ttfamily [private]}}
+
+Background of each item in the sidebar. \Hypertarget{class_map_creator_a09e0988e0be4ed6f79b2415359b0728e}\label{class_map_creator_a09e0988e0be4ed6f79b2415359b0728e} 
+\index{MapCreator@{MapCreator}!itemNames@{itemNames}}
+\index{itemNames@{itemNames}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{itemNames}{itemNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Map\+Creator\+::item\+Names = \{"{}Wall"{}, "{}Player"{}, "{}Lever"{},"{}Chest"{}, "{}Door"{},"{}Ogre"{}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+Items that can be placed on the map. \Hypertarget{class_map_creator_ad9c8348e4ca7b9609d1a2bb7bcf01007}\label{class_map_creator_ad9c8348e4ca7b9609d1a2bb7bcf01007} 
+\index{MapCreator@{MapCreator}!itemPermittedCount@{itemPermittedCount}}
+\index{itemPermittedCount@{itemPermittedCount}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{itemPermittedCount}{itemPermittedCount}}
+{\footnotesize\ttfamily sf\+::\+Text Map\+Creator\+::item\+Permitted\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+Maximum number of a specific item that can be placed on the map. \Hypertarget{class_map_creator_a79a2d2fef5866019c79fc917ddf0c579}\label{class_map_creator_a79a2d2fef5866019c79fc917ddf0c579} 
+\index{MapCreator@{MapCreator}!mapArea@{mapArea}}
+\index{mapArea@{mapArea}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{mapArea}{mapArea}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Map\+Creator\+::map\+Area\hspace{0.3cm}{\ttfamily [private]}}
+
+The map shape/space. \Hypertarget{class_map_creator_a2c667a6fb692cf47255afc4ad3161bd7}\label{class_map_creator_a2c667a6fb692cf47255afc4ad3161bd7} 
+\index{MapCreator@{MapCreator}!mapName@{mapName}}
+\index{mapName@{mapName}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{mapName}{mapName}}
+{\footnotesize\ttfamily string Map\+Creator\+::map\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+The name of the map. \Hypertarget{class_map_creator_a3f6c9f869838f7aa8e54531deadee07b}\label{class_map_creator_a3f6c9f869838f7aa8e54531deadee07b} 
+\index{MapCreator@{MapCreator}!mapObserver@{mapObserver}}
+\index{mapObserver@{mapObserver}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{mapObserver}{mapObserver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map_observer}{Map\+Observer}} Map\+Creator\+::map\+Observer\hspace{0.3cm}{\ttfamily [private]}}
+
+The map observer. \Hypertarget{class_map_creator_a8bc71d7f1983d15c8afd55db6b618ef0}\label{class_map_creator_a8bc71d7f1983d15c8afd55db6b618ef0} 
+\index{MapCreator@{MapCreator}!nbSavedMaps@{nbSavedMaps}}
+\index{nbSavedMaps@{nbSavedMaps}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{nbSavedMaps}{nbSavedMaps}}
+{\footnotesize\ttfamily int Map\+Creator\+::nb\+Saved\+Maps\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+The number of maps in the campaign. \Hypertarget{class_map_creator_a2a54ec003b148140796bf9f810484f0f}\label{class_map_creator_a2a54ec003b148140796bf9f810484f0f} 
+\index{MapCreator@{MapCreator}!saveButton@{saveButton}}
+\index{saveButton@{saveButton}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{saveButton}{saveButton}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Map\+Creator\+::save\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+The save button. \Hypertarget{class_map_creator_a6466aae464897e94aa1a6cb80fe1efc5}\label{class_map_creator_a6466aae464897e94aa1a6cb80fe1efc5} 
+\index{MapCreator@{MapCreator}!saveButtonText@{saveButtonText}}
+\index{saveButtonText@{saveButtonText}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{saveButtonText}{saveButtonText}}
+{\footnotesize\ttfamily sf\+::\+Text Map\+Creator\+::save\+Button\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+The text for the save button. \Hypertarget{class_map_creator_a9c441e49b76d5d35e5607876d2da410f}\label{class_map_creator_a9c441e49b76d5d35e5607876d2da410f} 
+\index{MapCreator@{MapCreator}!selectedObject@{selectedObject}}
+\index{selectedObject@{selectedObject}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{selectedObject}{selectedObject}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_movable}{Movable}}$>$ Map\+Creator\+::selected\+Object = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+The selected object from the sidebar. \Hypertarget{class_map_creator_a7d83b5895277781962b2a279d6c47ba6}\label{class_map_creator_a7d83b5895277781962b2a279d6c47ba6} 
+\index{MapCreator@{MapCreator}!sidebar@{sidebar}}
+\index{sidebar@{sidebar}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{sidebar}{sidebar}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Map\+Creator\+::sidebar\hspace{0.3cm}{\ttfamily [private]}}
+
+The sidebar shape/space. \Hypertarget{class_map_creator_a339fc4c05ea5541d10b712c9165c8cfa}\label{class_map_creator_a339fc4c05ea5541d10b712c9165c8cfa} 
+\index{MapCreator@{MapCreator}!sidebarObjects@{sidebarObjects}}
+\index{sidebarObjects@{sidebarObjects}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{sidebarObjects}{sidebarObjects}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_map_creator_1_1_sidebar_item}{Sidebar\+Item}}$>$ Map\+Creator\+::sidebar\+Objects\hspace{0.3cm}{\ttfamily [private]}}
+
+The objects on the sidebar. \Hypertarget{class_map_creator_ab61ac659d3485283973456cfdf193f11}\label{class_map_creator_ab61ac659d3485283973456cfdf193f11} 
+\index{MapCreator@{MapCreator}!sidebarObjectsSprites@{sidebarObjectsSprites}}
+\index{sidebarObjectsSprites@{sidebarObjectsSprites}!MapCreator@{MapCreator}}
+\doxysubsubsection{\texorpdfstring{sidebarObjectsSprites}{sidebarObjectsSprites}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$>$ Map\+Creator\+::sidebar\+Objects\+Sprites\hspace{0.3cm}{\ttfamily [private]}}
+
+The sprites for the items to be placed on the sidebar. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_map_creator_8h}{Map\+Creator.\+h}}\item 
+components/\+Game\+Engine/src/Map\+Creator.\+cpp\end{DoxyCompactItemize}

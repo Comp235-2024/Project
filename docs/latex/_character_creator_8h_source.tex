@@ -1,0 +1,65 @@
+\doxysection{Character\+Creator.\+h}
+\hypertarget{_character_creator_8h_source}{}\label{_character_creator_8h_source}\index{components/GameEngine/include/CharacterCreator.h@{components/GameEngine/include/CharacterCreator.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Khalil\ Azaiez\ on\ 2024-\/03-\/30.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_CHARACTERCREATOR\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJECT\_CHARACTERCREATOR\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}MapObserver.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_main_menu_8h}{MainMenu.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_creator}{CharacterCreator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_character_creator_a42bab61843fe4a11cd3b90736467e591}{CharacterCreator}}(MainDataRef\ data);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_afade3b646ff58824acc1de1adba85f9c}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a6968353aaa3a5616e1797eca641ffa97}{HandleInput}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a2051d780e1561f8e68258c1395f1399a}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a22b62fe97164b2bcb99208cedb369a3c}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a2a02b90e7be7868b161c3abec91bb174}{CreateCharacter}}(\textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a2bdc0f75bc9fa22b003ea0d37dcf865d}{DisplayCreationMessage}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00066\ \ \ \ \ shared\_ptr<Map>\ \mbox{\hyperlink{class_character_creator_a7b5df0590d24f7f9db204a854d4e7138}{\_currentMap}};\ }
+\DoxyCodeLine{00067\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_character_creator_a2473e1aae00f2d91801cb058fc1bcc89}{\_mapTexture}};\ }
+\DoxyCodeLine{00068\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_character_creator_a6d4e2dab70482fd4a3b8c729b766e98c}{\_characterView}};\ }
+\DoxyCodeLine{00069\ \ \ \ \ RenderTexture\ \mbox{\hyperlink{class_character_creator_ae8f34aff4d22f25e50e916f9a886edaa}{\_consoleView}};\ }
+\DoxyCodeLine{00070\ \ \ \ \ MainDataRef\ \mbox{\hyperlink{class_character_creator_a04c530096eca5ce3e077d1a4974dfd22}{\_data}};\ }
+\DoxyCodeLine{00071\ \ \ \ \ Texture\ \mbox{\hyperlink{class_character_creator_a6d11ac11b897cab712044e79c39bce57}{\_bgTexture}};\ }
+\DoxyCodeLine{00072\ \ \ \ \ Sprite\ \mbox{\hyperlink{class_character_creator_ad1c72e65e081b7036830500f5a8c807e}{\_bg}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{class_map_observer}{MapObserver}}\ \mbox{\hyperlink{class_character_creator_a2b566a186a3197aa416f5ae11e7dd8da}{mapObserver}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}}\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_aec401e744926df5ae92adb6f5846b7c4}{CreateNimble}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_a54e63cb66127f31924f8ff5372586ee9}{CreateNimbleText}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_a30c42b5efe6cf65695e4cd67eb957416}{CreateBully}};\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_a27cebf63db48c32e6d1b57d989abf53f}{CreateBullyText}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_a4c1c71ec6941a8e6cd519a970d5d9641}{CreateTank}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_character_creator_1_1_buttons_a13ba7ffe4a44eae8bdfa0e69ef708634}{CreateTankText}};\ }
+\DoxyCodeLine{00086\ \ \ \ \ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ shared\_ptr<Buttons>\ \mbox{\hyperlink{class_character_creator_a04fdcf6c4f166416d3a01b0c801413ab}{buttons}}\ =\ make\_shared<Buttons>();\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a003fa50fb7b06eb18637aeba88643357}{generateMapTexture}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_ab4799f87d5475eb23ee453901585bbe1}{SetButtons}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_creator_a8e016195a65a551e0fdb6a81816d6912}{GenerateButton}}(\textcolor{keyword}{const}\ Font\ \&font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ RectangleShape\ \&button,\ Text\ \&buttonText,\ Vector2f\ position);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Additional\ attributes\ for\ UI\ components\ go\ here}}
+\DoxyCodeLine{00111\ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//PROJECT\_CHARACTERCREATOR\_H}}
+
+\end{DoxyCode}

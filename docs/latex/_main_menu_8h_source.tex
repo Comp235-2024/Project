@@ -1,0 +1,68 @@
+\doxysection{Main\+Menu.\+h}
+\hypertarget{_main_menu_8h_source}{}\label{_main_menu_8h_source}\index{components/GameEngine/include/MainMenu.h@{components/GameEngine/include/MainMenu.h}}
+\mbox{\hyperlink{_main_menu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A2\_MAINMENU\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A2\_MAINMENU\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}sstream"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}CharacterCreator.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_menu}{MainMenu}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_main_menu_a05833899dc70dd4e74b8581796c67624}{MainMenu}}(MainDataRef\ data);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_a345ae60f67ead501d821ec2c5aa8cf3f}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_abf36c8bcbe63e9b0b19c1a78068974ab}{HandleInput}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_ac437fc32f14c613a3295c60169a1a219}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_aaf8f9689cde0257604fe892a902bb7a9}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ MainDataRef\ \mbox{\hyperlink{class_main_menu_a9107d4b869462008e155ec3edf8f17cf}{\_data}};\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Clock\ \mbox{\hyperlink{class_main_menu_a2908d0846c8954c2de1a1e443d3648e2}{\_clock}};\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ Texture\ \mbox{\hyperlink{class_main_menu_ae5cab2825a37756eecba5c79313debf5}{\_bgTexture}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ Sprite\ \mbox{\hyperlink{class_main_menu_ac70bc6790f59a3f1c3d2f7fb10f46fab}{\_bg}};\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_main_menu_1_1_buttons}{Buttons}}\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a6336de0af839adb63f93ccdd5bbc8379}{play}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a25e40979b90fc8e8a8e875216c50c289}{playText}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_ae7079c4f45cc8fac2c65b129f47dae43}{editMap}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a9e508acb933ddb24f4c9c23f725cba71}{editMapText}};\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a351e8ec1c9d052d1c0d4a91fc11fa7d4}{createCharacter}};\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_aa20379375dd6b2fd5c44676bf6af4d18}{createCharacterText}};\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a7159e3f44f110b28c7d47fe6b1faafea}{editCharacter}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a70e537202ff901944a8dcfd5e791bb51}{editCharacterText}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_aa065fa76f0d6a2d2b7e230147a1b6824}{load}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a675d672d3a74e3837738b0b4d8579499}{loadText}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a70eb19b68210e6cca7934de7c656bfd1}{options}};\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_afff9dd01c23a0807f0f7e4f735da9951}{optionsText}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a018ed00d520a614b0b69e96a8d813358}{quit}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_main_menu_1_1_buttons_a03501913078870da49ab589e402f1b58}{quitText}};\ }
+\DoxyCodeLine{00086\ \ \ \ \ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ shared\_ptr<Buttons>\ \mbox{\hyperlink{class_main_menu_a43323ea4bfcceb6fb5d8ead9f97895c2}{buttons}}\ =\ make\_shared<Buttons>();\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_ac38a68fc63800c9d1d9302bc0ebbc766}{SetButtons}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_menu_a8bf0dbc2905e93e64c7c324a5cfda3a5}{GenerateButton}}(\textcolor{keyword}{const}\ Font\ \&font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ RectangleShape\ \&button,\ Text\ \&buttonText,\ Vector2f\ position);}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A2\_MAINMENU\_H}}
+
+\end{DoxyCode}

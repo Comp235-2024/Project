@@ -1,0 +1,48 @@
+digraph "HumanPlayerStrategy::freeAction"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="HumanPlayerStrategy\l::freeAction",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="method that lets the user interact with their backpack and worn items"];
+  Node1 -> Node2 [id="edge27_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Backpack::addItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a0009726a672f104791324f40301040cd",tooltip="Method to add an Item object to the current Backpack object."];
+  Node2 -> Node3 [id="edge28_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="ItemContainer::getName",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_item_container.html#ae799330f7e9a4608d928e0f0d221d126",tooltip="Get the Name attribute of the object."];
+  Node2 -> Node4 [id="edge29_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Item::getName",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_item.html#a8d2b9d404f8e692f456af88a1eb1ce44",tooltip="Get the Name atrribute of the Item object."];
+  Node2 -> Node5 [id="edge30_Node000002_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="ItemContainer::isFull",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_item_container.html#a38b9ae46b15636f5c6f9dd698afcb127",tooltip="Method to check if the current ItemContainer object is full."];
+  Node1 -> Node6 [id="edge31_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="WornItemsContainer\l::addItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#adf636df6f1721235a33b7d36078133b6",tooltip="Method to add an Item object to the current WornItemsContainer object."];
+  Node6 -> Node3 [id="edge32_Node000006_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node4 [id="edge33_Node000006_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node5 [id="edge34_Node000006_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge35_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Backpack::getBackpackStorage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a677022bd80d3b6d3dcc9289dce3252cc",tooltip="Method to get the vector containing all the Item objects in the current Backpack object."];
+  Node1 -> Node8 [id="edge36_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="WornItemsContainer\l::getItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#a72233ed948e742df2948fc9662caf060",tooltip="Method to get an Item object from the current WornItemsContainer object."];
+  Node1 -> Node9 [id="edge37_Node000001_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="ItemContainer::getSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_item_container.html#a2a90050c812ac3d9803287048a157084",tooltip="Get the Size attribute of the object."];
+  Node1 -> Node10 [id="edge38_Node000001_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="ItemContainer::isEmpty",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_item_container.html#a6678de7feebddb9fa02b4b4e1d314832",tooltip="Method to check if the current ItemContainer object is empty."];
+  Node1 -> Node11 [id="edge39_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="Backpack::printItems",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a1d209a4990a0867ebf98d701e9f8a241",tooltip="Method to print all the Item objects in the current Backpack object."];
+  Node11 -> Node3 [id="edge40_Node000011_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node10 [id="edge41_Node000011_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge42_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="WornItemsContainer\l::printItems",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#a245fe345a6f8fc304ed3b36e0cf0d8d0",tooltip="Method to print all the Item objects in the current WornItemsContainer object."];
+  Node12 -> Node3 [id="edge43_Node000012_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node12 -> Node10 [id="edge44_Node000012_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node13 [id="edge45_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="Backpack::removeItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a91778e6313034424a0ef36910b4311f1",tooltip="Method to remove an Item object from the current Backpack object."];
+  Node13 -> Node3 [id="edge46_Node000013_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node4 [id="edge47_Node000013_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node10 [id="edge48_Node000013_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge49_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="WornItemsContainer\l::removeItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#afd49727256a5cf40bdc9ea9c8cb0236f",tooltip="Method to remove an Item object from the current WornItemsContainer object."];
+  Node14 -> Node3 [id="edge50_Node000014_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node4 [id="edge51_Node000014_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node10 [id="edge52_Node000014_Node000010",color="steelblue1",style="solid",tooltip=" "];
+}

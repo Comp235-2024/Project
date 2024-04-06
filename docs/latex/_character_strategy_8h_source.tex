@@ -1,0 +1,103 @@
+\doxysection{Character\+Strategy.\+h}
+\hypertarget{_character_strategy_8h_source}{}\label{_character_strategy_8h_source}\index{components/Characters/include/CharacterStrategy.h@{components/Characters/include/CharacterStrategy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ ricka\ on\ 2024-\/03-\/17.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ A3\_CHARACTERSTRATEGY\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ A3\_CHARACTERSTRATEGY\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{../../Items/include/Item.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{../../Maps/include/Map.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../../Maps/include/MapObserver.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_character_8h}{Character.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_non_player_character_8h}{NonPlayerCharacter.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_strategy}{CharacterStrategy}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{class_character}{Character}}\{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}*\ \mbox{\hyperlink{class_character_strategy_a6f19b1e9fedffb611d47040155ec98c2}{player}};}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}*\ npc;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_item}{Item}}*\ item;}
+\DoxyCodeLine{00032\ \ \ \ \ shared\_ptr<Map>\ map;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ DEEP\ DESTRUCTOR}}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_character_strategy}{\string~CharacterStrategy}}()\ \ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ play()=0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//TODO:\ IMPLEMENT\ INRANGE\ DEPENDING\ ON\ THE\ TYPE\ OF\ THE\ WEAPON\ EX:\ SWORD,\ BOW,\ ETC}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_strategy_ab00b5833afab903bf8e2106b81e6b286}{inRange}}();}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_human_player_strategy}{HumanPlayerStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character_strategy}{CharacterStrategy}}\{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_human_player_strategy}{HumanPlayerStrategy}}(\mbox{\hyperlink{class_player}{Player}}*);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ DEEP\ DESTRUCTOR}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_human_player_strategy}{\string~HumanPlayerStrategy}}()\ \textcolor{keyword}{override}=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ PLAY\ FUNCTION\ WITH\ EXISTING\ WINDOW}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ play(sf::RenderWindow\&)\ ;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ play()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_human_player_strategy_acac8c80ebb15c0aca85c41b080ada805}{move}}(sf::Event)\ ;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_human_player_strategy_acac8c80ebb15c0aca85c41b080ada805}{move}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_human_player_strategy_a28bb22557f3a90643955784b22e6b521}{attack}}(\mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}*);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_human_player_strategy_a620dea171a631c4f58bc5b00d2303e3e}{freeAction}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ setWindowSize(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\textcolor{keywordtype}{float}\&,\textcolor{keywordtype}{float}\&);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_player_aggressor_strategy}{NonPlayerAggressorStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character_strategy}{CharacterStrategy}}\{}
+\DoxyCodeLine{00091\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ CONSTRUCTOR}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_non_player_aggressor_strategy}{NonPlayerAggressorStrategy}}(\mbox{\hyperlink{class_player}{Player}}*,\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}*,\ \mbox{\hyperlink{class_map}{Map}}*);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ DESTRUCTOR}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{class_non_player_aggressor_strategy}{\string~NonPlayerAggressorStrategy}}()\ \textcolor{keyword}{override}=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_aggressor_strategy_a3b1902a785f42d4f0926e2da6e270a3e}{play}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_aggressor_strategy_a550f640b49d66c59af25ee012d331097}{move}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_aggressor_strategy_ad2e7c45f9b31c30ff5a170a34fa928dc}{attack}}();}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_player_friendly_strategy}{NonPlayerFriendlyStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character_strategy}{CharacterStrategy}}\{}
+\DoxyCodeLine{00119\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_non_player_friendly_strategy_a169ddb9c6f5df09b1fadd0f3e379225e}{state}};}
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ CONSTRUCTOR}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_non_player_friendly_strategy}{NonPlayerFriendlyStrategy}}(\mbox{\hyperlink{class_player}{Player}}*,\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}*,\ \mbox{\hyperlink{class_map}{Map}}*);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//TODO\ IMPLEMENT\ DESTRUCTOR}}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{class_non_player_friendly_strategy}{\string~NonPlayerFriendlyStrategy}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_friendly_strategy_a8fd915ad9af156309e3babc9a2b85b95}{play}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_friendly_strategy_a6989fe37d0efc2adadbd25d2b561a2e8}{move}}();}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_non_player_friendly_strategy_af1341ac70cee3ad690fce32cd0723a04}{attack}}();}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_non_player_friendly_strategy_ac94d0f786df82fd5c03da5ae8cde4202}{getState}}();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_non_player_friendly_strategy_a8ac54d49658d22fbf8da19fba08e4c19}{switchToAggressor}}();}
+\DoxyCodeLine{00160\ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A3\_CHARACTERSTRATEGY\_H}}
+
+\end{DoxyCode}

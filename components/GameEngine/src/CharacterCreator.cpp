@@ -12,9 +12,8 @@
 CharacterCreator::CharacterCreator(MainDataRef data) : _data(data) {}
 
 void CharacterCreator::Init() {
-    this->_data->assets.LoadTexture("Game Background", GAME_BG_IMAGE_PATH);
     this->_data->assets.LoadFont("Font", FONT_PATH);
-    _bg.setTexture(this->_data->assets.GetTexture("Game Background"));
+    _bg.setTexture(this->_data->assets.GetTexture("Menu Background"));
     _bg.setTextureRect(IntRect(0,0, this->_data->window.getSize().x, this->_data->window.getSize().y));
     SetButtons();
 }

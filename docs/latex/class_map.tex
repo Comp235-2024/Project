@@ -1,0 +1,920 @@
+\doxysection{Map Class Reference}
+\hypertarget{class_map}{}\label{class_map}\index{Map@{Map}}
+
+
+A class to represent a 2D grid map.  
+
+
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+
+
+Inheritance diagram for Map\+:
+% FIG 0
+
+
+Collaboration diagram for Map\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_a791f2e5f8598aeded1e3b33a3ee90073}{Map}} (int \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\+\_\+x}}, int \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\+\_\+y}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_map}{Map} object with the specified dimensions. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_af1055bc2b92bf1e019807a84c6e3e448}\label{class_map_af1055bc2b92bf1e019807a84c6e3e448} 
+\mbox{\hyperlink{class_map}{Map}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_map}{Map}} \&other)
+\item 
+\mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map_af19b58ddac9be188873d8e24133dd95b}{Map}} (const \mbox{\hyperlink{class_map}{Map}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_ab29fa78eab1ec17bb1a679ce709ff5df}{set\+SizeX}} (int \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\+\_\+x}})
+\begin{DoxyCompactList}\small\item\em Setter for the size of the X-\/axis. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a029d08333409582b16f1d8a280c20d70}{get\+SizeX}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the size of the X-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a6770664caffcea9a86674f9d12c44d45}{set\+SizeY}} (int \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\+\_\+y}})
+\begin{DoxyCompactList}\small\item\em Setter for the size of the Y-\/axis. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_ae2afa547489749ea7c483685283f26d0}{get\+SizeY}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the size of the Y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_af8750c88fc95140e8a55c3435d67c1f2}{set\+Grid}} (const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \&\mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}})
+\begin{DoxyCompactList}\small\item\em Setter for the grid of the map. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \mbox{\hyperlink{class_map_adcd58ec88c474db17dbb177915ac747b}{get\+Grid}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the grid of the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a7a73b479f1745e958d832180c450af2e}{set\+Row}} (const \mbox{\hyperlink{_map_8h_a5769460e932913b4b91e2f0dc9996a89}{Row}} \&row, int y)
+\begin{DoxyCompactList}\small\item\em Sets the row of cells at the specified y-\/coordinate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a99b8363c8d6d2a4f93296a9876d65f0a}{set\+Start\+Cell}} (const \mbox{\hyperlink{struct_position}{Position}} \&\mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{start\+Cell}})
+\begin{DoxyCompactList}\small\item\em Setter for the start cell of the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a20985be5d745839a73811deba44831b4}\label{class_map_a20985be5d745839a73811deba44831b4} 
+void {\bfseries set\+Start\+Cell} (const sf\+::\+Vector2i \&\mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{start\+Cell}})
+\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_map_a20a323aff50bce9bae9dc2bc3bfe28d1}{get\+Start\+Cell}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the start cell of the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a183491dcadedcb55268f613af3747aab}{set\+End\+Cell}} (const \mbox{\hyperlink{struct_position}{Position}} \&end\+Cell)
+\begin{DoxyCompactList}\small\item\em Setter for the end cell of the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a50608b1eb4ff6bd21667a03230ec4ee3}\label{class_map_a50608b1eb4ff6bd21667a03230ec4ee3} 
+void {\bfseries set\+End\+Cell} (const sf\+::\+Vector2i \&end\+Cell)
+\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_map_aa6f6641f640b34fda1d12e486bce8499}{get\+End\+Cell}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the end cell of the map. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_map_acc786779458400a075f74bd0edc355d1}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the name of the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a830a96fc12056dcb076200b139adc7de}{set\+Name}} (string \mbox{\hyperlink{class_map_a8ef4167655c9bc62b7b1c9a28c4467f8}{name}})
+\begin{DoxyCompactList}\small\item\em Setter for the name of the map. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \& \mbox{\hyperlink{class_map_a1d52a71a8ecae8039d879888cb36b2b4}{get\+Map}} () const
+\begin{DoxyCompactList}\small\item\em Gets a constant reference to the map grid. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_aa508c9bf8db741454908ad2f5fc6ef49}\label{class_map_aa508c9bf8db741454908ad2f5fc6ef49} 
+\mbox{\hyperlink{struct_position}{Position}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} {\bfseries get\+Around\+ACharacter} (\mbox{\hyperlink{class_character}{Character}} \&character)
+\item 
+bool \mbox{\hyperlink{class_map_abe7c103671ba1ad802b29b80d2435ac6}{validate\+Map}} () const
+\begin{DoxyCompactList}\small\item\em Validates the map by checking if it meets certain criteria. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{class_map_a6071e01439c1b98ceae86e4c58c49e80}{place}} (const T \&obj, const \mbox{\hyperlink{struct_position}{Position}} \&pos)
+\begin{DoxyCompactList}\small\item\em Places a movable object on the map at the specified position. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a9715422fb670be0c4ab9fd00d5d67a74}\label{class_map_a9715422fb670be0c4ab9fd00d5d67a74} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries place} (const shared\+\_\+ptr$<$ T $>$ \&obj, const \mbox{\hyperlink{struct_position}{Position}} \&pos)
+\item 
+\Hypertarget{class_map_aa9c3f3875ce97a549c3003c39fb6309c}\label{class_map_aa9c3f3875ce97a549c3003c39fb6309c} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries place} (const T \&obj, const sf\+::\+Vector2i \&position)
+\item 
+bool \mbox{\hyperlink{class_map_a031ba6796aa440f43d4fc7e100e9e7e2}{remove}} (const \mbox{\hyperlink{struct_position}{Position}} \&position)
+\begin{DoxyCompactList}\small\item\em Removes a movable object from the map at the specified position. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_ab0e20eb83ab9b9624a3ed45ff1745eb1}\label{class_map_ab0e20eb83ab9b9624a3ed45ff1745eb1} 
+bool {\bfseries remove} (const sf\+::\+Vector2i \&position)
+\item 
+bool \mbox{\hyperlink{class_map_af9b547126251261f2902a0c41f2c40c4}{move}} (const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+start, const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+end)
+\begin{DoxyCompactList}\small\item\em Moves a movable object from one position to another on the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_ab6a5e66bbe4038441bad89f8d32672d2}\label{class_map_ab6a5e66bbe4038441bad89f8d32672d2} 
+bool {\bfseries move} (const sf\+::\+Vector2i \&\+\_\+pos\+\_\+start, const sf\+::\+Vector2i \&\+\_\+pos\+\_\+end)
+\item 
+int \mbox{\hyperlink{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2}{get\+Distance}} (const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+start, const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+end) const
+\begin{DoxyCompactList}\small\item\em Calculates the distance between two positions on the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_ae37665bef16025690142e4ff85c90ce5}\label{class_map_ae37665bef16025690142e4ff85c90ce5} 
+int {\bfseries get\+Distance} (const sf\+::\+Vector2i \&pos\+\_\+start, const sf\+::\+Vector2i \&pos\+\_\+end) const
+\item 
+bool \mbox{\hyperlink{class_map_a08f0efb353869667ef38e7d1ce226839}{check\+Empty}} (const \mbox{\hyperlink{struct_position}{Position}} \&pos) const
+\begin{DoxyCompactList}\small\item\em Checks if a position on the map is empty. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_abc7150bdecf28010e1de56083c4d1627}\label{class_map_abc7150bdecf28010e1de56083c4d1627} 
+bool {\bfseries check\+Empty} (const sf\+::\+Vector2i pos) const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_position}{Position}} $>$ \mbox{\hyperlink{class_map_a1c7c8be8b581f707488ad8ba55e5a242}{find\+Path}} (\mbox{\hyperlink{struct_position}{Position}} start, \mbox{\hyperlink{struct_position}{Position}} end) const
+\begin{DoxyCompactList}\small\item\em Finds a path from the start position to the end position on the map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a555a8ecea4a0354e85b3807299697065}{operator$<$}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Less than comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a8ceed0e583aa5a9abf99ec3a0490a583}{operator$>$}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Greater than comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a8b58af7d2985314254362d878ce6bfc7}{operator$<$=}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Less than or equal to comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a21cf420c82ec625208d84fa6361ce7aa}{operator$>$=}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Greater than or equal to comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_af344bd0e92b995b351c5ecd907295393}{operator==}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Equality comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a11823708c63929b67a30fc9c2b2b665e}{operator!=}} (const \mbox{\hyperlink{class_map}{Map}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Inequality comparison operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_map_a888b62928b147951b781ca390ae821a8}{get\+Random\+Cell}} () const
+\begin{DoxyCompactList}\small\item\em Gets a random cell position on the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a96f09cdf639a7adcd3542c563c268be0}\label{class_map_a96f09cdf639a7adcd3542c563c268be0} 
+ostream \& {\bfseries display\+Rev\+Map} (ostream \&os) const
+\item 
+\Hypertarget{class_map_a3439f88691f4b74845a2bc2b95f6bf40}\label{class_map_a3439f88691f4b74845a2bc2b95f6bf40} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries special\+Place} (const T \&obj, const \mbox{\hyperlink{struct_position}{Position}} \&pos)
+\item 
+\Hypertarget{class_map_a8dca3a85f285e40d8df267b5e7fdcdd6}\label{class_map_a8dca3a85f285e40d8df267b5e7fdcdd6} 
+bool {\bfseries special\+Move} (const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+start, const \mbox{\hyperlink{struct_position}{Position}} \&pos\+\_\+end)
+\item 
+\Hypertarget{class_map_a8ea7cbae08c89b85c5f2b6cd3ec36e49}\label{class_map_a8ea7cbae08c89b85c5f2b6cd3ec36e49} 
+bool {\bfseries is\+In\+Bounds} (const sf\+::\+Vector2i \&pos) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}} () const
+\begin{DoxyCompactList}\small\item\em Notifies all attached observers about a state change in the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_map_a10a4e88c5ec44666672e1d6ff934ccbe}{map\+Builder\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Test function for the map builder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_map_afc194e8837354969f29117b4c107c9fb}{map\+\_\+test}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to test the functionality of the \doxylink{class_map}{Map} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_map_a8ef4167655c9bc62b7b1c9a28c4467f8}\label{class_map_a8ef4167655c9bc62b7b1c9a28c4467f8} 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em The name of the map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_ab492d351a7a5db96017c3240d52c4e9d}{size\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em The width of the map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}{size\+\_\+y}}
+\begin{DoxyCompactList}\small\item\em The height of the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}{start\+Cell}} \{\}
+\begin{DoxyCompactList}\small\item\em The start cell of the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a4121140391e3910960b20fa14755c551}\label{class_map_a4121140391e3910960b20fa14755c551} 
+\mbox{\hyperlink{struct_position}{Position}} {\bfseries end\+Cell} \{\}
+\item 
+\mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \mbox{\hyperlink{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}{grid}}
+\begin{DoxyCompactList}\small\item\em The grid of cells for the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_map_ad10367369e5767b30d792da3fbe4ebd5}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_map}{Map}} \&map)
+\begin{DoxyCompactList}\small\item\em Overloaded stream insertion operator for \doxylink{class_map}{Map} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to represent a 2D grid map. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_map_a791f2e5f8598aeded1e3b33a3ee90073}\label{class_map_a791f2e5f8598aeded1e3b33a3ee90073} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_map}{Map} object with the specified dimensions. 
+
+Constructs a new \doxylink{class_map}{Map} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+x} & The width of the map. \\
+\hline
+{\em size\+\_\+y} & The height of the map. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{class_map_a0f5ad0fd4563497b4214038cbca8b582}\label{class_map_a0f5ad0fd4563497b4214038cbca8b582} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+x} & The width of the map. \\
+\hline
+{\em size\+\_\+y} & The height of the map. \\
+\hline
+{\em grid} & The grid of cells for the map. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_map_af19b58ddac9be188873d8e24133dd95b}\label{class_map_af19b58ddac9be188873d8e24133dd95b} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Copy Constructor. 
+
+Copy constructor for the \doxylink{class_map}{Map} class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_map}{Map} object to copy.\\
+\hline
+{\em other} & The \doxylink{class_map}{Map} object to be copied. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_a08f0efb353869667ef38e7d1ce226839}\label{class_map_a08f0efb353869667ef38e7d1ce226839} 
+\index{Map@{Map}!checkEmpty@{checkEmpty}}
+\index{checkEmpty@{checkEmpty}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{checkEmpty()}{checkEmpty()}}
+{\footnotesize\ttfamily bool Map\+::check\+Empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos }\end{DoxyParamCaption}) const}
+
+
+
+Checks if a position on the map is empty. 
+
+Checks if a given position on the map is empty.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the position is empty, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_map_a1c7c8be8b581f707488ad8ba55e5a242}\label{class_map_a1c7c8be8b581f707488ad8ba55e5a242} 
+\index{Map@{Map}!findPath@{findPath}}
+\index{findPath@{findPath}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{findPath()}{findPath()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{struct_position}{Position}} $>$ Map\+::find\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_position}{Position}}}]{start,  }\item[{\mbox{\hyperlink{struct_position}{Position}}}]{end }\end{DoxyParamCaption}) const}
+
+
+
+Finds a path from the start position to the end position on the map. 
+
+Finds a path from a start position to an end position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting position. \\
+\hline
+{\em end} & The ending position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of positions representing the path from start to end.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The start position. \\
+\hline
+{\em end} & The end position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of positions representing the path from the start position to the end position. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2}\label{class_map_a9bebc63dc3ba4255fc1281ace53bc4f2} 
+\index{Map@{Map}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily int Map\+::get\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos\+\_\+start,  }\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos\+\_\+end }\end{DoxyParamCaption}) const}
+
+
+
+Calculates the distance between two positions on the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+start} & The starting position. \\
+\hline
+{\em pos\+\_\+end} & The ending position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two positions.
+\end{DoxyReturn}
+Calculates the distance between two positions on the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+start} & The starting position. \\
+\hline
+{\em pos\+\_\+end} & The ending position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two positions. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+\Hypertarget{class_map_aa6f6641f640b34fda1d12e486bce8499}\label{class_map_aa6f6641f640b34fda1d12e486bce8499} 
+\index{Map@{Map}!getEndCell@{getEndCell}}
+\index{getEndCell@{getEndCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getEndCell()}{getEndCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Map\+::get\+End\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the end cell of the map. 
+
+\begin{DoxyReturn}{Returns}
+
+
+\doxylink{struct_position}{Position} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{class_map_adcd58ec88c474db17dbb177915ac747b}\label{class_map_adcd58ec88c474db17dbb177915ac747b} 
+\index{Map@{Map}!getGrid@{getGrid}}
+\index{getGrid@{getGrid}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getGrid()}{getGrid()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} Map\+::get\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the grid of the map. 
+
+\begin{DoxyReturn}{Returns}
+
+
+Grid 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_map_a1d52a71a8ecae8039d879888cb36b2b4}\label{class_map_a1d52a71a8ecae8039d879888cb36b2b4} 
+\index{Map@{Map}!getMap@{getMap}}
+\index{getMap@{getMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getMap()}{getMap()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \& Map\+::get\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets a constant reference to the map grid. 
+
+Returns the map grid.
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the map grid.
+
+A constant reference to the map grid. 
+\end{DoxyReturn}
+\Hypertarget{class_map_acc786779458400a075f74bd0edc355d1}\label{class_map_acc786779458400a075f74bd0edc355d1} 
+\index{Map@{Map}!getName@{getName}}
+\index{getName@{getName}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Map\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the name of the map. 
+
+\begin{DoxyReturn}{Returns}
+
+
+string 
+\end{DoxyReturn}
+\Hypertarget{class_map_a888b62928b147951b781ca390ae821a8}\label{class_map_a888b62928b147951b781ca390ae821a8} 
+\index{Map@{Map}!getRandomCell@{getRandomCell}}
+\index{getRandomCell@{getRandomCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getRandomCell()}{getRandomCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Map\+::get\+Random\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets a random cell position on the map. 
+
+Generates a random \doxylink{struct_position}{Position} within the map boundaries.
+
+\begin{DoxyReturn}{Returns}
+A random cell position.
+
+A random \doxylink{struct_position}{Position} object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{class_map_a029d08333409582b16f1d8a280c20d70}\label{class_map_a029d08333409582b16f1d8a280c20d70} 
+\index{Map@{Map}!getSizeX@{getSizeX}}
+\index{getSizeX@{getSizeX}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getSizeX()}{getSizeX()}}
+{\footnotesize\ttfamily int Map\+::get\+SizeX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the size of the X-\/axis. 
+
+Getter for the size of the X-\/coordinate of the map.
+
+\begin{DoxyReturn}{Returns}
+
+
+int 
+\end{DoxyReturn}
+\Hypertarget{class_map_ae2afa547489749ea7c483685283f26d0}\label{class_map_ae2afa547489749ea7c483685283f26d0} 
+\index{Map@{Map}!getSizeY@{getSizeY}}
+\index{getSizeY@{getSizeY}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getSizeY()}{getSizeY()}}
+{\footnotesize\ttfamily int Map\+::get\+SizeY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the size of the Y-\/axis. 
+
+Getter for the size of the Y-\/coordinate of the map.
+
+\begin{DoxyReturn}{Returns}
+
+
+int 
+\end{DoxyReturn}
+\Hypertarget{class_map_a20a323aff50bce9bae9dc2bc3bfe28d1}\label{class_map_a20a323aff50bce9bae9dc2bc3bfe28d1} 
+\index{Map@{Map}!getStartCell@{getStartCell}}
+\index{getStartCell@{getStartCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getStartCell()}{getStartCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Map\+::get\+Start\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the start cell of the map. 
+
+\begin{DoxyReturn}{Returns}
+
+
+\doxylink{struct_position}{Position} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{class_map_afc194e8837354969f29117b4c107c9fb}\label{class_map_afc194e8837354969f29117b4c107c9fb} 
+\index{Map@{Map}!map\_test@{map\_test}}
+\index{map\_test@{map\_test}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{map\_test()}{map\_test()}}
+{\footnotesize\ttfamily bool Map\+::map\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+This function is used to test the functionality of the \doxylink{class_map}{Map} class. 
+
+\begin{DoxyReturn}{Returns}
+true if the test passes, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 12
+\Hypertarget{class_map_a10a4e88c5ec44666672e1d6ff934ccbe}\label{class_map_a10a4e88c5ec44666672e1d6ff934ccbe} 
+\index{Map@{Map}!mapBuilderTest@{mapBuilderTest}}
+\index{mapBuilderTest@{mapBuilderTest}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{mapBuilderTest()}{mapBuilderTest()}}
+{\footnotesize\ttfamily bool Map\+::map\+Builder\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test function for the map builder. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 13
+\Hypertarget{class_map_af9b547126251261f2902a0c41f2c40c4}\label{class_map_af9b547126251261f2902a0c41f2c40c4} 
+\index{Map@{Map}!move@{move}}
+\index{move@{move}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily bool Map\+::move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos\+\_\+start,  }\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos\+\_\+end }\end{DoxyParamCaption})}
+
+
+
+Moves a movable object from one position to another on the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+start} & The starting position of the object. \\
+\hline
+{\em pos\+\_\+end} & The ending position of the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the object was successfully moved, false otherwise.
+\end{DoxyReturn}
+Moves an object from the starting position to the ending position on the map. Validates the move before performing it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+start} & The starting position of the object. \\
+\hline
+{\em pos\+\_\+end} & The ending position of the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the move is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{class_map_a11823708c63929b67a30fc9c2b2b665e}\label{class_map_a11823708c63929b67a30fc9c2b2b665e} 
+\index{Map@{Map}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Map\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Inequality comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is not equal to the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a555a8ecea4a0354e85b3807299697065}\label{class_map_a555a8ecea4a0354e85b3807299697065} 
+\index{Map@{Map}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Map\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Less than comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is less than the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a8b58af7d2985314254362d878ce6bfc7}\label{class_map_a8b58af7d2985314254362d878ce6bfc7} 
+\index{Map@{Map}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool Map\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Less than or equal to comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is less than or equal to the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_af344bd0e92b995b351c5ecd907295393}\label{class_map_af344bd0e92b995b351c5ecd907295393} 
+\index{Map@{Map}!operator==@{operator==}}
+\index{operator==@{operator==}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Map\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Equality comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is equal to the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a8ceed0e583aa5a9abf99ec3a0490a583}\label{class_map_a8ceed0e583aa5a9abf99ec3a0490a583} 
+\index{Map@{Map}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Map\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Greater than comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is greater than the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a21cf420c82ec625208d84fa6361ce7aa}\label{class_map_a21cf420c82ec625208d84fa6361ce7aa} 
+\index{Map@{Map}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool Map\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+Greater than or equal to comparison operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The \doxylink{class_map}{Map} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this map is greater than or equal to the rhs map, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a6071e01439c1b98ceae86e4c58c49e80}\label{class_map_a6071e01439c1b98ceae86e4c58c49e80} 
+\index{Map@{Map}!place@{place}}
+\index{place@{place}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{place()}{place()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool Map\+::place (\begin{DoxyParamCaption}\item[{const T \&}]{obj,  }\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Places a movable object on the map at the specified position. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the movable object. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The movable object to place on the map. \\
+\hline
+{\em \doxylink{struct_position}{Position}} & The position at which to place the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the object was successfully placed, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{class_map_a031ba6796aa440f43d4fc7e100e9e7e2}\label{class_map_a031ba6796aa440f43d4fc7e100e9e7e2} 
+\index{Map@{Map}!remove@{remove}}
+\index{remove@{remove}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily bool Map\+::remove (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Removes a movable object from the map at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_position}{Position}} & The position from which to remove the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the object was successfully removed, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 18
+\Hypertarget{class_map_a183491dcadedcb55268f613af3747aab}\label{class_map_a183491dcadedcb55268f613af3747aab} 
+\index{Map@{Map}!setEndCell@{setEndCell}}
+\index{setEndCell@{setEndCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setEndCell()}{setEndCell()}}
+{\footnotesize\ttfamily void Map\+::set\+End\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{end\+Cell }\end{DoxyParamCaption})}
+
+
+
+Setter for the end cell of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em end\+Cell} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{class_map_af8750c88fc95140e8a55c3435d67c1f2}\label{class_map_af8750c88fc95140e8a55c3435d67c1f2} 
+\index{Map@{Map}!setGrid@{setGrid}}
+\index{setGrid@{setGrid}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setGrid()}{setGrid()}}
+{\footnotesize\ttfamily void Map\+::set\+Grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_map_8h_ae1fbf0d7c25dbea2caaba7e7b57869ce}{Grid}} \&}]{grid }\end{DoxyParamCaption})}
+
+
+
+Setter for the grid of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 20
+\Hypertarget{class_map_a830a96fc12056dcb076200b139adc7de}\label{class_map_a830a96fc12056dcb076200b139adc7de} 
+\index{Map@{Map}!setName@{setName}}
+\index{setName@{setName}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Map\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Setter for the name of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+@bried Setter for the name of the map 
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{class_map_a7a73b479f1745e958d832180c450af2e}\label{class_map_a7a73b479f1745e958d832180c450af2e} 
+\index{Map@{Map}!setRow@{setRow}}
+\index{setRow@{setRow}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setRow()}{setRow()}}
+{\footnotesize\ttfamily void Map\+::set\+Row (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_map_8h_a5769460e932913b4b91e2f0dc9996a89}{Row}} \&}]{row,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the row of cells at the specified y-\/coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of cells to set. \\
+\hline
+{\em y} & The y-\/coordinate of the row. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_ab29fa78eab1ec17bb1a679ce709ff5df}\label{class_map_ab29fa78eab1ec17bb1a679ce709ff5df} 
+\index{Map@{Map}!setSizeX@{setSizeX}}
+\index{setSizeX@{setSizeX}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setSizeX()}{setSizeX()}}
+{\footnotesize\ttfamily void Map\+::set\+SizeX (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Setter for the size of the X-\/axis. 
+
+Setter for the size of the X-\/coordinate of the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+x} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 22
+\Hypertarget{class_map_a6770664caffcea9a86674f9d12c44d45}\label{class_map_a6770664caffcea9a86674f9d12c44d45} 
+\index{Map@{Map}!setSizeY@{setSizeY}}
+\index{setSizeY@{setSizeY}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setSizeY()}{setSizeY()}}
+{\footnotesize\ttfamily void Map\+::set\+SizeY (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Setter for the size of the Y-\/axis. 
+
+Setter for the size of the Y-\/coordinate of the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 23
+\Hypertarget{class_map_a99b8363c8d6d2a4f93296a9876d65f0a}\label{class_map_a99b8363c8d6d2a4f93296a9876d65f0a} 
+\index{Map@{Map}!setStartCell@{setStartCell}}
+\index{setStartCell@{setStartCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setStartCell()}{setStartCell()}}
+{\footnotesize\ttfamily void Map\+::set\+Start\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_position}{Position}} \&}]{start\+Cell }\end{DoxyParamCaption})}
+
+
+
+Setter for the start cell of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Cell} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 24
+\Hypertarget{class_map_abe7c103671ba1ad802b29b80d2435ac6}\label{class_map_abe7c103671ba1ad802b29b80d2435ac6} 
+\index{Map@{Map}!validateMap@{validateMap}}
+\index{validateMap@{validateMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{validateMap()}{validateMap()}}
+{\footnotesize\ttfamily bool Map\+::validate\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Validates the map by checking if it meets certain criteria. 
+
+Validates the map by checking if there is a path from the start cell to the end cell.
+
+\begin{DoxyReturn}{Returns}
+True if the map is valid, false otherwise.
+
+true if there is a path from the start cell to the end cell, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 25
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_map_ad10367369e5767b30d792da3fbe4ebd5}\label{class_map_ad10367369e5767b30d792da3fbe4ebd5} 
+\index{Map@{Map}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloaded stream insertion operator for \doxylink{class_map}{Map} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em map} & The \doxylink{class_map}{Map} object to insert into the stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the output stream. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59}\label{class_map_a4a25138afd8d6f22f0f1e7df7e1f3f59} 
+\index{Map@{Map}!grid@{grid}}
+\index{grid@{grid}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily Map\+::grid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The grid of cells for the map. 
+
+Member \textquotesingle{}grid\textquotesingle{} is a 2D vector representing the map grid. \Hypertarget{class_map_ab492d351a7a5db96017c3240d52c4e9d}\label{class_map_ab492d351a7a5db96017c3240d52c4e9d} 
+\index{Map@{Map}!size\_x@{size\_x}}
+\index{size\_x@{size\_x}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{size\_x}{size\_x}}
+{\footnotesize\ttfamily Map\+::size\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The width of the map. 
+
+Member \textquotesingle{}size\+\_\+x\textquotesingle{} represents the width of the map. \Hypertarget{class_map_a7e24d6b3c78f088f69ccfe522dd67f80}\label{class_map_a7e24d6b3c78f088f69ccfe522dd67f80} 
+\index{Map@{Map}!size\_y@{size\_y}}
+\index{size\_y@{size\_y}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{size\_y}{size\_y}}
+{\footnotesize\ttfamily Map\+::size\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The height of the map. 
+
+Member \textquotesingle{}size\+\_\+y\textquotesingle{} represents the height of the map. \Hypertarget{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63}\label{class_map_ad06e7a40a3cda8d6f07c5bc2aef83e63} 
+\index{Map@{Map}!startCell@{startCell}}
+\index{startCell@{startCell}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{startCell}{startCell}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Map\+::start\+Cell \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The start cell of the map. 
+
+The end cell of the map. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/\mbox{\hyperlink{_map_8h}{Map.\+h}}\item 
+components/\+Maps/src/\mbox{\hyperlink{map_8cpp}{map.\+cpp}}\end{DoxyCompactItemize}

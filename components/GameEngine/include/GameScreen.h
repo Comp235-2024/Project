@@ -81,7 +81,6 @@ private:
     RectangleShape _bg; /**< The background shape. */
     Vector2u _windowSize; /**< The window size. */
 
-    //MODIFIED THIS TO BE A PLAYER AND NOT CHARACTER
     shared_ptr<Character> _player; /**< The player character. */
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
@@ -161,11 +160,42 @@ private:
      */
     void findPlayerCharacter();
 
+    /**
+     * @brief Scans for nearby objects in the current map.
+     * 
+     * This function scans for nearby objects in the current map and performs actions based on the objects found.
+     */
     void scanForNearbyObjects();
+
+    /**
+     * @brief Converts a position to a Vector2i.
+     * @param position The position to convert.
+     * @return The converted Vector2i.
+     */
     static Vector2i positionToVector2i(Position position);
+
+    /**
+     * @brief Generates the texture for the sidebar.
+     * 
+     * This function generates the texture for rendering the sidebar.
+     */
     void generateSideBarTexture();
+
+    /**
+     * @brief Generates a button with the given name and position.
+     * @param button The button shape.
+     * @param buttonText The button text.
+     * @param name The name of the button.
+     * @param buttonPos The position of the button.
+     */
     void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos);
+
+    /**
+     * @brief Generates the texture for the console view.
+     * 
+     * This function generates the texture for rendering the console view.
+     */
     void generateConsoleTexture();
 };
 
-#endif
+#endif // GAME_SCREEN_H

@@ -1,0 +1,61 @@
+\doxysection{Options\+Screen.\+h}
+\hypertarget{_options_screen_8h_source}{}\label{_options_screen_8h_source}\index{components/GameEngine/include/OptionsScreen.h@{components/GameEngine/include/OptionsScreen.h}}
+\mbox{\hyperlink{_options_screen_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_OPTIONSSCREEN\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ PROJECT\_OPTIONSSCREEN\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}MapObserver.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_8h}{State.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_options_screen}{OptionsScreen}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_options_screen_aaf091e278f189d1f1b366ae48305aa50}{OptionsScreen}}(MainDataRef\ data);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_ab6adecd8b3363e42d2092c05d374221a}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_a085a370660d4f7c9cdcf125517d090e7}{HandleInput}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_a2c9806da13493811bb9dbc864891e4b5}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_a9d0dd5138e7dc7c8b48b21dcedcb1c30}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ MainDataRef\ \mbox{\hyperlink{class_options_screen_a12c1a871d2306045aab4e7e59e5b5c24}{\_data}};\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ Clock\ \mbox{\hyperlink{class_options_screen_a4cb316a280badca7ffc220df2af0a7a2}{\_clock}};\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ Texture\ \mbox{\hyperlink{class_options_screen_a678440661dd82cdc3114339a9acd130d}{\_bgTexture}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ Sprite\ \mbox{\hyperlink{class_options_screen_a5219cb6048c571bc8211f27664eb9c86}{\_bg}};\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_options_screen_1_1_buttons}{Buttons}}\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_a2669c1eb07e97a3da864753fbb7e6019}{mute}};\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_adc0984d3108c453aa7cb173ce6c39c54}{back}};\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_aa234cad6d04f532a22dab6969d068c78}{music1}};\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_abee36ddf66c72a849194be0a3bcb4529}{music2}};\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_acb4f243f2ad03df24c7131a573093b5d}{music3}};\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ Sprite\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_ae0ecf58d82d86202a83a38889813b421}{music4}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ RectangleShape\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_a502aa2afbc27156d4ced83952f58064d}{music}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ Text\ \mbox{\hyperlink{struct_options_screen_1_1_buttons_a816ebc36878c5100d0594d533105f90c}{musicText}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ shared\_ptr<Buttons>\ \mbox{\hyperlink{class_options_screen_aad3a4a9e861622bc8c6f9a8c96440580}{buttons}}\ =\ make\_shared<Buttons>();\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_aa9cc1398800ab0a43e5c869ff78c28c1}{handleMusic}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_a46c4d18c06247a8cdda3bbb6e7f51427}{SetButtons}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_a74a0ad7f44712fd33807fd5b8461b06a}{changeMusic}}(\textcolor{keywordtype}{string}\ fileName);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_aba1d48e1940cc8494bdd8dc99f81b043}{GenerateButton}}(Sprite\&\ button,\ Vector2f\ position,\ Texture\&\ texture);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_screen_aba1d48e1940cc8494bdd8dc99f81b043}{GenerateButton}}(\textcolor{keyword}{const}\ Font\ \&font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ RectangleShape\ \&button,\ Text\ \&buttonText,\ Vector2f\ position);}
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//PROJECT\_OPTIONSSCREEN\_H}}
+
+\end{DoxyCode}

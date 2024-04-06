@@ -1,0 +1,30 @@
+\doxysection{components/\+Functionalities/include/\+Dice.h File Reference}
+\hypertarget{_dice_8h}{}\label{_dice_8h}\index{components/Functionalities/include/Dice.h@{components/Functionalities/include/Dice.h}}
+{\ttfamily \#include "{}../../\+Log/include/\+Log\+Observable.\+h"{}}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Dice.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_dice}{Dice}}
+\begin{DoxyCompactList}\small\item\em Class for the \doxylink{class_dice}{Dice} in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Melika Minaei Bidgoli 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024-\/02-\/25
+\end{DoxyDate}
+1) the dice rules\+: x and y should be included in the given rex with the format\+: xdy\mbox{[}+z\mbox{]} but +z is optional. Also, the kinds of dices should be d4, d6, d8, d10, d12, d20, or d100. If any of these rules are not respected the program will show the error and exit the program.
+
+2) Description of design\+: The program will roll the given rex string by first parsing the rex by looking for the positions of "{}d"{}, and possibly "{}+"{}. It will store the integer type of each x, y, and z in \doxylink{class_dice}{Dice} attributes\+: number, kind, added\+Value. Afterwards, it will generate x random numbers in the range of the dy of the dice and add the z if exists at the end and return it.
+
+3) the libraries used in the code\+: iostream\+: for printing output string\+: for substring cstdlib\+: generates a random number srand() ctime\+: for using time, use the result of time(0) as the seed for generating random number 

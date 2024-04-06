@@ -1,0 +1,369 @@
+\doxysection{Item Class Reference}
+\hypertarget{class_item}{}\label{class_item}\index{Item@{Item}}
+
+
+Base Class for all items in the game.  
+
+
+
+
+{\ttfamily \#include $<$Item.\+h$>$}
+
+
+
+Inheritance diagram for Item\+:
+% FIG 0
+
+
+Collaboration diagram for Item\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_a5fead1fa94ffbe7f3eaa09d39e294414}\label{class_item_a5fead1fa94ffbe7f3eaa09d39e294414} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Item} () override=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item_a297720c02984eab37332ae795d22189d}{Item}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} object with null values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item}{Item}} \& \mbox{\hyperlink{class_item_abb787be2e7a475b2dd0b4232690b7e2e}{operator=}} (const \mbox{\hyperlink{class_item}{Item}} \&other)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item}\+:\+: \doxylink{class_item}{Item} object with a given name, type, enchantment type and level. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a8d2b9d404f8e692f456af88a1eb1ce44}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_a5dcdff1db4c66ca22bd6a3f826c69644}{set\+Name}} (string \mbox{\hyperlink{class_item_a406cde7962a6b42a66b4a53c9a26db2c}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a581fa12e93282f8fa7fb9eaf6d5a08dc}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a2fbe1045a4271e867f98bc1bf7e79e08}{get\+Enchantment\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_ab57aa1f903c142a99d5d104008372d45}{get\+Enchantment\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ae00a79e0fdbfeeac5db57e0bd9fecb62}{set\+Enchantment\+Type}} (string \mbox{\hyperlink{class_item_a15d457837bb5bf3f32c38412501d02d3}{enchantment\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ad82d9dbe1e176a9555616194da821f7f}{set\+Enchantment\+Level}} (int \mbox{\hyperlink{class_item_a05b8e987ed10d3c7c68b381ece3fc856}{enchantment\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_a60c2a36c81df448c9bc013824c9e0ade}{is\+Placed}} () const
+\begin{DoxyCompactList}\small\item\em Whether the item is placed somewhere or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a5e4bbbe2b64328ac16b63d585f10e44c}{get\+Item\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{class_item}{Item} ID atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_item_ac41cbc9e8df0411781652e645ca7747c}{to\+String}} ()=0
+\begin{DoxyCompactList}\small\item\em To string method to print all the attributes of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{class_item_ac9fad565f6cecac54252284050ad01b0}{generate\+Probability}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random uniformely distributed probability between 0 and 1. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a771dcb64192254862544f9d60d70ace0}\label{class_item_a771dcb64192254862544f9d60d70ace0} 
+static int {\bfseries get\+Item\+Count} ()
+\item 
+\Hypertarget{class_item_ab2205deeed7727b3043827d42edbf2f7}\label{class_item_ab2205deeed7727b3043827d42edbf2f7} 
+static void {\bfseries item\+\_\+test} ()
+\begin{DoxyCompactList}\small\item\em This function is used to test the functionality of the item class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_a7be5c4b09004253ba7111ab947c96188}\label{class_item_a7be5c4b09004253ba7111ab947c96188} 
+string {\bfseries texture\+Name}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_a25bff536e314850890b953c0acc1ebce}\label{class_item_a25bff536e314850890b953c0acc1ebce} 
+int {\bfseries Item\+ID}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its ID \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a406cde7962a6b42a66b4a53c9a26db2c}\label{class_item_a406cde7962a6b42a66b4a53c9a26db2c} 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its name \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a5fddc3cf5f552ab8f5cceacaba430474}\label{class_item_a5fddc3cf5f552ab8f5cceacaba430474} 
+string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its type \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a15d457837bb5bf3f32c38412501d02d3}\label{class_item_a15d457837bb5bf3f32c38412501d02d3} 
+string {\bfseries enchantment\+\_\+type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment type \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a05b8e987ed10d3c7c68b381ece3fc856}\label{class_item_a05b8e987ed10d3c7c68b381ece3fc856} 
+int {\bfseries enchantment\+\_\+level}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment level \end{DoxyCompactList}\item 
+\Hypertarget{class_item_a0b61e2b275f9a5958d7238a0d6578235}\label{class_item_a0b61e2b275f9a5958d7238a0d6578235} 
+bool {\bfseries placed}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of whether it is placed somewhere (Itemcontainer, map...) or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_item_a46c071ec8e90eee17ade870f94021af9}{Item\+Count}} = 0
+\begin{DoxyCompactList}\small\item\em Static variable to keep track of the number of items created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_a5a19f3d889c13064b2da800669e255cf}\label{class_item_a5a19f3d889c13064b2da800669e255cf} 
+class {\bfseries Item\+Container}
+\item 
+\Hypertarget{class_item_a26f6ce10edd8ed8131cb56608ef40151}\label{class_item_a26f6ce10edd8ed8131cb56608ef40151} 
+class {\bfseries Backpack}
+\item 
+\Hypertarget{class_item_a5aac33017870f3eb19af2e1125c048f3}\label{class_item_a5aac33017870f3eb19af2e1125c048f3} 
+class {\bfseries Worn\+Items\+Container}
+\item 
+\Hypertarget{class_item_a742773d605440381eb49d0cb07ae24ff}\label{class_item_a742773d605440381eb49d0cb07ae24ff} 
+class {\bfseries Treasure\+Chest}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base Class for all items in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_item_a297720c02984eab37332ae795d22189d}\label{class_item_a297720c02984eab37332ae795d22189d} 
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{Item()}{Item()}}
+{\footnotesize\ttfamily Item\+::\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_item}{Item} object with null values. 
+
+Construct a new \doxylink{class_item}{Item}\+:\+: \doxylink{class_item}{Item} object with null values.
+
+\begin{DoxyAttention}{Attention}
+This conctructor increments the Item\+Count and assigns the Item\+ID 
+\end{DoxyAttention}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_item_ac9fad565f6cecac54252284050ad01b0}\label{class_item_ac9fad565f6cecac54252284050ad01b0} 
+\index{Item@{Item}!generateProbability@{generateProbability}}
+\index{generateProbability@{generateProbability}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{generateProbability()}{generateProbability()}}
+{\footnotesize\ttfamily float Item\+::generate\+Probability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate a random uniformely distributed probability between 0 and 1. 
+
+Generates a random float number between 0 and 1.
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_item_a2fbe1045a4271e867f98bc1bf7e79e08}\label{class_item_a2fbe1045a4271e867f98bc1bf7e79e08} 
+\index{Item@{Item}!getEnchantmentLevel@{getEnchantmentLevel}}
+\index{getEnchantmentLevel@{getEnchantmentLevel}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getEnchantmentLevel()}{getEnchantmentLevel()}}
+{\footnotesize\ttfamily int Item\+::get\+Enchantment\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. 
+
+Returns the enchantment level of the item.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{class_item_ab57aa1f903c142a99d5d104008372d45}\label{class_item_ab57aa1f903c142a99d5d104008372d45} 
+\index{Item@{Item}!getEnchantmentType@{getEnchantmentType}}
+\index{getEnchantmentType@{getEnchantmentType}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getEnchantmentType()}{getEnchantmentType()}}
+{\footnotesize\ttfamily string Item\+::get\+Enchantment\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. 
+
+Returns the enchantment type of the item.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\Hypertarget{class_item_a5e4bbbe2b64328ac16b63d585f10e44c}\label{class_item_a5e4bbbe2b64328ac16b63d585f10e44c} 
+\index{Item@{Item}!getItemID@{getItemID}}
+\index{getItemID@{getItemID}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getItemID()}{getItemID()}}
+{\footnotesize\ttfamily int Item\+::get\+Item\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the \doxylink{class_item}{Item} ID atrribute of the \doxylink{class_item}{Item} object. 
+
+Returns the ID of the item.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_item_a8d2b9d404f8e692f456af88a1eb1ce44}\label{class_item_a8d2b9d404f8e692f456af88a1eb1ce44} 
+\index{Item@{Item}!getName@{getName}}
+\index{getName@{getName}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Item\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Name atrribute of the \doxylink{class_item}{Item} object. 
+
+Returns the name of the item.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_item_a581fa12e93282f8fa7fb9eaf6d5a08dc}\label{class_item_a581fa12e93282f8fa7fb9eaf6d5a08dc} 
+\index{Item@{Item}!getType@{getType}}
+\index{getType@{getType}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Item\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Type atrribute of the \doxylink{class_item}{Item} object. 
+
+Returns the type of the item.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\Hypertarget{class_item_a60c2a36c81df448c9bc013824c9e0ade}\label{class_item_a60c2a36c81df448c9bc013824c9e0ade} 
+\index{Item@{Item}!isPlaced@{isPlaced}}
+\index{isPlaced@{isPlaced}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{isPlaced()}{isPlaced()}}
+{\footnotesize\ttfamily bool Item\+::is\+Placed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Whether the item is placed somewhere or not. 
+
+Returns whether the item is placed in a container or not.
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\Hypertarget{class_item_abb787be2e7a475b2dd0b4232690b7e2e}\label{class_item_abb787be2e7a475b2dd0b4232690b7e2e} 
+\index{Item@{Item}!operator=@{operator=}}
+\index{operator=@{operator=}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_item}{Item}} \& Item\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_item}{Item}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_item}{Item}\+:\+: \doxylink{class_item}{Item} object with a given name, type, enchantment type and level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em type} & \\
+\hline
+{\em enchantment\+\_\+type} & \\
+\hline
+{\em enchantment\+\_\+level} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_item_ad82d9dbe1e176a9555616194da821f7f}\label{class_item_ad82d9dbe1e176a9555616194da821f7f} 
+\index{Item@{Item}!setEnchantmentLevel@{setEnchantmentLevel}}
+\index{setEnchantmentLevel@{setEnchantmentLevel}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{setEnchantmentLevel()}{setEnchantmentLevel()}}
+{\footnotesize\ttfamily void Item\+::set\+Enchantment\+Level (\begin{DoxyParamCaption}\item[{int}]{enchantment\+\_\+level }\end{DoxyParamCaption})}
+
+
+
+Set the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. 
+
+Sets the enchantment level of the item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enchantment\+\_\+level} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_item_ae00a79e0fdbfeeac5db57e0bd9fecb62}\label{class_item_ae00a79e0fdbfeeac5db57e0bd9fecb62} 
+\index{Item@{Item}!setEnchantmentType@{setEnchantmentType}}
+\index{setEnchantmentType@{setEnchantmentType}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{setEnchantmentType()}{setEnchantmentType()}}
+{\footnotesize\ttfamily void Item\+::set\+Enchantment\+Type (\begin{DoxyParamCaption}\item[{string}]{enchantment\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Set the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. 
+
+Sets the type of the item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enchantment\+\_\+type} & \\
+\hline
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_item_a5dcdff1db4c66ca22bd6a3f826c69644}\label{class_item_a5dcdff1db4c66ca22bd6a3f826c69644} 
+\index{Item@{Item}!setName@{setName}}
+\index{setName@{setName}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Item\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the Name atrribute of the \doxylink{class_item}{Item} object. 
+
+Sets the name of the item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_item_ac41cbc9e8df0411781652e645ca7747c}\label{class_item_ac41cbc9e8df0411781652e645ca7747c} 
+\index{Item@{Item}!toString@{toString}}
+\index{toString@{toString}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Item\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+To string method to print all the attributes of the \doxylink{class_item}{Item} object. 
+
+Returns a string representation of the item.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_armor_af17ace7159ed3e16ebaf186f4a46f1ad}{Armor}}, \mbox{\hyperlink{class_belt_a1a130b6d902d0bb57eb8a0ead5ac3cc1}{Belt}}, \mbox{\hyperlink{class_boots_aed8883dee4c7ed9c4f51eb3fd4b70473}{Boots}}, \mbox{\hyperlink{class_helmet_a1d7341251983f788cdecf4697c33e730}{Helmet}}, \mbox{\hyperlink{class_ring_a176e44116665ea8b2c824b35e4d4d76f}{Ring}}, \mbox{\hyperlink{class_shield_a09f313374618ec0c275b48af1abd37a0}{Shield}}, \mbox{\hyperlink{class_weapon_a85ec3c427bfaef5099ee4a60cea5aa18}{Weapon}}, and \mbox{\hyperlink{class_lever_ac1c4d0e52e6cf218776d1925ec9f4787}{Lever}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_item_a46c071ec8e90eee17ade870f94021af9}\label{class_item_a46c071ec8e90eee17ade870f94021af9} 
+\index{Item@{Item}!ItemCount@{ItemCount}}
+\index{ItemCount@{ItemCount}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{ItemCount}{ItemCount}}
+{\footnotesize\ttfamily int Item\+::\+Item\+Count = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static variable to keep track of the number of items created. 
+
+Initializes the number of items to 0. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Items/include/\mbox{\hyperlink{_item_8h}{Item.\+h}}\item 
+components/\+Items/src/\mbox{\hyperlink{_item_8cpp}{Item.\+cpp}}\end{DoxyCompactItemize}

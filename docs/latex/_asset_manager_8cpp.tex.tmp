@@ -1,0 +1,15 @@
+\doxysection{components/\+Game\+Engine/src/\+Asset\+Manager.cpp File Reference}
+\hypertarget{_asset_manager_8cpp}{}\label{_asset_manager_8cpp}\index{components/GameEngine/src/AssetManager.cpp@{components/GameEngine/src/AssetManager.cpp}}
+{\ttfamily \#include "{}Asset\+Manager.\+h"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+Include dependency graph for Asset\+Manager.\+cpp\+:
+% FIG 0
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tymofiy Kovalenko 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17-\/Mar-\/2024 
+\end{DoxyDate}

@@ -1,0 +1,527 @@
+\doxysection{Game\+Screen Class Reference}
+\hypertarget{class_game_screen}{}\label{class_game_screen}\index{GameScreen@{GameScreen}}
+
+
+Represents the game screen state.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Screen.\+h$>$}
+
+
+
+Inheritance diagram for Game\+Screen\+:
+% FIG 0
+
+
+Collaboration diagram for Game\+Screen\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}}
+\begin{DoxyCompactList}\small\item\em Represents the buttons on the game screen. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_game_screen_1_1_map_position}{Map\+Position}}
+\begin{DoxyCompactList}\small\item\em Represents the position and size of a map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_screen_a2b6dd82d2265628dab8a0cda1d0a7f74}{Game\+Screen}} (Main\+Data\+Ref \&data)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_screen}{Game\+Screen} object with the given main data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_a550dcdadec1a5757fea41af94d3e27b3}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the game screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_ab0299f0189e42b844589c042b372d58e}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the input for the game screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_ae73ca8179f16069b52a8aca7254990b6}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the game screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_a0b9d36c78d9cb37b7af9983eee99d458}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Draws the game screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_screen_a4b383128b32d81884a01f5092f22b68e}{generate\+Map\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Generates the texture for the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_aa80c5d455c0628acb636fefd545fb72d}{Set\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the buttons on the game screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_ac5770b3b0644b382b14969b689e0fc43}{calculate\+Texture\+Sizes}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the sizes of the textures based on the window size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_a42848521aeda505f1c87c6c306a3b67e}{find\+Player\+Character}} ()
+\begin{DoxyCompactList}\small\item\em Finds the player character in the current map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_aed3dd7f89b155ec7ecae084518336696}{scan\+For\+Nearby\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Scans for nearby objects in the current map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_aed848a4e269b5fa47f54eb9b9068866d}{generate\+Side\+Bar\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Generates the texture for the sidebar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_aa15c80859a9157bcbe3df04d1d6d8dc7}{generate\+Button}} (Rectangle\+Shape \&button, Text \&button\+Text, const string \&name, int button\+Pos)
+\begin{DoxyCompactList}\small\item\em Generates a button with the given name and position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_screen_a598336d6abe08f1dffa7d0c67b34859f}{generate\+Console\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Generates the texture for the console view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_game_screen_a87901799bf15b3683b7f2ed29fb00ed2}{Generate\+Button}} (const Font \&font, const string \&name, Rectangle\+Shape \&button, Text \&button\+Text, Vector2f position)
+\begin{DoxyCompactList}\small\item\em Generates a button with the given font, name, position, and size. \end{DoxyCompactList}\item 
+static Vector2i \mbox{\hyperlink{class_game_screen_abddf8a4fe459ed78d9d108724c7ede12}{position\+To\+Vector2i}} (\mbox{\hyperlink{struct_position}{Position}} position)
+\begin{DoxyCompactList}\small\item\em Converts a position to a Vector2i. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Main\+Data\+Ref \mbox{\hyperlink{class_game_screen_a4f3851324811aeab47c005e9c10b685f}{\+\_\+data}}
+\item 
+\Hypertarget{class_game_screen_afb47e90772fc1918c1bad6d55d3cb976}\label{class_game_screen_afb47e90772fc1918c1bad6d55d3cb976} 
+int {\bfseries \+\_\+map\+Index} = 0
+\item 
+Clock \mbox{\hyperlink{class_game_screen_a9b206ef141f86131cf12df7b30c371b6}{\+\_\+clock}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ \mbox{\hyperlink{class_game_screen_a6df20a69c2a5cbe5672beb6fe04f0323}{\+\_\+current\+Map}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_game_screen_abcbca1bf2e8a86e0491f05a94eecb24b}{\+\_\+map\+Texture}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_game_screen_ae8bba37f1edf13c68b25b7393e010f4d}{\+\_\+character\+View}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_game_screen_a2441168d4b961ed54ce605f54c85ae63}{\+\_\+console\+Texture}}
+\item 
+Vector2f \mbox{\hyperlink{class_game_screen_a81db620b425bf3166803122d4e68bc25}{\+\_\+console\+Position}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_game_screen_a5f5939b9d7a8ec925b462f08656ebc6c}{\+\_\+side\+Bar\+Texture}}
+\item 
+\Hypertarget{class_game_screen_aa3a5723f244f15b9bd7aba08033e9c11}\label{class_game_screen_aa3a5723f244f15b9bd7aba08033e9c11} 
+Vector2$<$ float $>$ {\bfseries \+\_\+side\+Bar\+Position}
+\item 
+Texture \mbox{\hyperlink{class_game_screen_a9ff61edf522780ed4254b0385f9d65eb}{\+\_\+bg\+Texture}}
+\item 
+Rectangle\+Shape \mbox{\hyperlink{class_game_screen_a5198d7d87922dcb52db5d6c2e5ac1041}{\+\_\+bg}}
+\item 
+Vector2u \mbox{\hyperlink{class_game_screen_a53a21f7b6b0ecdb861026da5f9c66508}{\+\_\+window\+Size}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_character}{Character}} $>$ \mbox{\hyperlink{class_game_screen_a063932121bf6a25485769ce2e0069102}{\+\_\+player}}
+\item 
+\Hypertarget{class_game_screen_aa1f343b4670d81599553dab488d3db1e}\label{class_game_screen_aa1f343b4670d81599553dab488d3db1e} 
+\mbox{\hyperlink{class_campaign}{Campaign}} {\bfseries \+\_\+campaign}
+\item 
+\mbox{\hyperlink{class_map_observer}{Map\+Observer}} \mbox{\hyperlink{class_game_screen_ac444858fe75a4d87fc7f51ce40110bdd}{\+\_\+map\+Observer}}
+\item 
+int \mbox{\hyperlink{class_game_screen_ac1061e1c45525403d05e490ecf7979b1}{\+\_\+dice\+Modifier}}
+\item 
+string \mbox{\hyperlink{class_game_screen_ac787b8353a0f4dd94f053619cbe5185e}{\+\_\+dice\+Type}} = "{}1d6"{}
+\item 
+bool \mbox{\hyperlink{class_game_screen_a6db39efc7eb492e90231e621489d923e}{\+\_\+move\+Enabled}} = false
+\item 
+bool \mbox{\hyperlink{class_game_screen_a68868f361499f4c8d879b4cff76c894b}{\+\_\+attack\+Enabled}} = false
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}} $>$ \mbox{\hyperlink{class_game_screen_a44a0b3d31318e2ee1cc2920be8917364}{buttons}} = make\+\_\+shared$<$\mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game screen state. 
+
+The \doxylink{class_game_screen}{Game\+Screen} class is derived from the \doxylink{class_state}{State} class and represents the state of the game screen. It handles the initialization, input handling, updating, and drawing of the game screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_screen_a2b6dd82d2265628dab8a0cda1d0a7f74}\label{class_game_screen_a2b6dd82d2265628dab8a0cda1d0a7f74} 
+\index{GameScreen@{GameScreen}!GameScreen@{GameScreen}}
+\index{GameScreen@{GameScreen}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{GameScreen()}{GameScreen()}}
+{\footnotesize\ttfamily Game\+Screen\+::\+Game\+Screen (\begin{DoxyParamCaption}\item[{Main\+Data\+Ref \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_game_screen}{Game\+Screen} object with the given main data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The main data reference. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_screen_ac5770b3b0644b382b14969b689e0fc43}\label{class_game_screen_ac5770b3b0644b382b14969b689e0fc43} 
+\index{GameScreen@{GameScreen}!calculateTextureSizes@{calculateTextureSizes}}
+\index{calculateTextureSizes@{calculateTextureSizes}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{calculateTextureSizes()}{calculateTextureSizes()}}
+{\footnotesize\ttfamily void Game\+Screen\+::calculate\+Texture\+Sizes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculates the sizes of the textures based on the window size. 
+
+This function calculates the sizes of the map texture, character view texture, and console view texture based on the window size. Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_game_screen_a0b9d36c78d9cb37b7af9983eee99d458}\label{class_game_screen_a0b9d36c78d9cb37b7af9983eee99d458} 
+\index{GameScreen@{GameScreen}!Draw@{Draw}}
+\index{Draw@{Draw}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+Screen\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the game screen. 
+
+This function is called to draw the game screen. It renders the game objects and displays them on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last draw. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{class_game_screen_a42848521aeda505f1c87c6c306a3b67e}\label{class_game_screen_a42848521aeda505f1c87c6c306a3b67e} 
+\index{GameScreen@{GameScreen}!findPlayerCharacter@{findPlayerCharacter}}
+\index{findPlayerCharacter@{findPlayerCharacter}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{findPlayerCharacter()}{findPlayerCharacter()}}
+{\footnotesize\ttfamily void Game\+Screen\+::find\+Player\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the player character in the current map. 
+
+This function finds the player character in the current map and sets it as the active character. Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_game_screen_a87901799bf15b3683b7f2ed29fb00ed2}\label{class_game_screen_a87901799bf15b3683b7f2ed29fb00ed2} 
+\index{GameScreen@{GameScreen}!GenerateButton@{GenerateButton}}
+\index{GenerateButton@{GenerateButton}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{GenerateButton()}{GenerateButton()}}
+{\footnotesize\ttfamily static void Game\+Screen\+::\+Generate\+Button (\begin{DoxyParamCaption}\item[{const Font \&}]{font,  }\item[{const string \&}]{name,  }\item[{Rectangle\+Shape \&}]{button,  }\item[{Text \&}]{button\+Text,  }\item[{Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generates a button with the given font, name, position, and size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The font for the button text. \\
+\hline
+{\em name} & The name of the button. \\
+\hline
+{\em button} & The button shape. \\
+\hline
+{\em button\+Text} & The button text. \\
+\hline
+{\em position} & The position of the button. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_screen_aa15c80859a9157bcbe3df04d1d6d8dc7}\label{class_game_screen_aa15c80859a9157bcbe3df04d1d6d8dc7} 
+\index{GameScreen@{GameScreen}!generateButton@{generateButton}}
+\index{generateButton@{generateButton}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{generateButton()}{generateButton()}}
+{\footnotesize\ttfamily void Game\+Screen\+::generate\+Button (\begin{DoxyParamCaption}\item[{Rectangle\+Shape \&}]{button,  }\item[{Text \&}]{button\+Text,  }\item[{const string \&}]{name,  }\item[{int}]{button\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates a button with the given name and position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button shape. \\
+\hline
+{\em button\+Text} & The button text. \\
+\hline
+{\em name} & The name of the button. \\
+\hline
+{\em button\+Pos} & The position of the button. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{class_game_screen_a598336d6abe08f1dffa7d0c67b34859f}\label{class_game_screen_a598336d6abe08f1dffa7d0c67b34859f} 
+\index{GameScreen@{GameScreen}!generateConsoleTexture@{generateConsoleTexture}}
+\index{generateConsoleTexture@{generateConsoleTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{generateConsoleTexture()}{generateConsoleTexture()}}
+{\footnotesize\ttfamily void Game\+Screen\+::generate\+Console\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates the texture for the console view. 
+
+This function generates the texture for rendering the console view. Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_game_screen_a4b383128b32d81884a01f5092f22b68e}\label{class_game_screen_a4b383128b32d81884a01f5092f22b68e} 
+\index{GameScreen@{GameScreen}!generateMapTexture@{generateMapTexture}}
+\index{generateMapTexture@{generateMapTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{generateMapTexture()}{generateMapTexture()}}
+{\footnotesize\ttfamily void Game\+Screen\+::generate\+Map\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates the texture for the map. 
+
+This function generates the texture for rendering the map. Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_game_screen_aed848a4e269b5fa47f54eb9b9068866d}\label{class_game_screen_aed848a4e269b5fa47f54eb9b9068866d} 
+\index{GameScreen@{GameScreen}!generateSideBarTexture@{generateSideBarTexture}}
+\index{generateSideBarTexture@{generateSideBarTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{generateSideBarTexture()}{generateSideBarTexture()}}
+{\footnotesize\ttfamily void Game\+Screen\+::generate\+Side\+Bar\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates the texture for the sidebar. 
+
+This function generates the texture for rendering the sidebar. Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{class_game_screen_ab0299f0189e42b844589c042b372d58e}\label{class_game_screen_ab0299f0189e42b844589c042b372d58e} 
+\index{GameScreen@{GameScreen}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Game\+Screen\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the input for the game screen. 
+
+This function is called to handle the input events for the game screen. It processes the user input and performs the corresponding actions. 
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+\Hypertarget{class_game_screen_a550dcdadec1a5757fea41af94d3e27b3}\label{class_game_screen_a550dcdadec1a5757fea41af94d3e27b3} 
+\index{GameScreen@{GameScreen}!Init@{Init}}
+\index{Init@{Init}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Game\+Screen\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the game screen. 
+
+This function is called when the game screen is first entered. It initializes the necessary resources and variables. 
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{class_game_screen_abddf8a4fe459ed78d9d108724c7ede12}\label{class_game_screen_abddf8a4fe459ed78d9d108724c7ede12} 
+\index{GameScreen@{GameScreen}!positionToVector2i@{positionToVector2i}}
+\index{positionToVector2i@{positionToVector2i}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{positionToVector2i()}{positionToVector2i()}}
+{\footnotesize\ttfamily Vector2i Game\+Screen\+::position\+To\+Vector2i (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_position}{Position}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Converts a position to a Vector2i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted Vector2i. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{class_game_screen_aed3dd7f89b155ec7ecae084518336696}\label{class_game_screen_aed3dd7f89b155ec7ecae084518336696} 
+\index{GameScreen@{GameScreen}!scanForNearbyObjects@{scanForNearbyObjects}}
+\index{scanForNearbyObjects@{scanForNearbyObjects}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{scanForNearbyObjects()}{scanForNearbyObjects()}}
+{\footnotesize\ttfamily void Game\+Screen\+::scan\+For\+Nearby\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scans for nearby objects in the current map. 
+
+This function scans for nearby objects in the current map and performs actions based on the objects found. Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{class_game_screen_aa80c5d455c0628acb636fefd545fb72d}\label{class_game_screen_aa80c5d455c0628acb636fefd545fb72d} 
+\index{GameScreen@{GameScreen}!SetButtons@{SetButtons}}
+\index{SetButtons@{SetButtons}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{SetButtons()}{SetButtons()}}
+{\footnotesize\ttfamily void Game\+Screen\+::\+Set\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the buttons on the game screen. 
+
+This function sets up the buttons on the game screen, including their positions and appearance. \Hypertarget{class_game_screen_ae73ca8179f16069b52a8aca7254990b6}\label{class_game_screen_ae73ca8179f16069b52a8aca7254990b6} 
+\index{GameScreen@{GameScreen}!Update@{Update}}
+\index{Update@{Update}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+Screen\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the game screen. 
+
+This function is called to update the game screen. It updates the game logic based on the elapsed time since the last update. 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 18
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_game_screen_a68868f361499f4c8d879b4cff76c894b}\label{class_game_screen_a68868f361499f4c8d879b4cff76c894b} 
+\index{GameScreen@{GameScreen}!\_attackEnabled@{\_attackEnabled}}
+\index{\_attackEnabled@{\_attackEnabled}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_attackEnabled}{\_attackEnabled}}
+{\footnotesize\ttfamily bool Game\+Screen\+::\+\_\+attack\+Enabled = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Indicates whether the attack button is enabled. \Hypertarget{class_game_screen_a5198d7d87922dcb52db5d6c2e5ac1041}\label{class_game_screen_a5198d7d87922dcb52db5d6c2e5ac1041} 
+\index{GameScreen@{GameScreen}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily Rectangle\+Shape Game\+Screen\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+The background shape. \Hypertarget{class_game_screen_a9ff61edf522780ed4254b0385f9d65eb}\label{class_game_screen_a9ff61edf522780ed4254b0385f9d65eb} 
+\index{GameScreen@{GameScreen}!\_bgTexture@{\_bgTexture}}
+\index{\_bgTexture@{\_bgTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_bgTexture}{\_bgTexture}}
+{\footnotesize\ttfamily Texture Game\+Screen\+::\+\_\+bg\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The background texture. \Hypertarget{class_game_screen_ae8bba37f1edf13c68b25b7393e010f4d}\label{class_game_screen_ae8bba37f1edf13c68b25b7393e010f4d} 
+\index{GameScreen@{GameScreen}!\_characterView@{\_characterView}}
+\index{\_characterView@{\_characterView}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_characterView}{\_characterView}}
+{\footnotesize\ttfamily Render\+Texture Game\+Screen\+::\+\_\+character\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the character view. \Hypertarget{class_game_screen_a9b206ef141f86131cf12df7b30c371b6}\label{class_game_screen_a9b206ef141f86131cf12df7b30c371b6} 
+\index{GameScreen@{GameScreen}!\_clock@{\_clock}}
+\index{\_clock@{\_clock}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_clock}{\_clock}}
+{\footnotesize\ttfamily Clock Game\+Screen\+::\+\_\+clock\hspace{0.3cm}{\ttfamily [private]}}
+
+Keeps track of time passed. \Hypertarget{class_game_screen_a81db620b425bf3166803122d4e68bc25}\label{class_game_screen_a81db620b425bf3166803122d4e68bc25} 
+\index{GameScreen@{GameScreen}!\_consolePosition@{\_consolePosition}}
+\index{\_consolePosition@{\_consolePosition}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_consolePosition}{\_consolePosition}}
+{\footnotesize\ttfamily Vector2f Game\+Screen\+::\+\_\+console\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+The position of the console view. \Hypertarget{class_game_screen_a2441168d4b961ed54ce605f54c85ae63}\label{class_game_screen_a2441168d4b961ed54ce605f54c85ae63} 
+\index{GameScreen@{GameScreen}!\_consoleTexture@{\_consoleTexture}}
+\index{\_consoleTexture@{\_consoleTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_consoleTexture}{\_consoleTexture}}
+{\footnotesize\ttfamily Render\+Texture Game\+Screen\+::\+\_\+console\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the console view. \Hypertarget{class_game_screen_a6df20a69c2a5cbe5672beb6fe04f0323}\label{class_game_screen_a6df20a69c2a5cbe5672beb6fe04f0323} 
+\index{GameScreen@{GameScreen}!\_currentMap@{\_currentMap}}
+\index{\_currentMap@{\_currentMap}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_currentMap}{\_currentMap}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_map}{Map}}$>$ Game\+Screen\+::\+\_\+current\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+The current map. \Hypertarget{class_game_screen_a4f3851324811aeab47c005e9c10b685f}\label{class_game_screen_a4f3851324811aeab47c005e9c10b685f} 
+\index{GameScreen@{GameScreen}!\_data@{\_data}}
+\index{\_data@{\_data}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_data}{\_data}}
+{\footnotesize\ttfamily Main\+Data\+Ref Game\+Screen\+::\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+The main data reference. \Hypertarget{class_game_screen_ac1061e1c45525403d05e490ecf7979b1}\label{class_game_screen_ac1061e1c45525403d05e490ecf7979b1} 
+\index{GameScreen@{GameScreen}!\_diceModifier@{\_diceModifier}}
+\index{\_diceModifier@{\_diceModifier}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_diceModifier}{\_diceModifier}}
+{\footnotesize\ttfamily int Game\+Screen\+::\+\_\+dice\+Modifier\hspace{0.3cm}{\ttfamily [private]}}
+
+The dice modifier for the player character. \Hypertarget{class_game_screen_ac787b8353a0f4dd94f053619cbe5185e}\label{class_game_screen_ac787b8353a0f4dd94f053619cbe5185e} 
+\index{GameScreen@{GameScreen}!\_diceType@{\_diceType}}
+\index{\_diceType@{\_diceType}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_diceType}{\_diceType}}
+{\footnotesize\ttfamily string Game\+Screen\+::\+\_\+dice\+Type = "{}1d6"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+The dice type for the player character. \Hypertarget{class_game_screen_ac444858fe75a4d87fc7f51ce40110bdd}\label{class_game_screen_ac444858fe75a4d87fc7f51ce40110bdd} 
+\index{GameScreen@{GameScreen}!\_mapObserver@{\_mapObserver}}
+\index{\_mapObserver@{\_mapObserver}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_mapObserver}{\_mapObserver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map_observer}{Map\+Observer}} Game\+Screen\+::\+\_\+map\+Observer\hspace{0.3cm}{\ttfamily [private]}}
+
+The map observer. \Hypertarget{class_game_screen_abcbca1bf2e8a86e0491f05a94eecb24b}\label{class_game_screen_abcbca1bf2e8a86e0491f05a94eecb24b} 
+\index{GameScreen@{GameScreen}!\_mapTexture@{\_mapTexture}}
+\index{\_mapTexture@{\_mapTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_mapTexture}{\_mapTexture}}
+{\footnotesize\ttfamily Render\+Texture Game\+Screen\+::\+\_\+map\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the map. \Hypertarget{class_game_screen_a6db39efc7eb492e90231e621489d923e}\label{class_game_screen_a6db39efc7eb492e90231e621489d923e} 
+\index{GameScreen@{GameScreen}!\_moveEnabled@{\_moveEnabled}}
+\index{\_moveEnabled@{\_moveEnabled}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_moveEnabled}{\_moveEnabled}}
+{\footnotesize\ttfamily bool Game\+Screen\+::\+\_\+move\+Enabled = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Indicates whether the move button is enabled. \Hypertarget{class_game_screen_a063932121bf6a25485769ce2e0069102}\label{class_game_screen_a063932121bf6a25485769ce2e0069102} 
+\index{GameScreen@{GameScreen}!\_player@{\_player}}
+\index{\_player@{\_player}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_player}{\_player}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_character}{Character}}$>$ Game\+Screen\+::\+\_\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+The player character. \Hypertarget{class_game_screen_a5f5939b9d7a8ec925b462f08656ebc6c}\label{class_game_screen_a5f5939b9d7a8ec925b462f08656ebc6c} 
+\index{GameScreen@{GameScreen}!\_sideBarTexture@{\_sideBarTexture}}
+\index{\_sideBarTexture@{\_sideBarTexture}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_sideBarTexture}{\_sideBarTexture}}
+{\footnotesize\ttfamily Render\+Texture Game\+Screen\+::\+\_\+side\+Bar\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the sidebar. \Hypertarget{class_game_screen_a53a21f7b6b0ecdb861026da5f9c66508}\label{class_game_screen_a53a21f7b6b0ecdb861026da5f9c66508} 
+\index{GameScreen@{GameScreen}!\_windowSize@{\_windowSize}}
+\index{\_windowSize@{\_windowSize}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{\_windowSize}{\_windowSize}}
+{\footnotesize\ttfamily Vector2u Game\+Screen\+::\+\_\+window\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+The window size. \Hypertarget{class_game_screen_a44a0b3d31318e2ee1cc2920be8917364}\label{class_game_screen_a44a0b3d31318e2ee1cc2920be8917364} 
+\index{GameScreen@{GameScreen}!buttons@{buttons}}
+\index{buttons@{buttons}!GameScreen@{GameScreen}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}}$>$ Game\+Screen\+::buttons = make\+\_\+shared$<$\mbox{\hyperlink{struct_game_screen_1_1_buttons}{Buttons}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+The buttons on the game screen. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_game_screen_8h}{Game\+Screen.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_game_screen_8cpp}{Game\+Screen.\+cpp}}\end{DoxyCompactItemize}

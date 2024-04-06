@@ -1,0 +1,164 @@
+\doxysection{State\+Machine Class Reference}
+\hypertarget{class_state_machine}{}\label{class_state_machine}\index{StateMachine@{StateMachine}}
+
+
+Represents a state machine that manages different states.  
+
+
+
+
+{\ttfamily \#include $<$State\+Machine.\+h$>$}
+
+
+
+Inheritance diagram for State\+Machine\+:
+% FIG 0
+
+
+Collaboration diagram for State\+Machine\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_machine_aa0cc151d06adbff09aaabe7fee51d862}\label{class_state_machine_aa0cc151d06adbff09aaabe7fee51d862} 
+{\bfseries State\+Machine} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_state_machine}{State\+Machine} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_state_machine_ad1d3f6b69f8b36b0fd6a49443b22dd94}\label{class_state_machine_ad1d3f6b69f8b36b0fd6a49443b22dd94} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+State\+Machine} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for the \doxylink{class_state_machine}{State\+Machine} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_state_machine_a3ba9ce4cc1b3b4b6000b64548904914c}{Add\+State}} (State\+Ref new\+State, bool is\+Replacing=true, \mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}log=nullptr)
+\begin{DoxyCompactList}\small\item\em Adds a new state to the state machine. \end{DoxyCompactList}\item 
+\Hypertarget{class_state_machine_aebefd3cef7db9e011e15f423061d1afc}\label{class_state_machine_aebefd3cef7db9e011e15f423061d1afc} 
+void {\bfseries Remove\+State} ()
+\begin{DoxyCompactList}\small\item\em Removes the current state from the state machine. \end{DoxyCompactList}\item 
+\Hypertarget{class_state_machine_ac5db136671d23fe23d0e1f22d77e3e67}\label{class_state_machine_ac5db136671d23fe23d0e1f22d77e3e67} 
+void {\bfseries Process\+State\+Changes} ()
+\begin{DoxyCompactList}\small\item\em Processes any pending state changes in the state machine. \end{DoxyCompactList}\item 
+State\+Ref \& \mbox{\hyperlink{class_state_machine_a8ae5f91aa501e0fa07478d087814906e}{Get\+Active\+State}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the active state of the state machine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+stack$<$ State\+Ref $>$ \mbox{\hyperlink{class_state_machine_ad9e8b3d5a8d73d5b91c90846d98d2bc5}{\+\_\+states}}
+\item 
+State\+Ref \mbox{\hyperlink{class_state_machine_afb35f1067482fc3c0a3db16ac94ab60e}{\+\_\+new\+State}}
+\item 
+bool \mbox{\hyperlink{class_state_machine_a08cb3324baf98cd027565aaee67ab016}{\+\_\+is\+Removing}} \{\}
+\item 
+bool \mbox{\hyperlink{class_state_machine_a806fb4068124f055f628e3563b4ca9b1}{\+\_\+is\+Adding}} \{\}
+\item 
+bool \mbox{\hyperlink{class_state_machine_abb01bcc9617e9978db7afc34e03ba8d8}{\+\_\+is\+Replacing}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a state machine that manages different states. 
+
+The \doxylink{class_state_machine}{State\+Machine} class is responsible for managing different states and transitioning between them. It inherits from the \doxylink{class_log_observable}{Log\+Observable} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_state_machine_a3ba9ce4cc1b3b4b6000b64548904914c}\label{class_state_machine_a3ba9ce4cc1b3b4b6000b64548904914c} 
+\index{StateMachine@{StateMachine}!AddState@{AddState}}
+\index{AddState@{AddState}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{AddState()}{AddState()}}
+{\footnotesize\ttfamily void State\+Machine\+::\+Add\+State (\begin{DoxyParamCaption}\item[{State\+Ref}]{new\+State,  }\item[{bool}]{is\+Replacing = {\ttfamily true},  }\item[{\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}}]{log = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Adds a new state to the state machine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & The new state to be added. \\
+\hline
+{\em is\+Replacing} & Flag indicating whether the current state should be replaced. \\
+\hline
+{\em log} & Pointer to a \doxylink{class_log_observer}{Log\+Observer} object for logging purposes. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{class_state_machine_a8ae5f91aa501e0fa07478d087814906e}\label{class_state_machine_a8ae5f91aa501e0fa07478d087814906e} 
+\index{StateMachine@{StateMachine}!GetActiveState@{GetActiveState}}
+\index{GetActiveState@{GetActiveState}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{GetActiveState()}{GetActiveState()}}
+{\footnotesize\ttfamily State\+Ref \& State\+Machine\+::\+Get\+Active\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the active state of the state machine. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the active state. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_state_machine_a806fb4068124f055f628e3563b4ca9b1}\label{class_state_machine_a806fb4068124f055f628e3563b4ca9b1} 
+\index{StateMachine@{StateMachine}!\_isAdding@{\_isAdding}}
+\index{\_isAdding@{\_isAdding}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{\_isAdding}{\_isAdding}}
+{\footnotesize\ttfamily bool State\+Machine\+::\+\_\+is\+Adding \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag indicating whether a state is being added. \Hypertarget{class_state_machine_a08cb3324baf98cd027565aaee67ab016}\label{class_state_machine_a08cb3324baf98cd027565aaee67ab016} 
+\index{StateMachine@{StateMachine}!\_isRemoving@{\_isRemoving}}
+\index{\_isRemoving@{\_isRemoving}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{\_isRemoving}{\_isRemoving}}
+{\footnotesize\ttfamily bool State\+Machine\+::\+\_\+is\+Removing \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag indicating whether a state is being removed. \Hypertarget{class_state_machine_abb01bcc9617e9978db7afc34e03ba8d8}\label{class_state_machine_abb01bcc9617e9978db7afc34e03ba8d8} 
+\index{StateMachine@{StateMachine}!\_isReplacing@{\_isReplacing}}
+\index{\_isReplacing@{\_isReplacing}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{\_isReplacing}{\_isReplacing}}
+{\footnotesize\ttfamily bool State\+Machine\+::\+\_\+is\+Replacing \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag indicating whether the current state is being replaced. \Hypertarget{class_state_machine_afb35f1067482fc3c0a3db16ac94ab60e}\label{class_state_machine_afb35f1067482fc3c0a3db16ac94ab60e} 
+\index{StateMachine@{StateMachine}!\_newState@{\_newState}}
+\index{\_newState@{\_newState}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{\_newState}{\_newState}}
+{\footnotesize\ttfamily State\+Ref State\+Machine\+::\+\_\+new\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+The new state to be added. \Hypertarget{class_state_machine_ad9e8b3d5a8d73d5b91c90846d98d2bc5}\label{class_state_machine_ad9e8b3d5a8d73d5b91c90846d98d2bc5} 
+\index{StateMachine@{StateMachine}!\_states@{\_states}}
+\index{\_states@{\_states}!StateMachine@{StateMachine}}
+\doxysubsubsection{\texorpdfstring{\_states}{\_states}}
+{\footnotesize\ttfamily stack$<$State\+Ref$>$ State\+Machine\+::\+\_\+states\hspace{0.3cm}{\ttfamily [private]}}
+
+Stack of states managed by the state machine. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_state_machine_8h}{State\+Machine.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_state_machine_8cpp}{State\+Machine.\+cpp}}\end{DoxyCompactItemize}

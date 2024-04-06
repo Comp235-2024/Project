@@ -1,0 +1,13 @@
+digraph "CharacterCreator::Init"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="CharacterCreator::Init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Initializes the character creator state."];
+  Node1 -> Node2 [id="edge3_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CharacterCreator::SetButtons",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character_creator.html#ab4799f87d5475eb23ee453901585bbe1",tooltip="Sets up the buttons for selecting character types."];
+  Node2 -> Node3 [id="edge4_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CharacterCreator::Generate\lButton",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character_creator.html#a8e016195a65a551e0fdb6a81816d6912",tooltip="Generates a button with the specified font, name, position, and text."];
+}

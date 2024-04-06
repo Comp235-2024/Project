@@ -1,0 +1,284 @@
+\doxysection{Shield Class Reference}
+\hypertarget{class_shield}{}\label{class_shield}\index{Shield@{Shield}}
+
+
+Inheritance diagram for Shield\+:
+% FIG 0
+
+
+Collaboration diagram for Shield\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_shield_a8920392460163c9c72abd7fd4db78ef6}\label{class_shield_a8920392460163c9c72abd7fd4db78ef6} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Shield} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shield_a8a6e827c94750d8c1a1d523cb1b105de}{Shield}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shield_a60fd6cef1f70a2551c92bb520aa69d21}{Shield}} (string \mbox{\hyperlink{class_item_a406cde7962a6b42a66b4a53c9a26db2c}{name}}, string \mbox{\hyperlink{class_item_a15d457837bb5bf3f32c38412501d02d3}{enchantment\+\_\+type}}, int \mbox{\hyperlink{class_item_a05b8e987ed10d3c7c68b381ece3fc856}{enchantment\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shield_a9c985e35930be6f4dff1b3d3427a5389}{Shield}} (const \mbox{\hyperlink{class_shield}{Shield}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy Constructor for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shield}{Shield}} \& \mbox{\hyperlink{class_shield_ac5e915a27f9f356490d85875d8225ef1}{operator=}} (const \mbox{\hyperlink{class_shield}{Shield}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment Operator for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_shield_a09f313374618ec0c275b48af1abd37a0}{to\+String}} () override
+\begin{DoxyCompactList}\small\item\em To string method to print all the attributes of the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Item} () override=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item_a297720c02984eab37332ae795d22189d}{Item}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} object with null values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item}{Item}} \& \mbox{\hyperlink{class_item_abb787be2e7a475b2dd0b4232690b7e2e}{operator=}} (const \mbox{\hyperlink{class_item}{Item}} \&other)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item}\+:\+: \doxylink{class_item}{Item} object with a given name, type, enchantment type and level. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a8d2b9d404f8e692f456af88a1eb1ce44}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_a5dcdff1db4c66ca22bd6a3f826c69644}{set\+Name}} (string \mbox{\hyperlink{class_item_a406cde7962a6b42a66b4a53c9a26db2c}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_a581fa12e93282f8fa7fb9eaf6d5a08dc}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a2fbe1045a4271e867f98bc1bf7e79e08}{get\+Enchantment\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_ab57aa1f903c142a99d5d104008372d45}{get\+Enchantment\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ae00a79e0fdbfeeac5db57e0bd9fecb62}{set\+Enchantment\+Type}} (string \mbox{\hyperlink{class_item_a15d457837bb5bf3f32c38412501d02d3}{enchantment\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Type atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_ad82d9dbe1e176a9555616194da821f7f}{set\+Enchantment\+Level}} (int \mbox{\hyperlink{class_item_a05b8e987ed10d3c7c68b381ece3fc856}{enchantment\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Set the Enchantment Level atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_a60c2a36c81df448c9bc013824c9e0ade}{is\+Placed}} () const
+\begin{DoxyCompactList}\small\item\em Whether the item is placed somewhere or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a5e4bbbe2b64328ac16b63d585f10e44c}{get\+Item\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{class_item}{Item} ID atrribute of the \doxylink{class_item}{Item} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_shield}{Shield}} \mbox{\hyperlink{class_shield_a7e2739124ff3c3d49b9e40ee153fdaff}{create\+Shield}} (string \mbox{\hyperlink{class_item_a406cde7962a6b42a66b4a53c9a26db2c}{name}})
+\begin{DoxyCompactList}\small\item\em Method to create a \doxylink{class_shield}{Shield} object with random attributes. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_shield_ad5fa4212d9337f89d9faff9a7c1dbed9}{generate\+Enchantment\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Method to generate a random enchantment type for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_shield_a47fa572f6ab15431e4ab938be12c4f7d}{generate\+Enchantment\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Method to generate a random enchantment level for the \doxylink{class_shield}{Shield} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{class_item_ac9fad565f6cecac54252284050ad01b0}{generate\+Probability}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random uniformely distributed probability between 0 and 1. \end{DoxyCompactList}\item 
+static int {\bfseries get\+Item\+Count} ()
+\item 
+static void {\bfseries item\+\_\+test} ()
+\begin{DoxyCompactList}\small\item\em This function is used to test the functionality of the item class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const string \mbox{\hyperlink{class_shield_a8be67dbdfea5597503129b47a476f500}{enchantment\+\_\+types}} \mbox{[}1\mbox{]} = \{"{}Armor Class"{}\}
+\begin{DoxyCompactList}\small\item\em Array containing the possible enchantment types that a \doxylink{class_shield}{Shield} object could give. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries texture\+Name}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_item}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries Item\+ID}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its ID \end{DoxyCompactList}\item 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its name \end{DoxyCompactList}\item 
+string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its type \end{DoxyCompactList}\item 
+string {\bfseries enchantment\+\_\+type}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment type \end{DoxyCompactList}\item 
+int {\bfseries enchantment\+\_\+level}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of its enchantment level \end{DoxyCompactList}\item 
+bool {\bfseries placed}
+\begin{DoxyCompactList}\small\item\em attribute that each \doxylink{class_item}{Item} has to keep track of whether it is placed somewhere (Itemcontainer, map...) or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_shield_a8a6e827c94750d8c1a1d523cb1b105de}\label{class_shield_a8a6e827c94750d8c1a1d523cb1b105de} 
+\index{Shield@{Shield}!Shield@{Shield}}
+\index{Shield@{Shield}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{Shield()}{Shield()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Shield\+::\+Shield (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor for the \doxylink{class_shield}{Shield} object. 
+
+Construct a new \doxylink{class_shield}{Shield}\+:\+: \doxylink{class_shield}{Shield} object with null values. Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_shield_a60fd6cef1f70a2551c92bb520aa69d21}\label{class_shield_a60fd6cef1f70a2551c92bb520aa69d21} 
+\index{Shield@{Shield}!Shield@{Shield}}
+\index{Shield@{Shield}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{Shield()}{Shield()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Shield\+::\+Shield (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{enchantment\+\_\+type,  }\item[{int}]{enchantment\+\_\+level }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_shield}{Shield} object. 
+
+Construct a new \doxylink{class_shield}{Shield}\+:\+: \doxylink{class_shield}{Shield} object with a given name, enchantment type and level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em enchantment\+\_\+type} & \\
+\hline
+{\em enchantment\+\_\+level} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shield_a9c985e35930be6f4dff1b3d3427a5389}\label{class_shield_a9c985e35930be6f4dff1b3d3427a5389} 
+\index{Shield@{Shield}!Shield@{Shield}}
+\index{Shield@{Shield}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{Shield()}{Shield()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Shield\+::\+Shield (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_shield}{Shield}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy Constructor for the \doxylink{class_shield}{Shield} object. 
+
+Construct a new \doxylink{class_shield}{Shield}\+:\+: \doxylink{class_shield}{Shield} object with a given name, enchantment type and level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_shield_a7e2739124ff3c3d49b9e40ee153fdaff}\label{class_shield_a7e2739124ff3c3d49b9e40ee153fdaff} 
+\index{Shield@{Shield}!createShield@{createShield}}
+\index{createShield@{createShield}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{createShield()}{createShield()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shield}{Shield}} Shield\+::create\+Shield (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method to create a \doxylink{class_shield}{Shield} object with random attributes. 
+
+Creates a new \doxylink{class_shield}{Shield} object with a given name and random enchantment type and level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_shield}{Shield} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{class_shield_a47fa572f6ab15431e4ab938be12c4f7d}\label{class_shield_a47fa572f6ab15431e4ab938be12c4f7d} 
+\index{Shield@{Shield}!generateEnchantmentLevel@{generateEnchantmentLevel}}
+\index{generateEnchantmentLevel@{generateEnchantmentLevel}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{generateEnchantmentLevel()}{generateEnchantmentLevel()}}
+{\footnotesize\ttfamily int Shield\+::generate\+Enchantment\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method to generate a random enchantment level for the \doxylink{class_shield}{Shield} object. 
+
+Returns a random enchantment level for the shield.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_shield_ad5fa4212d9337f89d9faff9a7c1dbed9}\label{class_shield_ad5fa4212d9337f89d9faff9a7c1dbed9} 
+\index{Shield@{Shield}!generateEnchantmentType@{generateEnchantmentType}}
+\index{generateEnchantmentType@{generateEnchantmentType}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{generateEnchantmentType()}{generateEnchantmentType()}}
+{\footnotesize\ttfamily string Shield\+::generate\+Enchantment\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method to generate a random enchantment type for the \doxylink{class_shield}{Shield} object. 
+
+Returns a random enchantment type for the shield.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_shield_ac5e915a27f9f356490d85875d8225ef1}\label{class_shield_ac5e915a27f9f356490d85875d8225ef1} 
+\index{Shield@{Shield}!operator=@{operator=}}
+\index{operator=@{operator=}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shield}{Shield}} \& Shield\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_shield}{Shield}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Assignment Operator for the \doxylink{class_shield}{Shield} object. 
+
+Overloads the assignment operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_shield}{Shield}\& 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 8
+\Hypertarget{class_shield_a09f313374618ec0c275b48af1abd37a0}\label{class_shield_a09f313374618ec0c275b48af1abd37a0} 
+\index{Shield@{Shield}!toString@{toString}}
+\index{toString@{toString}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Shield\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+To string method to print all the attributes of the \doxylink{class_shield}{Shield} object. 
+
+Returns a string representation of the shield.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_item_ac41cbc9e8df0411781652e645ca7747c}{Item}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_shield_a8be67dbdfea5597503129b47a476f500}\label{class_shield_a8be67dbdfea5597503129b47a476f500} 
+\index{Shield@{Shield}!enchantment\_types@{enchantment\_types}}
+\index{enchantment\_types@{enchantment\_types}!Shield@{Shield}}
+\doxysubsubsection{\texorpdfstring{enchantment\_types}{enchantment\_types}}
+{\footnotesize\ttfamily const string Shield\+::enchantment\+\_\+types = \{"{}Armor Class"{}\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Array containing the possible enchantment types that a \doxylink{class_shield}{Shield} object could give. 
+
+Initializes the echantment types that a \doxylink{class_shield}{Shield} can give. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Items/include/Shield.\+h\item 
+components/\+Items/src/Shield.\+cpp\end{DoxyCompactItemize}

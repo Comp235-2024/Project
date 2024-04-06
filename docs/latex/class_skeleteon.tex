@@ -1,0 +1,149 @@
+\doxysection{Skeleteon Class Reference}
+\hypertarget{class_skeleteon}{}\label{class_skeleteon}\index{Skeleteon@{Skeleteon}}
+
+
+Inheritance diagram for Skeleteon\+:
+% FIG 0
+
+
+Collaboration diagram for Skeleteon\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_skeleteon_a7a35595ef2b8afbf605c2056243ef35f}\label{class_skeleteon_a7a35595ef2b8afbf605c2056243ef35f} 
+{\bfseries Skeleteon} (int health, int hit\+\_\+points, int armor\+\_\+class, int attack\+\_\+bonus, int damage\+\_\+bonus)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_non_player_character}{Non\+Player\+Character}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Non\+Player\+Character} (int health, int hit\+\_\+points, int armor\+\_\+class, int attack\+\_\+bonus, int damage\+\_\+bonus)
+\item 
+void {\bfseries set\+Item\+In\+Hand} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item)
+\item 
+\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Item\+In\+Hand} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_abad90f482dacecabe0d93c5d8d1daa49}{Character}} (int level)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_character}{Character} object with the specified level. \end{DoxyCompactList}\item 
+{\bfseries Character} (int level, string \+\_\+texture\+Name)
+\item 
+void {\bfseries interactive\+Character\+Test} ()
+\begin{DoxyCompactList}\small\item\em Shows a main menu to the user for testing by getting options and input from the user. If the right format gets entered based on the interactive menu options, it will call the character setters. If the new values are different from the current values of the attributes, they will get changed in the setters and notify the character observer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a951b5527a5080f0491f6b447c989f7a7}{show\+Main\+Test\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_character_ae81dc275660af9b87d5d04966050d292}{interactive\+Ability\+Scores\+Test}} ()
+\item 
+\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_character_a3d9659c682d7d9145e1285987f213c42}{get\+Strategy}} () const
+\item 
+int \mbox{\hyperlink{class_character_a39eeebcbdbc13cd4d1d274da5d051f85}{get\+Health}} () const
+\item 
+int \mbox{\hyperlink{class_character_a07d5a321657a818aff46fbd160749fdd}{get\+Ability\+Scores}} (int index) const
+\item 
+void {\bfseries update\+Attack\+Bonuses} ()
+\item 
+int {\bfseries get\+Number\+Of\+Attacks} () const
+\item 
+int \mbox{\hyperlink{class_character_a55be82a4cb649782e8aa7d25a51d7ee3}{get\+Ability\+Modifiers}} (int index) const
+\item 
+int \mbox{\hyperlink{class_character_ae8cdb23b41026ef3788e19993b1ea469}{get\+Hit\+Points}} () const
+\item 
+int \mbox{\hyperlink{class_character_a6674dec79e4677370162aeb5674084bf}{get\+Armor\+Class}} () const
+\item 
+int \mbox{\hyperlink{class_character_a5d31d79ef0bc5d92cf61076a33a67858}{get\+Attack\+Bonus}} () const
+\item 
+int \mbox{\hyperlink{class_character_af644db086012065530259e6ba7da2f65}{get\+Damage\+Bonus}} () const
+\item 
+int \mbox{\hyperlink{class_character_a06713215a5850ec92194a1a711fb8cd7}{get\+Level}} () const
+\item 
+\mbox{\hyperlink{struct_position}{Position}} {\bfseries get\+Location} () const
+\item 
+void \mbox{\hyperlink{class_character_a812f5573da90badd62f3eb8bc62f716e}{set\+Strategy}} (\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*}strategy)
+\begin{DoxyCompactList}\small\item\em Sets the strategy of the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_afd06ab5d08a0edc75539f3586ccac66d}{set\+Health}} (int health)
+\item 
+void \mbox{\hyperlink{class_character_abafb231348e9b6de9981d476252aaac1}{set\+Strength}} (int strength)
+\item 
+void \mbox{\hyperlink{class_character_ac0ee4d3daced0e30b75f2c5bb90cd8b3}{set\+Dexterity}} (int dex)
+\item 
+void \mbox{\hyperlink{class_character_ab0e760583cc5d908e7202f1c2f3ed83b}{set\+Constitution}} (int constitution)
+\item 
+void \mbox{\hyperlink{class_character_ad80619f0a4809b845b596811a744cf67}{set\+Intelligence}} (int intelligence)
+\item 
+void \mbox{\hyperlink{class_character_a0d6e510a5abb7649de1d978607b8d9b4}{set\+Wisdom}} (int wis)
+\item 
+void \mbox{\hyperlink{class_character_a0a26589a1078ce62a2403d59331bfd02}{set\+Charisma}} (int charisma)
+\item 
+void \mbox{\hyperlink{class_character_a78558a5320696835bd698f690b626d39}{set\+Modifier}} (int index, int amount)
+\item 
+void \mbox{\hyperlink{class_character_a83c248d9493566263c71e0880caaf7bd}{set\+Hit\+Points}} (int hit\+Points)
+\item 
+void \mbox{\hyperlink{class_character_a5b03ceb09b3e175dc9d6c3247a6b9b66}{set\+Armor\+Class}} (int armor\+Class)
+\item 
+void \mbox{\hyperlink{class_character_ac02e6e34fffea734a4fb68761a138eb1}{set\+Attack\+Bonus}} (int attack\+Bonus)
+\item 
+void \mbox{\hyperlink{class_character_a8efb1aeb6c7c3dce9fa68fb8f54f07a1}{set\+Damage\+Bonus}} (int damage\+Bonus)
+\item 
+void \mbox{\hyperlink{class_character_ac206c1a24603accc6ec9ab30ca22bab1}{set\+Level}} (int level)
+\item 
+void {\bfseries set\+Location} (\mbox{\hyperlink{struct_position}{Position}})
+\item 
+int {\bfseries calculate\+Modifier} (int ability\+Score)
+\item 
+void {\bfseries level\+Up} ()
+\item 
+void {\bfseries update\+Attacks\+Per\+Round} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}} () const
+\begin{DoxyCompactList}\small\item\em Notifies all attached observers about a state change in the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries test\+Character\+Creation} ()
+\item 
+static void {\bfseries display\+Character\+Stats} (const \mbox{\hyperlink{class_character}{Character}} \&character)
+\item 
+static void {\bfseries test\+Level\+Up\+Process} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries texture\+Name}
+\item 
+sf\+::\+Vector2i {\bfseries position}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Characters/include/\mbox{\hyperlink{_non_player_character_8h}{Non\+Player\+Character.\+h}}\end{DoxyCompactItemize}

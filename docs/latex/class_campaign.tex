@@ -1,0 +1,268 @@
+\doxysection{Campaign Class Reference}
+\hypertarget{class_campaign}{}\label{class_campaign}\index{Campaign@{Campaign}}
+
+
+Represents a campaign consisting of multiple maps and their connections.  
+
+
+
+
+{\ttfamily \#include $<$Campaign.\+h$>$}
+
+
+
+Inheritance diagram for Campaign\+:
+% FIG 0
+
+
+Collaboration diagram for Campaign\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_campaign_ae81c5b000e416b0ef31994efdf871c40}\label{class_campaign_ae81c5b000e416b0ef31994efdf871c40} 
+{\bfseries Campaign} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_campaign}{Campaign} class. Generates a default campaign. \end{DoxyCompactList}\item 
+\Hypertarget{class_campaign_a27b8446e152e79e58da37444dc8f255a}\label{class_campaign_a27b8446e152e79e58da37444dc8f255a} 
+std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{class_map}{Map}} $>$ $>$ {\bfseries get\+Campaign} () const
+\item 
+\Hypertarget{class_campaign_a209cb00a5265221c9ebcbbbeff4ad31b}\label{class_campaign_a209cb00a5265221c9ebcbbbeff4ad31b} 
+void {\bfseries default\+Level1} ()
+\item 
+\Hypertarget{class_campaign_ac16c62b3781f8ce1c37cfb36c10adc20}\label{class_campaign_ac16c62b3781f8ce1c37cfb36c10adc20} 
+void {\bfseries default\+Level2} ()
+\item 
+\Hypertarget{class_campaign_a6cef860fe606dc1a774949ae9bcb900a}\label{class_campaign_a6cef860fe606dc1a774949ae9bcb900a} 
+void {\bfseries default\+Level3} ()
+\item 
+void \mbox{\hyperlink{class_campaign_aaa2eff19343efacdd7c12f2d4cfb7c15}{add\+Map}} (const \mbox{\hyperlink{class_map}{Map}} \&map)
+\begin{DoxyCompactList}\small\item\em Adds a map to the campaign. \end{DoxyCompactList}\item 
+\Hypertarget{class_campaign_a67ba6eed37e6bb4bfbd3a6ed229afe24}\label{class_campaign_a67ba6eed37e6bb4bfbd3a6ed229afe24} 
+void {\bfseries load\+Next\+Map} ()
+\item 
+\Hypertarget{class_campaign_a13871893416d47162968c30dac13d222}\label{class_campaign_a13871893416d47162968c30dac13d222} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ {\bfseries get\+Map} (int index) const
+\item 
+bool \mbox{\hyperlink{class_campaign_abe4dc46337b1f50843ceac65e0413732}{remove\+Map}} (int index)
+\begin{DoxyCompactList}\small\item\em Removes a map from the campaign. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_campaign_a84857304bee9ed9d77b73ae7323c1a4b}{add\+Path}} (int from\+Index, int to\+Index)
+\begin{DoxyCompactList}\small\item\em Adds a path/connection between two maps in the campaign. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_campaign_a808f488e32ff32d77addbb5a39f81dc6}{remove\+Path}} (int from\+Index, int to\+Index)
+\begin{DoxyCompactList}\small\item\em Removes a path/connection between two maps in the campaign. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_campaign_a6deb13c9d3a8ab78c0d5a99db9d96ca4}{edit\+Map}} (int index, const \mbox{\hyperlink{class_map}{Map}} \&new\+Map)
+\begin{DoxyCompactList}\small\item\em Edits a map in the campaign. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_campaign_a7aafe34eb2919c0a3e8889b0bc8e6202}{get\+Number\+Of\+Maps}} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of maps in the campaign. \end{DoxyCompactList}\item 
+\Hypertarget{class_campaign_a9dc21e5dbfb2ea34fcaa0735ad803da9}\label{class_campaign_a9dc21e5dbfb2ea34fcaa0735ad803da9} 
+void {\bfseries print\+Campaign\+Details} () const
+\begin{DoxyCompactList}\small\item\em Prints the details of the campaign. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campaign_a0f14cc0143da3db4900b10a472bcc498}{save\+To\+Json}} (const std\+::string \&filename) const
+\begin{DoxyCompactList}\small\item\em Saves the campaign to a JSON file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_campaign_ad02b195db7c0606201986c8a1bbe7ee5}{load\+From\+Json}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads the campaign from a JSON file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_campaign_a566c44fdc23add4a1dbe2f1a728cbce0}\label{class_campaign_a566c44fdc23add4a1dbe2f1a728cbce0} 
+\mbox{\hyperlink{class_character}{Character}} {\bfseries mike}
+\item 
+\Hypertarget{class_campaign_a6b55f35f368e9738f0df05eddbf73914}\label{class_campaign_a6b55f35f368e9738f0df05eddbf73914} 
+bool {\bfseries load\+Map} = true
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_campaign_ae94621114954da9a234ff8769bc87c49}\label{class_campaign_ae94621114954da9a234ff8769bc87c49} 
+std\+::vector$<$ \mbox{\hyperlink{class_map}{Map}} $>$ {\bfseries maps}
+\item 
+\Hypertarget{class_campaign_acd5bc0303258454a8c7ddfea79cd1e44}\label{class_campaign_acd5bc0303258454a8c7ddfea79cd1e44} 
+std\+::unordered\+\_\+map$<$ int, std\+::vector$<$ int $>$ $>$ {\bfseries adjacencies}
+\item 
+\Hypertarget{class_campaign_a4446389a658237188697f7c6fef44f91}\label{class_campaign_a4446389a658237188697f7c6fef44f91} 
+int {\bfseries ind}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a campaign consisting of multiple maps and their connections. 
+
+The \doxylink{class_campaign}{Campaign} class provides functionality to manage a campaign, including adding and removing maps, creating connections between maps, editing maps, and saving/loading the campaign to/from a JSON file. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_campaign_aaa2eff19343efacdd7c12f2d4cfb7c15}\label{class_campaign_aaa2eff19343efacdd7c12f2d4cfb7c15} 
+\index{Campaign@{Campaign}!addMap@{addMap}}
+\index{addMap@{addMap}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{addMap()}{addMap()}}
+{\footnotesize\ttfamily void Campaign\+::add\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Adds a map to the campaign. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & The map to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_campaign_a84857304bee9ed9d77b73ae7323c1a4b}\label{class_campaign_a84857304bee9ed9d77b73ae7323c1a4b} 
+\index{Campaign@{Campaign}!addPath@{addPath}}
+\index{addPath@{addPath}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{addPath()}{addPath()}}
+{\footnotesize\ttfamily bool Campaign\+::add\+Path (\begin{DoxyParamCaption}\item[{int}]{from\+Index,  }\item[{int}]{to\+Index }\end{DoxyParamCaption})}
+
+
+
+Adds a path/connection between two maps in the campaign. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+Index} & The index of the map from which the path starts. \\
+\hline
+{\em to\+Index} & The index of the map to which the path leads. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the path was successfully added, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_a6deb13c9d3a8ab78c0d5a99db9d96ca4}\label{class_campaign_a6deb13c9d3a8ab78c0d5a99db9d96ca4} 
+\index{Campaign@{Campaign}!editMap@{editMap}}
+\index{editMap@{editMap}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{editMap()}{editMap()}}
+{\footnotesize\ttfamily bool Campaign\+::edit\+Map (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{new\+Map }\end{DoxyParamCaption})}
+
+
+
+Edits a map in the campaign. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the map to be edited. \\
+\hline
+{\em new\+Map} & The new map data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the map was successfully edited, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_a7aafe34eb2919c0a3e8889b0bc8e6202}\label{class_campaign_a7aafe34eb2919c0a3e8889b0bc8e6202} 
+\index{Campaign@{Campaign}!getNumberOfMaps@{getNumberOfMaps}}
+\index{getNumberOfMaps@{getNumberOfMaps}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{getNumberOfMaps()}{getNumberOfMaps()}}
+{\footnotesize\ttfamily size\+\_\+t Campaign\+::get\+Number\+Of\+Maps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the number of maps in the campaign. 
+
+\begin{DoxyReturn}{Returns}
+The number of maps. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_ad02b195db7c0606201986c8a1bbe7ee5}\label{class_campaign_ad02b195db7c0606201986c8a1bbe7ee5} 
+\index{Campaign@{Campaign}!loadFromJson@{loadFromJson}}
+\index{loadFromJson@{loadFromJson}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{loadFromJson()}{loadFromJson()}}
+{\footnotesize\ttfamily bool Campaign\+::load\+From\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads the campaign from a JSON file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to load from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the campaign was successfully loaded, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_abe4dc46337b1f50843ceac65e0413732}\label{class_campaign_abe4dc46337b1f50843ceac65e0413732} 
+\index{Campaign@{Campaign}!removeMap@{removeMap}}
+\index{removeMap@{removeMap}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{removeMap()}{removeMap()}}
+{\footnotesize\ttfamily bool Campaign\+::remove\+Map (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Removes a map from the campaign. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the map to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the map was successfully removed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_a808f488e32ff32d77addbb5a39f81dc6}\label{class_campaign_a808f488e32ff32d77addbb5a39f81dc6} 
+\index{Campaign@{Campaign}!removePath@{removePath}}
+\index{removePath@{removePath}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{removePath()}{removePath()}}
+{\footnotesize\ttfamily bool Campaign\+::remove\+Path (\begin{DoxyParamCaption}\item[{int}]{from\+Index,  }\item[{int}]{to\+Index }\end{DoxyParamCaption})}
+
+
+
+Removes a path/connection between two maps in the campaign. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+Index} & The index of the map from which the path starts. \\
+\hline
+{\em to\+Index} & The index of the map to which the path leads. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the path was successfully removed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_campaign_a0f14cc0143da3db4900b10a472bcc498}\label{class_campaign_a0f14cc0143da3db4900b10a472bcc498} 
+\index{Campaign@{Campaign}!saveToJson@{saveToJson}}
+\index{saveToJson@{saveToJson}!Campaign@{Campaign}}
+\doxysubsubsection{\texorpdfstring{saveToJson()}{saveToJson()}}
+{\footnotesize\ttfamily void Campaign\+::save\+To\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption}) const}
+
+
+
+Saves the campaign to a JSON file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to save to. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/Campaign.\+h\item 
+components/\+Maps/src/Campaign.\+cpp\end{DoxyCompactItemize}

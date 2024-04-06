@@ -1,0 +1,48 @@
+\doxysection{components/\+Game\+Engine/include/\+Map\+Creator.h File Reference}
+\hypertarget{_map_creator_8h}{}\label{_map_creator_8h}\index{components/GameEngine/include/MapCreator.h@{components/GameEngine/include/MapCreator.h}}
+
+
+This class is called from the main menu and allows the user to create a map by placing objects on a grid and then either save or clear that map.  
+
+
+{\ttfamily \#include "{}CONFIG.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Loopty\+Loop.\+h"{}}\newline
+{\ttfamily \#include "{}Map\+Observer.\+h"{}}\newline
+{\ttfamily \#include "{}Player.\+h"{}}\newline
+{\ttfamily \#include "{}State.\+h"{}}\newline
+{\ttfamily \#include "{}Movable.\+h"{}}\newline
+{\ttfamily \#include "{}Treasure\+Chest.\+h"{}}\newline
+{\ttfamily \#include "{}Non\+Player\+Character.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Maps/include/\+Lever.\+h"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+Include dependency graph for Map\+Creator.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_map_creator}{Map\+Creator}}
+\item 
+struct \mbox{\hyperlink{struct_map_creator_1_1_sidebar_item}{Map\+Creator\+::\+Sidebar\+Item}}
+\begin{DoxyCompactList}\small\item\em Struct to designate Items that are to be placed on the sidebar. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_map_creator_1_1_buttons}{Map\+Creator\+::\+Buttons}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_map_creator_8h_ab701e3ac61a85b337ec5c1abaad6742d}\label{_map_creator_8h_ab701e3ac61a85b337ec5c1abaad6742d} 
+using {\bfseries json} = nlohmann\+::json
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is called from the main menu and allows the user to create a map by placing objects on a grid and then either save or clear that map. 
+
+\begin{DoxyAuthor}{Author}
+Ricardo Raji Chahine 40234410
+\end{DoxyAuthor}
+The user can place walls, doors, levers, chests, players, and npcs on the map.
+
+The maps are saved as .json files in the Saved Maps directory. 

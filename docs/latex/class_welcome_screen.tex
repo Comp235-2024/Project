@@ -1,0 +1,189 @@
+\doxysection{Welcome\+Screen Class Reference}
+\hypertarget{class_welcome_screen}{}\label{class_welcome_screen}\index{WelcomeScreen@{WelcomeScreen}}
+
+
+Represents the welcome screen state of the game.  
+
+
+
+
+{\ttfamily \#include $<$Welcome\+Screen.\+h$>$}
+
+
+
+Inheritance diagram for Welcome\+Screen\+:
+% FIG 0
+
+
+Collaboration diagram for Welcome\+Screen\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_welcome_screen_a2a599cfd80d70f117fea154bd75cac47}{Welcome\+Screen}} (Main\+Data\+Ref data)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_welcome_screen}{Welcome\+Screen} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_welcome_screen_a9aed68606842a06d4256f3dd767d9b83}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the welcome screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_welcome_screen_a31f249c6278c9c5e811e401f0f273e7d}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the input for the welcome screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_welcome_screen_a09b670080eeec868ab7b7124653f02ac}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the welcome screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_welcome_screen_ab8f4d2b87a5b3b6fa90efbc2c3a90ae6}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Draws the welcome screen state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_welcome_screen_a7fc7853bfecf77fab497a822d2c560f9}\label{class_welcome_screen_a7fc7853bfecf77fab497a822d2c560f9} 
+Main\+Data\+Ref {\bfseries \+\_\+data}
+\begin{DoxyCompactList}\small\item\em The reference to the main data object. \end{DoxyCompactList}\item 
+\Hypertarget{class_welcome_screen_ae7be9a83432bb4926d409c6c1167fd4b}\label{class_welcome_screen_ae7be9a83432bb4926d409c6c1167fd4b} 
+Clock {\bfseries \+\_\+clock}
+\begin{DoxyCompactList}\small\item\em Keeps track of time passed. \end{DoxyCompactList}\item 
+\Hypertarget{class_welcome_screen_af37469d8ec873a2437512bf5526f8a8a}\label{class_welcome_screen_af37469d8ec873a2437512bf5526f8a8a} 
+Texture {\bfseries \+\_\+bg\+Texture}
+\begin{DoxyCompactList}\small\item\em The background texture. \end{DoxyCompactList}\item 
+\Hypertarget{class_welcome_screen_a69f0791005b7cdb1662f02b28e40075f}\label{class_welcome_screen_a69f0791005b7cdb1662f02b28e40075f} 
+Sprite {\bfseries \+\_\+bg}
+\begin{DoxyCompactList}\small\item\em The background sprite. \end{DoxyCompactList}\item 
+\Hypertarget{class_welcome_screen_ab9a9a8175c3d18a408571780d3521f15}\label{class_welcome_screen_ab9a9a8175c3d18a408571780d3521f15} 
+Text {\bfseries text}
+\begin{DoxyCompactList}\small\item\em The text object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the welcome screen state of the game. 
+
+The \doxylink{class_welcome_screen}{Welcome\+Screen} class is derived from the \doxylink{class_state}{State} class and is responsible for managing the welcome screen state of the game. It handles initialization, input handling, updating, and drawing of the welcome screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_welcome_screen_a2a599cfd80d70f117fea154bd75cac47}\label{class_welcome_screen_a2a599cfd80d70f117fea154bd75cac47} 
+\index{WelcomeScreen@{WelcomeScreen}!WelcomeScreen@{WelcomeScreen}}
+\index{WelcomeScreen@{WelcomeScreen}!WelcomeScreen@{WelcomeScreen}}
+\doxysubsubsection{\texorpdfstring{WelcomeScreen()}{WelcomeScreen()}}
+{\footnotesize\ttfamily Welcome\+Screen\+::\+Welcome\+Screen (\begin{DoxyParamCaption}\item[{Main\+Data\+Ref}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_welcome_screen}{Welcome\+Screen} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The reference to the main data object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_welcome_screen_ab8f4d2b87a5b3b6fa90efbc2c3a90ae6}\label{class_welcome_screen_ab8f4d2b87a5b3b6fa90efbc2c3a90ae6} 
+\index{WelcomeScreen@{WelcomeScreen}!Draw@{Draw}}
+\index{Draw@{Draw}!WelcomeScreen@{WelcomeScreen}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Welcome\+Screen\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the welcome screen state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time passed since the last draw. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+\Hypertarget{class_welcome_screen_a31f249c6278c9c5e811e401f0f273e7d}\label{class_welcome_screen_a31f249c6278c9c5e811e401f0f273e7d} 
+\index{WelcomeScreen@{WelcomeScreen}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!WelcomeScreen@{WelcomeScreen}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Welcome\+Screen\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the input for the welcome screen state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+\Hypertarget{class_welcome_screen_a9aed68606842a06d4256f3dd767d9b83}\label{class_welcome_screen_a9aed68606842a06d4256f3dd767d9b83} 
+\index{WelcomeScreen@{WelcomeScreen}!Init@{Init}}
+\index{Init@{Init}!WelcomeScreen@{WelcomeScreen}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Welcome\+Screen\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the welcome screen state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+\Hypertarget{class_welcome_screen_a09b670080eeec868ab7b7124653f02ac}\label{class_welcome_screen_a09b670080eeec868ab7b7124653f02ac} 
+\index{WelcomeScreen@{WelcomeScreen}!Update@{Update}}
+\index{Update@{Update}!WelcomeScreen@{WelcomeScreen}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Welcome\+Screen\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the welcome screen state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time passed since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_welcome_screen_8h}{Welcome\+Screen.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_welcome_screen_8cpp}{Welcome\+Screen.\+cpp}}\end{DoxyCompactItemize}

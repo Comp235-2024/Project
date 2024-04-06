@@ -1,0 +1,295 @@
+\doxysection{Item\+Container Class Reference}
+\hypertarget{class_item_container}{}\label{class_item_container}\index{ItemContainer@{ItemContainer}}
+
+
+Base class for all the \doxylink{class_item}{Item} Containers in the game.  
+
+
+
+
+{\ttfamily \#include $<$Item\+Container.\+h$>$}
+
+
+
+Inheritance diagram for Item\+Container\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_item_container_a3ce79c8b4501fafc5ea369ef3b3c1bce}{Item\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_container_aa9f91f6839846a8497570ba15fa626dc}\label{class_item_container_aa9f91f6839846a8497570ba15fa626dc} 
+{\bfseries Item\+Container} (const \mbox{\hyperlink{class_item_container}{Item\+Container}} \&other)
+\item 
+\mbox{\hyperlink{class_item_container_aa5dc785d39ce72f3f4acebb112de18ca}{\texorpdfstring{$\sim$}{\string~}\+Item\+Container}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_item_container_a583a85144d7ee8be190ae6c114a208fc}{add\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item)=0
+\begin{DoxyCompactList}\small\item\em Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_item_container_aed07c123252180bdc32dacd6da4fd766}{remove\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item)=0
+\begin{DoxyCompactList}\small\item\em Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_item_container_ae6a28c8d248d07d603c44d2000cf1044}{is\+Found}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) const =0
+\begin{DoxyCompactList}\small\item\em Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_item_container_a9be1857264e5f4a07bc129eacdf401bf}{print\+Items}} () const =0
+\begin{DoxyCompactList}\small\item\em Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a38b9ae46b15636f5c6f9dd698afcb127}{is\+Full}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is full. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a6678de7feebddb9fa02b4b4e1d314832}{is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a2a90050c812ac3d9803287048a157084}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the Size attribute of the object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a36228ffa2b6b87e6491f45a736cd3557}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get the Capacity attribute of the object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_container_ae799330f7e9a4608d928e0f0d221d126}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name attribute of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_container_a0be2dfecbbe03b6840f5bbded7e7dbfc}{set\+Name}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name attribute of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_container_a32040756ff6d90267688f1387a742396}\label{class_item_container_a32040756ff6d90267688f1387a742396} 
+string {\bfseries texture\+Name} = "{}crate"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}\label{class_item_container_a3d4313e51dfa02afae6db2f763404f0e} 
+int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em The number of objects that the current \doxylink{class_item_container}{Item\+Container} object is holding. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_container_a29b3169732aca1326301412d033d7621}\label{class_item_container_a29b3169732aca1326301412d033d7621} 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em The maximum number of objects that the current \doxylink{class_item_container}{Item\+Container} object can hold. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}\label{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d} 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em The name of the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all the \doxylink{class_item}{Item} Containers in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_item_container_a3ce79c8b4501fafc5ea369ef3b3c1bce}\label{class_item_container_a3ce79c8b4501fafc5ea369ef3b3c1bce} 
+\index{ItemContainer@{ItemContainer}!ItemContainer@{ItemContainer}}
+\index{ItemContainer@{ItemContainer}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{ItemContainer()}{ItemContainer()}}
+{\footnotesize\ttfamily Item\+Container\+::\+Item\+Container (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_item}{Item} Container object. 
+
+Construct a new \doxylink{class_item}{Item} Container\+:\+: \doxylink{class_item}{Item} Container object with null values. \Hypertarget{class_item_container_aa5dc785d39ce72f3f4acebb112de18ca}\label{class_item_container_aa5dc785d39ce72f3f4acebb112de18ca} 
+\index{ItemContainer@{ItemContainer}!````~ItemContainer@{\texorpdfstring{$\sim$}{\string~}ItemContainer}}
+\index{````~ItemContainer@{\texorpdfstring{$\sim$}{\string~}ItemContainer}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ItemContainer()}{\string~ItemContainer()}}
+{\footnotesize\ttfamily Item\+Container\+::\texorpdfstring{$\sim$}{\string~}\+Item\+Container (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destroy the \doxylink{class_item}{Item} Container object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_item_container_a583a85144d7ee8be190ae6c114a208fc}\label{class_item_container_a583a85144d7ee8be190ae6c114a208fc} 
+\index{ItemContainer@{ItemContainer}!addItem@{addItem}}
+\index{addItem@{addItem}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily virtual void Item\+Container\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_item_container}{Item\+Container} object. 
+
+\begin{DoxyAttention}{Attention}
+Pure Virtual Method to be implemented by the derived classes
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_backpack_a0009726a672f104791324f40301040cd}{Backpack}}, \mbox{\hyperlink{class_treasure_chest_aaa1635205ff860367cd2cbe113efb2db}{Treasure\+Chest}}, and \mbox{\hyperlink{class_worn_items_container_adf636df6f1721235a33b7d36078133b6}{Worn\+Items\+Container}}.
+
+\Hypertarget{class_item_container_a36228ffa2b6b87e6491f45a736cd3557}\label{class_item_container_a36228ffa2b6b87e6491f45a736cd3557} 
+\index{ItemContainer@{ItemContainer}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Item\+Container\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Capacity attribute of the object. 
+
+Returns the capacity of the container.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{class_item_container_ae799330f7e9a4608d928e0f0d221d126}\label{class_item_container_ae799330f7e9a4608d928e0f0d221d126} 
+\index{ItemContainer@{ItemContainer}!getName@{getName}}
+\index{getName@{getName}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Item\+Container\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Name attribute of the object. 
+
+Returns the name of the container.
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{class_item_container_a2a90050c812ac3d9803287048a157084}\label{class_item_container_a2a90050c812ac3d9803287048a157084} 
+\index{ItemContainer@{ItemContainer}!getSize@{getSize}}
+\index{getSize@{getSize}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Item\+Container\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Size attribute of the object. 
+
+Returns the size of the container.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_item_container_a6678de7feebddb9fa02b4b4e1d314832}\label{class_item_container_a6678de7feebddb9fa02b4b4e1d314832} 
+\index{ItemContainer@{ItemContainer}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Item\+Container\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method to check if the current \doxylink{class_item_container}{Item\+Container} object is empty. 
+
+Returns whether the container is empty or not.
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_item_container_ae6a28c8d248d07d603c44d2000cf1044}\label{class_item_container_ae6a28c8d248d07d603c44d2000cf1044} 
+\index{ItemContainer@{ItemContainer}!isFound@{isFound}}
+\index{isFound@{isFound}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{isFound()}{isFound()}}
+{\footnotesize\ttfamily virtual bool Item\+Container\+::is\+Found (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_item_container}{Item\+Container} object. 
+
+\begin{DoxyAttention}{Attention}
+Pure Virtual Method to be implemented by the derived classes
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_backpack_a06102caa310fa281c7b797ced5f4d324}{Backpack}}, \mbox{\hyperlink{class_treasure_chest_a7a86def70da34091722fb3885efb3dd5}{Treasure\+Chest}}, and \mbox{\hyperlink{class_worn_items_container_a419c854eb6a9c793c32158329618e017}{Worn\+Items\+Container}}.
+
+\Hypertarget{class_item_container_a38b9ae46b15636f5c6f9dd698afcb127}\label{class_item_container_a38b9ae46b15636f5c6f9dd698afcb127} 
+\index{ItemContainer@{ItemContainer}!isFull@{isFull}}
+\index{isFull@{isFull}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{isFull()}{isFull()}}
+{\footnotesize\ttfamily bool Item\+Container\+::is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method to check if the current \doxylink{class_item_container}{Item\+Container} object is full. 
+
+Returns whether the container is full or not.
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_item_container_a9be1857264e5f4a07bc129eacdf401bf}\label{class_item_container_a9be1857264e5f4a07bc129eacdf401bf} 
+\index{ItemContainer@{ItemContainer}!printItems@{printItems}}
+\index{printItems@{printItems}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{printItems()}{printItems()}}
+{\footnotesize\ttfamily virtual void Item\+Container\+::print\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_item_container}{Item\+Container} object. 
+
+\begin{DoxyAttention}{Attention}
+Pure Virtual Method to be implemented by the derived classes 
+\end{DoxyAttention}
+
+
+Implemented in \mbox{\hyperlink{class_backpack_a1d209a4990a0867ebf98d701e9f8a241}{Backpack}}, \mbox{\hyperlink{class_treasure_chest_ad0f8d7bdd456db456b4c31ff33d22069}{Treasure\+Chest}}, and \mbox{\hyperlink{class_worn_items_container_a245fe345a6f8fc304ed3b36e0cf0d8d0}{Worn\+Items\+Container}}.
+
+\Hypertarget{class_item_container_aed07c123252180bdc32dacd6da4fd766}\label{class_item_container_aed07c123252180bdc32dacd6da4fd766} 
+\index{ItemContainer@{ItemContainer}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily virtual void Item\+Container\+::remove\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_item_container}{Item\+Container} object. 
+
+\begin{DoxyAttention}{Attention}
+Pure Virtual Method to be implemented by the derived classes
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_backpack_a91778e6313034424a0ef36910b4311f1}{Backpack}}, \mbox{\hyperlink{class_treasure_chest_aba5a6139a8f17cced86e98cde5963c1a}{Treasure\+Chest}}, and \mbox{\hyperlink{class_worn_items_container_afd49727256a5cf40bdc9ea9c8cb0236f}{Worn\+Items\+Container}}.
+
+\Hypertarget{class_item_container_a0be2dfecbbe03b6840f5bbded7e7dbfc}\label{class_item_container_a0be2dfecbbe03b6840f5bbded7e7dbfc} 
+\index{ItemContainer@{ItemContainer}!setName@{setName}}
+\index{setName@{setName}!ItemContainer@{ItemContainer}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Item\+Container\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the Name attribute of the object. 
+
+Sets the name of the container.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Item\+Containers/include/Item\+Container.\+h\item 
+components/\+Item\+Containers/src/Item\+Container.\+cpp\end{DoxyCompactItemize}

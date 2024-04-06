@@ -1,0 +1,27 @@
+digraph "ItemContainer::isEmpty"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="ItemContainer::isEmpty",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Method to check if the current ItemContainer object is empty."];
+  Node1 -> Node2 [id="edge12_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="HumanPlayerStrategy\l::freeAction",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_human_player_strategy.html#a620dea171a631c4f58bc5b00d2303e3e",tooltip="method that lets the user interact with their backpack and worn items"];
+  Node1 -> Node3 [id="edge13_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Backpack::printItems",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a1d209a4990a0867ebf98d701e9f8a241",tooltip="Method to print all the Item objects in the current Backpack object."];
+  Node3 -> Node2 [id="edge14_Node000003_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node4 [id="edge15_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="TreasureChest::printItems",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_treasure_chest.html#ad0f8d7bdd456db456b4c31ff33d22069",tooltip="Method to print all the Item objects in the current TreasureChest object."];
+  Node1 -> Node5 [id="edge16_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="WornItemsContainer\l::printItems",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#a245fe345a6f8fc304ed3b36e0cf0d8d0",tooltip="Method to print all the Item objects in the current WornItemsContainer object."];
+  Node5 -> Node2 [id="edge17_Node000005_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge18_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Backpack::removeItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_backpack.html#a91778e6313034424a0ef36910b4311f1",tooltip="Method to remove an Item object from the current Backpack object."];
+  Node6 -> Node2 [id="edge19_Node000006_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge20_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="TreasureChest::removeItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_treasure_chest.html#aba5a6139a8f17cced86e98cde5963c1a",tooltip="Method to remove an Item object from the current TreasureChest object."];
+  Node1 -> Node8 [id="edge21_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="WornItemsContainer\l::removeItem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_worn_items_container.html#afd49727256a5cf40bdc9ea9c8cb0236f",tooltip="Method to remove an Item object from the current WornItemsContainer object."];
+  Node8 -> Node2 [id="edge22_Node000008_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

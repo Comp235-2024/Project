@@ -1,0 +1,245 @@
+\doxysection{Main\+Menu Class Reference}
+\hypertarget{class_main_menu}{}\label{class_main_menu}\index{MainMenu@{MainMenu}}
+
+
+Represents the main menu state of the game.  
+
+
+
+
+{\ttfamily \#include $<$Main\+Menu.\+h$>$}
+
+
+
+Inheritance diagram for Main\+Menu\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Menu\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_main_menu_1_1_buttons}{Buttons}}
+\begin{DoxyCompactList}\small\item\em Represents the buttons in the main menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_menu_a05833899dc70dd4e74b8581796c67624}{Main\+Menu}} (Main\+Data\+Ref data)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_main_menu}{Main\+Menu} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_a345ae60f67ead501d821ec2c5aa8cf3f}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the main menu state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_abf36c8bcbe63e9b0b19c1a78068974ab}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the input for the main menu state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_ac437fc32f14c613a3295c60169a1a219}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the main menu state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_aaf8f9689cde0257604fe892a902bb7a9}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Draws the main menu state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_main_menu_ac38a68fc63800c9d1d9302bc0ebbc766}\label{class_main_menu_ac38a68fc63800c9d1d9302bc0ebbc766} 
+void {\bfseries Set\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Sets up the buttons in the main menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_main_menu_a8bf0dbc2905e93e64c7c324a5cfda3a5}{Generate\+Button}} (const Font \&font, const string \&name, Rectangle\+Shape \&button, Text \&button\+Text, Vector2f position)
+\begin{DoxyCompactList}\small\item\em Generates a button with the specified font, name, position, and text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_main_menu_a9107d4b869462008e155ec3edf8f17cf}\label{class_main_menu_a9107d4b869462008e155ec3edf8f17cf} 
+Main\+Data\+Ref {\bfseries \+\_\+data}
+\begin{DoxyCompactList}\small\item\em The reference to the main data of the game. \end{DoxyCompactList}\item 
+\Hypertarget{class_main_menu_a2908d0846c8954c2de1a1e443d3648e2}\label{class_main_menu_a2908d0846c8954c2de1a1e443d3648e2} 
+Clock {\bfseries \+\_\+clock}
+\begin{DoxyCompactList}\small\item\em Keeps track of time passed. \end{DoxyCompactList}\item 
+\Hypertarget{class_main_menu_ae5cab2825a37756eecba5c79313debf5}\label{class_main_menu_ae5cab2825a37756eecba5c79313debf5} 
+Texture {\bfseries \+\_\+bg\+Texture}
+\begin{DoxyCompactList}\small\item\em The background texture. \end{DoxyCompactList}\item 
+\Hypertarget{class_main_menu_ac70bc6790f59a3f1c3d2f7fb10f46fab}\label{class_main_menu_ac70bc6790f59a3f1c3d2f7fb10f46fab} 
+Sprite {\bfseries \+\_\+bg}
+\begin{DoxyCompactList}\small\item\em The background sprite. \end{DoxyCompactList}\item 
+\Hypertarget{class_main_menu_a43323ea4bfcceb6fb5d8ead9f97895c2}\label{class_main_menu_a43323ea4bfcceb6fb5d8ead9f97895c2} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_main_menu_1_1_buttons}{Buttons}} $>$ {\bfseries buttons} = make\+\_\+shared$<$\mbox{\hyperlink{struct_main_menu_1_1_buttons}{Buttons}}$>$()
+\begin{DoxyCompactList}\small\item\em The buttons in the main menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the main menu state of the game. 
+
+The \doxylink{class_main_menu}{Main\+Menu} class inherits from the \doxylink{class_state}{State} class and provides functionality for initializing, handling input, updating, and drawing the main menu state of the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_main_menu_a05833899dc70dd4e74b8581796c67624}\label{class_main_menu_a05833899dc70dd4e74b8581796c67624} 
+\index{MainMenu@{MainMenu}!MainMenu@{MainMenu}}
+\index{MainMenu@{MainMenu}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{MainMenu()}{MainMenu()}}
+{\footnotesize\ttfamily Main\+Menu\+::\+Main\+Menu (\begin{DoxyParamCaption}\item[{Main\+Data\+Ref}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_main_menu}{Main\+Menu} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The reference to the main data of the game. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_main_menu_aaf8f9689cde0257604fe892a902bb7a9}\label{class_main_menu_aaf8f9689cde0257604fe892a902bb7a9} 
+\index{MainMenu@{MainMenu}!Draw@{Draw}}
+\index{Draw@{Draw}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Main\+Menu\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the main menu state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last draw. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+\Hypertarget{class_main_menu_a8bf0dbc2905e93e64c7c324a5cfda3a5}\label{class_main_menu_a8bf0dbc2905e93e64c7c324a5cfda3a5} 
+\index{MainMenu@{MainMenu}!GenerateButton@{GenerateButton}}
+\index{GenerateButton@{GenerateButton}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{GenerateButton()}{GenerateButton()}}
+{\footnotesize\ttfamily void Main\+Menu\+::\+Generate\+Button (\begin{DoxyParamCaption}\item[{const Font \&}]{font,  }\item[{const string \&}]{name,  }\item[{Rectangle\+Shape \&}]{button,  }\item[{Text \&}]{button\+Text,  }\item[{Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generates a button with the specified font, name, position, and text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The font to use for the button text. \\
+\hline
+{\em name} & The name of the button. \\
+\hline
+{\em button} & The button shape to generate. \\
+\hline
+{\em button\+Text} & The text on the button. \\
+\hline
+{\em position} & The position of the button.\\
+\hline
+\end{DoxyParams}
+Very simple function to generate a button. Very Important\+: The font must be a reference to the font that is already loaded in the \doxylink{class_asset_manager}{Asset\+Manager}. 
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+{\em name} & \\
+\hline
+{\em button} & \\
+\hline
+{\em button\+Text} & \\
+\hline
+{\em position} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_main_menu_abf36c8bcbe63e9b0b19c1a78068974ab}\label{class_main_menu_abf36c8bcbe63e9b0b19c1a78068974ab} 
+\index{MainMenu@{MainMenu}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Main\+Menu\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the input for the main menu state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{class_main_menu_a345ae60f67ead501d821ec2c5aa8cf3f}\label{class_main_menu_a345ae60f67ead501d821ec2c5aa8cf3f} 
+\index{MainMenu@{MainMenu}!Init@{Init}}
+\index{Init@{Init}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Main\+Menu\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the main menu state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{class_main_menu_ac437fc32f14c613a3295c60169a1a219}\label{class_main_menu_ac437fc32f14c613a3295c60169a1a219} 
+\index{MainMenu@{MainMenu}!Update@{Update}}
+\index{Update@{Update}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Main\+Menu\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the main menu state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_main_menu_8h}{Main\+Menu.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_main_menu_8cpp}{Main\+Menu.\+cpp}}\end{DoxyCompactItemize}

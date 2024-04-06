@@ -1,0 +1,90 @@
+\doxysection{Map\+Observer.\+h}
+\hypertarget{_map_observer_8h_source}{}\label{_map_observer_8h_source}\index{components/Maps/include/MapObserver.h@{components/Maps/include/MapObserver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ A3\_MAPOBSERVER\_H}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ A3\_MAPOBSERVER\_H}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_dice_8h}{../../Functionalities/include/Dice.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_loopty_loop_8h}{GameLooptyLoop.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observer_8h}{LogObserver.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{Map.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_observer_8h}{Observer.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_non_player_character_8h}{NonPlayerCharacter.h}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}Lever.h"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics/Texture.hpp"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map_observer}{MapObserver}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_observer}{Observer}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}\{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_map_observer}{MapObserver}}(shared\_ptr<Map>\ map,\ sf::RenderTexture\ *\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}},\ MainDataRef\ data);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_map_observer}{MapObserver}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_map_observer}{MapObserver}}(shared\_ptr<Map>\ sharedPtr,\ RenderTexture\ *pTexture);}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_map_observer_ab4c7f4caef90daaba3c080d799076f9c}{\string~MapObserver}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a8a3016364d12b7c647e35bb1f04bf4a2}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a95b81f4c980a9be6cff5c8ced7e05d04}{updateMapOnly}}(RenderTexture\ *\_window);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ RenderTexture\ *\mbox{\hyperlink{class_map_observer_a0f2d13c8816b0a7ae3cac7c28189788d}{getWindow}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_observer_ab5ca607b80e2e35745611b2e87b2a7d6}{getWindowSizeX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_observer_a0bd67d12bb8bbdb5b6d5cc089772e8b3}{getWindowSizeY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_map_observer_ac80c0b3b121803f3788953bd4fc8729a}{getSizeMult}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ assignTextureToCell(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ Texture\&\ tex);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{const}\ Texture\&\ getTextureForCell(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ drawCircleAroundPos(Vector2i\ position,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keyword}{const}\ Color\ color,\ RenderTexture\ *\_window);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_map_observer_a4f9251e18ee7493d20e6404453c765f7}{SIZE\_MULT}}\ =\ 30;\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ MainDataRef\ \_data;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_map_observer_1_1pair__hash}{pair\_hash}}\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T1,\ \textcolor{keyword}{class}\ T2>}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ operator\ ()\ (\textcolor{keyword}{const}\ pair<T1,\ T2>\ \&pair)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ hash1\ =\ hash<T1>\{\}(pair.first);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ hash2\ =\ hash<T2>\{\}(pair.second);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hash1\ \string^\ hash2;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \};}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ unordered\_map<pair<int,\ int>,\ Texture,\ \mbox{\hyperlink{struct_map_observer_1_1pair__hash}{pair\_hash}}>\ textureMap;}
+\DoxyCodeLine{00122\ \ \ \ \ shared\_ptr<Map>\ \mbox{\hyperlink{class_map_observer_a454dee6d49d74526c0b8e33cf861b065}{grid}};\ }
+\DoxyCodeLine{00123\ \ \ \ \ sf::RenderTexture*\ \mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}};\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_observer_a02f63e8250b2022c7005fef29a1a0c1a}{window\_size\_x}}\{\};\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_observer_a7e5a91731a03339dfa8550e6b9f882ef}{window\_size\_y}}\{\};\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a542a5301b3840038c00ea7b15a13ff70}{draw}}();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a762d4ef95113b26a1b7c6335c006566b}{drawGridLines}}(RenderTexture\ *\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}},\ RectangleShape\ \&line,\ RectangleShape\ \&line\_v)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a9ebd4d8a958389f7fd9c3ebf70499cb6}{drawRedX}}(sf::RenderWindow\ *\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}},\ \textcolor{keywordtype}{float}\ posX,\ \textcolor{keywordtype}{float}\ posY)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_a29d1924556a8da862ab5377d0324d287}{drawMap}}(RenderTexture\ *\_window);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_observer_ab4ff967844677b764d7730ea417c5296}{drawImage}}(RenderTexture\ *pWindow,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *pathToImage,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ drawFloor(RenderTexture\ *pWindow,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{void}\ generateFloorTextureHashMap();}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ drawBorderAroundCell(\textcolor{keyword}{const}\ Vector2i\ \&position,\ \textcolor{keyword}{const}\ Color\ \&color,\ RenderTexture\ *\_window,\ \textcolor{keywordtype}{int}\ \_thickness)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00167\ \};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//A3\_MAPOBSERVER\_H}}
+
+\end{DoxyCode}

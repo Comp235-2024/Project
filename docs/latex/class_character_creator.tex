@@ -1,0 +1,333 @@
+\doxysection{Character\+Creator Class Reference}
+\hypertarget{class_character_creator}{}\label{class_character_creator}\index{CharacterCreator@{CharacterCreator}}
+
+
+Represents the character creation state in the game.  
+
+
+
+
+{\ttfamily \#include $<$Character\+Creator.\+h$>$}
+
+
+
+Inheritance diagram for Character\+Creator\+:
+% FIG 0
+
+
+Collaboration diagram for Character\+Creator\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}}
+\begin{DoxyCompactList}\small\item\em Represents the buttons for selecting character types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_creator_a42bab61843fe4a11cd3b90736467e591}{Character\+Creator}} (Main\+Data\+Ref data)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_character_creator}{Character\+Creator} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_afade3b646ff58824acc1de1adba85f9c}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the character creator state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_a6968353aaa3a5616e1797eca641ffa97}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the user input in the character creator state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_a2051d780e1561f8e68258c1395f1399a}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the character creator state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_a22b62fe97164b2bcb99208cedb369a3c}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Draws the character creator state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_a2a02b90e7be7868b161c3abec91bb174}{Create\+Character}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Creates a character of the specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_creator_a2bdc0f75bc9fa22b003ea0d37dcf865d}{Display\+Creation\+Message}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Displays a message on the character creation screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_creator_a003fa50fb7b06eb18637aeba88643357}\label{class_character_creator_a003fa50fb7b06eb18637aeba88643357} 
+void {\bfseries generate\+Map\+Texture} ()
+\begin{DoxyCompactList}\small\item\em Generates the texture for rendering the map. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_creator_ab4799f87d5475eb23ee453901585bbe1}\label{class_character_creator_ab4799f87d5475eb23ee453901585bbe1} 
+void {\bfseries Set\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Sets up the buttons for selecting character types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_character_creator_a8e016195a65a551e0fdb6a81816d6912}{Generate\+Button}} (const Font \&font, const string \&name, Rectangle\+Shape \&button, Text \&button\+Text, Vector2f position)
+\begin{DoxyCompactList}\small\item\em Generates a button with the specified font, name, position, and text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ \mbox{\hyperlink{class_character_creator_a7b5df0590d24f7f9db204a854d4e7138}{\+\_\+current\+Map}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_character_creator_a2473e1aae00f2d91801cb058fc1bcc89}{\+\_\+map\+Texture}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_character_creator_a6d4e2dab70482fd4a3b8c729b766e98c}{\+\_\+character\+View}}
+\item 
+Render\+Texture \mbox{\hyperlink{class_character_creator_ae8f34aff4d22f25e50e916f9a886edaa}{\+\_\+console\+View}}
+\item 
+Main\+Data\+Ref \mbox{\hyperlink{class_character_creator_a04c530096eca5ce3e077d1a4974dfd22}{\+\_\+data}}
+\item 
+Texture \mbox{\hyperlink{class_character_creator_a6d11ac11b897cab712044e79c39bce57}{\+\_\+bg\+Texture}}
+\item 
+Sprite \mbox{\hyperlink{class_character_creator_ad1c72e65e081b7036830500f5a8c807e}{\+\_\+bg}}
+\item 
+\mbox{\hyperlink{class_map_observer}{Map\+Observer}} \mbox{\hyperlink{class_character_creator_a2b566a186a3197aa416f5ae11e7dd8da}{map\+Observer}}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}} $>$ \mbox{\hyperlink{class_character_creator_a04fdcf6c4f166416d3a01b0c801413ab}{buttons}} = make\+\_\+shared$<$\mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the character creation state in the game. 
+
+The \doxylink{class_character_creator}{Character\+Creator} class is responsible for allowing the player to create a character by selecting a character type. It inherits from the \doxylink{class_state}{State} class and implements the necessary methods to handle input, update the state, and draw the character creation screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_character_creator_a42bab61843fe4a11cd3b90736467e591}\label{class_character_creator_a42bab61843fe4a11cd3b90736467e591} 
+\index{CharacterCreator@{CharacterCreator}!CharacterCreator@{CharacterCreator}}
+\index{CharacterCreator@{CharacterCreator}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{CharacterCreator()}{CharacterCreator()}}
+{\footnotesize\ttfamily Character\+Creator\+::\+Character\+Creator (\begin{DoxyParamCaption}\item[{Main\+Data\+Ref}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_character_creator}{Character\+Creator} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The main data reference containing shared resources. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_character_creator_a2a02b90e7be7868b161c3abec91bb174}\label{class_character_creator_a2a02b90e7be7868b161c3abec91bb174} 
+\index{CharacterCreator@{CharacterCreator}!CreateCharacter@{CreateCharacter}}
+\index{CreateCharacter@{CreateCharacter}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{CreateCharacter()}{CreateCharacter()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Create\+Character (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a character of the specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of character to create. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_character_creator_a2bdc0f75bc9fa22b003ea0d37dcf865d}\label{class_character_creator_a2bdc0f75bc9fa22b003ea0d37dcf865d} 
+\index{CharacterCreator@{CharacterCreator}!DisplayCreationMessage@{DisplayCreationMessage}}
+\index{DisplayCreationMessage@{DisplayCreationMessage}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{DisplayCreationMessage()}{DisplayCreationMessage()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Display\+Creation\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Displays a message on the character creation screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to display. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_character_creator_a22b62fe97164b2bcb99208cedb369a3c}\label{class_character_creator_a22b62fe97164b2bcb99208cedb369a3c} 
+\index{CharacterCreator@{CharacterCreator}!Draw@{Draw}}
+\index{Draw@{Draw}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the character creator state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last draw. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+\Hypertarget{class_character_creator_a8e016195a65a551e0fdb6a81816d6912}\label{class_character_creator_a8e016195a65a551e0fdb6a81816d6912} 
+\index{CharacterCreator@{CharacterCreator}!GenerateButton@{GenerateButton}}
+\index{GenerateButton@{GenerateButton}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{GenerateButton()}{GenerateButton()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Generate\+Button (\begin{DoxyParamCaption}\item[{const Font \&}]{font,  }\item[{const string \&}]{name,  }\item[{Rectangle\+Shape \&}]{button,  }\item[{Text \&}]{button\+Text,  }\item[{Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generates a button with the specified font, name, position, and text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The font to use for the button text. \\
+\hline
+{\em name} & The name of the button. \\
+\hline
+{\em button} & The rectangle shape representing the button. \\
+\hline
+{\em button\+Text} & The text displayed on the button. \\
+\hline
+{\em position} & The position of the button. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_character_creator_a6968353aaa3a5616e1797eca641ffa97}\label{class_character_creator_a6968353aaa3a5616e1797eca641ffa97} 
+\index{CharacterCreator@{CharacterCreator}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the user input in the character creator state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_character_creator_afade3b646ff58824acc1de1adba85f9c}\label{class_character_creator_afade3b646ff58824acc1de1adba85f9c} 
+\index{CharacterCreator@{CharacterCreator}!Init@{Init}}
+\index{Init@{Init}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the character creator state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{class_character_creator_a2051d780e1561f8e68258c1395f1399a}\label{class_character_creator_a2051d780e1561f8e68258c1395f1399a} 
+\index{CharacterCreator@{CharacterCreator}!Update@{Update}}
+\index{Update@{Update}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Character\+Creator\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the character creator state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_character_creator_ad1c72e65e081b7036830500f5a8c807e}\label{class_character_creator_ad1c72e65e081b7036830500f5a8c807e} 
+\index{CharacterCreator@{CharacterCreator}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily Sprite Character\+Creator\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+The background sprite. \Hypertarget{class_character_creator_a6d11ac11b897cab712044e79c39bce57}\label{class_character_creator_a6d11ac11b897cab712044e79c39bce57} 
+\index{CharacterCreator@{CharacterCreator}!\_bgTexture@{\_bgTexture}}
+\index{\_bgTexture@{\_bgTexture}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_bgTexture}{\_bgTexture}}
+{\footnotesize\ttfamily Texture Character\+Creator\+::\+\_\+bg\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The background texture. \Hypertarget{class_character_creator_a6d4e2dab70482fd4a3b8c729b766e98c}\label{class_character_creator_a6d4e2dab70482fd4a3b8c729b766e98c} 
+\index{CharacterCreator@{CharacterCreator}!\_characterView@{\_characterView}}
+\index{\_characterView@{\_characterView}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_characterView}{\_characterView}}
+{\footnotesize\ttfamily Render\+Texture Character\+Creator\+::\+\_\+character\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the character view. \Hypertarget{class_character_creator_ae8f34aff4d22f25e50e916f9a886edaa}\label{class_character_creator_ae8f34aff4d22f25e50e916f9a886edaa} 
+\index{CharacterCreator@{CharacterCreator}!\_consoleView@{\_consoleView}}
+\index{\_consoleView@{\_consoleView}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_consoleView}{\_consoleView}}
+{\footnotesize\ttfamily Render\+Texture Character\+Creator\+::\+\_\+console\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the console view. \Hypertarget{class_character_creator_a7b5df0590d24f7f9db204a854d4e7138}\label{class_character_creator_a7b5df0590d24f7f9db204a854d4e7138} 
+\index{CharacterCreator@{CharacterCreator}!\_currentMap@{\_currentMap}}
+\index{\_currentMap@{\_currentMap}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_currentMap}{\_currentMap}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_map}{Map}}$>$ Character\+Creator\+::\+\_\+current\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+The current map. \Hypertarget{class_character_creator_a04c530096eca5ce3e077d1a4974dfd22}\label{class_character_creator_a04c530096eca5ce3e077d1a4974dfd22} 
+\index{CharacterCreator@{CharacterCreator}!\_data@{\_data}}
+\index{\_data@{\_data}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_data}{\_data}}
+{\footnotesize\ttfamily Main\+Data\+Ref Character\+Creator\+::\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+The main data reference containing shared resources. \Hypertarget{class_character_creator_a2473e1aae00f2d91801cb058fc1bcc89}\label{class_character_creator_a2473e1aae00f2d91801cb058fc1bcc89} 
+\index{CharacterCreator@{CharacterCreator}!\_mapTexture@{\_mapTexture}}
+\index{\_mapTexture@{\_mapTexture}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{\_mapTexture}{\_mapTexture}}
+{\footnotesize\ttfamily Render\+Texture Character\+Creator\+::\+\_\+map\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+The texture for rendering the map. \Hypertarget{class_character_creator_a04fdcf6c4f166416d3a01b0c801413ab}\label{class_character_creator_a04fdcf6c4f166416d3a01b0c801413ab} 
+\index{CharacterCreator@{CharacterCreator}!buttons@{buttons}}
+\index{buttons@{buttons}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}}$>$ Character\+Creator\+::buttons = make\+\_\+shared$<$\mbox{\hyperlink{struct_character_creator_1_1_buttons}{Buttons}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+The buttons for selecting character types. \Hypertarget{class_character_creator_a2b566a186a3197aa416f5ae11e7dd8da}\label{class_character_creator_a2b566a186a3197aa416f5ae11e7dd8da} 
+\index{CharacterCreator@{CharacterCreator}!mapObserver@{mapObserver}}
+\index{mapObserver@{mapObserver}!CharacterCreator@{CharacterCreator}}
+\doxysubsubsection{\texorpdfstring{mapObserver}{mapObserver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map_observer}{Map\+Observer}} Character\+Creator\+::map\+Observer\hspace{0.3cm}{\ttfamily [private]}}
+
+The map observer. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/Character\+Creator.\+h\item 
+components/\+Game\+Engine/src/Character\+Creator.\+cpp\end{DoxyCompactItemize}

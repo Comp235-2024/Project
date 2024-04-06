@@ -1,0 +1,57 @@
+\doxysection{Non\+Player\+Character.\+h}
+\hypertarget{_non_player_character_8h_source}{}\label{_non_player_character_8h_source}\index{components/Characters/include/NonPlayerCharacter.h@{components/Characters/include/NonPlayerCharacter.h}}
+\mbox{\hyperlink{_non_player_character_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ A3\_NONPLAYERCHARACTER\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ A3\_NONPLAYERCHARACTER\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_character_8h}{Character.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{Item.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character}{Character}}\{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_item}{Item}}*\ item\_in\_hand;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_non_player_character}{\string~NonPlayerCharacter}}()\ \textcolor{keyword}{override}\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//TODO:\ IMPLEMENT\ DEFAULT\ CONSTRUCTOR\ (IT\ WAS\ CAUSING\ A\ VTABLE\ ERROR)}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}(\textcolor{keywordtype}{int}\ health,\ \textcolor{keywordtype}{int}\ hit\_points,\ \textcolor{keywordtype}{int}\ armor\_class,\ \textcolor{keywordtype}{int}\ attack\_bonus,\ \textcolor{keywordtype}{int}\ damage\_bonus);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setItemInHand(\mbox{\hyperlink{class_item}{Item}}*\ item);}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_item}{Item}}*\ getItemInHand();}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_skeleteon}{Skeleteon}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}\{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_skeleteon}{Skeleteon}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_skeleteon}{Skeleteon}}(\textcolor{keywordtype}{int}\ health,\ \textcolor{keywordtype}{int}\ hit\_points,\ \textcolor{keywordtype}{int}\ armor\_class,\ \textcolor{keywordtype}{int}\ attack\_bonus,\ \textcolor{keywordtype}{int}\ damage\_bonus);}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zombie}{Zombie}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}\{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_zombie}{Zombie}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_zombie}{Zombie}}(\textcolor{keywordtype}{int}\ health,\ \textcolor{keywordtype}{int}\ hit\_points,\ \textcolor{keywordtype}{int}\ armor\_class,\ \textcolor{keywordtype}{int}\ attack\_bonus,\ \textcolor{keywordtype}{int}\ damage\_bonus);}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_devil}{Devil}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}\{}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_devil}{Devil}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_devil}{Devil}}(\textcolor{keywordtype}{int}\ health,\ \textcolor{keywordtype}{int}\ hit\_points,\ \textcolor{keywordtype}{int}\ armor\_class,\ \textcolor{keywordtype}{int}\ attack);}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ogre}{Ogre}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_non_player_character}{NonPlayerCharacter}}\{}
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ std::string\ textureName\ =\ \textcolor{stringliteral}{"{}ogre"{}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_ogre}{Ogre}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_ogre}{\string~Ogre}}()\ \textcolor{keyword}{override}\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_ogre}{Ogre}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ogre}{Ogre}}\&)=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//A3\_NONPLAYERCHARACTER\_H}}
+
+\end{DoxyCode}

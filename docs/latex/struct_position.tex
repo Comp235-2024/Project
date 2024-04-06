@@ -1,0 +1,127 @@
+\doxysection{Position Struct Reference}
+\hypertarget{struct_position}{}\label{struct_position}\index{Position@{Position}}
+
+
+A structure to represent a position in a 2D grid.  
+
+
+
+
+{\ttfamily \#include $<$Position.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_position_aa335200cd70b67078a12e3c153b7535b}{check\+Validity}} (int max\+\_\+x, int max\+\_\+y) const
+\begin{DoxyCompactList}\small\item\em Checks if the position is valid within the given boundaries. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_position_a6e36cf0fee251e74cfedb86f4e99558d}{Position}} (int \mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}}, int \mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\Hypertarget{struct_position_a369a577425f8ba02e8750d04b6a088db}\label{struct_position_a369a577425f8ba02e8750d04b6a088db} 
+{\bfseries Position} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{struct_position}{Position} class. \end{DoxyCompactList}\item 
+\Hypertarget{struct_position_a9e2e78cf8692a42d4c8837e2c5b7078d}\label{struct_position_a9e2e78cf8692a42d4c8837e2c5b7078d} 
+{\bfseries Position} (sf\+::\+Vector2i vector)
+\item 
+\Hypertarget{struct_position_a41dab045ca3899ae1c740efbe0b46da8}\label{struct_position_a41dab045ca3899ae1c740efbe0b46da8} 
+struct \mbox{\hyperlink{struct_position}{Position}} \& {\bfseries operator=} (const \mbox{\hyperlink{struct_position}{Position}} \&other)
+\item 
+\Hypertarget{struct_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}\label{struct_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{struct_position}{Position}} \&other) const
+\item 
+\Hypertarget{struct_position_ae4d491be71bc11896f864835187e860d}\label{struct_position_ae4d491be71bc11896f864835187e860d} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{struct_position}{Position}} \&other) const
+\item 
+\Hypertarget{struct_position_a869a2e4732b8a3fc43fecf3c29704a0a}\label{struct_position_a869a2e4732b8a3fc43fecf3c29704a0a} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{struct_position}{Position}} \&rhs) const
+\item 
+\Hypertarget{struct_position_ae0784ad24ed8158ede34b53d4bccf64d}\label{struct_position_ae0784ad24ed8158ede34b53d4bccf64d} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{struct_position}{Position}} \&rhs) const
+\item 
+\Hypertarget{struct_position_ad178842353977c95e2ea1a0a3e8e9124}\label{struct_position_ad178842353977c95e2ea1a0a3e8e9124} 
+bool {\bfseries operator$<$=} (const \mbox{\hyperlink{struct_position}{Position}} \&rhs) const
+\item 
+\Hypertarget{struct_position_aa87a45fc936827487fee8959f8aad0a0}\label{struct_position_aa87a45fc936827487fee8959f8aad0a0} 
+bool {\bfseries operator$>$=} (const \mbox{\hyperlink{struct_position}{Position}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_position_a017411b7172b8ae109c46e311880071d}{x}} \{\}
+\item 
+int \mbox{\hyperlink{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}{y}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_position_aab55f99dd5e2b1188d18db3c87cc1b32}\label{struct_position_aab55f99dd5e2b1188d18db3c87cc1b32} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{struct_position}{Position}} \&position)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure to represent a position in a 2D grid. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_position_a6e36cf0fee251e74cfedb86f4e99558d}\label{struct_position_a6e36cf0fee251e74cfedb86f4e99558d} 
+\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}}
+{\footnotesize\ttfamily Position\+::\+Position (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_position_aa335200cd70b67078a12e3c153b7535b}\label{struct_position_aa335200cd70b67078a12e3c153b7535b} 
+\index{Position@{Position}!checkValidity@{checkValidity}}
+\index{checkValidity@{checkValidity}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{checkValidity()}{checkValidity()}}
+{\footnotesize\ttfamily bool Position\+::check\+Validity (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+x,  }\item[{int}]{max\+\_\+y }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the position is valid within the given boundaries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+x} & The maximum x-\/coordinate. \\
+\hline
+{\em max\+\_\+y} & The maximum y-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the position is valid, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_position_a017411b7172b8ae109c46e311880071d}\label{struct_position_a017411b7172b8ae109c46e311880071d} 
+\index{Position@{Position}!x@{x}}
+\index{x@{x}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily Position\+::x \{\}}
+
+Member \textquotesingle{}x\textquotesingle{} represents the x-\/coordinate of the position. \Hypertarget{struct_position_a2c78604d0c7007b107efe0dc846ecc1e}\label{struct_position_a2c78604d0c7007b107efe0dc846ecc1e} 
+\index{Position@{Position}!y@{y}}
+\index{y@{y}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily Position\+::y \{\}}
+
+Member \textquotesingle{}y\textquotesingle{} represents the y-\/coordinate of the position. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/Position.\+h\item 
+components/\+Maps/src/\mbox{\hyperlink{map_8cpp}{map.\+cpp}}\end{DoxyCompactItemize}

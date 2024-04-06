@@ -1,0 +1,60 @@
+\doxysection{Log\+Observer.\+h}
+\hypertarget{_log_observer_8h_source}{}\label{_log_observer_8h_source}\index{components/Log/include/LogObserver.h@{components/Log/include/LogObserver.h}}
+\mbox{\hyperlink{_log_observer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ A3\_LOGOBSERVER\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ A3\_LOGOBSERVER\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_observer_8h}{Observer.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_enable_module}{EnableModule}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{map}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}{character}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}{dice}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}{system}};\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{struct_enable_module_aaa1f70bd292088f9786210b4ac314ed7}{EnableModule}}()\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{map}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}{character}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}{dice}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}{system}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_enable_module_a0d9c280a2cd2a4646499d6de21b1b6bc}{enableAll}}()\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{map}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}{character}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}{dice}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}{system}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_enable_module_a1455cd05f5b6efe869a8cc530f773449}{disableAll}}()\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a35d55fa8d5d7f66c75364500a2a605c7}{map}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a456b957bbd9c77ba7aa49e00af38e53d}{character}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_ad8db897fe8b3495f5fdabb1a2f3792f8}{dice}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_enable_module_a11030bdd3eeffb549825eefcd3d0ee67}{system}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_log_observer}{LogObserver}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_observer}{Observer}}\ \{}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a}{update}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ message);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{struct_enable_module}{EnableModule}}\ \mbox{\hyperlink{class_log_observer_ae1f051aed6326f7981f983edb8cb7180}{enabledModules}};\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_log_observer_a64de86540239838642b5ec86fbb1444c}{LogObserver}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ ofstream\ \mbox{\hyperlink{class_log_observer_afd6d9c21ec6b7695fb39f10b29e7e774}{log}};\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_observer_a25651338f8b561efc44adb3256ffaf55}{write}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ message);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A3\_LOGOBSERVER\_H}}
+
+\end{DoxyCode}

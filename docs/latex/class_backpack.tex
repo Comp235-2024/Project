@@ -1,0 +1,405 @@
+\doxysection{Backpack Class Reference}
+\hypertarget{class_backpack}{}\label{class_backpack}\index{Backpack@{Backpack}}
+
+
+Class for \doxylink{class_backpack}{Backpack} objects which may hold \doxylink{class_item}{Item} objects.  
+
+
+
+
+{\ttfamily \#include $<$Backpack.\+h$>$}
+
+
+
+Inheritance diagram for Backpack\+:
+% FIG 0
+
+
+Collaboration diagram for Backpack\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_backpack_ac6b173af910a41f0e9b687b7252d236c}{Backpack}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_backpack_ac3403e70a1330ae98d8712e2efd2fab0}{Backpack}} (int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_backpack_a4187cf828bc92e49868e0793509d1a1a}{Backpack}} (int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}}, int \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_backpack_a2b12aefbff58dbc249af8fb652326f1a}{Backpack}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}, int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}}, int \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_backpack_ae4cc4e1a55cb649185cf04506b1f1fdd}{Backpack}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}, int \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}})
+\begin{DoxyCompactList}\small\item\em Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_backpack_ad5db6f479d47961c204cd3d504480211}\label{class_backpack_ad5db6f479d47961c204cd3d504480211} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Backpack} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_backpack_a677022bd80d3b6d3dcc9289dce3252cc}{get\+Backpack\+Storage}} () const
+\begin{DoxyCompactList}\small\item\em Method to get the vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_backpack_a00062a86123fc848f0c956f737b51385}{get\+Item}} (int index) const
+\begin{DoxyCompactList}\small\item\em Method to get an \doxylink{class_item}{Item} object from the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_backpack_ae6cb91cdbfdfb985aa3047b5d51c49af}\label{class_backpack_ae6cb91cdbfdfb985aa3047b5d51c49af} 
+int {\bfseries get\+Item\+Index} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) const
+\item 
+void \mbox{\hyperlink{class_backpack_a0009726a672f104791324f40301040cd}{add\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) override
+\begin{DoxyCompactList}\small\item\em Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_backpack_a91778e6313034424a0ef36910b4311f1}{remove\+Item}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) override
+\begin{DoxyCompactList}\small\item\em Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_backpack_a06102caa310fa281c7b797ced5f4d324}{is\+Found}} (\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}item) const override
+\begin{DoxyCompactList}\small\item\em Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_backpack_a1d209a4990a0867ebf98d701e9f8a241}{print\+Items}} () const override
+\begin{DoxyCompactList}\small\item\em Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_backpack_a6daf2c56c2e4ffeaddd2f905ba5b9ba3}{print\+Sorted\+Items\+By\+Type}} (string type) const
+\begin{DoxyCompactList}\small\item\em Method that prints only the items in the backpack from a specific type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_backpack_a6d140d8be8ec6fac21ea5bafe37fcfdc}{print\+Sorted\+Items\+By\+Name}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}}) const
+\begin{DoxyCompactList}\small\item\em Method that prints only the items in the backpack with a specific name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_item_container_a3ce79c8b4501fafc5ea369ef3b3c1bce}{Item\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+{\bfseries Item\+Container} (const \mbox{\hyperlink{class_item_container}{Item\+Container}} \&other)
+\item 
+\mbox{\hyperlink{class_item_container_aa5dc785d39ce72f3f4acebb112de18ca}{\texorpdfstring{$\sim$}{\string~}\+Item\+Container}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_item}{Item} Container object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a38b9ae46b15636f5c6f9dd698afcb127}{is\+Full}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is full. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_item_container_a6678de7feebddb9fa02b4b4e1d314832}{is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em Method to check if the current \doxylink{class_item_container}{Item\+Container} object is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a2a90050c812ac3d9803287048a157084}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the Size attribute of the object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_container_a36228ffa2b6b87e6491f45a736cd3557}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get the Capacity attribute of the object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_item_container_ae799330f7e9a4608d928e0f0d221d126}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Name attribute of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_container_a0be2dfecbbe03b6840f5bbded7e7dbfc}{set\+Name}} (string \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}})
+\begin{DoxyCompactList}\small\item\em Set the Name attribute of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_backpack_a1ec8352eec683835dc6ad5a2f4247e24}\label{class_backpack_a1ec8352eec683835dc6ad5a2f4247e24} 
+static void {\bfseries print\+Backpacks} ()
+\begin{DoxyCompactList}\small\item\em Method to print all the content of a \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_backpack_a89d81c21b0ab3255c21fec2045f9aadd}{get\+Nb\+Backpacks}} ()
+\begin{DoxyCompactList}\small\item\em Method to get the number of \doxylink{class_backpack}{Backpack} objects created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_backpack_a7e185bad0a97875e23150699d9763ba5}\label{class_backpack_a7e185bad0a97875e23150699d9763ba5} 
+vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries Backpack\+Storage}
+\begin{DoxyCompactList}\small\item\em Vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_backpack}{Backpack} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_backpack_ac19f28bd77c60cd12a4a823ad9b3221f}{nb\+Backpacks}} = 0
+\begin{DoxyCompactList}\small\item\em Static variable to keep track of the number of backpacks created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries texture\+Name} = "{}crate"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_item_container}{Item\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em The number of objects that the current \doxylink{class_item_container}{Item\+Container} object is holding. \end{DoxyCompactList}\item 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em The maximum number of objects that the current \doxylink{class_item_container}{Item\+Container} object can hold. \end{DoxyCompactList}\item 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em The name of the current \doxylink{class_item_container}{Item\+Container} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \doxylink{class_backpack}{Backpack} objects which may hold \doxylink{class_item}{Item} objects. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_backpack_ac6b173af910a41f0e9b687b7252d236c}\label{class_backpack_ac6b173af910a41f0e9b687b7252d236c} 
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{Backpack()}{Backpack()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily Backpack\+::\+Backpack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor for the \doxylink{class_backpack}{Backpack} object. 
+
+Construct a new \doxylink{class_backpack}{Backpack}\+:\+: \doxylink{class_backpack}{Backpack} object with null values. \Hypertarget{class_backpack_ac3403e70a1330ae98d8712e2efd2fab0}\label{class_backpack_ac3403e70a1330ae98d8712e2efd2fab0} 
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{Backpack()}{Backpack()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily Backpack\+::\+Backpack (\begin{DoxyParamCaption}\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. 
+
+Construct a new \doxylink{class_backpack}{Backpack}\+:\+: \doxylink{class_backpack}{Backpack} object with a given capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_backpack_a4187cf828bc92e49868e0793509d1a1a}\label{class_backpack_a4187cf828bc92e49868e0793509d1a1a} 
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{Backpack()}{Backpack()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily Backpack\+::\+Backpack (\begin{DoxyParamCaption}\item[{int}]{capacity,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. 
+
+Construct a new \doxylink{class_backpack}{Backpack}\+:\+: \doxylink{class_backpack}{Backpack} object with a given capacity and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_backpack_a2b12aefbff58dbc249af8fb652326f1a}\label{class_backpack_a2b12aefbff58dbc249af8fb652326f1a} 
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{Backpack()}{Backpack()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily Backpack\+::\+Backpack (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{capacity,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. 
+
+Construct a new \doxylink{class_backpack}{Backpack}\+:\+: \doxylink{class_backpack}{Backpack} object with a given name, capacity and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em capacity} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_backpack_ae4cc4e1a55cb649185cf04506b1f1fdd}\label{class_backpack_ae4cc4e1a55cb649185cf04506b1f1fdd} 
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\index{Backpack@{Backpack}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{Backpack()}{Backpack()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily Backpack\+::\+Backpack (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Parametrized Constructor for the \doxylink{class_backpack}{Backpack} object. 
+
+Construct a new \doxylink{class_backpack}{Backpack}\+:\+: \doxylink{class_backpack}{Backpack} object with a given name and capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em capacity} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_backpack_a0009726a672f104791324f40301040cd}\label{class_backpack_a0009726a672f104791324f40301040cd} 
+\index{Backpack@{Backpack}!addItem@{addItem}}
+\index{addItem@{addItem}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily void Backpack\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to add an \doxylink{class_item}{Item} object to the current \doxylink{class_backpack}{Backpack} object. 
+
+Adds an item to the backpack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_item_container_a583a85144d7ee8be190ae6c114a208fc}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_backpack_a677022bd80d3b6d3dcc9289dce3252cc}\label{class_backpack_a677022bd80d3b6d3dcc9289dce3252cc} 
+\index{Backpack@{Backpack}!getBackpackStorage@{getBackpackStorage}}
+\index{getBackpackStorage@{getBackpackStorage}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{getBackpackStorage()}{getBackpackStorage()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} $>$ Backpack\+::get\+Backpack\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method to get the vector containing all the \doxylink{class_item}{Item} objects in the current \doxylink{class_backpack}{Backpack} object. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Item\texorpdfstring{$\ast$}{*}$>$ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_backpack_a00062a86123fc848f0c956f737b51385}\label{class_backpack_a00062a86123fc848f0c956f737b51385} 
+\index{Backpack@{Backpack}!getItem@{getItem}}
+\index{getItem@{getItem}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{getItem()}{getItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*} Backpack\+::get\+Item (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Method to get an \doxylink{class_item}{Item} object from the current \doxylink{class_backpack}{Backpack} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Item\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_backpack_a89d81c21b0ab3255c21fec2045f9aadd}\label{class_backpack_a89d81c21b0ab3255c21fec2045f9aadd} 
+\index{Backpack@{Backpack}!getNbBackpacks@{getNbBackpacks}}
+\index{getNbBackpacks@{getNbBackpacks}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{getNbBackpacks()}{getNbBackpacks()}}
+{\footnotesize\ttfamily int Backpack\+::get\+Nb\+Backpacks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method to get the number of \doxylink{class_backpack}{Backpack} objects created. 
+
+Returns the number of backpacks.
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{class_backpack_a06102caa310fa281c7b797ced5f4d324}\label{class_backpack_a06102caa310fa281c7b797ced5f4d324} 
+\index{Backpack@{Backpack}!isFound@{isFound}}
+\index{isFound@{isFound}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{isFound()}{isFound()}}
+{\footnotesize\ttfamily bool Backpack\+::is\+Found (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to check if an \doxylink{class_item}{Item} object is found in the current \doxylink{class_backpack}{Backpack} object. 
+
+Returns whether an item is found in the backpack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_item_container_ae6a28c8d248d07d603c44d2000cf1044}{Item\+Container}}.
+
+\Hypertarget{class_backpack_a1d209a4990a0867ebf98d701e9f8a241}\label{class_backpack_a1d209a4990a0867ebf98d701e9f8a241} 
+\index{Backpack@{Backpack}!printItems@{printItems}}
+\index{printItems@{printItems}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{printItems()}{printItems()}}
+{\footnotesize\ttfamily void Backpack\+::print\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to print all the \doxylink{class_item}{Item} objects in the current \doxylink{class_backpack}{Backpack} object. 
+
+Prints the items in the backpack. 
+
+Implements \mbox{\hyperlink{class_item_container_a9be1857264e5f4a07bc129eacdf401bf}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_backpack_a6d140d8be8ec6fac21ea5bafe37fcfdc}\label{class_backpack_a6d140d8be8ec6fac21ea5bafe37fcfdc} 
+\index{Backpack@{Backpack}!printSortedItemsByName@{printSortedItemsByName}}
+\index{printSortedItemsByName@{printSortedItemsByName}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{printSortedItemsByName()}{printSortedItemsByName()}}
+{\footnotesize\ttfamily void Backpack\+::print\+Sorted\+Items\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Method that prints only the items in the backpack with a specific name. 
+
+Only Prints the items in the backpack with a given name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+\Hypertarget{class_backpack_a6daf2c56c2e4ffeaddd2f905ba5b9ba3}\label{class_backpack_a6daf2c56c2e4ffeaddd2f905ba5b9ba3} 
+\index{Backpack@{Backpack}!printSortedItemsByType@{printSortedItemsByType}}
+\index{printSortedItemsByType@{printSortedItemsByType}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{printSortedItemsByType()}{printSortedItemsByType()}}
+{\footnotesize\ttfamily void Backpack\+::print\+Sorted\+Items\+By\+Type (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption}) const}
+
+
+
+Method that prints only the items in the backpack from a specific type. 
+
+Only Prints the items in the backpack from a given type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 9
+\Hypertarget{class_backpack_a91778e6313034424a0ef36910b4311f1}\label{class_backpack_a91778e6313034424a0ef36910b4311f1} 
+\index{Backpack@{Backpack}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily void Backpack\+::remove\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_item}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to remove an \doxylink{class_item}{Item} object from the current \doxylink{class_backpack}{Backpack} object. 
+
+Removes an item from the backpack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_item_container_aed07c123252180bdc32dacd6da4fd766}{Item\+Container}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_backpack_ac19f28bd77c60cd12a4a823ad9b3221f}\label{class_backpack_ac19f28bd77c60cd12a4a823ad9b3221f} 
+\index{Backpack@{Backpack}!nbBackpacks@{nbBackpacks}}
+\index{nbBackpacks@{nbBackpacks}!Backpack@{Backpack}}
+\doxysubsubsection{\texorpdfstring{nbBackpacks}{nbBackpacks}}
+{\footnotesize\ttfamily int Backpack\+::nb\+Backpacks = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static variable to keep track of the number of backpacks created. 
+
+Initializes the number of backpacks to 0. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Item\+Containers/include/Backpack.\+h\item 
+components/\+Item\+Containers/src/Backpack.\+cpp\end{DoxyCompactItemize}

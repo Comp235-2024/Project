@@ -1,0 +1,383 @@
+\doxysection{Map\+Observer Class Reference}
+\hypertarget{class_map_observer}{}\label{class_map_observer}\index{MapObserver@{MapObserver}}
+
+
+A class that observes and displays a map.  
+
+
+
+
+{\ttfamily \#include $<$Map\+Observer.\+h$>$}
+
+
+
+Inheritance diagram for Map\+Observer\+:
+% FIG 0
+
+
+Collaboration diagram for Map\+Observer\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_map_observer_1_1pair__hash}{pair\+\_\+hash}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_observer_a8db7bbd73731373ec64db9c2a5103e70}{Map\+Observer}} (shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ map, sf\+::\+Render\+Texture \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}}, Main\+Data\+Ref data)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_map_observer}{Map\+Observer} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_observer_ada97e87f537672d3e461eba56a99a7ed}\label{class_map_observer_ada97e87f537672d3e461eba56a99a7ed} 
+{\bfseries Map\+Observer} (shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ shared\+Ptr, Render\+Texture \texorpdfstring{$\ast$}{*}p\+Texture)
+\item 
+\Hypertarget{class_map_observer_ab4c7f4caef90daaba3c080d799076f9c}\label{class_map_observer_ab4c7f4caef90daaba3c080d799076f9c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Map\+Observer} () override
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_map_observer}{Map\+Observer} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_a8a3016364d12b7c647e35bb1f04bf4a2}{update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the map observer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_a95b81f4c980a9be6cff5c8ced7e05d04}{update\+Map\+Only}} (Render\+Texture \texorpdfstring{$\ast$}{*}\+\_\+window)
+\begin{DoxyCompactList}\small\item\em Updates only the map display. \end{DoxyCompactList}\item 
+Render\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_map_observer_a0f2d13c8816b0a7ae3cac7c28189788d}{get\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Gets the SFML render window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_observer_ab5ca607b80e2e35745611b2e87b2a7d6}{get\+Window\+SizeX}} () const
+\begin{DoxyCompactList}\small\item\em Gets the width of the render window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_observer_a0bd67d12bb8bbdb5b6d5cc089772e8b3}{get\+Window\+SizeY}} () const
+\begin{DoxyCompactList}\small\item\em Gets the height of the render window. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_map_observer_ac80c0b3b121803f3788953bd4fc8729a}{get\+Size\+Mult}} () const
+\begin{DoxyCompactList}\small\item\em Gets the size multiplier for the map display. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_observer_a2207ad0e86c6bfaab06f5445e80b7323}\label{class_map_observer_a2207ad0e86c6bfaab06f5445e80b7323} 
+void {\bfseries assign\+Texture\+To\+Cell} (int x, int y, const Texture \&tex)
+\item 
+\Hypertarget{class_map_observer_a00aeb5f76fc66962585e37038c240cd1}\label{class_map_observer_a00aeb5f76fc66962585e37038c240cd1} 
+const Texture \& {\bfseries get\+Texture\+For\+Cell} (int x, int y) const
+\item 
+\Hypertarget{class_map_observer_aa7bfef3a24b5db971dbd22079a537490}\label{class_map_observer_aa7bfef3a24b5db971dbd22079a537490} 
+void {\bfseries draw\+Circle\+Around\+Pos} (Vector2i position, int i, const Color color, Render\+Texture \texorpdfstring{$\ast$}{*}\+\_\+window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_map_observer_a4f9251e18ee7493d20e6404453c765f7}{SIZE\+\_\+\+MULT}} = 30
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_map_observer_a542a5301b3840038c00ea7b15a13ff70}\label{class_map_observer_a542a5301b3840038c00ea7b15a13ff70} 
+void {\bfseries draw} ()
+\begin{DoxyCompactList}\small\item\em Draws the map observer\textquotesingle{}s display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_a762d4ef95113b26a1b7c6335c006566b}{draw\+Grid\+Lines}} (Render\+Texture \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}}, Rectangle\+Shape \&line, Rectangle\+Shape \&line\+\_\+v) const
+\begin{DoxyCompactList}\small\item\em Draws the grid lines on the map display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_a9ebd4d8a958389f7fd9c3ebf70499cb6}{draw\+RedX}} (sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}}, float posX, float posY) const
+\begin{DoxyCompactList}\small\item\em Draws a red X at the specified position on the map display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_a29d1924556a8da862ab5377d0324d287}{draw\+Map}} (Render\+Texture \texorpdfstring{$\ast$}{*}\+\_\+window)
+\begin{DoxyCompactList}\small\item\em Draws the map on the map display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_observer_ab4ff967844677b764d7730ea417c5296}{draw\+Image}} (Render\+Texture \texorpdfstring{$\ast$}{*}p\+Window, const char \texorpdfstring{$\ast$}{*}path\+To\+Image, float x, float y)
+\begin{DoxyCompactList}\small\item\em Draws an image at the specified position on the map display. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_observer_ac60eb564cf746d3dc9be2cfd492cc333}\label{class_map_observer_ac60eb564cf746d3dc9be2cfd492cc333} 
+void {\bfseries draw\+Floor} (Render\+Texture \texorpdfstring{$\ast$}{*}p\+Window, float x, float y)
+\item 
+\Hypertarget{class_map_observer_a93bb9a96322448d3b8e476125bb67f62}\label{class_map_observer_a93bb9a96322448d3b8e476125bb67f62} 
+void {\bfseries generate\+Floor\+Texture\+Hash\+Map} ()
+\item 
+\Hypertarget{class_map_observer_aa269183266714e90404174022797abfe}\label{class_map_observer_aa269183266714e90404174022797abfe} 
+void {\bfseries draw\+Border\+Around\+Cell} (const Vector2i \&position, const Color \&color, Render\+Texture \texorpdfstring{$\ast$}{*}\+\_\+window, int \+\_\+thickness) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_map_observer_ab40d1a90f088d1ad5a64997a45d214e5}\label{class_map_observer_ab40d1a90f088d1ad5a64997a45d214e5} 
+Main\+Data\+Ref {\bfseries \+\_\+data}
+\item 
+\Hypertarget{class_map_observer_a21438b09bfb30ab83aded81dcfac21bc}\label{class_map_observer_a21438b09bfb30ab83aded81dcfac21bc} 
+unordered\+\_\+map$<$ pair$<$ int, int $>$, Texture, \mbox{\hyperlink{struct_map_observer_1_1pair__hash}{pair\+\_\+hash}} $>$ {\bfseries texture\+Map}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$ \mbox{\hyperlink{class_map_observer_a454dee6d49d74526c0b8e33cf861b065}{grid}}
+\item 
+sf\+::\+Render\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}{window}}
+\item 
+int \mbox{\hyperlink{class_map_observer_a02f63e8250b2022c7005fef29a1a0c1a}{window\+\_\+size\+\_\+x}} \{\}
+\item 
+int \mbox{\hyperlink{class_map_observer_a7e5a91731a03339dfa8550e6b9f882ef}{window\+\_\+size\+\_\+y}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observer} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that observes and displays a map. 
+
+The \doxylink{class_map_observer}{Map\+Observer} class is responsible for observing and displaying a map using SFML. It inherits from the \doxylink{class_observer}{Observer} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_map_observer_a8db7bbd73731373ec64db9c2a5103e70}\label{class_map_observer_a8db7bbd73731373ec64db9c2a5103e70} 
+\index{MapObserver@{MapObserver}!MapObserver@{MapObserver}}
+\index{MapObserver@{MapObserver}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{MapObserver()}{MapObserver()}}
+{\footnotesize\ttfamily Map\+Observer\+::\+Map\+Observer (\begin{DoxyParamCaption}\item[{shared\+\_\+ptr$<$ \mbox{\hyperlink{class_map}{Map}} $>$}]{map,  }\item[{sf\+::\+Render\+Texture \texorpdfstring{$\ast$}{*}}]{window,  }\item[{Main\+Data\+Ref}]{data }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_map_observer}{Map\+Observer} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A pointer to the map object. \\
+\hline
+{\em window} & A pointer to the SFML render window. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_observer_a762d4ef95113b26a1b7c6335c006566b}\label{class_map_observer_a762d4ef95113b26a1b7c6335c006566b} 
+\index{MapObserver@{MapObserver}!drawGridLines@{drawGridLines}}
+\index{drawGridLines@{drawGridLines}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{drawGridLines()}{drawGridLines()}}
+{\footnotesize\ttfamily void Map\+Observer\+::draw\+Grid\+Lines (\begin{DoxyParamCaption}\item[{Render\+Texture \texorpdfstring{$\ast$}{*}}]{window,  }\item[{Rectangle\+Shape \&}]{line,  }\item[{Rectangle\+Shape \&}]{line\+\_\+v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws the grid lines on the map display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & A pointer to the SFML render window. \\
+\hline
+{\em line} & The horizontal grid line shape. \\
+\hline
+{\em line\+\_\+v} & The vertical grid line shape. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_map_observer_ab4ff967844677b764d7730ea417c5296}\label{class_map_observer_ab4ff967844677b764d7730ea417c5296} 
+\index{MapObserver@{MapObserver}!drawImage@{drawImage}}
+\index{drawImage@{drawImage}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{drawImage()}{drawImage()}}
+{\footnotesize\ttfamily void Map\+Observer\+::draw\+Image (\begin{DoxyParamCaption}\item[{Render\+Texture \texorpdfstring{$\ast$}{*}}]{p\+Window,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{path\+To\+Image,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws an image at the specified position on the map display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Window} & A pointer to the SFML render window. \\
+\hline
+{\em path\+To\+Image} & The path to the image file. \\
+\hline
+{\em x} & The x-\/coordinate of the position. \\
+\hline
+{\em y} & The y-\/coordinate of the position. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_map_observer_a29d1924556a8da862ab5377d0324d287}\label{class_map_observer_a29d1924556a8da862ab5377d0324d287} 
+\index{MapObserver@{MapObserver}!drawMap@{drawMap}}
+\index{drawMap@{drawMap}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{drawMap()}{drawMap()}}
+{\footnotesize\ttfamily void Map\+Observer\+::draw\+Map (\begin{DoxyParamCaption}\item[{Render\+Texture \texorpdfstring{$\ast$}{*}}]{\+\_\+window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws the map on the map display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+window} & A pointer to the SFML render window. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_map_observer_a9ebd4d8a958389f7fd9c3ebf70499cb6}\label{class_map_observer_a9ebd4d8a958389f7fd9c3ebf70499cb6} 
+\index{MapObserver@{MapObserver}!drawRedX@{drawRedX}}
+\index{drawRedX@{drawRedX}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{drawRedX()}{drawRedX()}}
+{\footnotesize\ttfamily void Map\+Observer\+::draw\+RedX (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{float}]{posX,  }\item[{float}]{posY }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draws a red X at the specified position on the map display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & A pointer to the SFML render window. \\
+\hline
+{\em posX} & The x-\/coordinate of the position. \\
+\hline
+{\em posY} & The y-\/coordinate of the position. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_observer_ac80c0b3b121803f3788953bd4fc8729a}\label{class_map_observer_ac80c0b3b121803f3788953bd4fc8729a} 
+\index{MapObserver@{MapObserver}!getSizeMult@{getSizeMult}}
+\index{getSizeMult@{getSizeMult}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{getSizeMult()}{getSizeMult()}}
+{\footnotesize\ttfamily float Map\+Observer\+::get\+Size\+Mult (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the size multiplier for the map display. 
+
+\begin{DoxyReturn}{Returns}
+The size multiplier. 
+\end{DoxyReturn}
+\Hypertarget{class_map_observer_a0f2d13c8816b0a7ae3cac7c28189788d}\label{class_map_observer_a0f2d13c8816b0a7ae3cac7c28189788d} 
+\index{MapObserver@{MapObserver}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily Render\+Texture \texorpdfstring{$\ast$}{*} Map\+Observer\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the SFML render window. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the SFML render window. 
+\end{DoxyReturn}
+\Hypertarget{class_map_observer_ab5ca607b80e2e35745611b2e87b2a7d6}\label{class_map_observer_ab5ca607b80e2e35745611b2e87b2a7d6} 
+\index{MapObserver@{MapObserver}!getWindowSizeX@{getWindowSizeX}}
+\index{getWindowSizeX@{getWindowSizeX}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{getWindowSizeX()}{getWindowSizeX()}}
+{\footnotesize\ttfamily int Map\+Observer\+::get\+Window\+SizeX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the width of the render window. 
+
+\begin{DoxyReturn}{Returns}
+The width of the render window. 
+\end{DoxyReturn}
+\Hypertarget{class_map_observer_a0bd67d12bb8bbdb5b6d5cc089772e8b3}\label{class_map_observer_a0bd67d12bb8bbdb5b6d5cc089772e8b3} 
+\index{MapObserver@{MapObserver}!getWindowSizeY@{getWindowSizeY}}
+\index{getWindowSizeY@{getWindowSizeY}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{getWindowSizeY()}{getWindowSizeY()}}
+{\footnotesize\ttfamily int Map\+Observer\+::get\+Window\+SizeY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the height of the render window. 
+
+\begin{DoxyReturn}{Returns}
+The height of the render window. 
+\end{DoxyReturn}
+\Hypertarget{class_map_observer_a8a3016364d12b7c647e35bb1f04bf4a2}\label{class_map_observer_a8a3016364d12b7c647e35bb1f04bf4a2} 
+\index{MapObserver@{MapObserver}!update@{update}}
+\index{update@{update}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Map\+Observer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the map observer. 
+
+This function is called when the observed map changes and updates the observer\textquotesingle{}s display. 
+
+Implements \mbox{\hyperlink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{Observer}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_map_observer_a95b81f4c980a9be6cff5c8ced7e05d04}\label{class_map_observer_a95b81f4c980a9be6cff5c8ced7e05d04} 
+\index{MapObserver@{MapObserver}!updateMapOnly@{updateMapOnly}}
+\index{updateMapOnly@{updateMapOnly}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{updateMapOnly()}{updateMapOnly()}}
+{\footnotesize\ttfamily void Map\+Observer\+::update\+Map\+Only (\begin{DoxyParamCaption}\item[{Render\+Texture \texorpdfstring{$\ast$}{*}}]{\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Updates only the map display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+window} & A pointer to the SFML render window. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 10
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_map_observer_a454dee6d49d74526c0b8e33cf861b065}\label{class_map_observer_a454dee6d49d74526c0b8e33cf861b065} 
+\index{MapObserver@{MapObserver}!grid@{grid}}
+\index{grid@{grid}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$\mbox{\hyperlink{class_map}{Map}}$>$ Map\+Observer\+::grid\hspace{0.3cm}{\ttfamily [private]}}
+
+A pointer to the map object. \Hypertarget{class_map_observer_a4f9251e18ee7493d20e6404453c765f7}\label{class_map_observer_a4f9251e18ee7493d20e6404453c765f7} 
+\index{MapObserver@{MapObserver}!SIZE\_MULT@{SIZE\_MULT}}
+\index{SIZE\_MULT@{SIZE\_MULT}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{SIZE\_MULT}{SIZE\_MULT}}
+{\footnotesize\ttfamily float Map\+Observer\+::\+SIZE\+\_\+\+MULT = 30}
+
+The size multiplier for the map display. \Hypertarget{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897}\label{class_map_observer_a5c64f0f7f955f938be7246b3f8c02897} 
+\index{MapObserver@{MapObserver}!window@{window}}
+\index{window@{window}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Texture\texorpdfstring{$\ast$}{*} Map\+Observer\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+A pointer to the SFML render window. \Hypertarget{class_map_observer_a02f63e8250b2022c7005fef29a1a0c1a}\label{class_map_observer_a02f63e8250b2022c7005fef29a1a0c1a} 
+\index{MapObserver@{MapObserver}!window\_size\_x@{window\_size\_x}}
+\index{window\_size\_x@{window\_size\_x}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{window\_size\_x}{window\_size\_x}}
+{\footnotesize\ttfamily int Map\+Observer\+::window\+\_\+size\+\_\+x \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+The width of the render window. \Hypertarget{class_map_observer_a7e5a91731a03339dfa8550e6b9f882ef}\label{class_map_observer_a7e5a91731a03339dfa8550e6b9f882ef} 
+\index{MapObserver@{MapObserver}!window\_size\_y@{window\_size\_y}}
+\index{window\_size\_y@{window\_size\_y}!MapObserver@{MapObserver}}
+\doxysubsubsection{\texorpdfstring{window\_size\_y}{window\_size\_y}}
+{\footnotesize\ttfamily int Map\+Observer\+::window\+\_\+size\+\_\+y \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+The height of the render window. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/Map\+Observer.\+h\item 
+components/\+Maps/src/Map\+Observer.\+cpp\end{DoxyCompactItemize}

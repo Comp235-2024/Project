@@ -1,0 +1,80 @@
+\doxysection{Nimble\+Builder Class Reference}
+\hypertarget{class_nimble_builder}{}\label{class_nimble_builder}\index{NimbleBuilder@{NimbleBuilder}}
+
+
+Inheritance diagram for Nimble\+Builder\+:
+% FIG 0
+
+
+Collaboration diagram for Nimble\+Builder\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_nimble_builder_aa6a251fea92bff9e2caa6ed74a19514c}{build\+Ability\+Scores}} () override
+\item 
+void \mbox{\hyperlink{class_nimble_builder_abadad9fa3dc8274a14307b1f33c3de98}{build\+Hit\+Points}} (\mbox{\hyperlink{class_character}{Character}} \&character) override
+\item 
+\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_nimble_builder_a12aa667896c6d976a18494dd7ce60bcb}{get\+Character}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character_builder}{Character\+Builder}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries apply\+Level\+Based\+HPIncrease} (\mbox{\hyperlink{class_character}{Character}} \&character, int base\+HP)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_nimble_builder_a02ab3c4a2dc51a7876970545010acd9e}\label{class_nimble_builder_a02ab3c4a2dc51a7876970545010acd9e} 
+\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} {\bfseries character}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_nimble_builder_aa6a251fea92bff9e2caa6ed74a19514c}\label{class_nimble_builder_aa6a251fea92bff9e2caa6ed74a19514c} 
+\index{NimbleBuilder@{NimbleBuilder}!buildAbilityScores@{buildAbilityScores}}
+\index{buildAbilityScores@{buildAbilityScores}!NimbleBuilder@{NimbleBuilder}}
+\doxysubsubsection{\texorpdfstring{buildAbilityScores()}{buildAbilityScores()}}
+{\footnotesize\ttfamily void Nimble\+Builder\+::build\+Ability\+Scores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+\Hypertarget{class_nimble_builder_abadad9fa3dc8274a14307b1f33c3de98}\label{class_nimble_builder_abadad9fa3dc8274a14307b1f33c3de98} 
+\index{NimbleBuilder@{NimbleBuilder}!buildHitPoints@{buildHitPoints}}
+\index{buildHitPoints@{buildHitPoints}!NimbleBuilder@{NimbleBuilder}}
+\doxysubsubsection{\texorpdfstring{buildHitPoints()}{buildHitPoints()}}
+{\footnotesize\ttfamily void Nimble\+Builder\+::build\+Hit\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+\Hypertarget{class_nimble_builder_a12aa667896c6d976a18494dd7ce60bcb}\label{class_nimble_builder_a12aa667896c6d976a18494dd7ce60bcb} 
+\index{NimbleBuilder@{NimbleBuilder}!getCharacter@{getCharacter}}
+\index{getCharacter@{getCharacter}!NimbleBuilder@{NimbleBuilder}}
+\doxysubsubsection{\texorpdfstring{getCharacter()}{getCharacter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} Nimble\+Builder\+::get\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Characters/include/Nimble\+Builder.\+h\item 
+components/\+Characters/src/Nimble\+Builder.\+cpp\end{DoxyCompactItemize}

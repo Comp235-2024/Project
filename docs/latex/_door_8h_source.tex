@@ -1,0 +1,40 @@
+\doxysection{Door.\+h}
+\hypertarget{_door_8h_source}{}\label{_door_8h_source}\index{components/Maps/include/Door.h@{components/Maps/include/Door.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ ricka\ on\ 2024-\/03-\/12.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ A3\_DOOR\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ A3\_DOOR\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../../Items/include/Movable.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_door}{Door}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_movable}{Movable}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_door}{Door}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_movable}{Movable}}\&\ movable)\ :\ \mbox{\hyperlink{class_movable}{Movable}}(movable)\ \{\}}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_door}{Door}}(\textcolor{keywordtype}{bool}\ start,\ \textcolor{keywordtype}{bool}\ exit);}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_door}{Door}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_door}{\string~Door}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//Door\ logic}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ getStart()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ getExit()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ getIsOpen()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ getIsLocked()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ textureName\ =\ \textcolor{stringliteral}{"{}door"{}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ start;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ exit;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ isOpen;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLocked;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//A3\_DOOR\_H}}
+
+\end{DoxyCode}

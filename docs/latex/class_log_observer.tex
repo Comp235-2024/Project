@@ -1,0 +1,137 @@
+\doxysection{Log\+Observer Class Reference}
+\hypertarget{class_log_observer}{}\label{class_log_observer}\index{LogObserver@{LogObserver}}
+
+
+Inheritance diagram for Log\+Observer\+:
+% FIG 0
+
+
+Collaboration diagram for Log\+Observer\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_log_observer_a670c2b768a8e53052ee98ebb02d61c0c}{update}} (const string \&message)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{class_log_observer}{Log\+Observer} with a new message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a}{update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{class_log_observer}{Log\+Observer}. This function is called when there is no specific message to be logged. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_log_observer_a64de86540239838642b5ec86fbb1444c}{Log\+Observer}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_log_observer}{Log\+Observer} object with the specified filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_enable_module}{Enable\+Module}} \mbox{\hyperlink{class_log_observer_ae1f051aed6326f7981f983edb8cb7180}{enabled\+Modules}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_log_observer_a25651338f8b561efc44adb3256ffaf55}{write}} (const string \&message)
+\begin{DoxyCompactList}\small\item\em Writes a message to the log file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ofstream \mbox{\hyperlink{class_log_observer_afd6d9c21ec6b7695fb39f10b29e7e774}{log}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observer} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_log_observer_a64de86540239838642b5ec86fbb1444c}\label{class_log_observer_a64de86540239838642b5ec86fbb1444c} 
+\index{LogObserver@{LogObserver}!LogObserver@{LogObserver}}
+\index{LogObserver@{LogObserver}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{LogObserver()}{LogObserver()}}
+{\footnotesize\ttfamily Log\+Observer\+::\+Log\+Observer (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_log_observer}{Log\+Observer} object with the specified filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the log file. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a}\label{class_log_observer_a893364a00e00f7a7cdac5b9e79d8705a} 
+\index{LogObserver@{LogObserver}!update@{update}}
+\index{update@{update}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Log\+Observer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the \doxylink{class_log_observer}{Log\+Observer}. This function is called when there is no specific message to be logged. 
+
+
+
+Implements \mbox{\hyperlink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{Observer}}.
+
+\Hypertarget{class_log_observer_a670c2b768a8e53052ee98ebb02d61c0c}\label{class_log_observer_a670c2b768a8e53052ee98ebb02d61c0c} 
+\index{LogObserver@{LogObserver}!update@{update}}
+\index{update@{update}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Log\+Observer\+::update (\begin{DoxyParamCaption}\item[{const string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{class_log_observer}{Log\+Observer} with a new message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to be logged. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{class_log_observer_a25651338f8b561efc44adb3256ffaf55}\label{class_log_observer_a25651338f8b561efc44adb3256ffaf55} 
+\index{LogObserver@{LogObserver}!write@{write}}
+\index{write@{write}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Log\+Observer\+::write (\begin{DoxyParamCaption}\item[{const string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes a message to the log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to be written. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_log_observer_ae1f051aed6326f7981f983edb8cb7180}\label{class_log_observer_ae1f051aed6326f7981f983edb8cb7180} 
+\index{LogObserver@{LogObserver}!enabledModules@{enabledModules}}
+\index{enabledModules@{enabledModules}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{enabledModules}{enabledModules}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enable_module}{Enable\+Module}} Log\+Observer\+::enabled\+Modules}
+
+The enabled modules for logging. \Hypertarget{class_log_observer_afd6d9c21ec6b7695fb39f10b29e7e774}\label{class_log_observer_afd6d9c21ec6b7695fb39f10b29e7e774} 
+\index{LogObserver@{LogObserver}!log@{log}}
+\index{log@{log}!LogObserver@{LogObserver}}
+\doxysubsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily ofstream Log\+Observer\+::log\hspace{0.3cm}{\ttfamily [private]}}
+
+The log file stream. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Log/include/\mbox{\hyperlink{_log_observer_8h}{Log\+Observer.\+h}}\item 
+components/\+Log/src/\mbox{\hyperlink{_log_observer_8cpp}{Log\+Observer.\+cpp}}\end{DoxyCompactItemize}

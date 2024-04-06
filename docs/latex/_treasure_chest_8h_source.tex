@@ -1,0 +1,58 @@
+\doxysection{Treasure\+Chest.\+h}
+\hypertarget{_treasure_chest_8h_source}{}\label{_treasure_chest_8h_source}\index{components/ItemContainers/include/TreasureChest.h@{components/ItemContainers/include/TreasureChest.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TREASURECHEST\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TREASURECHEST\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}ItemContainer.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{Item.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Movable.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_treasure_chest}{TreasureChest}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_item_container}{ItemContainer}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_movable}{Movable}}\{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_treasure_chest_a38a032bd0fb0b2103ab216ca266ecd0f}{nbTreasureChests}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \ \ vector\ <Item*>\ \mbox{\hyperlink{class_treasure_chest_a0ecb1bc63483f765ff7632a510c0e514}{TreasureChestStorage}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a704945604297a022f33189668a8d500e}{TreasureChest}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a704945604297a022f33189668a8d500e}{TreasureChest}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a704945604297a022f33189668a8d500e}{TreasureChest}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a704945604297a022f33189668a8d500e}{TreasureChest}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a3d4313e51dfa02afae6db2f763404f0e}{size}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a704945604297a022f33189668a8d500e}{TreasureChest}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_container_a29b3169732aca1326301412d033d7621}{capacity}});}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_treasure_chest_a93e8478d81c48694edab1751cae38380}{\string~TreasureChest}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ vector<Item*>\ getTreasureChestStorage()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_item}{Item}}*\ getItem(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ getItemIndex(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_treasure_chest_aaa1635205ff860367cd2cbe113efb2db}{addItem}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_treasure_chest_aba5a6139a8f17cced86e98cde5963c1a}{removeItem}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_treasure_chest_a7a86def70da34091722fb3885efb3dd5}{isFound}}(\mbox{\hyperlink{class_item}{Item}}*\ item)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_treasure_chest_ad0f8d7bdd456db456b4c31ff33d22069}{printItems}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_treasure_chest_acddc257719544db3766f9c2fa23f0097}{getNbTreasureChests}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_treasure_chest_abbc5960a31f79c797c472d318d709ee2}{printSortedItemsByType}}(\textcolor{keywordtype}{string}\ type)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_treasure_chest_a71e4c52fa1f31588acceb1dd32ad702b}{printSortedItemsByName}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_item_container_aafad81bb4c71ec7f80271d3b8ba9b26d}{name}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TREASURECHEST\_H}}
+
+\end{DoxyCode}

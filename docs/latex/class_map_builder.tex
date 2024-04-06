@@ -1,0 +1,50 @@
+\doxysection{Map\+Builder Class Reference}
+\hypertarget{class_map_builder}{}\label{class_map_builder}\index{MapBuilder@{MapBuilder}}
+
+
+\doxylink{class_map_builder}{Map\+Builder} abstract class to implement Builder pattern for \doxylink{class_map}{Map} class.  
+
+
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+
+
+Inheritance diagram for Map\+Builder\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_map_builder_aba373ce590afbb936ff83c54d5516708}{build\+Grid}} ()=0
+\begin{DoxyCompactList}\small\item\em Builds the grid of the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_map_builder}{Map\+Builder} abstract class to implement Builder pattern for \doxylink{class_map}{Map} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_builder_aba373ce590afbb936ff83c54d5516708}\label{class_map_builder_aba373ce590afbb936ff83c54d5516708} 
+\index{MapBuilder@{MapBuilder}!buildGrid@{buildGrid}}
+\index{buildGrid@{buildGrid}!MapBuilder@{MapBuilder}}
+\doxysubsubsection{\texorpdfstring{buildGrid()}{buildGrid()}}
+{\footnotesize\ttfamily virtual bool Map\+Builder\+::build\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Builds the grid of the map. 
+
+\begin{DoxyReturn}{Returns}
+True if the grid was successfully built, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_default_map_builder_a7f6a80b7a9a1d95acfdebdc71c3181c2}{Default\+Map\+Builder}}, and \mbox{\hyperlink{class_saved_map_builder_from_string_representation_ac962e779a424151518a2f133815800b6}{Saved\+Map\+Builder\+From\+String\+Representation}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Maps/include/\mbox{\hyperlink{_map_8h}{Map.\+h}}\end{DoxyCompactItemize}

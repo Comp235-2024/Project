@@ -1,0 +1,13 @@
+digraph "Observable::detach"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Observable::detach",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Detaches an observer from the Observable object."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="LogObservable::detach",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_log_observable.html#aa9b1faaf2b3d125d4c1ea82baa8208b9",tooltip="Detaches an Observer from the LogObservable. This function overrides the detach() function in the bas..."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CharacterObserver::\l~CharacterObserver",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_character_observer.html#ab8b153a2d401c14ec26c34437a39232f",tooltip=" "];
+}

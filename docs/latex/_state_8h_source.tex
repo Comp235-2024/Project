@@ -1,0 +1,30 @@
+\doxysection{State.\+h}
+\hypertarget{_state_8h_source}{}\label{_state_8h_source}\index{components/GameEngine/include/State.h@{components/GameEngine/include/State.h}}
+\mbox{\hyperlink{_state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ A2\_STATE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ A2\_STATE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observable_8h}{../../Log/include/LogObservable.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state}{State}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{Init}}()\ =\ 0;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{HandleInput}}()\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{Draw}}(\ \textcolor{keywordtype}{float}\ deltaTime\ )\ =\ 0;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}}()\ \{\};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}}()\ \{\};}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A2\_STATE\_H}}
+
+\end{DoxyCode}

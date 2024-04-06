@@ -1,0 +1,13 @@
+digraph "MainMenu::Init"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="MainMenu::Init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Initializes the main menu state."];
+  Node1 -> Node2 [id="edge3_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MainMenu::SetButtons",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_main_menu.html#ac38a68fc63800c9d1d9302bc0ebbc766",tooltip="Sets up the buttons in the main menu."];
+  Node2 -> Node3 [id="edge4_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="MainMenu::GenerateButton",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_main_menu.html#a8bf0dbc2905e93e64c7c324a5cfda3a5",tooltip="Generates a button with the specified font, name, position, and text."];
+}

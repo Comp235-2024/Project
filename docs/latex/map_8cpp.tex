@@ -1,0 +1,78 @@
+\doxysection{components/\+Maps/src/map.cpp File Reference}
+\hypertarget{map_8cpp}{}\label{map_8cpp}\index{components/Maps/src/map.cpp@{components/Maps/src/map.cpp}}
+
+
+Implementation file for the \doxylink{class_map}{Map} class.  
+
+
+{\ttfamily \#include "{}../include/\+Map.\+h"{}}\newline
+{\ttfamily \#include "{}Pillar.\+h"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for map.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{map_8cpp_a3522e41bb13c71ea76d0fe85af9ee221}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+\Hypertarget{map_8cpp_a3cb02e7355293eaed759ef6bb365f39a}\label{map_8cpp_a3cb02e7355293eaed759ef6bb365f39a} 
+ostream \& {\bfseries operator$<$$<$} (ostream \&os, const \mbox{\hyperlink{struct_position}{Position}} \&position)
+\item 
+int \mbox{\hyperlink{map_8cpp_a62ea4dec12fa27c7c336a2826c6bf596}{get\+Size\+YFrom\+File}} (string file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Gets the size of the y-\/coordinate of the map from the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation file for the \doxylink{class_map}{Map} class. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{map_8cpp_a62ea4dec12fa27c7c336a2826c6bf596}\label{map_8cpp_a62ea4dec12fa27c7c336a2826c6bf596} 
+\index{map.cpp@{map.cpp}!getSizeYFromFile@{getSizeYFromFile}}
+\index{getSizeYFromFile@{getSizeYFromFile}!map.cpp@{map.cpp}}
+\doxysubsubsection{\texorpdfstring{getSizeYFromFile()}{getSizeYFromFile()}}
+{\footnotesize\ttfamily int get\+Size\+YFrom\+File (\begin{DoxyParamCaption}\item[{string}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Gets the size of the y-\/coordinate of the map from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & The path to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{map_8cpp_a3522e41bb13c71ea76d0fe85af9ee221}\label{map_8cpp_a3522e41bb13c71ea76d0fe85af9ee221} 
+\index{map.cpp@{map.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!map.cpp@{map.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+Overloaded insertion operator for output stream to print the \doxylink{class_map}{Map} object. If the cell is empty, it is represented by a dash (-\/). If the cell contains a wall, it is represented by an X. If the cell contains a player, it is represented by an O. \textquotesingle{}@\textquotesingle{} is used to represent the path during testing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream object. \\
+\hline
+{\em map} & The \doxylink{class_map}{Map} object to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The modified output stream object. 
+\end{DoxyReturn}

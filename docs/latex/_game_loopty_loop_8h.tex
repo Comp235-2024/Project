@@ -1,0 +1,42 @@
+\doxysection{components/\+Game\+Engine/include/\+Game\+Loopty\+Loop.h File Reference}
+\hypertarget{_game_loopty_loop_8h}{}\label{_game_loopty_loop_8h}\index{components/GameEngine/include/GameLooptyLoop.h@{components/GameEngine/include/GameLooptyLoop.h}}
+
+
+Header file for the \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} class.  
+
+
+{\ttfamily \#include "{}Asset\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Campaign.\+h"{}}\newline
+{\ttfamily \#include "{}Dice.\+h"{}}\newline
+{\ttfamily \#include "{}Input\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Player.\+h"{}}\newline
+{\ttfamily \#include "{}SFML/\+Graphics.\+hpp"{}}\newline
+{\ttfamily \#include "{}State.\+h"{}}\newline
+{\ttfamily \#include "{}State\+Machine.\+h"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$SFML/\+Audio.\+hpp$>$}\newline
+{\ttfamily \#include $<$SFML/\+Audio/\+Music.\+hpp$>$}\newline
+Include dependency graph for Game\+Loopty\+Loop.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_main_data}{Main\+Data}}
+\item 
+class \mbox{\hyperlink{class_game_loopty_loop}{Game\+Loopty\+Loop}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_game_loopty_loop_8h_af1cf8ac758937219616aa61b9175d472}\label{_game_loopty_loop_8h_af1cf8ac758937219616aa61b9175d472} 
+typedef shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_main_data}{Main\+Data}} $>$ {\bfseries Main\+Data\+Ref}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} class. 
+
+This file defines the \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} class, which represents the main game loop of the application. The \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} class is responsible for managing the game state, handling user input, and updating the game logic. It also contains a \doxylink{struct_main_data}{Main\+Data} struct that holds various game-\/related data, such as the state machine, window, asset manager, input manager, log observer, and campaign. 

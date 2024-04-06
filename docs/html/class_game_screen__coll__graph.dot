@@ -1,0 +1,50 @@
+digraph "GameScreen"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="GameScreen",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Represents the game screen state."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="State",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_state.html",tooltip="The State class is an abstract base class for implementing different states in a game."];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="LogObservable",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_log_observable.html",tooltip="The LogObservable class is responsible for notifying its observers about log events...."];
+  Node4 -> Node3 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Observable",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_observable.html",tooltip="The Observable class represents an object that can be observed by multiple observers."];
+  Node5 -> Node1 [id="edge4_Node000001_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" _campaign",fontcolor="grey" ];
+  Node5 [id="Node000005",label="Campaign",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_campaign.html",tooltip="Represents a campaign consisting of multiple maps and their connections."];
+  Node3 -> Node5 [id="edge5_Node000005_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node5 [id="edge6_Node000005_Node000006",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" mike",fontcolor="grey" ];
+  Node6 [id="Node000006",label="Character",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_character.html",tooltip="Represents a character in a game."];
+  Node7 -> Node6 [id="edge7_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Movable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_movable.html",tooltip=" "];
+  Node4 -> Node6 [id="edge8_Node000006_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 -> Node6 [id="edge9_Node000006_Node000008",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" strategy",fontcolor="grey" ];
+  Node8 [id="Node000008",label="CharacterStrategy",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_character_strategy.html",tooltip="Abstract class and base class for character strategies."];
+  Node6 -> Node8 [id="edge10_Node000008_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 -> Node8 [id="edge11_Node000008_Node000009",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" player",fontcolor="grey" ];
+  Node9 [id="Node000009",label="Player",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_player.html",tooltip=" "];
+  Node6 -> Node9 [id="edge12_Node000009_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 -> Node9 [id="edge13_Node000009_Node000010",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" backpack",fontcolor="grey" ];
+  Node10 [id="Node000010",label="Backpack",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_backpack.html",tooltip="Class for Backpack objects which may hold Item objects."];
+  Node11 -> Node10 [id="edge14_Node000010_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="ItemContainer",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_item_container.html",tooltip="Base class for all the Item Containers in the game."];
+  Node12 -> Node9 [id="edge15_Node000009_Node000012",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" wornItems",fontcolor="grey" ];
+  Node12 [id="Node000012",label="WornItemsContainer",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_worn_items_container.html",tooltip="Class for WornItemsContainer objects which may hold Item objects."];
+  Node11 -> Node12 [id="edge16_Node000012_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node9 [id="edge17_Node000009_Node000013",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" item_in_hand",fontcolor="grey" ];
+  Node13 [id="Node000013",label="Item",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_item.html",tooltip="Base Class for all items in the game."];
+  Node7 -> Node13 [id="edge18_Node000013_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node8 [id="edge19_Node000008_Node000014",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" npc",fontcolor="grey" ];
+  Node14 [id="Node000014",label="NonPlayerCharacter",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_non_player_character.html",tooltip=" "];
+  Node6 -> Node14 [id="edge20_Node000014_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node14 [id="edge21_Node000014_Node000013",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" item_in_hand",fontcolor="grey" ];
+  Node13 -> Node8 [id="edge22_Node000008_Node000013",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" item",fontcolor="grey" ];
+  Node15 -> Node6 [id="edge23_Node000006_Node000015",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" location",fontcolor="grey" ];
+  Node15 [id="Node000015",label="Position",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$struct_position.html",tooltip="A structure to represent a position in a 2D grid."];
+  Node16 -> Node1 [id="edge24_Node000001_Node000016",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" _mapObserver",fontcolor="grey" ];
+  Node16 [id="Node000016",label="MapObserver",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_map_observer.html",tooltip="A class that observes and displays a map."];
+  Node17 -> Node16 [id="edge25_Node000016_Node000017",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node17 [id="Node000017",label="Observer",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_observer.html",tooltip="The Observer class is an abstract base class that defines the interface for observers."];
+  Node3 -> Node16 [id="edge26_Node000016_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

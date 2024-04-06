@@ -1,0 +1,288 @@
+\doxysection{Options\+Screen Class Reference}
+\hypertarget{class_options_screen}{}\label{class_options_screen}\index{OptionsScreen@{OptionsScreen}}
+
+
+Represents the options screen state of the game.  
+
+
+
+
+{\ttfamily \#include $<$Options\+Screen.\+h$>$}
+
+
+
+Inheritance diagram for Options\+Screen\+:
+% FIG 0
+
+
+Collaboration diagram for Options\+Screen\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_options_screen_1_1_buttons}{Buttons}}
+\begin{DoxyCompactList}\small\item\em Represents the buttons on the options screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_options_screen_aaf091e278f189d1f1b366ae48305aa50}{Options\+Screen}} (Main\+Data\+Ref data)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_options_screen}{Options\+Screen} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_screen_ab6adecd8b3363e42d2092c05d374221a}{Init}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the options screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_screen_a085a370660d4f7c9cdcf125517d090e7}{Handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Handles the input for the options screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_screen_a2c9806da13493811bb9dbc864891e4b5}{Update}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates the options screen state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_screen_a9d0dd5138e7dc7c8b48b21dcedcb1c30}{Draw}} (float delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Draws the options screen state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_options_screen_aa9cc1398800ab0a43e5c869ff78c28c1}\label{class_options_screen_aa9cc1398800ab0a43e5c869ff78c28c1} 
+void {\bfseries handle\+Music} ()
+\begin{DoxyCompactList}\small\item\em Handles the music on the options screen. \end{DoxyCompactList}\item 
+\Hypertarget{class_options_screen_a46c4d18c06247a8cdda3bbb6e7f51427}\label{class_options_screen_a46c4d18c06247a8cdda3bbb6e7f51427} 
+void {\bfseries Set\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Sets up the buttons on the options screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_screen_a74a0ad7f44712fd33807fd5b8461b06a}{change\+Music}} (string file\+Name)
+\begin{DoxyCompactList}\small\item\em Changes the music on the options screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_options_screen_aba1d48e1940cc8494bdd8dc99f81b043}{Generate\+Button}} (Sprite \&button, Vector2f position, Texture \&texture)
+\begin{DoxyCompactList}\small\item\em Generates a button sprite. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_options_screen_a6f16702bbd834e72e188cf1344d59561}{Generate\+Button}} (const Font \&font, const string \&name, Rectangle\+Shape \&button, Text \&button\+Text, Vector2f position)
+\begin{DoxyCompactList}\small\item\em Generates a button with text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_options_screen_a12c1a871d2306045aab4e7e59e5b5c24}\label{class_options_screen_a12c1a871d2306045aab4e7e59e5b5c24} 
+Main\+Data\+Ref {\bfseries \+\_\+data}
+\begin{DoxyCompactList}\small\item\em The shared pointer to the \doxylink{struct_main_data}{Main\+Data} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_options_screen_a4cb316a280badca7ffc220df2af0a7a2}\label{class_options_screen_a4cb316a280badca7ffc220df2af0a7a2} 
+Clock {\bfseries \+\_\+clock}
+\begin{DoxyCompactList}\small\item\em Keeps track of time passed. \end{DoxyCompactList}\item 
+\Hypertarget{class_options_screen_a678440661dd82cdc3114339a9acd130d}\label{class_options_screen_a678440661dd82cdc3114339a9acd130d} 
+Texture {\bfseries \+\_\+bg\+Texture}
+\begin{DoxyCompactList}\small\item\em The background texture. \end{DoxyCompactList}\item 
+\Hypertarget{class_options_screen_a5219cb6048c571bc8211f27664eb9c86}\label{class_options_screen_a5219cb6048c571bc8211f27664eb9c86} 
+Sprite {\bfseries \+\_\+bg}
+\begin{DoxyCompactList}\small\item\em The background sprite. \end{DoxyCompactList}\item 
+\Hypertarget{class_options_screen_aad3a4a9e861622bc8c6f9a8c96440580}\label{class_options_screen_aad3a4a9e861622bc8c6f9a8c96440580} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_options_screen_1_1_buttons}{Buttons}} $>$ {\bfseries buttons} = make\+\_\+shared$<$\mbox{\hyperlink{struct_options_screen_1_1_buttons}{Buttons}}$>$()
+\begin{DoxyCompactList}\small\item\em The shared pointer to the \doxylink{struct_options_screen_1_1_buttons}{Buttons} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the options screen state of the game. 
+
+The \doxylink{class_options_screen}{Options\+Screen} class is derived from the \doxylink{class_state}{State} class and represents the state of the game when the options screen is active. It provides methods to initialize, handle input, update, and draw the options screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_options_screen_aaf091e278f189d1f1b366ae48305aa50}\label{class_options_screen_aaf091e278f189d1f1b366ae48305aa50} 
+\index{OptionsScreen@{OptionsScreen}!OptionsScreen@{OptionsScreen}}
+\index{OptionsScreen@{OptionsScreen}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{OptionsScreen()}{OptionsScreen()}}
+{\footnotesize\ttfamily Options\+Screen\+::\+Options\+Screen (\begin{DoxyParamCaption}\item[{Main\+Data\+Ref}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs an \doxylink{class_options_screen}{Options\+Screen} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The shared pointer to the \doxylink{struct_main_data}{Main\+Data} object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_options_screen_a74a0ad7f44712fd33807fd5b8461b06a}\label{class_options_screen_a74a0ad7f44712fd33807fd5b8461b06a} 
+\index{OptionsScreen@{OptionsScreen}!changeMusic@{changeMusic}}
+\index{changeMusic@{changeMusic}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{changeMusic()}{changeMusic()}}
+{\footnotesize\ttfamily void Options\+Screen\+::change\+Music (\begin{DoxyParamCaption}\item[{string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Changes the music on the options screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the music file. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_options_screen_a9d0dd5138e7dc7c8b48b21dcedcb1c30}\label{class_options_screen_a9d0dd5138e7dc7c8b48b21dcedcb1c30} 
+\index{OptionsScreen@{OptionsScreen}!Draw@{Draw}}
+\index{Draw@{Draw}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the options screen state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last draw. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{State}}.
+
+\Hypertarget{class_options_screen_a6f16702bbd834e72e188cf1344d59561}\label{class_options_screen_a6f16702bbd834e72e188cf1344d59561} 
+\index{OptionsScreen@{OptionsScreen}!GenerateButton@{GenerateButton}}
+\index{GenerateButton@{GenerateButton}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{GenerateButton()}{GenerateButton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Generate\+Button (\begin{DoxyParamCaption}\item[{const Font \&}]{font,  }\item[{const string \&}]{name,  }\item[{Rectangle\+Shape \&}]{button,  }\item[{Text \&}]{button\+Text,  }\item[{Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generates a button with text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The font of the button text. \\
+\hline
+{\em name} & The name of the button. \\
+\hline
+{\em button} & The button rectangle shape. \\
+\hline
+{\em button\+Text} & The button text. \\
+\hline
+{\em position} & The position of the button. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_options_screen_aba1d48e1940cc8494bdd8dc99f81b043}\label{class_options_screen_aba1d48e1940cc8494bdd8dc99f81b043} 
+\index{OptionsScreen@{OptionsScreen}!GenerateButton@{GenerateButton}}
+\index{GenerateButton@{GenerateButton}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{GenerateButton()}{GenerateButton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Generate\+Button (\begin{DoxyParamCaption}\item[{Sprite \&}]{button,  }\item[{Vector2f}]{position,  }\item[{Texture \&}]{texture }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generates a button sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button sprite to generate. \\
+\hline
+{\em position} & The position of the button sprite. \\
+\hline
+{\em texture} & The texture of the button sprite.\\
+\hline
+\end{DoxyParams}
+Very simple function to generate a button. Very Important\+: The font must be a reference to the font that is already loaded in the \doxylink{class_asset_manager}{Asset\+Manager}. 
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+{\em name} & \\
+\hline
+{\em button} & \\
+\hline
+{\em button\+Text} & \\
+\hline
+{\em position} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{class_options_screen_a085a370660d4f7c9cdcf125517d090e7}\label{class_options_screen_a085a370660d4f7c9cdcf125517d090e7} 
+\index{OptionsScreen@{OptionsScreen}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the input for the options screen state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{class_options_screen_ab6adecd8b3363e42d2092c05d374221a}\label{class_options_screen_ab6adecd8b3363e42d2092c05d374221a} 
+\index{OptionsScreen@{OptionsScreen}!Init@{Init}}
+\index{Init@{Init}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the options screen state. 
+
+
+
+Implements \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{State}}.
+
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{class_options_screen_a2c9806da13493811bb9dbc864891e4b5}\label{class_options_screen_a2c9806da13493811bb9dbc864891e4b5} 
+\index{OptionsScreen@{OptionsScreen}!Update@{Update}}
+\index{Update@{Update}!OptionsScreen@{OptionsScreen}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Options\+Screen\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the options screen state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_options_screen_8h}{Options\+Screen.\+h}}\item 
+components/\+Game\+Engine/src/Options\+Screen.\+cpp\end{DoxyCompactItemize}

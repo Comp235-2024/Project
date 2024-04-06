@@ -1,0 +1,37 @@
+\doxysection{Asset\+Manager.\+h}
+\hypertarget{_asset_manager_8h_source}{}\label{_asset_manager_8h_source}\index{components/GameEngine/include/AssetManager.h@{components/GameEngine/include/AssetManager.h}}
+\mbox{\hyperlink{_asset_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ A2\_ASSETMANAGER\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ A2\_ASSETMANAGER\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_log_observable_8h}{../../Log/include/LogObservable.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_o_n_f_i_g_8h}{CONFIG.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_asset_manager}{AssetManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_log_observable}{LogObservable}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_asset_manager_a48938b146fa7ad19270a11be5363472a}{AssetManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_asset_manager_ab17d9f5830e73680f1d9dca961a79d82}{\string~AssetManager}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_a05bcb77f216cf76b08d04e9c16b6346a}{LoadTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ Texture\ \&\mbox{\hyperlink{class_asset_manager_ac81ecac92bc8627cab2c031ad673a4d7}{GetTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_ad9f67ea40315892cb27c06b2a41cad89}{LoadFont}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ Font\ \&\mbox{\hyperlink{class_asset_manager_a27b4db52aa7fc680e1fce5b98b849dc7}{GetFont}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ map<string,\ Texture>\ \mbox{\hyperlink{class_asset_manager_ae8a08d88fa4364d774bb7e336efac105}{\_textures}};}
+\DoxyCodeLine{00066\ \ \ \ \ map<string,\ Font>\ \mbox{\hyperlink{class_asset_manager_a019529d3c72146a2edc2d2da1c7558d9}{\_fonts}};\ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//A2\_ASSETMANAGER\_H}}
+
+\end{DoxyCode}

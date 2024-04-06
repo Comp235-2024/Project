@@ -1,0 +1,171 @@
+\doxysection{State Class Reference}
+\hypertarget{class_state}{}\label{class_state}\index{State@{State}}
+
+
+The \doxylink{class_state}{State} class is an abstract base class for implementing different states in a game.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+
+
+Inheritance diagram for State\+:
+% FIG 0
+
+
+Collaboration diagram for State\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_a7ab4d8c6aa239a17ed579d89a209b156}{Init}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_ad3de659bdeb45c97486464461d625e8f}{Handle\+Input}} ()=0
+\begin{DoxyCompactList}\small\item\em Handles user input for the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a770f40188fdfc64bc95a5166fef12e02}{Update}} (float delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em Updates the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_ae3bc988c6103665bca68560742fb40e1}{Draw}} (float delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em Draws the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_aeba18061e63cd52551a045fb94836298}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a8c585ea3e766c2e2404a957907310983}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_log_observable}{Log\+Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Log\+Observable} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Log\+Observable} () override
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify}} (const std\+::string \&message, string module="{}Map"{}) const
+\begin{DoxyCompactList}\small\item\em Notifies the observers with a log message and an optional module name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ad42f5e24118560f10123743dac922919}{notify}} () const override
+\begin{DoxyCompactList}\small\item\em Notifies the observers without any message. This function overrides the \doxylink{class_log_observable_af6965fc04a80b12fd80fea9acef263eb}{notify()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches a \doxylink{class_log_observer}{Log\+Observer} to the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a52ba9c1812485d6e429eb95657511e13}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Attaches an \doxylink{class_observer}{Observer} to the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_ab029cc8742d65db69956fb9faeaa026a}{attach()} function in the base class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach}} (\mbox{\hyperlink{class_log_observer}{Log\+Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches a \doxylink{class_log_observer}{Log\+Observer} from the \doxylink{class_log_observable}{Log\+Observable}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_observable_aa9b1faaf2b3d125d4c1ea82baa8208b9}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer) override
+\begin{DoxyCompactList}\small\item\em Detaches an \doxylink{class_observer}{Observer} from the \doxylink{class_log_observable}{Log\+Observable}. This function overrides the \doxylink{class_log_observable_a26c327e3611e8e2c816315398cbdfdc0}{detach()} function in the base class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_state}{State} class is an abstract base class for implementing different states in a game. 
+
+The \doxylink{class_state}{State} class provides a common interface for initializing, handling input, updating, and drawing game states. It also includes optional methods for pausing and resuming a state.
+
+To create a new state, derive from this class and implement the necessary methods. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_state_ae3bc988c6103665bca68560742fb40e1}\label{class_state_ae3bc988c6103665bca68560742fb40e1} 
+\index{State@{State}!Draw@{Draw}}
+\index{Draw@{Draw}!State@{State}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily virtual void State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Draws the state. 
+
+This method is called every frame to draw the state\textquotesingle{}s graphics.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last frame. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_character_creator_a22b62fe97164b2bcb99208cedb369a3c}{Character\+Creator}}, \mbox{\hyperlink{class_game_screen_a0b9d36c78d9cb37b7af9983eee99d458}{Game\+Screen}}, \mbox{\hyperlink{class_main_menu_aaf8f9689cde0257604fe892a902bb7a9}{Main\+Menu}}, \mbox{\hyperlink{class_map_creator_a9d4223e79b231b9736429f54eae8fd6b}{Map\+Creator}}, \mbox{\hyperlink{class_options_screen_a9d0dd5138e7dc7c8b48b21dcedcb1c30}{Options\+Screen}}, and \mbox{\hyperlink{class_welcome_screen_ab8f4d2b87a5b3b6fa90efbc2c3a90ae6}{Welcome\+Screen}}.
+
+\Hypertarget{class_state_ad3de659bdeb45c97486464461d625e8f}\label{class_state_ad3de659bdeb45c97486464461d625e8f} 
+\index{State@{State}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!State@{State}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily virtual void State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Handles user input for the state. 
+
+This method is called every frame to handle user input specific to the state. 
+
+Implemented in \mbox{\hyperlink{class_character_creator_a6968353aaa3a5616e1797eca641ffa97}{Character\+Creator}}, \mbox{\hyperlink{class_game_screen_ab0299f0189e42b844589c042b372d58e}{Game\+Screen}}, \mbox{\hyperlink{class_main_menu_abf36c8bcbe63e9b0b19c1a78068974ab}{Main\+Menu}}, \mbox{\hyperlink{class_map_creator_a39254fe1fb7f9abe952ad5eb65ecf699}{Map\+Creator}}, \mbox{\hyperlink{class_options_screen_a085a370660d4f7c9cdcf125517d090e7}{Options\+Screen}}, and \mbox{\hyperlink{class_welcome_screen_a31f249c6278c9c5e811e401f0f273e7d}{Welcome\+Screen}}.
+
+\Hypertarget{class_state_a7ab4d8c6aa239a17ed579d89a209b156}\label{class_state_a7ab4d8c6aa239a17ed579d89a209b156} 
+\index{State@{State}!Init@{Init}}
+\index{Init@{Init}!State@{State}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily virtual void State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the state. 
+
+This method is called once when the state is first entered. 
+
+Implemented in \mbox{\hyperlink{class_character_creator_afade3b646ff58824acc1de1adba85f9c}{Character\+Creator}}, \mbox{\hyperlink{class_game_screen_a550dcdadec1a5757fea41af94d3e27b3}{Game\+Screen}}, \mbox{\hyperlink{class_main_menu_a345ae60f67ead501d821ec2c5aa8cf3f}{Main\+Menu}}, \mbox{\hyperlink{class_map_creator_a154365229a47df60702edd7aa798091b}{Map\+Creator}}, \mbox{\hyperlink{class_options_screen_ab6adecd8b3363e42d2092c05d374221a}{Options\+Screen}}, and \mbox{\hyperlink{class_welcome_screen_a9aed68606842a06d4256f3dd767d9b83}{Welcome\+Screen}}.
+
+\Hypertarget{class_state_aeba18061e63cd52551a045fb94836298}\label{class_state_aeba18061e63cd52551a045fb94836298} 
+\index{State@{State}!Pause@{Pause}}
+\index{Pause@{Pause}!State@{State}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily virtual void State\+::\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pauses the state. 
+
+This method is called when the state is paused. It can be overridden to implement custom behavior when the state is paused. \Hypertarget{class_state_a8c585ea3e766c2e2404a957907310983}\label{class_state_a8c585ea3e766c2e2404a957907310983} 
+\index{State@{State}!Resume@{Resume}}
+\index{Resume@{Resume}!State@{State}}
+\doxysubsubsection{\texorpdfstring{Resume()}{Resume()}}
+{\footnotesize\ttfamily virtual void State\+::\+Resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Resumes the state. 
+
+This method is called when the state is resumed after being paused. It can be overridden to implement custom behavior when the state is resumed. \Hypertarget{class_state_a770f40188fdfc64bc95a5166fef12e02}\label{class_state_a770f40188fdfc64bc95a5166fef12e02} 
+\index{State@{State}!Update@{Update}}
+\index{Update@{Update}!State@{State}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updates the state. 
+
+This method is called every frame to update the state\textquotesingle{}s logic and data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last frame. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_character_creator_a2051d780e1561f8e68258c1395f1399a}{Character\+Creator}}, \mbox{\hyperlink{class_game_screen_ae73ca8179f16069b52a8aca7254990b6}{Game\+Screen}}, \mbox{\hyperlink{class_main_menu_ac437fc32f14c613a3295c60169a1a219}{Main\+Menu}}, \mbox{\hyperlink{class_map_creator_a20134fd1bd7c045eae7bb83428795be0}{Map\+Creator}}, \mbox{\hyperlink{class_options_screen_a2c9806da13493811bb9dbc864891e4b5}{Options\+Screen}}, and \mbox{\hyperlink{class_welcome_screen_a09b670080eeec868ab7b7124653f02ac}{Welcome\+Screen}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_state_8h}{State.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,69 @@
+\doxysection{Game\+Loopty\+Loop Class Reference}
+\hypertarget{class_game_loopty_loop}{}\label{class_game_loopty_loop}\index{GameLooptyLoop@{GameLooptyLoop}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_loopty_loop_a72bb6c7c8a3906b40c6be40bbb85a24d}{Game\+Loopty\+Loop}} (int width, int height, const string \&title)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} object with the specified width, height, and title. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_loopty_loop_a820e64a957ecd3196cf4789cd09a2ceb}{Run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the game loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_loopty_loop_a641724865ca7c9c17a8f23118b1a6872}\label{class_game_loopty_loop_a641724865ca7c9c17a8f23118b1a6872} 
+const float {\bfseries delta\+Time} = 1.\+0f / 60.\+0f
+\item 
+\Hypertarget{class_game_loopty_loop_a4a30b18a4dd0137aedba4a1e56c69862}\label{class_game_loopty_loop_a4a30b18a4dd0137aedba4a1e56c69862} 
+Clock {\bfseries \+\_\+clock}
+\item 
+\Hypertarget{class_game_loopty_loop_a8e34ae1b00166f6036947a67176908f9}\label{class_game_loopty_loop_a8e34ae1b00166f6036947a67176908f9} 
+Main\+Data\+Ref {\bfseries \+\_\+data} = make\+\_\+shared$<$\mbox{\hyperlink{struct_main_data}{Main\+Data}}$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_loopty_loop_a72bb6c7c8a3906b40c6be40bbb85a24d}\label{class_game_loopty_loop_a72bb6c7c8a3906b40c6be40bbb85a24d} 
+\index{GameLooptyLoop@{GameLooptyLoop}!GameLooptyLoop@{GameLooptyLoop}}
+\index{GameLooptyLoop@{GameLooptyLoop}!GameLooptyLoop@{GameLooptyLoop}}
+\doxysubsubsection{\texorpdfstring{GameLooptyLoop()}{GameLooptyLoop()}}
+{\footnotesize\ttfamily Game\+Loopty\+Loop\+::\+Game\+Loopty\+Loop (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{const string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_game_loopty_loop}{Game\+Loopty\+Loop} object with the specified width, height, and title. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the game window. \\
+\hline
+{\em height} & The height of the game window. \\
+\hline
+{\em title} & The title of the game window. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 0
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_loopty_loop_a820e64a957ecd3196cf4789cd09a2ceb}\label{class_game_loopty_loop_a820e64a957ecd3196cf4789cd09a2ceb} 
+\index{GameLooptyLoop@{GameLooptyLoop}!Run@{Run}}
+\index{Run@{Run}!GameLooptyLoop@{GameLooptyLoop}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Game\+Loopty\+Loop\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Runs the game loop. 
+
+This function is responsible for running the main game loop, which includes updating the game logic, handling user input, and rendering the game state. Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Game\+Engine/include/\mbox{\hyperlink{_game_loopty_loop_8h}{Game\+Loopty\+Loop.\+h}}\item 
+components/\+Game\+Engine/src/\mbox{\hyperlink{_game_loopty_loop_8cpp}{Game\+Loopty\+Loop.\+cpp}}\end{DoxyCompactItemize}

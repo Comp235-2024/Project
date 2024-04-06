@@ -1,0 +1,597 @@
+\doxysection{Character Class Reference}
+\hypertarget{class_character}{}\label{class_character}\index{Character@{Character}}
+
+
+Represents a character in a game.  
+
+
+
+
+{\ttfamily \#include $<$Character.\+h$>$}
+
+
+
+Inheritance diagram for Character\+:
+% FIG 0
+
+
+Collaboration diagram for Character\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_abad90f482dacecabe0d93c5d8d1daa49}{Character}} (int level)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_character}{Character} object with the specified level. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_a191b7271db682e968f53e527c1432cf1}\label{class_character_a191b7271db682e968f53e527c1432cf1} 
+{\bfseries Character} (int level, string \+\_\+texture\+Name)
+\item 
+\Hypertarget{class_character_a8a2113f351067142b665c2a1e5f74565}\label{class_character_a8a2113f351067142b665c2a1e5f74565} 
+void {\bfseries interactive\+Character\+Test} ()
+\begin{DoxyCompactList}\small\item\em Shows a main menu to the user for testing by getting options and input from the user. If the right format gets entered based on the interactive menu options, it will call the character setters. If the new values are different from the current values of the attributes, they will get changed in the setters and notify the character observer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a951b5527a5080f0491f6b447c989f7a7}{show\+Main\+Test\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_character_ae81dc275660af9b87d5d04966050d292}{interactive\+Ability\+Scores\+Test}} ()
+\item 
+\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_character_a3d9659c682d7d9145e1285987f213c42}{get\+Strategy}} () const
+\item 
+int \mbox{\hyperlink{class_character_a39eeebcbdbc13cd4d1d274da5d051f85}{get\+Health}} () const
+\item 
+int \mbox{\hyperlink{class_character_a07d5a321657a818aff46fbd160749fdd}{get\+Ability\+Scores}} (int index) const
+\item 
+\Hypertarget{class_character_a6daa07f972a7f02317bb0fec2b360a55}\label{class_character_a6daa07f972a7f02317bb0fec2b360a55} 
+void {\bfseries update\+Attack\+Bonuses} ()
+\item 
+\Hypertarget{class_character_a2edc8aa4365b1dfb33cec5be12d3a732}\label{class_character_a2edc8aa4365b1dfb33cec5be12d3a732} 
+int {\bfseries get\+Number\+Of\+Attacks} () const
+\item 
+int \mbox{\hyperlink{class_character_a55be82a4cb649782e8aa7d25a51d7ee3}{get\+Ability\+Modifiers}} (int index) const
+\item 
+int \mbox{\hyperlink{class_character_ae8cdb23b41026ef3788e19993b1ea469}{get\+Hit\+Points}} () const
+\item 
+int \mbox{\hyperlink{class_character_a6674dec79e4677370162aeb5674084bf}{get\+Armor\+Class}} () const
+\item 
+int \mbox{\hyperlink{class_character_a5d31d79ef0bc5d92cf61076a33a67858}{get\+Attack\+Bonus}} () const
+\item 
+int \mbox{\hyperlink{class_character_af644db086012065530259e6ba7da2f65}{get\+Damage\+Bonus}} () const
+\item 
+int \mbox{\hyperlink{class_character_a06713215a5850ec92194a1a711fb8cd7}{get\+Level}} () const
+\item 
+\Hypertarget{class_character_af59f04d29b7e59b1563230562277e5d2}\label{class_character_af59f04d29b7e59b1563230562277e5d2} 
+\mbox{\hyperlink{struct_position}{Position}} {\bfseries get\+Location} () const
+\item 
+void \mbox{\hyperlink{class_character_a812f5573da90badd62f3eb8bc62f716e}{set\+Strategy}} (\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*}strategy)
+\begin{DoxyCompactList}\small\item\em Sets the strategy of the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_afd06ab5d08a0edc75539f3586ccac66d}{set\+Health}} (int health)
+\item 
+void \mbox{\hyperlink{class_character_abafb231348e9b6de9981d476252aaac1}{set\+Strength}} (int strength)
+\item 
+void \mbox{\hyperlink{class_character_ac0ee4d3daced0e30b75f2c5bb90cd8b3}{set\+Dexterity}} (int dex)
+\item 
+void \mbox{\hyperlink{class_character_ab0e760583cc5d908e7202f1c2f3ed83b}{set\+Constitution}} (int constitution)
+\item 
+void \mbox{\hyperlink{class_character_ad80619f0a4809b845b596811a744cf67}{set\+Intelligence}} (int intelligence)
+\item 
+void \mbox{\hyperlink{class_character_a0d6e510a5abb7649de1d978607b8d9b4}{set\+Wisdom}} (int wis)
+\item 
+void \mbox{\hyperlink{class_character_a0a26589a1078ce62a2403d59331bfd02}{set\+Charisma}} (int charisma)
+\item 
+void \mbox{\hyperlink{class_character_a78558a5320696835bd698f690b626d39}{set\+Modifier}} (int index, int amount)
+\item 
+void \mbox{\hyperlink{class_character_a83c248d9493566263c71e0880caaf7bd}{set\+Hit\+Points}} (int hit\+Points)
+\item 
+void \mbox{\hyperlink{class_character_a5b03ceb09b3e175dc9d6c3247a6b9b66}{set\+Armor\+Class}} (int armor\+Class)
+\item 
+void \mbox{\hyperlink{class_character_ac02e6e34fffea734a4fb68761a138eb1}{set\+Attack\+Bonus}} (int attack\+Bonus)
+\item 
+void \mbox{\hyperlink{class_character_a8efb1aeb6c7c3dce9fa68fb8f54f07a1}{set\+Damage\+Bonus}} (int damage\+Bonus)
+\item 
+void \mbox{\hyperlink{class_character_ac206c1a24603accc6ec9ab30ca22bab1}{set\+Level}} (int level)
+\item 
+\Hypertarget{class_character_ab95dbba496cd5217251e16d757d84c53}\label{class_character_ab95dbba496cd5217251e16d757d84c53} 
+void {\bfseries set\+Location} (\mbox{\hyperlink{struct_position}{Position}})
+\item 
+\Hypertarget{class_character_a8c024f252337e56cc0d1fa5231f1de73}\label{class_character_a8c024f252337e56cc0d1fa5231f1de73} 
+int {\bfseries calculate\+Modifier} (int ability\+Score)
+\item 
+\Hypertarget{class_character_aaaffb44b62eb70df0e545700c6011210}\label{class_character_aaaffb44b62eb70df0e545700c6011210} 
+void {\bfseries level\+Up} ()
+\item 
+\Hypertarget{class_character_af7156b31fba9c7ab585b83e6d84afe73}\label{class_character_af7156b31fba9c7ab585b83e6d84afe73} 
+void {\bfseries update\+Attacks\+Per\+Round} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Observable} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observable} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a6efa28f8d9b8e5ab249533f684363a4f}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_a242e67bc26e3934370e863af3c08d1cb}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observable_ae181cee45eafcdd3244f2385ac1357d7}{notify}} () const
+\begin{DoxyCompactList}\small\item\em Notifies all attached observers about a state change in the \doxylink{class_observable}{Observable} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_a99f6c53f39fcf042d71dedcdceeac907}\label{class_character_a99f6c53f39fcf042d71dedcdceeac907} 
+static void {\bfseries test\+Character\+Creation} ()
+\item 
+\Hypertarget{class_character_afe78d4d0d86ff4d199c149c81bfd9ec3}\label{class_character_afe78d4d0d86ff4d199c149c81bfd9ec3} 
+static void {\bfseries display\+Character\+Stats} (const \mbox{\hyperlink{class_character}{Character}} \&character)
+\item 
+\Hypertarget{class_character_abf9a63a1f16063ad33552c503ee79b14}\label{class_character_abf9a63a1f16063ad33552c503ee79b14} 
+static void {\bfseries test\+Level\+Up\+Process} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_a4d581ba53bf70b28aa57e1207d9c63ed}\label{class_character_a4d581ba53bf70b28aa57e1207d9c63ed} 
+std\+::string {\bfseries texture\+Name}
+\item 
+\Hypertarget{class_character_ab775960ac3b43a8adda1bcdda9cbb4bd}\label{class_character_ab775960ac3b43a8adda1bcdda9cbb4bd} 
+sf\+::\+Vector2i {\bfseries position}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_a61c38f189478ee3809f6490ede100e4d}\label{class_character_a61c38f189478ee3809f6490ede100e4d} 
+void {\bfseries generate\+Ability\+Scores} ()
+\begin{DoxyCompactList}\small\item\em Generates random ability scores for the character. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_a41e037769916b418a44f14ff915e0d89}\label{class_character_a41e037769916b418a44f14ff915e0d89} 
+void {\bfseries calculate\+Ability\+Modifiers} ()
+\begin{DoxyCompactList}\small\item\em Calculates the ability modifiers based on the ability scores. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_aff6a269756cd44124e1953a6f8b490f2}\label{class_character_aff6a269756cd44124e1953a6f8b490f2} 
+void {\bfseries calculate\+Hit\+Points} ()
+\begin{DoxyCompactList}\small\item\em Calculates the hit points of the character. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_aa6e0ef88faa7fe7c20fb7099f218eb07}\label{class_character_aa6e0ef88faa7fe7c20fb7099f218eb07} 
+void {\bfseries calculate\+Armor\+Class} ()
+\begin{DoxyCompactList}\small\item\em Calculates the armor class of the character. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_a0e1b4fd4668c28239a6d6501b0d2c12b}\label{class_character_a0e1b4fd4668c28239a6d6501b0d2c12b} 
+void {\bfseries calculate\+Attack\+Bonus} ()
+\begin{DoxyCompactList}\small\item\em Calculates the attack bonus of the character. \end{DoxyCompactList}\item 
+\Hypertarget{class_character_a4de08e60c84b1856b205b9a485c89ac1}\label{class_character_a4de08e60c84b1856b205b9a485c89ac1} 
+void {\bfseries calculate\+Damage\+Bonus} ()
+\begin{DoxyCompactList}\small\item\em Calculates the damage bonus of the character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_aa5782939d974e3f1be1b51e353bb0d47}\label{class_character_aa5782939d974e3f1be1b51e353bb0d47} 
+\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*} {\bfseries strategy}
+\item 
+\Hypertarget{class_character_acf634e6567abd4799475284a3e5211b9}\label{class_character_acf634e6567abd4799475284a3e5211b9} 
+\mbox{\hyperlink{struct_position}{Position}} {\bfseries location}
+\item 
+\Hypertarget{class_character_a69c649b8febd22729e6edafb27e69aeb}\label{class_character_a69c649b8febd22729e6edafb27e69aeb} 
+int {\bfseries health}
+\item 
+\Hypertarget{class_character_a7d66a09a2407b703df3de337d7861e9a}\label{class_character_a7d66a09a2407b703df3de337d7861e9a} 
+Sprite {\bfseries sprite}
+\item 
+\Hypertarget{class_character_ae69790d973b6e2a4ea88bf88f344a05e}\label{class_character_ae69790d973b6e2a4ea88bf88f344a05e} 
+int {\bfseries ability\+Scores} \mbox{[}6\mbox{]}
+\item 
+\Hypertarget{class_character_a56b52041b6cce19084ed0bfee84b0d3b}\label{class_character_a56b52041b6cce19084ed0bfee84b0d3b} 
+int {\bfseries ability\+Modifiers} \mbox{[}6\mbox{]} \{\}
+\item 
+\Hypertarget{class_character_aa461f22794fff5df85d5715f8654af9e}\label{class_character_aa461f22794fff5df85d5715f8654af9e} 
+int {\bfseries hit\+Points}
+\item 
+\Hypertarget{class_character_ac41230fc7770d66c3176c59fc2d7b920}\label{class_character_ac41230fc7770d66c3176c59fc2d7b920} 
+int {\bfseries armor\+Class} \{\}
+\item 
+\Hypertarget{class_character_a5eaa3f836d68257a67390a25726c4aba}\label{class_character_a5eaa3f836d68257a67390a25726c4aba} 
+int {\bfseries attack\+Bonus}
+\item 
+\Hypertarget{class_character_a576933c7dfea905a1608b9d438796d78}\label{class_character_a576933c7dfea905a1608b9d438796d78} 
+int {\bfseries damage\+Bonus} \{\}
+\item 
+\Hypertarget{class_character_afd347188c9d40984828843b41f317611}\label{class_character_afd347188c9d40984828843b41f317611} 
+int {\bfseries number\+Of\+Attacks}
+\item 
+\Hypertarget{class_character_af15a478fe650b87f59cbe5d071697307}\label{class_character_af15a478fe650b87f59cbe5d071697307} 
+int {\bfseries level}
+\item 
+\Hypertarget{class_character_a354354b74319af3c5181b6f264fb7b5e}\label{class_character_a354354b74319af3c5181b6f264fb7b5e} 
+std\+::vector$<$ int $>$ {\bfseries additional\+Attack\+Bonuses}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_observable}{Observable}}}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_observable_a89d14be9ababbc6f52d5075868cf7078}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a character in a game. 
+
+The \doxylink{class_character}{Character} class stores information about a character\textquotesingle{}s ability scores, hit points, armor class, attack bonus, damage bonus, and level. It also provides methods to generate ability scores and calculate ability modifiers, hit points, armor class, attack bonus, and damage bonus. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_character_abad90f482dacecabe0d93c5d8d1daa49}\label{class_character_abad90f482dacecabe0d93c5d8d1daa49} 
+\index{Character@{Character}!Character@{Character}}
+\index{Character@{Character}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{Character()}{Character()}}
+{\footnotesize\ttfamily Character\+::\+Character (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_character}{Character} object with the specified level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The level of the character.\\
+\hline
+\end{DoxyParams}
+This constructor initializes a \doxylink{class_character}{Character} object with the given level. It generates ability scores, calculates ability modifiers, hit points, armor class, attack bonus, and damage bonus for the character.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The level of the character. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_character_a55be82a4cb649782e8aa7d25a51d7ee3}\label{class_character_a55be82a4cb649782e8aa7d25a51d7ee3} 
+\index{Character@{Character}!getAbilityModifiers@{getAbilityModifiers}}
+\index{getAbilityModifiers@{getAbilityModifiers}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getAbilityModifiers()}{getAbilityModifiers()}}
+{\footnotesize\ttfamily int Character\+::get\+Ability\+Modifiers (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+Ability Modifiers Getter 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ability modifier based on the index 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{class_character_a07d5a321657a818aff46fbd160749fdd}\label{class_character_a07d5a321657a818aff46fbd160749fdd} 
+\index{Character@{Character}!getAbilityScores@{getAbilityScores}}
+\index{getAbilityScores@{getAbilityScores}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getAbilityScores()}{getAbilityScores()}}
+{\footnotesize\ttfamily int Character\+::get\+Ability\+Scores (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+Ability Scores Getter 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ability score-\/\texorpdfstring{$>$}{>} 0\+: Strength, 1\+: Dexterity, 2\+: Constitution, 3\+:Intelligence, 4\+: Wisdom, 5\+: Charisma 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{class_character_a6674dec79e4677370162aeb5674084bf}\label{class_character_a6674dec79e4677370162aeb5674084bf} 
+\index{Character@{Character}!getArmorClass@{getArmorClass}}
+\index{getArmorClass@{getArmorClass}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getArmorClass()}{getArmorClass()}}
+{\footnotesize\ttfamily int Character\+::get\+Armor\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+armor class Getter \begin{DoxyReturn}{Returns}
+armor\+Class 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{class_character_a5d31d79ef0bc5d92cf61076a33a67858}\label{class_character_a5d31d79ef0bc5d92cf61076a33a67858} 
+\index{Character@{Character}!getAttackBonus@{getAttackBonus}}
+\index{getAttackBonus@{getAttackBonus}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getAttackBonus()}{getAttackBonus()}}
+{\footnotesize\ttfamily int Character\+::get\+Attack\+Bonus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+attack bonus Getter \begin{DoxyReturn}{Returns}
+attack\+Bonus 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_character_af644db086012065530259e6ba7da2f65}\label{class_character_af644db086012065530259e6ba7da2f65} 
+\index{Character@{Character}!getDamageBonus@{getDamageBonus}}
+\index{getDamageBonus@{getDamageBonus}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getDamageBonus()}{getDamageBonus()}}
+{\footnotesize\ttfamily int Character\+::get\+Damage\+Bonus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+damage bonus Getter \begin{DoxyReturn}{Returns}
+damage\+Bonus 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{class_character_a39eeebcbdbc13cd4d1d274da5d051f85}\label{class_character_a39eeebcbdbc13cd4d1d274da5d051f85} 
+\index{Character@{Character}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily int Character\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+health Getter \begin{DoxyReturn}{Returns}
+health 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{class_character_ae8cdb23b41026ef3788e19993b1ea469}\label{class_character_ae8cdb23b41026ef3788e19993b1ea469} 
+\index{Character@{Character}!getHitPoints@{getHitPoints}}
+\index{getHitPoints@{getHitPoints}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getHitPoints()}{getHitPoints()}}
+{\footnotesize\ttfamily int Character\+::get\+Hit\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+hit points Getter \begin{DoxyReturn}{Returns}
+hitpoints 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{class_character_a06713215a5850ec92194a1a711fb8cd7}\label{class_character_a06713215a5850ec92194a1a711fb8cd7} 
+\index{Character@{Character}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily int Character\+::get\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+level Getter \begin{DoxyReturn}{Returns}
+level 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{class_character_a3d9659c682d7d9145e1285987f213c42}\label{class_character_a3d9659c682d7d9145e1285987f213c42} 
+\index{Character@{Character}!getStrategy@{getStrategy}}
+\index{getStrategy@{getStrategy}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getStrategy()}{getStrategy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*} Character\+::get\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Strategy Getter \begin{DoxyReturn}{Returns}
+strategy 
+\end{DoxyReturn}
+\Hypertarget{class_character_ae81dc275660af9b87d5d04966050d292}\label{class_character_ae81dc275660af9b87d5d04966050d292} 
+\index{Character@{Character}!interactiveAbilityScoresTest@{interactiveAbilityScoresTest}}
+\index{interactiveAbilityScoresTest@{interactiveAbilityScoresTest}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{interactiveAbilityScoresTest()}{interactiveAbilityScoresTest()}}
+{\footnotesize\ttfamily void Character\+::interactive\+Ability\+Scores\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to handle the ability scores testing from the user Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{class_character_a5b03ceb09b3e175dc9d6c3247a6b9b66}\label{class_character_a5b03ceb09b3e175dc9d6c3247a6b9b66} 
+\index{Character@{Character}!setArmorClass@{setArmorClass}}
+\index{setArmorClass@{setArmorClass}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setArmorClass()}{setArmorClass()}}
+{\footnotesize\ttfamily void Character\+::set\+Armor\+Class (\begin{DoxyParamCaption}\item[{int}]{armor\+Class }\end{DoxyParamCaption})}
+
+armor\+Class setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em armor\+Class} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{class_character_ac02e6e34fffea734a4fb68761a138eb1}\label{class_character_ac02e6e34fffea734a4fb68761a138eb1} 
+\index{Character@{Character}!setAttackBonus@{setAttackBonus}}
+\index{setAttackBonus@{setAttackBonus}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setAttackBonus()}{setAttackBonus()}}
+{\footnotesize\ttfamily void Character\+::set\+Attack\+Bonus (\begin{DoxyParamCaption}\item[{int}]{attack\+Bonus }\end{DoxyParamCaption})}
+
+attack\+Bonus setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em attack\+Bonus} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{class_character_a0a26589a1078ce62a2403d59331bfd02}\label{class_character_a0a26589a1078ce62a2403d59331bfd02} 
+\index{Character@{Character}!setCharisma@{setCharisma}}
+\index{setCharisma@{setCharisma}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setCharisma()}{setCharisma()}}
+{\footnotesize\ttfamily void Character\+::set\+Charisma (\begin{DoxyParamCaption}\item[{int}]{charisma }\end{DoxyParamCaption})}
+
+charisma setter in ability\+Scores array index 5 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em charisma} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{class_character_ab0e760583cc5d908e7202f1c2f3ed83b}\label{class_character_ab0e760583cc5d908e7202f1c2f3ed83b} 
+\index{Character@{Character}!setConstitution@{setConstitution}}
+\index{setConstitution@{setConstitution}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setConstitution()}{setConstitution()}}
+{\footnotesize\ttfamily void Character\+::set\+Constitution (\begin{DoxyParamCaption}\item[{int}]{constitution }\end{DoxyParamCaption})}
+
+constitution setter in ability\+Scores array index 2 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em constitution} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{class_character_a8efb1aeb6c7c3dce9fa68fb8f54f07a1}\label{class_character_a8efb1aeb6c7c3dce9fa68fb8f54f07a1} 
+\index{Character@{Character}!setDamageBonus@{setDamageBonus}}
+\index{setDamageBonus@{setDamageBonus}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setDamageBonus()}{setDamageBonus()}}
+{\footnotesize\ttfamily void Character\+::set\+Damage\+Bonus (\begin{DoxyParamCaption}\item[{int}]{damage\+Bonus }\end{DoxyParamCaption})}
+
+damage\+Bonus setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em damage\+Bonus} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\Hypertarget{class_character_ac0ee4d3daced0e30b75f2c5bb90cd8b3}\label{class_character_ac0ee4d3daced0e30b75f2c5bb90cd8b3} 
+\index{Character@{Character}!setDexterity@{setDexterity}}
+\index{setDexterity@{setDexterity}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setDexterity()}{setDexterity()}}
+{\footnotesize\ttfamily void Character\+::set\+Dexterity (\begin{DoxyParamCaption}\item[{int}]{dex }\end{DoxyParamCaption})}
+
+dexterity setter in ability\+Scores array index 1 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em dex} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
+\Hypertarget{class_character_afd06ab5d08a0edc75539f3586ccac66d}\label{class_character_afd06ab5d08a0edc75539f3586ccac66d} 
+\index{Character@{Character}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily void Character\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{health }\end{DoxyParamCaption})}
+
+health setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em health} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 26
+Here is the caller graph for this function\+:
+% FIG 27
+\Hypertarget{class_character_a83c248d9493566263c71e0880caaf7bd}\label{class_character_a83c248d9493566263c71e0880caaf7bd} 
+\index{Character@{Character}!setHitPoints@{setHitPoints}}
+\index{setHitPoints@{setHitPoints}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setHitPoints()}{setHitPoints()}}
+{\footnotesize\ttfamily void Character\+::set\+Hit\+Points (\begin{DoxyParamCaption}\item[{int}]{hit\+Points }\end{DoxyParamCaption})}
+
+hit\+Points setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em hit\+Points} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 28
+Here is the caller graph for this function\+:
+% FIG 29
+\Hypertarget{class_character_ad80619f0a4809b845b596811a744cf67}\label{class_character_ad80619f0a4809b845b596811a744cf67} 
+\index{Character@{Character}!setIntelligence@{setIntelligence}}
+\index{setIntelligence@{setIntelligence}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setIntelligence()}{setIntelligence()}}
+{\footnotesize\ttfamily void Character\+::set\+Intelligence (\begin{DoxyParamCaption}\item[{int}]{intelligence }\end{DoxyParamCaption})}
+
+intelligence setter in ability\+Scores array index 3 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em intelligence} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 30
+Here is the caller graph for this function\+:
+% FIG 31
+\Hypertarget{class_character_ac206c1a24603accc6ec9ab30ca22bab1}\label{class_character_ac206c1a24603accc6ec9ab30ca22bab1} 
+\index{Character@{Character}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void Character\+::set\+Level (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+level setter Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em level} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 32
+Here is the caller graph for this function\+:
+% FIG 33
+\Hypertarget{class_character_a78558a5320696835bd698f690b626d39}\label{class_character_a78558a5320696835bd698f690b626d39} 
+\index{Character@{Character}!setModifier@{setModifier}}
+\index{setModifier@{setModifier}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setModifier()}{setModifier()}}
+{\footnotesize\ttfamily void Character\+::set\+Modifier (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{amount }\end{DoxyParamCaption})}
+
+ability\+Modifier setter based on the index, 0-\/5 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+{\em amount} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 34
+Here is the caller graph for this function\+:
+% FIG 35
+\Hypertarget{class_character_a812f5573da90badd62f3eb8bc62f716e}\label{class_character_a812f5573da90badd62f3eb8bc62f716e} 
+\index{Character@{Character}!setStrategy@{setStrategy}}
+\index{setStrategy@{setStrategy}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setStrategy()}{setStrategy()}}
+{\footnotesize\ttfamily void Character\+::set\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character_strategy}{Character\+Strategy}} \texorpdfstring{$\ast$}{*}}]{strategy }\end{DoxyParamCaption})}
+
+
+
+Sets the strategy of the character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strategy} & The strategy to set. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 36
+\Hypertarget{class_character_abafb231348e9b6de9981d476252aaac1}\label{class_character_abafb231348e9b6de9981d476252aaac1} 
+\index{Character@{Character}!setStrength@{setStrength}}
+\index{setStrength@{setStrength}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setStrength()}{setStrength()}}
+{\footnotesize\ttfamily void Character\+::set\+Strength (\begin{DoxyParamCaption}\item[{int}]{strength }\end{DoxyParamCaption})}
+
+strength setter in ability\+Scores array index 0 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em strength} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 37
+Here is the caller graph for this function\+:
+% FIG 38
+\Hypertarget{class_character_a0d6e510a5abb7649de1d978607b8d9b4}\label{class_character_a0d6e510a5abb7649de1d978607b8d9b4} 
+\index{Character@{Character}!setWisdom@{setWisdom}}
+\index{setWisdom@{setWisdom}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setWisdom()}{setWisdom()}}
+{\footnotesize\ttfamily void Character\+::set\+Wisdom (\begin{DoxyParamCaption}\item[{int}]{wis }\end{DoxyParamCaption})}
+
+wisdom setter in ability\+Scores array index 4 Only changes and calls notify if it\textquotesingle{}s different from the current attribute 
+\begin{DoxyParams}{Parameters}
+{\em wis} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 39
+Here is the caller graph for this function\+:
+% FIG 40
+\Hypertarget{class_character_a951b5527a5080f0491f6b447c989f7a7}\label{class_character_a951b5527a5080f0491f6b447c989f7a7} 
+\index{Character@{Character}!showMainTestMenu@{showMainTestMenu}}
+\index{showMainTestMenu@{showMainTestMenu}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{showMainTestMenu()}{showMainTestMenu()}}
+{\footnotesize\ttfamily void Character\+::show\+Main\+Test\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Shows a main menu for testing and updating the character attributes. Here is the caller graph for this function\+:
+% FIG 41
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Characters/include/\mbox{\hyperlink{_character_8h}{Character.\+h}}\item 
+components/\+Characters/src/Character.\+cpp\end{DoxyCompactItemize}

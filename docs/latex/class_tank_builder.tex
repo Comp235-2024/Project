@@ -1,0 +1,80 @@
+\doxysection{Tank\+Builder Class Reference}
+\hypertarget{class_tank_builder}{}\label{class_tank_builder}\index{TankBuilder@{TankBuilder}}
+
+
+Inheritance diagram for Tank\+Builder\+:
+% FIG 0
+
+
+Collaboration diagram for Tank\+Builder\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tank_builder_a7e21faec87216b7abecd91e705612865}{build\+Ability\+Scores}} () override
+\item 
+void \mbox{\hyperlink{class_tank_builder_aae75827df23449a0115693e28490215a}{build\+Hit\+Points}} (\mbox{\hyperlink{class_character}{Character}} \&character) override
+\item 
+\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_tank_builder_a8c870eccb7b7c259d86d80dc044436b4}{get\+Character}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character_builder}{Character\+Builder}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries apply\+Level\+Based\+HPIncrease} (\mbox{\hyperlink{class_character}{Character}} \&character, int base\+HP)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable}{Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Movable} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+{\bfseries Movable} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_movable}{Movable}} \&)=default
+\item 
+\mbox{\hyperlink{class_movable}{Movable}} \& {\bfseries operator=} (\mbox{\hyperlink{class_movable}{Movable}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tank_builder_a374fa9145d16afdd45d4846c6ea65b92}\label{class_tank_builder_a374fa9145d16afdd45d4846c6ea65b92} 
+\mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} {\bfseries character}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tank_builder_a7e21faec87216b7abecd91e705612865}\label{class_tank_builder_a7e21faec87216b7abecd91e705612865} 
+\index{TankBuilder@{TankBuilder}!buildAbilityScores@{buildAbilityScores}}
+\index{buildAbilityScores@{buildAbilityScores}!TankBuilder@{TankBuilder}}
+\doxysubsubsection{\texorpdfstring{buildAbilityScores()}{buildAbilityScores()}}
+{\footnotesize\ttfamily void Tank\+Builder\+::build\+Ability\+Scores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+\Hypertarget{class_tank_builder_aae75827df23449a0115693e28490215a}\label{class_tank_builder_aae75827df23449a0115693e28490215a} 
+\index{TankBuilder@{TankBuilder}!buildHitPoints@{buildHitPoints}}
+\index{buildHitPoints@{buildHitPoints}!TankBuilder@{TankBuilder}}
+\doxysubsubsection{\texorpdfstring{buildHitPoints()}{buildHitPoints()}}
+{\footnotesize\ttfamily void Tank\+Builder\+::build\+Hit\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+\Hypertarget{class_tank_builder_a8c870eccb7b7c259d86d80dc044436b4}\label{class_tank_builder_a8c870eccb7b7c259d86d80dc044436b4} 
+\index{TankBuilder@{TankBuilder}!getCharacter@{getCharacter}}
+\index{getCharacter@{getCharacter}!TankBuilder@{TankBuilder}}
+\doxysubsubsection{\texorpdfstring{getCharacter()}{getCharacter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character}{Character}} \texorpdfstring{$\ast$}{*} Tank\+Builder\+::get\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_character_builder}{Character\+Builder}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+components/\+Characters/include/Tank\+Builder.\+h\item 
+components/\+Characters/src/Tank\+Builder.\+cpp\end{DoxyCompactItemize}
