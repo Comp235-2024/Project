@@ -265,11 +265,11 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
 
         auto cell = grid->getGrid()[currentPos.y][currentPos.x];
         if (dynamic_cast<NonPlayerCharacter*>(cell.get())) {
-            drawBorderAroundCell(currentPos, Color::Red, _window);
+            drawBorderAroundCell(currentPos, Color::Red, _window, 1);
             continue;
         }
         if (cell.get() == nullptr || dynamic_cast<Character*>(cell.get())) {
-            drawBorderAroundCell(currentPos, color, _window);
+            drawBorderAroundCell(currentPos, color, _window, 1);
 
             if (currentSteps < steps) {
                 for (const auto& dir : directions) {
@@ -280,18 +280,20 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
         }
     }
 }
-void MapObserver::drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window) const {
+void MapObserver::drawBorderAroundCell(const Vector2i &position, const Color &color, RenderTexture *_window, int _thickness) const {
 
 
-    float squareX = position.x * SIZE_MULT;
-    float squareY = position.y * SIZE_MULT;
+    float squareX = position.x * SIZE_MULT -1;
+    float squareY = position.y * SIZE_MULT -1;
 
-    float targetX = SIZE_MULT + 1;
-    float targetY = SIZE_MULT + 1;
+//    float targetX = SIZE_MULT + 1;
+//    float targetY = SIZE_MULT + 1;
+    float targetX = SIZE_MULT;
+    float targetY = SIZE_MULT;
 
-    RectangleShape rectangle(Vector2f(SIZE_MULT - 1, SIZE_MULT - 1));
+    RectangleShape rectangle(Vector2f(SIZE_MULT - 2, SIZE_MULT - 2));
     rectangle.setFillColor(Color::Transparent);
-    rectangle.setOutlineThickness(1);
+    rectangle.setOutlineThickness(_thickness);
     rectangle.setOutlineColor(color);
     rectangle.setPosition(squareX, squareY);
 
