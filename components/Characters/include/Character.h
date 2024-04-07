@@ -14,13 +14,21 @@
 #define A3_CHARACTER_H
 
 #include "../../Items/include/Movable.h"
-#include "../../Maps/include/Position.h"
 #include "../../Log/include/LogObservable.h"
+#include "../../Maps/include/Position.h"
+#include "Armor.h"
+#include "Belt.h"
+#include "Boots.h"
+#include "Helmet.h"
 #include "Observable.h"
+#include "Ring.h"
 #include "SFML/Graphics.hpp"
+#include "Shield.h"
+#include "Weapon.h"
 #include <cstdlib>// For rand() and srand()
 #include <ctime>  // For time()
 #include <iostream>
+#include <memory>
 
 using namespace sf;
 
@@ -37,7 +45,22 @@ class CharacterStrategy;
  * hit points, armor class, attack bonus, and damage bonus.
  */
 class Character : public Movable,  public Observable{
+    struct WornItems {
+        unique_ptr<Armor> armor;
+        unique_ptr<Weapon> weapon;
+        unique_ptr<Shield> shield;
+        unique_ptr<Ring> ring;
+        unique_ptr<Belt> belt;
+        unique_ptr<Boots> boots;
+        unique_ptr<Helmet> helmet;
+
+        // iterator for the worn items
+        typedef std::map<std::string, std::unique_ptr<Item>>::iterator iterator;
+
+    };
 public:
+
+
     std::string textureName;
     /**
      * @brief Constructs a Character object with the specified level.
@@ -71,6 +94,15 @@ public:
     void interactiveAbilityScoresTest();
 
     sf::Vector2i position;
+
+    int getInitiative() const {
+        return initiative;
+    }
+
+    void setInitiative(int _initiative) {
+        Character::initiative = _initiative;
+    }
+
 
 
 
@@ -255,9 +287,12 @@ public:
 
 
 private:
+    shared_ptr<WornItems> wornItems;
 
     CharacterStrategy* strategy;
+    int initiative = 1;
 
+private:
     Position location;
 
     //TODO implement health logic

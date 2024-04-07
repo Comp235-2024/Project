@@ -29,7 +29,7 @@ digraph "Observable::notify"
   Node12 -> Node13 [id="edge11_Node000012_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node13 [id="Node000013",label="MapCreator::processClick\lActions",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$class_map_creator.html#a054cb306e000f220c589b2464279ffbc",tooltip="Checks where the user clicked on the screen eg. sidebar, map, buttons and calls the appropriate funct..."];
   Node4 -> Node16 [id="edge12_Node000004_Node000016",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node16 [id="Node000016",label="GameScreen::findPlayerCharacter",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e",tooltip="Finds the player character in the current map."];
+  Node16 [id="Node000016",label="GameScreen::findNPCs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e",tooltip="Finds the player character in the current map."];
   Node4 -> Node17 [id="edge13_Node000004_Node000017",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node17 [id="Node000017",label="MapCreator::handleCloseEvent",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#ab5d39527ca7f5817a5d3b36e64f893b5",tooltip="closes the window when the user clicks the close button."];
   Node17 -> Node15 [id="edge14_Node000017_Node000015",dir="back",color="steelblue1",style="solid",tooltip=" "];

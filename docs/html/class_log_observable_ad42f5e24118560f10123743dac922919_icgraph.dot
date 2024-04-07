@@ -29,7 +29,7 @@ digraph "LogObservable::notify"
   Node11 -> Node12 [id="edge11_Node000011_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node12 [id="Node000012",label="MapCreator::HandleInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#a39254fe1fb7f9abe952ad5eb65ecf699",tooltip="Handles the inputs (clicks) of the user on the window and updates the game logic."];
   Node1 -> Node13 [id="edge12_Node000001_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node13 [id="Node000013",label="GameScreen::findPlayerCharacter",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e",tooltip="Finds the player character in the current map."];
+  Node13 [id="Node000013",label="GameScreen::findNPCs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e",tooltip="Finds the player character in the current map."];
   Node1 -> Node14 [id="edge13_Node000001_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node14 [id="Node000014",label="MapCreator::handleCloseEvent",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_map_creator.html#ab5d39527ca7f5817a5d3b36e64f893b5",tooltip="closes the window when the user clicks the close button."];
   Node14 -> Node12 [id="edge14_Node000014_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
