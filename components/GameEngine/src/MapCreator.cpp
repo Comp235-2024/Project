@@ -2,7 +2,7 @@
 * @file MapCreator.h
 * @author Ricardo Raji Chahine 40234410
 * @brief This class is called from the main menu and allows the user to create a map by placing objects on a grid and then either save or clear that map.
-* @brief The user can place walls, doors, levers, chests, players, and npcs on the map.
+* @brief The user can place walls, doors, levers, chests, characterList, and npcs on the map.
 * @brief The maps are saved as .json files in the Saved Maps directory.
 */
 #include "MapCreator.h"

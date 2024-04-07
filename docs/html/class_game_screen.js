@@ -5,7 +5,7 @@ var class_game_screen =
     [ "GameScreen", "class_game_screen.html#a2b6dd82d2265628dab8a0cda1d0a7f74", null ],
     [ "calculateTextureSizes", "class_game_screen.html#ac5770b3b0644b382b14969b689e0fc43", null ],
     [ "Draw", "class_game_screen.html#a0b9d36c78d9cb37b7af9983eee99d458", null ],
-    [ "findPlayerCharacter", "class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e", null ],
+    [ "findNPCs", "class_game_screen.html#a42848521aeda505f1c87c6c306a3b67e", null ],
     [ "GenerateButton", "class_game_screen.html#a87901799bf15b3683b7f2ed29fb00ed2", null ],
     [ "generateButton", "class_game_screen.html#aa15c80859a9157bcbe3df04d1d6d8dc7", null ],
     [ "generateConsoleTexture", "class_game_screen.html#a598336d6abe08f1dffa7d0c67b34859f", null ],

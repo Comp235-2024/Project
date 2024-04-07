@@ -40,7 +40,7 @@ endlocal
 %MKIDX_CMD% %MANUAL_FILE%.idx
 %LATEX_CMD% %MANUAL_FILE%
 
-@REM reset environment
+@REM resetTurns environment
 popd
 set LATEX_CMD=%ORG_LATEX_CMD%
 set ORG_LATEX_CMD=

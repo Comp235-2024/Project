@@ -38,17 +38,68 @@ void GameScreen::Init() {
     _campaign.mike.position = start;
     _player = make_shared<Character>(_campaign.mike);
 
-    //    findPlayerCharacter();
+    // Turn manager portion
+    _turnManager = make_shared<TurnManager>();
+    _turnManager->addCharacter(_player, true);
+    if (_data->log->enabledModules.system) {
+        _turnManager->attach(_data->log);
+    }
+    findNPCs();
 
 
     generateMapTexture();
 
     _diceModifier = 3;// TODO needs to be dynamic and changed with each dice roll
     _mapIndex++;
+
+    // TODO add all entieties to the TurnManager
+
+
+
+
 }
+
 
 void GameScreen::Update(float deltaTime) {
 
+    if (_enableFlags->turn_manager) {
+        if (_turnManager->isPlayerTurn()) {
+            HandlePlayerActions();
+            _turnManager->nextTurn();
+        }
+
+        if (_turnManager->isNPCTurn()) {
+            HandleNpcActions();
+            _turnManager->nextTurn();
+        }
+    }
+
+    switch (_gameState) {
+        case GameState::Idle:
+            break;
+        case GameState::Moving:
+            onMoveOrAttack();
+            _moveEnabled = true;
+            _attackEnabled = false;
+            break;
+        case GameState::Attacking:
+            onMoveOrAttack();
+            _attackEnabled = true;
+            _moveEnabled = false;
+            break;
+        case GameState::Interacting:
+            break;
+        case GameState::RollingDice:
+            _diceModifier = _data->dice.roll(_diceType);
+            this->notify("Dice rolled: " + to_string(_diceModifier), "Character");
+            break;
+        case GameState::Inventory:
+            break;
+        case GameState::Exiting:
+            this->notify("Exiting Game", "System");
+            _data->stateMachine.RemoveState();
+            break;
+    }
 
 
     // implement
@@ -72,8 +123,7 @@ void GameScreen::Draw(float deltaTime) {
     Texture texture = _mapTexture.getTexture();
     Sprite mapSprite(texture);
     _data->window.draw(mapSprite);
-    // draw menu icon
-    // draw console
+
     Texture sideBar = _sideBarTexture.getTexture();
     Sprite sideBarSprite(sideBar);
     sideBarSprite.setPosition(_sideBarPosition);
@@ -83,6 +133,10 @@ void GameScreen::Draw(float deltaTime) {
     Sprite consoleSprite(console);
     consoleSprite.setPosition(_consolePosition);
     _data->window.draw(consoleSprite);
+
+    if (_enableFlags->draw_whose_turn) {
+        _turnManager->drawWhoseTurn(_data);
+    }
 
 
     // draw character view (if any)
@@ -104,21 +158,13 @@ void GameScreen::HandleInput() {
         handleMouseButtonMap();
 
         if (_data->inputs.IsButtonClicked(buttons->move, Mouse::Left, _data->window, _sideBarPosition)) {
-            this->notify("Move button clicked", "Character");
-            onMoveOrAttack();
-            _moveEnabled = true;
-            _attackEnabled = false;
+            ChangeState(GameState::Moving);
         } else if (_data->inputs.IsButtonClicked(buttons->attack, Mouse::Left, _data->window, _sideBarPosition)) {
-            this->notify("Attack button clicked", "Character");
-            onMoveOrAttack();
-            _attackEnabled = true;
-            _moveEnabled = false;
+            ChangeState(GameState::Attacking);
         } else if (_data->inputs.IsButtonClicked(buttons->rollDice, Mouse::Left, _data->window, _sideBarPosition)) {
-            _diceModifier = _data->dice.roll(_diceType);
-            this->notify("Dice rolled: " + to_string(_diceModifier), "Character");
+            ChangeState(GameState::RollingDice);
         } else if (_data->inputs.IsButtonClicked(buttons->exit, Mouse::Left, _data->window, _sideBarPosition)) {
-            this->notify("Exiting Game", "System");
-            _data->stateMachine.RemoveState();
+            ChangeState(GameState::Exiting);
         }
     }
 }
@@ -162,20 +208,6 @@ void GameScreen::handleKeyboardArrows() {
         }
     }
 }
-void GameScreen::movePlayer(Vector2i dir) {
-    if (_currentMap->move(_player->position, _player->position + dir)) {
-        _player->position += dir;
-        if (dir == Vector2i{0, -1}) {
-            this->notify("Player moved up", "Character");
-        } else if (dir == Vector2i{0, 1}) {
-            this->notify("Player moved down", "Character");
-        } else if (dir == Vector2i{-1, 0}) {
-            this->notify("Player moved left", "Character");
-        } else if (dir == Vector2i{1, 0}) {
-            this->notify("Player moved right", "Character");
-        }
-    }
-}
 
 void GameScreen::generateMapTexture() {
     _mapTexture.clear(Color::Transparent);
@@ -206,17 +238,17 @@ void GameScreen::calculateTextureSizes() {
 }
 
 //TODO Update to use Player instead of Character and Player's location instead of searching for the character
-void GameScreen::findPlayerCharacter() {
+void GameScreen::findNPCs() {
     int x = 0, y = 0;
 
     for (auto &row: _currentMap->getGrid()) {
         x = 0;
         for (auto &cell: row) {
-            if (dynamic_cast<Character *>(cell.get())) {
+            if (dynamic_cast<NonPlayerCharacter *>(cell.get())) {
 
-                this->_player = dynamic_pointer_cast<Character>(cell);
-                this->_player->position = Vector2i{x, y};
-                this->notify("Player character found at " + to_string(x) + ", " + to_string(y), "System");
+                this->_npcs.push_back(dynamic_pointer_cast<NonPlayerCharacter>(cell));
+                this->_turnManager->addCharacter(this->_npcs.back(), false);
+                this->notify("NPC found at " + to_string(x) + ", " + to_string(y), "System");
                 return;
             }
             ++x;
@@ -263,9 +295,19 @@ void GameScreen::generateSideBarTexture() {
     _sideBarTexture.draw(buttons->rollDice);
     _sideBarTexture.draw(buttons->rollDiceText);
 
-    generateButton(buttons->exit, buttons->exitText, "Exit", 3);
+    generateButton(buttons->inventory, buttons->inventoryText, "Inventory", 3);
+    _sideBarTexture.draw(buttons->inventory);
+    _sideBarTexture.draw(buttons->inventoryText);
+
+    generateButton(buttons->stats, buttons->statsText, "Stats", 4);
+    _sideBarTexture.draw(buttons->stats);
+    _sideBarTexture.draw(buttons->statsText);
+
+    generateButton(buttons->exit, buttons->exitText, "Exit", 5);
     _sideBarTexture.draw(buttons->exit);
     _sideBarTexture.draw(buttons->exitText);
+
+
 
     _sideBarTexture.display();
 }
@@ -301,4 +343,56 @@ void GameScreen::generateConsoleTexture() {
 
 
     _consoleTexture.display();
+}
+void GameScreen::HandlePlayerActions() {
+    // Handle player actions here
+    // For example, move the player character
+    // or attack an enemy
+    // or open a chest
+    // or interact with a door
+    // or use an item
+    // or cast a spell
+    // or any other action the player can take
+    this->notify("Player's turn", "System");
+    sleep(seconds(2));
+
+}
+void GameScreen::HandleNpcActions() {
+    // Handle NPC actions here
+    // For example, move the NPC character
+    // or attack the player
+    // or open a chest
+    // or interact with a door
+    // or use an item
+    // or cast a spell
+    // or any other action the NPC can take
+    this->notify("NPC's turn", "System");
+    sleep(seconds(2));
+}
+void GameScreen::ChangeState(GameState newState) {
+    _gameState = newState;
+
+    switch (_gameState) {
+        case GameState::Idle:
+            this->notify("Game state changed to Idle", "System");
+            break;
+        case GameState::Moving:
+            this->notify("Game state changed to Moving", "System");
+            break;
+        case GameState::Attacking:
+            this->notify("Game state changed to Attacking", "System");
+            break;
+        case GameState::Interacting:
+            this->notify("Game state changed to Interacting", "System");
+            break;
+        case GameState::RollingDice:
+            this->notify("Game state changed to RollingDice", "System");
+            break;
+        case GameState::Inventory:
+            this->notify("Game state changed to Inventory", "System");
+            break;
+        case GameState::Exiting:
+            this->notify("Game state changed to Exiting", "System");
+            break;
+    }
 }

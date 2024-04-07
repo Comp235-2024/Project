@@ -13,6 +13,7 @@
 #include "MapObserver.h"
 #include "Player.h"
 #include "State.h"
+#include "TurnManager.h"
 
 /**
  * @class GameScreen
@@ -22,6 +23,21 @@
  * It handles the initialization, input handling, updating, and drawing of the game screen.
  */
 class GameScreen : public State {
+
+struct enable_flags {
+    bool turn_manager = false;
+    bool draw_whose_turn = false;
+};
+
+enum class GameState {
+    Idle,
+    Moving,
+    Attacking,
+    Interacting,
+    RollingDice,
+    Inventory,
+    Exiting
+};
 
 public:
     /**
@@ -64,6 +80,14 @@ public:
      */
     void Draw(float deltaTime) override;
 
+    /**
+     * @brief Changes the state of the game screen.
+     *
+     * This function is called to change the state of the game screen.
+     */
+    void ChangeState(GameState newState);
+
+
 
 private:
     MainDataRef _data; /**< The main data reference. */
@@ -82,8 +106,16 @@ private:
     Vector2u _windowSize; /**< The window size. */
 
     shared_ptr<Character> _player; /**< The player character. */
+    vector<shared_ptr<Character>> _npcs; /**< The non-player characters. */
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
+
+
+    GameState _gameState = GameState::Idle; /**< The current game state. */
+
+    unique_ptr<enable_flags> _enableFlags = make_unique<enable_flags>();
+
+    shared_ptr<TurnManager> _turnManager; /**< The turn manager. */
 
     int _diceModifier; /**< The dice modifier for the player character. */
     string _diceType = "1d6"; /**< The dice type for the player character. */
@@ -112,8 +144,6 @@ private:
      * @brief Represents the buttons on the game screen.
      */
     struct Buttons {
-        RectangleShape menu; /**< The menu button. */
-        Text menuText;
         RectangleShape move;
         Text moveText;
         RectangleShape attack;
@@ -124,6 +154,8 @@ private:
         Text rollDiceText;
         RectangleShape exit;
         Text exitText;
+        RectangleShape stats;
+        Text statsText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -161,11 +193,11 @@ private:
     void calculateTextureSizes();
 
     /**
-     * @brief Finds the player character in the current map.
+     * @brief Finds the NPC characters in the current map.
      * 
-     * This function finds the player character in the current map and sets it as the active character.
+     * This function finds the NPC characters in the current map and stores them in the _npcs vector.
      */
-    void findPlayerCharacter();
+    void findNPCs();
 
     /**
      * @brief Scans for nearby objects in the current map.
@@ -207,6 +239,8 @@ private:
     void handleKeyboardArrows();
     void handleMouseButtonMap();
     void onMoveOrAttack();
+    void HandlePlayerActions();
+    void HandleNpcActions();
 };
 
 #endif // GAME_SCREEN_H
