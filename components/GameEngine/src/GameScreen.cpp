@@ -5,6 +5,50 @@
  * @brief
  */
 
+/**
+    How GameState Works
+
+    The `GameState` enum class represents different states that the game can be in at any given time, such as `Idle`, `Moving`, `Attacking`, `Interacting`, etc.
+     This allows for a clear and organized way to manage what the player and NPCs can do based on the current state of the game.
+     By checking the current game state, the game knows whether to accept input for movement, initiate an attack, interact with objects, or perform other actions.
+
+    How TurnManager Works
+
+    The `TurnManager` class manages the turn order and interactions during the turn-based part of the game. It keeps track of all characters
+     (both player and NPCs) in a vector and maintains the index of the current character whose turn it is. With each turn, it updates the
+     index and notifies the game that the turn has changed. The `TurnManager` also allows adding and removing characters from the turn order,
+     checking who the current player is, and drawing an indicator on the screen to show whose turn it is.
+
+    Step by Step Example
+
+    1. Initialization: At the start of the game or level, all player and NPC characters are added to the `TurnManager` with `addCharacter()`.
+     The player character is marked as such.
+
+    2. Starting the Turn Cycle: The game enters its main loop, and the `TurnManager` indicates it's the player's turn by checking `isPlayerTurn()`.
+     A message or visual indicator is displayed using `drawWhoseTurn()`.
+
+    3. Player's Turn:
+        - The game checks the current `GameState` to determine allowable actions (e.g., moving or attacking).
+        - The player performs an action, such as moving to a new tile or attacking an NPC. The game updates the state accordingly
+        (e.g., `GameState::Moving` or `GameState::Attacking`).
+        - Once the player's action is complete, the game updates the `GameState` back to `Idle` or another appropriate state.
+
+    4. Advancing Turns: After the player's turn, `nextTurn()` is called to advance to the next character in the turn order.
+     The `TurnManager` updates its index and checks if the next character is an NPC.
+
+    5. NPC's Turn:
+        - If it's an NPC's turn, as determined by `isNPCTurn()`, the game can automatically process the NPC's actions based on predefined AI or scripts.
+        - Like the player, the NPC performs actions based on the current `GameState`.
+        - Once the NPC's actions are complete, the game proceeds to the next turn.
+
+    6. Cycle Continues: Steps 3-5 repeat until the end of the game or level. Characters can be added or removed from the turn order as needed throughout the game.
+
+    7. End of Cycle: If the game or level ends, or a special condition is met (e.g., all enemies defeated),
+     the `TurnManager` can be reset or cleared for the next game or level with `resetTurns()` or `clear()`.
+
+    This process ensures a structured and fair turn-based system where each character gets to act in an ordered manner, allowing for strategic gameplay decisions.
+ */
+
 #include "GameScreen.h"
 #include <format>
 
