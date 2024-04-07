@@ -30,12 +30,14 @@ struct enable_flags {
 };
 
 enum class GameState {
+    StartScreen,
     Idle,
     Moving,
     Attacking,
     Interacting,
     RollingDice,
     Inventory,
+    Stats,
     Exiting
 };
 
@@ -110,8 +112,13 @@ private:
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
 
+    const Color buttonColorFill{Color(210, 180, 140)};
+    const Color buttonColorText{Color(50, 50, 50)};
+    const Color buttonInactiveColor{Color(150, 150, 150)};
 
-    GameState _gameState = GameState::Idle; /**< The current game state. */
+    Color _sideBarButtonColor = buttonColorFill;
+
+    GameState _gameState = GameState::StartScreen; /**< The current game state. */
 
     unique_ptr<enable_flags> _enableFlags = make_unique<enable_flags>();
 
@@ -156,6 +163,8 @@ private:
         Text exitText;
         RectangleShape stats;
         Text statsText;
+        RectangleShape start;
+        Text startText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -227,7 +236,7 @@ private:
      * @param name The name of the button.
      * @param buttonPos The position of the button.
      */
-    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos);
+    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active);
 
     /**
      * @brief Generates the texture for the console view.
@@ -241,6 +250,8 @@ private:
     void onMoveOrAttack();
     void HandlePlayerActions();
     void HandleNpcActions();
+    void handleStart();
+    void drawStartScreen();
 };
 
 #endif // GAME_SCREEN_H

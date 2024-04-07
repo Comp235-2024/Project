@@ -11,111 +11,93 @@
 #include "GameLooptyLoop.h"
 #include "Player.h"
 #include "SFML/Graphics.hpp"
-#include <algorithm>
 #include <memory>
 #include <vector>
 
-using namespace std;
 using namespace sf;
+using namespace std;
 
+/**
+ * @brief Manages the turn order and turn-based interactions in the game.
+ */
 class TurnManager : public LogObservable {
 private:
-    vector<shared_ptr<Character>> characterList;
-    int currentIndex = 0;
-    shared_ptr<Character> currentPlayer;
+    vector<shared_ptr<Character>> characterList;     ///< List of all characters in turn order.
+    int currentIndex = 0;                            ///< Index of the current character's turn.
+    shared_ptr<Character> currentPlayer;             ///< Pointer to the current player character.
+    bool turnChanged = true;                         ///< Indicates if the turn has changed.
+    float messageTimer = 0;                          ///< Timer for displaying messages.
+    const float MESSAGE_DURATION = 30.0f;            ///< Duration to display messages.
 
 public:
-    TurnManager() = default;
-    ~TurnManager() = default;
+    TurnManager();
+    ~TurnManager() override;
 
-    void addCharacter(const shared_ptr<Character> &character, const bool &isPlayer = false) {
-        if (isPlayer){
-            currentPlayer = character;
-            this->notify("Player added to the game", "System");
-        } else {
-            this->notify("NPC added to the game", "System");
-        }
-        characterList.push_back(character);
-        std::sort(characterList.begin(), characterList.end(), [](const shared_ptr<Character> &a, const shared_ptr<Character> &b) {
-            return a->getInitiative() > b->getInitiative();
-        });
-    }
+    /**
+     * @brief Adds a character to the turn order.
+     * @param character Shared pointer to the character being added.
+     * @param isPlayer Indicates if the character is the player.
+     */
+    void addCharacter(const shared_ptr<Character> &character, const bool &isPlayer = false);
 
-    void drawWhoseTurn(const MainDataRef& _data) {
-        RectangleShape turnBox(Vector2f(200, 50));
-        turnBox.setFillColor(Color::Transparent);
-        turnBox.setOutlineThickness(2);
-        turnBox.setOutlineColor(Color::Black);
-        sf::Vector2u windowSize = _data->window.getSize();
-        turnBox.setPosition((windowSize.x - turnBox.getSize().x) / 2.f, (windowSize.y - turnBox.getSize().y) / 2.f);
+    /**
+     * @brief Draws the turn indicator on screen.
+     * @param _data Reference to the main game data.
+     * @param deltaTime Time since the last update.
+     */
+    void drawWhoseTurn(const MainDataRef &_data, float deltaTime);
 
-        Text turnText;
-        turnText.setFont(_data->assets.GetFont("My Font"));
+    /**
+     * @brief Advances to the next character's turn.
+     */
+    void nextTurn();
 
-        if (isPlayerTurn()) {
-            turnText.setString("Player's Turn");
-            this->notify("Player's Turn", "System");
-        } else if (isNPCTurn()) {
-            turnText.setString("NPC's Turn");
-            this->notify("NPC's Turn", "System");
-        } else {
-            return;
-        }
+    /**
+     * @brief Checks if it is the player's turn.
+     * @return True if it is the player's turn, false otherwise.
+     */
+    bool isPlayerTurn();
 
-        turnText.setCharacterSize(24);
-        turnText.setFillColor(Color::Black);
+    /**
+     * @brief Checks if it is an NPC's turn.
+     * @return True if it is an NPC's turn, false otherwise.
+     */
+    bool isNPCTurn();
 
-        sf::FloatRect textRect = turnText.getLocalBounds();
-        turnText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-        turnText.setPosition(sf::Vector2f(windowSize.x / 2.0f, windowSize.y / 2.0f));
+    /**
+     * @brief Retrieves the current player.
+     * @return Shared pointer to the current player character.
+     */
+    shared_ptr<Character> getCurrentPlayer();
 
-        _data->window.draw(turnBox);
-        _data->window.draw(turnText);
+    /**
+     * @brief Resets the turn order to the first character.
+     */
+    void resetTurns();
 
-    }
+    /**
+     * @brief Gets the number of players in the turn order.
+     * @return Number of players.
+     */
+    int getNumPlayers();
 
+    /**
+     * @brief Removes a player from the turn order.
+     * @param player Shared pointer to the player being removed.
+     */
+    void removePlayer(const shared_ptr<Character> &player);
 
-    void nextTurn() {
-        currentIndex = (currentIndex + 1) % characterList.size();
-        this->notify("Next turn", "System");
-    }
+    /**
+     * @brief Clears all characters from the turn order.
+     */
+    void clear();
 
-    bool isPlayerTurn() {
-        return characterList[currentIndex] == currentPlayer;
-    }
-
-    bool isNPCTurn() {
-        return !isPlayerTurn();
-    }
-
-    shared_ptr<Character> getCurrentPlayer() {
-        return characterList[currentIndex];
-    }
-
-
-    void resetTurns() {
-        currentIndex = 0;
-        this->notify("Turns reset", "System");
-    }
-
-    int getNumPlayers() {
-        return characterList.size();
-    }
-
-    void removePlayer(const shared_ptr<Character> &player) {
-        characterList.erase(remove(characterList.begin(), characterList.end(), player), characterList.end());
-        this->notify("Player removed", "System");
-    }
-
-    void clear() {
-        characterList.clear();
-        this->notify("All players removed", "System");
-    }
-
-    vector<shared_ptr<Character>> getPlayers() {
-        return characterList;
-    }
+    /**
+     * @brief Retrieves all players in the turn order.
+     * @return Vector of shared pointers to all characters.
+     */
+    vector<shared_ptr<Character>> getPlayers();
 };
 
+#endif // PROJECT_TURNMANAGER_H
 
-#endif//PROJECT_TURNMANAGER_H

@@ -102,6 +102,9 @@ void Campaign::defaultLevel1(){
 //    mike.textureName = "imp";
     map.setStartCell(Position{0, 0});
 
+    Ogre enemy2{};
+    map.place(enemy2, Position{13, 4});
+
     TreasureChest chest{"chest1", 20};
     map.place(chest, Position{5, 7});
 

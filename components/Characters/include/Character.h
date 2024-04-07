@@ -54,9 +54,6 @@ class Character : public Movable,  public Observable{
         unique_ptr<Boots> boots;
         unique_ptr<Helmet> helmet;
 
-        // iterator for the worn items
-        typedef std::map<std::string, std::unique_ptr<Item>>::iterator iterator;
-
     };
 public:
 
@@ -287,7 +284,7 @@ public:
 
 
 private:
-    shared_ptr<WornItems> wornItems;
+//    shared_ptr<WornItems> wornItems;
 
     CharacterStrategy* strategy;
     int initiative = 1;
