@@ -396,7 +396,7 @@ Position MapCreator::askForSize() {
                     // Only allow numeric input for x and y
                     if (focusOnX) xInput += static_cast<char>(event.text.unicode);
                     if (focusOnY) yInput += static_cast<char>(event.text.unicode);
-                } else if (event.text.unicode == '\r') { // Enter key to switch focus or submit
+                } else if (event.text.unicode == '\r' || event.text.unicode == '\n') { // Enter key to switch focus or submit
                     if (focusOnName) {
                         focusOnName = false;
                         focusOnX = true;
