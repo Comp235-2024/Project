@@ -140,8 +140,13 @@ void GameScreen::Update(float deltaTime) {
             ChangeState(GameState::Idle);
             break;
         case GameState::Inventory:
+            //TODO Find a better way to only notify once
+            if(inventoryState==0)
+                this->notify("Inventory opened", "System");
 
-            ChangeState(GameState::Idle);
+            handleInventory();
+            inventoryState++;
+
             break;
         case GameState::Stats:
 
@@ -194,6 +199,9 @@ void GameScreen::Draw(float deltaTime) {
         handleStart();
     }
 
+    if(_gameState == GameState::Inventory){
+        drawInventory();
+    }
 
     // draw character view (if any)
 
@@ -256,6 +264,7 @@ void GameScreen::handleMouseButtonMap() {
             }
         } else if (_gameState == GameState::Attacking) {
             shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+            //TODO Update attack logic to use the player's attack value and the target's defense value
             if (target != nullptr) {
                 notify("Player attacked target", "Character");
                 _attackEnabled = false;
@@ -267,6 +276,8 @@ void GameScreen::handleMouseButtonMap() {
                 notify("No target found", "Character");
             }
         }
+
+        //TODO Add logic for interacting with Chests
     }
 }
 void GameScreen::handleKeyboardArrows() {
@@ -553,4 +564,86 @@ void GameScreen::drawStartScreen() {
     _data->window.draw(buttons->startText);
     _data->window.draw(campaignInfoBox);
     _data->window.draw(campaignInfoText);
+}
+
+void GameScreen::drawInventory() {
+    sf::Vector2u windowSize = _data->window.getSize();
+
+    // Background for the inventory screen
+    sf::RectangleShape inventoryScreen(sf::Vector2f(windowSize.x, windowSize.y));
+    inventoryScreen.setFillColor(sf::Color(72, 59, 58));// Dark grey color
+    inventoryScreen.setOutlineThickness(2);
+    inventoryScreen.setOutlineColor(sf::Color::Black);
+
+    // Calculate the positions and sizes, keeping the original proportions
+    float sectionMargin = windowSize.x * 0.02f;// Margin on the sides
+    float spacing = 10.0f;                     // Spacing between sections
+
+    // Calculate widths while maintaining the original size ratio
+    float wornItemsWidth = windowSize.x * 0.33f - sectionMargin - spacing / 2;
+    float backpackWidth = windowSize.x * 0.67f - sectionMargin - spacing / 2;
+
+    // Worn Items Section
+    sf::RectangleShape wornItemsSection(sf::Vector2f(wornItemsWidth, windowSize.y * 0.8f));
+    wornItemsSection.setFillColor(sf::Color(210, 180, 140));// Beige color
+    wornItemsSection.setOutlineThickness(2);
+    wornItemsSection.setOutlineColor(sf::Color::Black);
+    wornItemsSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+
+    // Worn Items Text
+    sf::Text wornItemsText;
+    wornItemsText.setFont(_data->assets.GetFont("My Font"));
+    wornItemsText.setCharacterSize(30);               // Bigger size
+    wornItemsText.setFillColor(sf::Color(30, 30, 30));// Darker color
+    wornItemsText.setString("Worn Items");
+    sf::FloatRect wornItemsTextRect = wornItemsText.getLocalBounds();
+    wornItemsText.setOrigin(wornItemsTextRect.left + wornItemsTextRect.width / 2.0f, wornItemsTextRect.top + wornItemsTextRect.height / 2.0f);
+    wornItemsText.setPosition(wornItemsSection.getPosition().x + wornItemsSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Backpack Section
+    sf::RectangleShape backpackSection(sf::Vector2f(backpackWidth, windowSize.y * 0.8f));
+    backpackSection.setFillColor(sf::Color(210, 180, 140));// Beige color
+    backpackSection.setOutlineThickness(2);
+    backpackSection.setOutlineColor(sf::Color::Black);
+    backpackSection.setPosition(sectionMargin + wornItemsWidth + spacing, windowSize.y * 0.1f);
+
+    // Backpack Text
+    sf::Text backpackText;
+    backpackText.setFont(_data->assets.GetFont("My Font"));
+    backpackText.setCharacterSize(30);               // Bigger size
+    backpackText.setFillColor(sf::Color(30, 30, 30));// Darker color
+    backpackText.setString("Backpack");
+    sf::FloatRect backpackTextRect = backpackText.getLocalBounds();
+    backpackText.setOrigin(backpackTextRect.left + backpackTextRect.width / 2.0f, backpackTextRect.top + backpackTextRect.height / 2.0f);
+    backpackText.setPosition(backpackSection.getPosition().x + backpackSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Exit Button
+    sf::RectangleShape exitButton(sf::Vector2f(100, 50));// Size of the button
+    exitButton.setFillColor(sf::Color(150, 50, 50));     // Button color
+    exitButton.setOutlineThickness(2);
+    exitButton.setOutlineColor(sf::Color::Black);
+    exitButton.setPosition(windowSize.x - 110, 10);// Positioned at the top right corner
+
+    // Exit Button Text
+    sf::Text exitButtonText;
+    exitButtonText.setFont(_data->assets.GetFont("My Font"));
+    exitButtonText.setCharacterSize(24);
+    exitButtonText.setFillColor(sf::Color::White);
+    exitButtonText.setString("Exit");
+    sf::FloatRect exitButtonTextRect = exitButtonText.getLocalBounds();
+    exitButtonText.setOrigin(exitButtonTextRect.left + exitButtonTextRect.width / 2.0f, exitButtonTextRect.top + exitButtonTextRect.height / 2.0f);
+    exitButtonText.setPosition(exitButton.getPosition().x + exitButton.getSize().x / 2, exitButton.getPosition().y + exitButton.getSize().y / 2);
+
+    // Drawing the inventory screen elements
+    _data->window.draw(inventoryScreen);
+    _data->window.draw(wornItemsSection);
+    _data->window.draw(backpackSection);
+    _data->window.draw(wornItemsText);
+    _data->window.draw(backpackText);
+    _data->window.draw(exitButton);
+    _data->window.draw(exitButtonText);
+}
+
+void GameScreen::handleInventory() {
+
 }

@@ -252,6 +252,11 @@ private:
     void HandleNpcActions();
     void handleStart();
     void drawStartScreen();
+
+    void handleInventory();
+    void drawInventory();
+
+    int inventoryState =0;
 };
 
 #endif // GAME_SCREEN_H
