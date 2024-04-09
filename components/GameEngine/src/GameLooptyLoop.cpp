@@ -19,7 +19,14 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     _data->window.setFramerateLimit(60);
 //    _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false);
     _data->assets.LoadFont("My Font", FONT_PATH);
-
+    _data->assets.LoadTexture("backButton", "../../assets/images/frames/backButton.png");
+    _data->assets.LoadTexture("nextButton", "../../assets/images/frames/nextButton.png");
+    _data->assets.LoadTexture("musicOn", "../../assets/images/frames/sound.png");
+    _data->assets.LoadTexture("musicOff", "../../assets/images/frames/sound_off.png");
+    _data->assets.LoadTexture("music1", "../../assets/images/frames/1.png");
+    _data->assets.LoadTexture("music2", "../../assets/images/frames/2.png");
+    _data->assets.LoadTexture("music3", "../../assets/images/frames/3.png");
+    _data->assets.LoadTexture("music4", "../../assets/images/frames/4.png");
     // Load floor textures
     string path = "../../assets/images/frames/floor_1.png";
     for (int i = 1; i < 9; ++i) {
@@ -58,7 +65,7 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     else {
         _data->music.setVolume(DEFAULT_MUSIC_VOL);
         _data->music.setLoop(true);
-        _data->music.play();
+        //_data->music.play();
     }
 
     if (_data->log->enabledModules.dice) {

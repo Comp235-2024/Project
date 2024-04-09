@@ -77,6 +77,11 @@ private:
      * @brief Represents the buttons for selecting character types.
      */
     struct Buttons {
+        Sprite dwarf;
+        Sprite elf;
+        Sprite lizard;
+        Sprite next;
+        Sprite back;
         RectangleShape CreateNimble; /**< The button for creating a nimble character. */
         Text CreateNimbleText; /**< The text for the nimble character button. */
         RectangleShape CreateBully; /**< The button for creating a bully character. */
@@ -107,6 +112,15 @@ private:
      */
     static void GenerateButton(const Font &font, const string &name, RectangleShape &button, Text &buttonText, Vector2f position);
 
+
+
+    /**
+     * @brief Generates a button sprite.
+     * @param button The button sprite to generate.
+     * @param position The position of the button sprite.
+     * @param texture The texture of the button sprite.
+     */
+    static void GenerateButton(Sprite& button, Vector2f position, Texture& texture);
     // Additional attributes for UI components go here
 };
 
