@@ -166,6 +166,8 @@ private:
         Text statsText;
         RectangleShape start;
         Text startText;
+        RectangleShape inventoryExit;
+        Text inventoryExitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -255,9 +257,13 @@ private:
     void drawStartScreen();
 
     void handleInventory();
-    void drawInventory();
+    void drawInventoryScreen();
+    void drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackItemsSection);
+
 
     int inventoryState =0;
+
+    void handleInventoryExitButton();
 };
 
 #endif // GAME_SCREEN_H

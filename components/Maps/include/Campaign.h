@@ -35,6 +35,7 @@ private:
 
 public:
     Player mike;
+
     /**
      * @brief Default constructor for Campaign class. Generates a default campaign.
      */

@@ -78,11 +78,11 @@ void GameScreen::Init() {
 
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
-        _campaign.mike = Character(5, "knight");
+        _campaign.mike = Player(5, "knight");
     }
     _currentMap->place(_campaign.mike, start);
     _campaign.mike.position = start;
-    _player = make_shared<Character>(_campaign.mike);
+    _player = make_shared<Player>(_campaign.mike);
 
     // Turn manager portion
     _turnManager = make_shared<TurnManager>();
@@ -200,7 +200,7 @@ void GameScreen::Draw(float deltaTime) {
     }
 
     if(_gameState == GameState::Inventory){
-        drawInventory();
+        drawInventoryScreen();
     }
 
     // draw character view (if any)
@@ -566,7 +566,7 @@ void GameScreen::drawStartScreen() {
     _data->window.draw(campaignInfoText);
 }
 
-void GameScreen::drawInventory() {
+void GameScreen::drawInventoryScreen() {
     sf::Vector2u windowSize = _data->window.getSize();
 
     // Background for the inventory screen
@@ -641,9 +641,127 @@ void GameScreen::drawInventory() {
     _data->window.draw(wornItemsText);
     _data->window.draw(backpackText);
     _data->window.draw(exitButton);
+    buttons->inventoryExit = exitButton;
     _data->window.draw(exitButtonText);
+    buttons->inventoryExitText = exitButtonText;
+
+    drawInventoryItems(&wornItemsSection, &backpackSection);
 }
 
-void GameScreen::handleInventory() {
+void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackSection) {
+    Backpack* backpack = _player->getBackpack();
+    WornItemsContainer* wornItems = _player->getWornItems();
 
+    int backpackCapacity = backpack->getCapacity();
+    float margin = 20.0f; // Margin for spacing
+
+    // Adjusting sideLength to make blocks proportional and span vertically
+    float availableWidth = wornItemsSection->getSize().x - 2 * margin; // Assuming margin on both sides
+    float maxWidthFor3Items = wornItemsSection->getSize().x - 4 * margin; // 4 margins total for 3 items
+    float sideLength = std::min(maxWidthFor3Items / 3, (wornItemsSection->getSize().y - 7 * margin) / 6);
+
+    struct ItemSlot {
+        sf::Vector2f position;
+        std::string label;
+    };
+
+    int itemIndex=0;
+    // Recalculate horizontal positions based on the new sideLength
+    float armorX = wornItemsSection->getSize().x / 2 - sideLength / 2;
+    float weaponX = armorX - sideLength - margin; // Adjusted to ensure it doesn't stick out
+    float shieldRingX = armorX + sideLength + margin; // Adjusted to ensure it doesn't stick out
+
+    std::vector<ItemSlot> itemSlots = {
+            {{armorX, margin}, "Helmet"},
+            {{armorX, 2 * margin + sideLength}, "Armor"},
+            {{weaponX, 2 * margin + sideLength}, "Weapon"},
+            {{shieldRingX, 2 * margin + sideLength}, "Shield/Ring"},
+            {{armorX, 3 * margin + 2 * sideLength}, "Belt"},
+            {{armorX, 4 * margin + 3 * sideLength}, "Boots"}
+    };
+
+    for (const auto& slot : itemSlots) {
+        sf::RectangleShape itemShape(sf::Vector2f(sideLength, sideLength));
+        itemShape.setPosition(wornItemsSection->getPosition() + slot.position);
+        itemShape.setFillColor(sf::Color(200, 200, 200)); // Placeholder color
+        itemShape.setOutlineThickness(1);
+        itemShape.setOutlineColor(sf::Color::Black);
+
+        // Draw the item slot
+        _data->window.draw(itemShape);
+
+        if(itemIndex < wornItems->getWornItemsContainerStorage().size()){
+            Item* item = wornItems->getWornItemsContainerStorage()[itemIndex];
+            if (item != nullptr) {
+                // Logic to draw the item's icon or name
+            }
+        }
+
+        // Text labels for each item slot
+        sf::Text label;
+        label.setFont(_data->assets.GetFont("My Font"));
+        label.setString(slot.label);
+        label.setCharacterSize(14);
+        label.setFillColor(sf::Color::Black);
+        sf::FloatRect textRect = label.getLocalBounds();
+        label.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        label.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2, itemShape.getPosition().y - margin / 2);
+        _data->window.draw(label);
+
+        itemIndex++;
+    }
+
+    // Backpack Section - Make blocks square and displayed horizontally
+    // Adjust the number of rows and columns based on the capacity to maintain square shape
+    int backpackRows = std::ceil(std::sqrt(backpackCapacity));
+    int backpackColumns = backpackRows; // Square layout
+    float backpackItemSize = std::min((backpackSection->getSize().x - (backpackColumns + 1) * margin) / backpackColumns,
+                                      (backpackSection->getSize().y - (backpackRows + 1) * margin) / backpackRows); // Ensure squares
+
+    for (int i = 0; i < backpackRows; i++) {
+        for (int j = 0; j < backpackColumns; j++) {
+            int index = i * backpackColumns + j;
+            if (index < backpackCapacity) {
+                sf::RectangleShape itemShape(sf::Vector2f(backpackItemSize, backpackItemSize)); // Square shape
+                itemShape.setPosition(backpackSection->getPosition().x + j * (backpackItemSize + margin) + margin,
+                                      backpackSection->getPosition().y + i * (backpackItemSize + margin) + margin); // Positioned with margins
+                itemShape.setFillColor(sf::Color(150, 150, 150)); // Placeholder color
+                itemShape.setOutlineThickness(2);
+                itemShape.setOutlineColor(sf::Color::Black);
+
+                // Check if there's an item to draw
+                if (index < backpack->getBackpackStorage().size()) {
+                    Item* item = backpack->getBackpackStorage()[index];
+                    if (item != nullptr) {
+                        //TODO Since there are no images for the items, we will draw the item's name instead
+                        sf::Text itemText;
+                        itemText.setFont(_data->assets.GetFont("My Font")); // Make sure you have a font set up in your assets
+                        itemText.setCharacterSize(14); // Adjust the size as needed
+                        itemText.setFillColor(sf::Color::Black); // Text color
+                        itemText.setString("Item " + item->getName()); // Placeholder text
+
+                        // Center the text within its block
+                        sf::FloatRect textBounds = itemText.getLocalBounds();
+                        itemText.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+                        itemText.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2.0f, itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
+
+                        _data->window.draw(itemText);
+                    }
+                }
+
+                _data->window.draw(itemShape);
+            }
+        }
+    }
+}
+void GameScreen::handleInventory() {
+    //TODO Handle item interactions in the inventory screen
+
+    handleInventoryExitButton();
+}
+
+void GameScreen::handleInventoryExitButton() {
+    if(_data->inputs.IsButtonClicked(buttons->inventoryExit, Mouse::Left, _data->window)) {
+        ChangeState(GameState::Idle);
+    }
 }
