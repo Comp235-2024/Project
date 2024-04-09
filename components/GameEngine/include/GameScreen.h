@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "State.h"
 #include "TurnManager.h"
+#include "Campaign.h"
 
 /**
  * @class GameScreen
@@ -107,8 +108,8 @@ private:
     RectangleShape _bg; /**< The background shape. */
     Vector2u _windowSize; /**< The window size. */
 
-    shared_ptr<Character> _player; /**< The player character. */
-    vector<shared_ptr<Character>> _npcs; /**< The non-player characters. */
+    shared_ptr<Player> _player; /**< The player character. */
+    vector<shared_ptr<NonPlayerCharacter>> _npcs; /**< The non-player characters. */
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
 

@@ -25,6 +25,8 @@ public:
 
     explicit Player(int level);
 
+    Player(int level, string TextureName);
+
     Player getPlayer();
 
     //TODO STANDARDIZED THIS METHOD (SEE DEFINITION) IT NOW ASSUMES THAT THE ITEM IN HAND IS AT INDEX 3
@@ -32,9 +34,9 @@ public:
 
     void setItemInHand(Item* item);
 
-    Backpack getBackpack();
+    Backpack* getBackpack();
 
-    WornItemsContainer getWornItems();
+    WornItemsContainer* getWornItems();
 
 };
 
