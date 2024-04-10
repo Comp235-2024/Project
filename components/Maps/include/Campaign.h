@@ -34,7 +34,8 @@ private:
     int ind;
 
 public:
-    Character mike;
+    Player mike;
+
     /**
      * @brief Default constructor for Campaign class. Generates a default campaign.
      */

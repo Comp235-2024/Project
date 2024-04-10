@@ -33,6 +33,8 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
         _data->assets.LoadTexture(character, format("../../assets/images/frames/{}_idle_anim_f0.png", character));
     }
 
+    _data->assets.LoadTexture("sword", "../../assets/images/frames/weapon_golden_sword.png");
+
     _data->assets.LoadTexture("wall_mid", WALL_IMAGE_PATH);
     _data->assets.LoadTexture("crate", CHEST_IMAGE_PATH);
     _data->assets.LoadTexture("door", DOOR_IMAGE_PATH);
