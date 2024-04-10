@@ -8,7 +8,7 @@
 #include "MainMenu.h"
 #include "GameScreen.h"
 #include "OptionsScreen.h"
-#include "MapCreator.h"
+#include "MapEditor.h"
 
 MainMenu::MainMenu(MainDataRef data) : _data(data) {}
 
@@ -89,7 +89,7 @@ void MainMenu::HandleInput() {
         //Map Creator
         else if (_data->inputs.IsButtonClicked(buttons->editMap, Mouse::Left, _data->window)) {
             this->notify("Switching to map editor", "System");
-            _data->stateMachine.AddState(StateRef(new MapCreator(_data)), false, _data->log);
+            _data->stateMachine.AddState(StateRef(new MapEditor(_data)), false, _data->log);
         }
 
         //Character Creator
@@ -97,7 +97,6 @@ void MainMenu::HandleInput() {
             this->notify("Switching to character editor", "System");
             _data->stateMachine.AddState(StateRef(new CharacterCreator(_data)), false, _data->log);
         }
-
         //Load Previous Game
         else if (_data->inputs.IsButtonClicked(buttons->load, Mouse::Left, _data->window)) {
             this->notify("Switching to load menu", "System");

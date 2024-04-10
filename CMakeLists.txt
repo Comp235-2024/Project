@@ -41,7 +41,11 @@ file(GLOB_RECURSE SOURCES
 
 
 # Define the executable
-add_executable(Project ${SOURCES})
+add_executable(Project ${SOURCES}
+        components/GameEngine/include/MapLoader.h
+        components/GameEngine/src/MapLoader.cpp
+        components/GameEngine/include/MapEditor.h
+        components/GameEngine/src/MapEditor.cpp)
 
 # Link the executable with the SFML and JSON libraries
 target_link_libraries(Project PRIVATE sfml-graphics sfml-audio nlohmann_json::nlohmann_json)
