@@ -133,6 +133,15 @@ void GameScreen::Update(float deltaTime) {
             onMoveOrAttack();
             break;
         case GameState::Interacting:
+            if(chestFlag==0)
+                this->notify("Player opened a chest", "Character");
+
+            chestFlag++;
+            handleChest();
+
+            if(chestFlag==0)
+                this->notify("Player closed the chest", "Character");
+
             break;
         case GameState::RollingDice:
             _diceModifier = _data->dice.roll(_diceType);
@@ -141,11 +150,11 @@ void GameScreen::Update(float deltaTime) {
             break;
         case GameState::Inventory:
             //TODO Find a better way to only notify once
-            if(inventoryState==0)
+            if(inventoryFlag==0)
                 this->notify("Inventory opened", "System");
 
             handleInventory();
-            inventoryState++;
+            inventoryFlag++;
 
             break;
         case GameState::Stats:
@@ -203,6 +212,10 @@ void GameScreen::Draw(float deltaTime) {
         drawInventoryScreen();
     }
 
+    if(_gameState==GameState::Interacting){
+        drawChestScreen();
+    }
+
     // draw character view (if any)
 
     // add our names
@@ -247,37 +260,50 @@ void GameScreen::HandleInput() {
     }
 }
 void GameScreen::handleMouseButtonMap() {
-    if (Mouse::isButtonPressed(Mouse::Left) && (_gameState == GameState::Moving || _gameState == GameState::Attacking)) {
+    if (Mouse::isButtonPressed(Mouse::Left)) {
         Vector2i mousePos = Mouse::getPosition(_data->window);
         Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
         Vector2i gridPos = Vector2i{static_cast<int>(worldPos.x / _mapObserver.SIZE_MULT), static_cast<int>(worldPos.y / _mapObserver.SIZE_MULT)};
-        if (_gameState == GameState::Moving) {
-            vector<Position> path = _currentMap->findPath(_player->position, gridPos);
-            if (path.size() < _diceModifier + 2 && path.size() > 0) {
-                if (_currentMap->move(_player->position, gridPos)) {
-                    _player->position = gridPos;
-                    notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
-                    _moveEnabled = false;
-                    onMoveOrAttack();
+
+        if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
+            if (_gameState == GameState::Moving) {
+                vector<Position> path = _currentMap->findPath(_player->position, gridPos);
+                if (path.size() < _diceModifier + 2 && path.size() > 0) {
+                    if (_currentMap->move(_player->position, gridPos)) {
+                        _player->position = gridPos;
+                        notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
+                        _moveEnabled = false;
+                        onMoveOrAttack();
+                        ChangeState(GameState::Idle);
+                    }
+                }
+            } else if (_gameState == GameState::Attacking) {
+                shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+                //TODO Update attack logic to use the player's attack value and the target's defense value
+                if (target != nullptr) {
+                    notify("Player attacked target", "Character");
+                    _attackEnabled = false;
+                    notify("Enemy died due to an unbelievably strong blow", "Character");
+                    _currentMap->remove(gridPos);
+                    _turnManager->removePlayer(target);
                     ChangeState(GameState::Idle);
+                } else {
+                    notify("No target found", "Character");
                 }
             }
-        } else if (_gameState == GameState::Attacking) {
-            shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
-            //TODO Update attack logic to use the player's attack value and the target's defense value
-            if (target != nullptr) {
-                notify("Player attacked target", "Character");
-                _attackEnabled = false;
-                notify("Enemy died due to an unbelievably strong blow", "Character");
-                _currentMap->remove(gridPos);
-                _turnManager->removePlayer(target);
-                ChangeState(GameState::Idle);
-            } else {
-                notify("No target found", "Character");
-            }
         }
+        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr) {
+            //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
+            shared_ptr<TreasureChest> chest = dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+            if (chest){
+                if(isAdjacent(_player->position, gridPos)){
+                    ChangeState(GameState::Interacting);
+                    //TODO Add logic for interacting with Chests
 
-        //TODO Add logic for interacting with Chests
+                }
+            }
+
+        }
     }
 }
 void GameScreen::handleKeyboardArrows() {
@@ -350,6 +376,7 @@ void GameScreen::scanForNearbyObjects() {
         if (_currentMap->isInBounds(newPos)) {
             if (dynamic_cast<TreasureChest *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
+
             } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
                 this->Init();
@@ -359,6 +386,12 @@ void GameScreen::scanForNearbyObjects() {
         }
     }
 }
+
+bool GameScreen::isAdjacent(const sf::Vector2i &pos1, const sf::Vector2i &pos2){
+    if(_currentMap->isInBounds(pos1) && _currentMap->isInBounds(pos2))
+        return std::abs(pos1.x - pos2.x) <= 1 && std::abs(pos1.y - pos2.y) <= 1 && !(pos1 == pos2);
+}
+
 Vector2i GameScreen::positionToVector2i(Position position) {
     return Vector2i{position.x, position.y};
 }
@@ -763,5 +796,168 @@ void GameScreen::handleInventory() {
 void GameScreen::handleInventoryExitButton() {
     if(_data->inputs.IsButtonClicked(buttons->inventoryExit, Mouse::Left, _data->window)) {
         ChangeState(GameState::Idle);
+        this->notify("Inventory closed", "System");
+        inventoryFlag=0;
+    }
+}
+
+void GameScreen::drawChestScreen() {
+    sf::Vector2u windowSize = _data->window.getSize();
+
+    // Background for the chest screen
+    sf::RectangleShape chestScreen(sf::Vector2f(windowSize.x, windowSize.y));
+    chestScreen.setFillColor(sf::Color(72, 59, 58)); // Dark grey color
+    chestScreen.setOutlineThickness(2);
+    chestScreen.setOutlineColor(sf::Color::Black);
+
+    float sectionMargin = windowSize.x * 0.02f; // Margin on the sides
+    float spacing = 10.0f; // Spacing between sections
+
+    // Half the width for each section (backpack and chest), minus margins and spacing
+    float sectionWidth = (windowSize.x - 2 * sectionMargin - spacing) / 2;
+
+    // Backpack Section - Left
+    sf::RectangleShape backpackSection(sf::Vector2f(sectionWidth, windowSize.y * 0.8f));
+    backpackSection.setFillColor(sf::Color(210, 180, 140)); // Beige color
+    backpackSection.setOutlineThickness(2);
+    backpackSection.setOutlineColor(sf::Color::Black);
+    backpackSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+
+    // Backpack Text
+    sf::Text backpackText;
+    backpackText.setFont(_data->assets.GetFont("My Font"));
+    backpackText.setString("Backpack");
+    backpackText.setCharacterSize(30);
+    backpackText.setFillColor(sf::Color(30, 30, 30));
+    sf::FloatRect backpackTextRect = backpackText.getLocalBounds();
+    backpackText.setOrigin(backpackTextRect.width / 2, backpackTextRect.height / 2);
+    backpackText.setPosition(backpackSection.getPosition().x + backpackSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Chest Section - Right
+    sf::RectangleShape chestSection(sf::Vector2f(sectionWidth, windowSize.y * 0.8f));
+    chestSection.setFillColor(sf::Color(210, 180, 140)); // Beige color, similar to backpack section
+    chestSection.setOutlineThickness(2);
+    chestSection.setOutlineColor(sf::Color::Black);
+    chestSection.setPosition(sectionMargin + sectionWidth + spacing, windowSize.y * 0.1f);
+
+    // Chest Text
+    sf::Text chestText;
+    chestText.setFont(_data->assets.GetFont("My Font"));
+    chestText.setString("Chest");
+    chestText.setCharacterSize(30);
+    chestText.setFillColor(sf::Color(30, 30, 30));
+    sf::FloatRect chestTextRect = chestText.getLocalBounds();
+    chestText.setOrigin(chestTextRect.width / 2, chestTextRect.height / 2);
+    chestText.setPosition(chestSection.getPosition().x + chestSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Exit Button
+    sf::RectangleShape exitButton(sf::Vector2f(100, 50));// Size of the button
+    exitButton.setFillColor(sf::Color(150, 50, 50));     // Button color
+    exitButton.setOutlineThickness(2);
+    exitButton.setOutlineColor(sf::Color::Black);
+    exitButton.setPosition(windowSize.x - 110, 10);// Positioned at the top right corner
+
+    //Exit Button text
+    sf::Text exitButtonText;
+    exitButtonText.setFont(_data->assets.GetFont("My Font"));
+    exitButtonText.setCharacterSize(24);
+    exitButtonText.setFillColor(sf::Color::White);
+    exitButtonText.setString("Exit");
+    sf::FloatRect exitButtonTextRect = exitButtonText.getLocalBounds();
+    exitButtonText.setOrigin(exitButtonTextRect.left + exitButtonTextRect.width / 2.0f, exitButtonTextRect.top + exitButtonTextRect.height / 2.0f);
+    exitButtonText.setPosition(exitButton.getPosition().x + exitButton.getSize().x / 2, exitButton.getPosition().y + exitButton.getSize().y / 2);
+
+
+    // Drawing the chest screen elements
+    _data->window.draw(chestScreen);
+    _data->window.draw(backpackSection);
+    _data->window.draw(chestSection);
+    _data->window.draw(backpackText);
+    _data->window.draw(chestText);
+    _data->window.draw(exitButton);
+    buttons->chestExit = exitButton;
+    _data->window.draw(exitButtonText);
+    buttons->chestExitText = exitButtonText;
+
+    //TODO Call drawChestItems with the position of the chest
+
+}
+
+void GameScreen::drawChestItems(Position position, sf::RectangleShape *chestItemsSection, sf::RectangleShape *backpackItemsSection) {
+    Backpack* backpack = _player->getBackpack();
+    std::shared_ptr<TreasureChest> chest = std::dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[position.y][position.x]); // This method needs to be implemented based on your game's design.
+
+    int backpackCapacity = backpack->getCapacity();
+    int chestCapacity = chest->getCapacity(); // Assuming Chest has a similar method to get its capacity.
+    float margin = 20.0f; // Margin for spacing
+
+    // Common setup for both sections
+    float sectionWidth = chestItemsSection->getSize().x - 2 * margin; // Assuming equal width for both sections
+    int rows = std::ceil(std::sqrt(std::max(backpackCapacity, chestCapacity))); // Determine row count based on the larger of backpack or chest capacity
+    float itemSize = std::min((chestItemsSection->getSize().x - (rows + 1) * margin) / rows,
+                              (chestItemsSection->getSize().y - (rows + 1) * margin) / rows); // Ensure squares
+
+    // Draw backpack items
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < rows; j++) {
+            int index = i * rows + j;
+            if (index < backpackCapacity) {
+                sf::RectangleShape itemShape(sf::Vector2f(itemSize, itemSize)); // Square shape
+                itemShape.setPosition(backpackItemsSection->getPosition().x + j * (itemSize + margin) + margin,
+                                      backpackItemsSection->getPosition().y + i * (itemSize + margin) + margin); // Positioned with margins
+                itemShape.setFillColor(sf::Color(150, 150, 150)); // Placeholder color
+                itemShape.setOutlineThickness(2);
+                itemShape.setOutlineColor(sf::Color::Black);
+
+                if (index < backpack->getBackpackStorage().size()) {
+                    Item* item = backpack->getBackpackStorage()[index];
+                    if (item != nullptr) {
+                        // Logic to draw the item's name for the backpack
+                        // Similar to the provided method
+                    }
+                }
+
+                _data->window.draw(itemShape);
+            }
+        }
+    }
+
+    // Draw chest items
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < rows; j++) {
+            int index = i * rows + j;
+            if (index < chestCapacity) {
+                sf::RectangleShape itemShape(sf::Vector2f(itemSize, itemSize)); // Square shape
+                itemShape.setPosition(chestItemsSection->getPosition().x + j * (itemSize + margin) + margin,
+                                      chestItemsSection->getPosition().y + i * (itemSize + margin) + margin); // Positioned with margins
+                itemShape.setFillColor(sf::Color(150, 150, 150)); // Placeholder color
+                itemShape.setOutlineThickness(2);
+                itemShape.setOutlineColor(sf::Color::Black);
+
+                if (index < chest->getSize()) {
+                    Item* item = chest->getTreasureChestStorage()[index];
+                    if (item != nullptr) {
+                        // Logic to draw the item's name for the chest
+                        // This could be identical to the backpack logic, adjusted for the chest's items
+                    }
+                }
+
+                _data->window.draw(itemShape);
+            }
+        }
+    }
+}
+
+void GameScreen::handleChest() {
+    //TODO Handle item interactions in the chest screen
+
+    handleChestExitButton();
+}
+
+void GameScreen::handleChestExitButton() {
+    if(_data->inputs.IsButtonClicked(buttons->chestExit, Mouse::Left, _data->window)) {
+        ChangeState(GameState::Idle);
+        this->notify("Chest closed", "System");
+        chestFlag=0;
     }
 }

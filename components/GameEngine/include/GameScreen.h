@@ -168,6 +168,8 @@ private:
         Text startText;
         RectangleShape inventoryExit;
         Text inventoryExitText;
+        RectangleShape chestExit;
+        Text chestExitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -216,7 +218,17 @@ private:
      * 
      * This function scans for nearby objects in the current map and performs actions based on the objects found.
      */
-    void scanForNearbyObjects();
+     void scanForNearbyObjects();
+
+     /**
+      * @brief Checks if the position are within 1 cell of each other (Diagonals included)
+      * @brief Does not do type checking
+      * @param pos1
+      * @param pos2
+      * @return
+      */
+     bool isAdjacent(const Vector2i& pos1, const Vector2i& pos2);
+
 
     /**
      * @brief Converts a position to a Vector2i.
@@ -259,11 +271,16 @@ private:
     void handleInventory();
     void drawInventoryScreen();
     void drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackItemsSection);
-
-
-    int inventoryState =0;
-
+    //Since the inventory screen is a bit more complex, we need to keep track of the current state
+    //Due to the continuous loop, we need to notify that the state is inventory only once
+    int inventoryFlag =0;
     void handleInventoryExitButton();
+
+    void drawChestScreen();
+    void drawChestItems(Position ,RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
+    void handleChest();
+    void handleChestExitButton();
+    int chestFlag =0;
 };
 
 #endif // GAME_SCREEN_H
