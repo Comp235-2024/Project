@@ -27,8 +27,16 @@ Backpack* Player::getBackpack() {
     return &backpack;
 }
 
+void Player::setBackpack(Backpack* backpack) {
+    this->backpack = *backpack;
+}
+
 WornItemsContainer* Player::getWornItems() {
     return &wornItems;
+}
+
+void Player::setWornItems(WornItemsContainer* wornItems) {
+    this->wornItems = *wornItems;
 }
 
 Item* Player::getItemInHand() {

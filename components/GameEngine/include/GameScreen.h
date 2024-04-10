@@ -277,10 +277,13 @@ private:
     void handleInventoryExitButton();
 
     void drawChestScreen();
-    void drawChestItems(Position ,RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
+    Position chestPositionFlag;
+    void drawChestItems(RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
     void handleChest();
     void handleChestExitButton();
     int chestFlag =0;
+
+    void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
 };
 
 #endif // GAME_SCREEN_H

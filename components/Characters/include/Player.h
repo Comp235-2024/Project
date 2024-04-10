@@ -36,7 +36,11 @@ public:
 
     Backpack* getBackpack();
 
+    void setBackpack(Backpack* backpack);
+
     WornItemsContainer* getWornItems();
+
+    void setWornItems(WornItemsContainer* wornItems);
 
 };
 
