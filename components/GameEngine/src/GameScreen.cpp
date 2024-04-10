@@ -238,6 +238,7 @@ void GameScreen::Draw(float deltaTime) {
         handleStart();
     }
 
+
     if(_gameState == GameState::Inventory){
         drawInventoryScreen();
     }
@@ -343,6 +344,7 @@ void GameScreen::handleMouseButtonMap() {
                     //TODO Add logic for interacting with Chests
 
                 }
+
             }
 
         }
