@@ -47,6 +47,17 @@
      the `TurnManager` can be reset or cleared for the next game or level with `resetTurns()` or `clear()`.
 
     This process ensures a structured and fair turn-based system where each character gets to act in an ordered manner, allowing for strategic gameplay decisions.
+
+
+    How Dice rolls work
+
+    1. D20 dice has to be rolled by the player at the start of their turn to determine the number of tiles they can move or the range of their attack.
+
+    2. Then the roll button is disabled and the player can move or attack based on the number rolled.
+
+    3. When attacking, another D20 dice is rolled to determine the success of the attack. The number is kept local to the method.
+
+    4. Everything is reset at the end of the player's turn.
  */
 
 #include "GameScreen.h"
@@ -265,6 +276,15 @@ void GameScreen::HandleInput() {
                 ChangeState(GameState::Inventory);
             } else if (_data->inputs.IsButtonClicked(buttons->stats, Mouse::Left, _data->window, _sideBarPosition)) {
                 ChangeState(GameState::Stats);
+            } else if (_data->inputs.IsButtonClicked(buttons->endTurn, Mouse::Left, _data->window, _sideBarPosition)) {
+                ChangeState(GameState::Idle);
+                this->Draw(0.0f); // to reset the circle drawn if attack or move did not happen
+                _enableFlags->move = true;
+                _enableFlags->attack = true;
+                _enableFlags->inventory = true;
+                _enableFlags->roll_dice = true;
+                _enableFlags->interact = true;
+                _turnManager->nextTurn();
             }
         }
 
@@ -291,9 +311,9 @@ void GameScreen::handleMouseButtonMap() {
                     if (_currentMap->move(_player->position, gridPos)) {
                         _player->position = gridPos;
                         notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
-                        _moveEnabled = false;
                         onMoveOrAttack();
                         ChangeState(GameState::Idle);
+                        _enableFlags->move = false;
                     }
                 }
             } else if (_gameState == GameState::Attacking) {
@@ -301,15 +321,17 @@ void GameScreen::handleMouseButtonMap() {
                 //TODO Update attack logic to use the player's attack value and the target's defense value
                 if (target != nullptr) {
                     notify("Player attacked target", "Character");
-                    _attackEnabled = false;
                     notify("Enemy died due to an unbelievably strong blow", "Character");
                     _currentMap->remove(gridPos);
                     _turnManager->removePlayer(target);
                     ChangeState(GameState::Idle);
+                    _enableFlags->attack = false;
+                    
                 } else {
                     notify("No target found", "Character");
                 }
             }
+                
         }
         else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr) {
             //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
@@ -399,6 +421,14 @@ void GameScreen::scanForNearbyObjects() {
 
             } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
+                _turnManager->resetTurns();
+                ChangeState(GameState::Idle);
+                this->Draw(0.0f); // to reset the circle drawn if attack or move did not happen
+                _enableFlags->move = true;
+                _enableFlags->attack = true;
+                _enableFlags->inventory = true;
+                _enableFlags->roll_dice = true;
+                _enableFlags->interact = true;
                 this->Init();
             } else if (dynamic_cast<Character *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Character detected nearby", "System");
@@ -429,27 +459,45 @@ void GameScreen::generateSideBarTexture() {
         activate_buttons = false;
     }
 
-    generateButton(buttons->move, buttons->moveText, "Move", 0, activate_buttons);
+    generateButton(buttons->move, buttons->moveText, "Move", 0, activate_buttons, buttonColorFill);
+    if (!_enableFlags->move || _enableFlags->roll_dice) {
+        buttons->move.setFillColor(buttonInactiveColor);
+    }
     _sideBarTexture.draw(buttons->move);
     _sideBarTexture.draw(buttons->moveText);
 
-    generateButton(buttons->attack, buttons->attackText, "Attack", 1, activate_buttons);
+    generateButton(buttons->attack, buttons->attackText, "Attack", 1, activate_buttons, buttonColorFill);
+    if (!_enableFlags->attack || _enableFlags->roll_dice) {
+        buttons->attack.setFillColor(buttonInactiveColor);
+    }
     _sideBarTexture.draw(buttons->attack);
     _sideBarTexture.draw(buttons->attackText);
 
-    generateButton(buttons->rollDice, buttons->rollDiceText, format("Roll {}", _diceType), 2, activate_buttons);
+    generateButton(buttons->rollDice, buttons->rollDiceText, format("Roll {}", _diceType), 2, activate_buttons, buttonColorFill);
+    if (!_enableFlags->roll_dice) {
+        buttons->rollDice.setFillColor(buttonInactiveColor);
+    } else {
+        buttons->rollDice.setFillColor(buttonColorFill);
+    }
     _sideBarTexture.draw(buttons->rollDice);
     _sideBarTexture.draw(buttons->rollDiceText);
 
-    generateButton(buttons->inventory, buttons->inventoryText, "Inventory", 3, activate_buttons);
+    generateButton(buttons->inventory, buttons->inventoryText, "Inventory", 3, activate_buttons, buttonColorFill);
+    if (!_enableFlags->inventory) {
+        buttons->inventory.setFillColor(buttonInactiveColor);
+    }
     _sideBarTexture.draw(buttons->inventory);
     _sideBarTexture.draw(buttons->inventoryText);
 
-    generateButton(buttons->stats, buttons->statsText, "Stats", 4, true);
+    generateButton(buttons->stats, buttons->statsText, "Stats", 4, true, buttonColorFill);
     _sideBarTexture.draw(buttons->stats);
     _sideBarTexture.draw(buttons->statsText);
 
-    generateButton(buttons->exit, buttons->exitText, "Exit", 5, true);
+    generateButton(buttons->endTurn, buttons->endTurnText, "End Turn", 5, true, buttonEndTurnColor);
+    _sideBarTexture.draw(buttons->endTurn);
+    _sideBarTexture.draw(buttons->endTurnText);
+
+    generateButton(buttons->exit, buttons->exitText, "Exit", 6, true, buttonExitGameColor);
     _sideBarTexture.draw(buttons->exit);
     _sideBarTexture.draw(buttons->exitText);
 
@@ -458,7 +506,7 @@ void GameScreen::generateSideBarTexture() {
     _sideBarTexture.display();
 }
 
-void GameScreen::generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active) {
+void GameScreen::generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active, Color buttonColor) {
     Font &font = _data->assets.GetFont("My Font");
     Vector2f position = Vector2f(_sideBarTexture.getSize().x / 2.0f, _sideBarTexture.getSize().y / 12.0f * (buttonPos + 1));
 
@@ -467,11 +515,11 @@ void GameScreen::generateButton(RectangleShape &button, Text &buttonText, const 
     button.setSize(size);
     button.setOrigin(size.x / 2.0f, size.y / 2.0f);
     button.setPosition(position);
-    if (active) {
-        button.setFillColor(buttonColorFill);
-    } else {
-        button.setFillColor(buttonInactiveColor);
-    }
+//    if (active) {
+    button.setFillColor(buttonColor);
+//    } else {
+//        button.setFillColor(buttonInactiveColor);
+//    }
 
     buttonText.setString(name);
     buttonText.setFont(font);
@@ -525,14 +573,18 @@ void GameScreen::HandleNpcActions() {
 void GameScreen::ChangeState(GameState newState) {
     // If the current game state is Moving, Attacking, Interacting, or Inventory and the new state is Idle,
     // advance the turn to the NPC's.
-    if ((_gameState == GameState::Moving || _gameState == GameState::Attacking ||
-        _gameState == GameState::Interacting || _gameState == GameState::Inventory) && newState == GameState::Idle) {
-        _turnManager->nextTurn();
+//    if ((_gameState == GameState::Moving || _gameState == GameState::Attacking ||
+//        _gameState == GameState::Interacting || _gameState == GameState::Inventory) && newState == GameState::Idle) {
+//        _turnManager->nextTurn();
+//    }
+    if (_gameState == GameState::Attacking) {
+        _enableFlags->attack = false; // This is done in case tha attack did not happen
+    } else if (_gameState == GameState::Moving) {
+        _enableFlags->move = false; // This is done in case tha move did not happen
     }
 
-    _gameState = newState;
 
-    switch (_gameState) {
+    switch (newState) {
         case GameState::StartScreen:
             this->notify("Game state changed to StartScreen", "System");
             break;
@@ -540,18 +592,46 @@ void GameScreen::ChangeState(GameState newState) {
             this->notify("Game state changed to Idle", "System");
             break;
         case GameState::Moving:
+            if (!_enableFlags->move){
+                this->notify("Player has already moved", "System");
+                return;
+            } else if (_enableFlags->roll_dice){
+                this->notify("Player needs to roll the dice first", "System");
+                return;
+            }
             this->notify("Game state changed to Moving", "System");
             break;
         case GameState::Attacking:
+            if (!_enableFlags->attack){
+                this->notify("Player has already attacked", "System");
+                return;
+            } else if (_enableFlags->roll_dice){
+                this->notify("Player needs to roll the dice first", "System");
+                return;
+            }
             this->notify("Game state changed to Attacking", "System");
             break;
         case GameState::Interacting:
+            if (!_enableFlags->interact){
+                this->notify("Player has already interacted", "System");
+                return;
+            }
             this->notify("Game state changed to Interacting", "System");
             break;
         case GameState::RollingDice:
+            if (!_enableFlags->roll_dice) {
+                this->notify("Player has already rolled the dice", "System");
+                return;
+            }
+            _enableFlags->roll_dice = false;
             this->notify("Game state changed to RollingDice", "System");
+
             break;
         case GameState::Inventory:
+            if (!_enableFlags->inventory){
+                this->notify("Player has already interacted with the inventory", "System");
+                return;
+            }
             this->notify("Game state changed to Inventory", "System");
             break;
         case GameState::Stats:
@@ -561,6 +641,8 @@ void GameScreen::ChangeState(GameState newState) {
             this->notify("Game state changed to Exiting", "System");
             break;
     }
+
+    _gameState = newState;
 }
 void GameScreen::handleStart() {
 

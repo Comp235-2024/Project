@@ -28,6 +28,11 @@ class GameScreen : public State {
 struct enable_flags {
     bool turn_manager = false;
     bool draw_whose_turn = false;
+    bool attack = true;
+    bool move = true;
+    bool inventory = true;
+    bool roll_dice = true;
+    bool interact = true;
 };
 
 enum class GameState {
@@ -116,6 +121,8 @@ private:
     const Color buttonColorFill{Color(210, 180, 140)};
     const Color buttonColorText{Color(50, 50, 50)};
     const Color buttonInactiveColor{Color(150, 150, 150)};
+    const Color buttonEndTurnColor{Color(120, 150, 86)};
+    const Color buttonExitGameColor{Color(170, 100, 100)};
 
     Color _sideBarButtonColor = buttonColorFill;
 
@@ -126,10 +133,7 @@ private:
     shared_ptr<TurnManager> _turnManager; /**< The turn manager. */
 
     int _diceModifier; /**< The dice modifier for the player character. */
-    string _diceType = "1d6"; /**< The dice type for the player character. */
-
-    bool _moveEnabled = false; /**< Indicates whether the move button is enabled. */
-    bool _attackEnabled = false; /**< Indicates whether the attack button is enabled. */
+    string _diceType = "1d20"; /**< The dice type for the player character. */
 
     std::array<std::pair<Keyboard::Key, Vector2i>, 4> movementBindings = {
             {{Keyboard::Up,    {0, -1}},
@@ -162,6 +166,8 @@ private:
         Text rollDiceText;
         RectangleShape exit;
         Text exitText;
+        RectangleShape endTurn;
+        Text endTurnText;
         RectangleShape stats;
         Text statsText;
         RectangleShape start;
@@ -251,7 +257,7 @@ private:
      * @param name The name of the button.
      * @param buttonPos The position of the button.
      */
-    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active);
+    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active, Color buttonColor);
 
     /**
      * @brief Generates the texture for the console view.

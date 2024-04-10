@@ -251,11 +251,22 @@ const Texture& MapObserver::getTextureForCell(int x, int y) const {
     throw std::invalid_argument("No texture found for cell");
 
 }
+
 void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color color, RenderTexture *_window) {
+    struct Vector2iComparator {
+        bool operator()(const sf::Vector2<int>& lhs, const sf::Vector2<int>& rhs) const {
+            if (lhs.x == rhs.x) return lhs.y < rhs.y;
+            return lhs.x < rhs.x;
+        }
+    };
+
     int steps = i;
     vector<Vector2i> directions = {Vector2i{1, 0}, Vector2i{-1, 0}, Vector2i{0, 1}, Vector2i{0, -1}};
     queue<pair<Vector2i, int>> q; // Pair of position and steps taken
+    set<Vector2i, Vector2iComparator> visited; // Set to keep track of visited cells
+
     q.emplace(position, 0);
+    visited.insert(position);
 
     while (!q.empty()) {
         auto [currentPos, currentSteps] = q.front();
@@ -274,7 +285,10 @@ void MapObserver::drawCircleAroundPos(Vector2i position, int i, const Color colo
             if (currentSteps < steps) {
                 for (const auto& dir : directions) {
                     Vector2i nextPos = currentPos + dir;
-                    q.emplace(nextPos, currentSteps + 1);
+                    if (visited.find(nextPos) == visited.end()) { // If the cell has not been visited
+                        q.emplace(nextPos, currentSteps + 1);
+                        visited.insert(nextPos); // Mark the cell as visited
+                    }
                 }
             }
         }
