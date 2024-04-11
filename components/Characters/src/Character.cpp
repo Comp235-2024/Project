@@ -7,18 +7,18 @@
 #include <utility>
 
 Character::Character(){
-health = 100;
-location = Position(0,0);
-strategy = nullptr;
+    health = 100;
+    location = Position(0,0);
+    strategy = nullptr;
 
-hitPoints=5;
-armorClass=5;
-attackBonus=5;
-damageBonus=5;
-level=5;
-for(int i=0;i<6;i++){
-    abilityScores[i]=5;
-    abilityModifiers[i]=5;}
+    hitPoints=5;
+    armorClass=5;
+    attackBonus=5;
+    damageBonus=5;
+    level=5;
+    for(int i=0;i<6;i++){
+        abilityScores[i]=5;
+        abilityModifiers[i]=5;}
 
 
 }

@@ -293,7 +293,7 @@ private:
     Position location;
 
     //TODO implement health logic
-    int health;
+    int health = 100;
 
     Sprite sprite;
 
