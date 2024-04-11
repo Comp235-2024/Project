@@ -290,6 +290,8 @@ private:
     int chestFlag =0;
 
     void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
+    void drawMapStuff();
+    void drawHealthBars();
 };
 
 #endif // GAME_SCREEN_H

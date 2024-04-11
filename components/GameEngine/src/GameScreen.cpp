@@ -212,13 +212,7 @@ void GameScreen::Draw(float deltaTime) {
     _data->window.clear();
     _data->window.draw(_bg);
 
-    if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
-        _mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
-    }
-
-    Texture texture = _mapTexture.getTexture();
-    Sprite mapSprite(texture);
-    _data->window.draw(mapSprite);
+    drawMapStuff();
 
     Texture sideBar = _sideBarTexture.getTexture();
     Sprite sideBarSprite(sideBar);
@@ -251,6 +245,18 @@ void GameScreen::Draw(float deltaTime) {
 
     // add our names
     _data->window.display();
+}
+
+void GameScreen::drawMapStuff() {
+    if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
+        _mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
+    }
+
+    Texture texture = _mapTexture.getTexture();
+    Sprite mapSprite(texture);
+    _data->window.draw(mapSprite);
+
+    drawHealthBars();
 }
 
 
@@ -323,8 +329,9 @@ void GameScreen::handleMouseButtonMap() {
                 if (target != nullptr) {
                     notify("Player attacked target", "Character");
                     notify("Enemy died due to an unbelievably strong blow", "Character");
-                    _currentMap->remove(gridPos);
-                    _turnManager->removePlayer(target);
+//                    _currentMap->remove(gridPos);
+//                    _turnManager->removePlayer(target);
+                    target->setHealth(target->getHealth()/2);
                     ChangeState(GameState::Idle);
                     _enableFlags->attack = false;
                     
@@ -334,7 +341,7 @@ void GameScreen::handleMouseButtonMap() {
             }
                 
         }
-        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr) {
+        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr && _gameState != GameState::Idle) {
             //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
             shared_ptr<TreasureChest> chest = dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
             if (chest){
@@ -1170,4 +1177,37 @@ void GameScreen::adjustTextSize(sf::Text &text, float maxWidth, float maxHeight)
             break; // Exit the loop as we've found the limit
         }
     }
+}
+
+void GameScreen::drawHealthBars() {
+
+    auto createHealthBar = [this](Vector2i pos, bool isPlayer, unsigned int health) {
+        Vector2f pixelPos = static_cast<Vector2f>(pos) * _mapObserver.SIZE_MULT;
+
+        RectangleShape bar;
+        if (isPlayer) {
+            bar.setFillColor(Color::Green);
+        } else {
+            bar.setFillColor(Color::Red);
+        }
+        bar.setOutlineThickness(1);
+        bar.setOutlineColor(Color::Black);
+        bar.setSize(Vector2f{_mapObserver.SIZE_MULT * health/100, _mapObserver.SIZE_MULT * 0.1f});
+        bar.setPosition(pixelPos + Vector2f{0, _mapObserver.SIZE_MULT * 0.1f});
+
+        this->_data->window.draw(bar);
+    };
+
+
+
+    for (auto entity : _npcs){
+        createHealthBar(entity->position, false, entity->getHealth());
+    }
+    createHealthBar(_player->position, true, _player->getHealth());
+
+
+
+
+
+
 }
