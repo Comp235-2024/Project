@@ -292,6 +292,7 @@ private:
     void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
     void drawMapStuff();
     void drawHealthBars();
+    void handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc);
 };
 
 #endif // GAME_SCREEN_H

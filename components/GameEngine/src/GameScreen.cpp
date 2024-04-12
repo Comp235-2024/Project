@@ -331,7 +331,8 @@ void GameScreen::handleMouseButtonMap() {
                     notify("Enemy died due to an unbelievably strong blow", "Character");
 //                    _currentMap->remove(gridPos);
 //                    _turnManager->removePlayer(target);
-                    target->setHealth(target->getHealth()/2);
+                    target->setHealth(target->getHitPoints()/2);
+                    handleAttack(_player, target);
                     ChangeState(GameState::Idle);
                     _enableFlags->attack = false;
                     
@@ -1201,11 +1202,14 @@ void GameScreen::drawHealthBars() {
 
 
     for (auto entity : _npcs){
-        createHealthBar(entity->position, false, entity->getHealth());
+        createHealthBar(entity->position, false, entity->getHitPoints());
     }
-    createHealthBar(_player->position, true, _player->getHealth());
+    createHealthBar(_player->position, true, _player->getHitPoints());
+}
+void GameScreen::handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc) {
+    int p_attack_bon = player->getAttackBonus();
 
-
+    int npc_hp = npc->getHitPoints();
 
 
 
