@@ -10,13 +10,6 @@ void OptionsScreen::Init() {
     this->_data->assets.LoadFont("Font", FONT_PATH);
     _bg.setTexture(this->_data->assets.GetTexture("Menu Background"));
     _bg.setTextureRect(IntRect(0,0, this->_data->window.getSize().x, this->_data->window.getSize().y));
-    _data->assets.LoadTexture("backButton", "../../assets/images/frames/backButton.png");
-    _data->assets.LoadTexture("musicOn", "../../assets/images/frames/sound.png");
-    _data->assets.LoadTexture("musicOff", "../../assets/images/frames/sound_off.png");
-    _data->assets.LoadTexture("music1", "../../assets/images/frames/1.png");
-    _data->assets.LoadTexture("music2", "../../assets/images/frames/2.png");
-    _data->assets.LoadTexture("music3", "../../assets/images/frames/3.png");
-    _data->assets.LoadTexture("music4", "../../assets/images/frames/4.png");
     SetButtons();
 
 }

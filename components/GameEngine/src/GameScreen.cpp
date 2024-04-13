@@ -89,7 +89,8 @@ void GameScreen::Init() {
 
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
-        _campaign.mike = Player(5, "knight");
+        _campaign.mike.textureName = this->_data->player.textureName;
+
 
         Weapon* mikeSword=new Weapon("Great Sword","Strength", 10);
         Ring* mikeRing=new Ring("Ring of Power","Dexterity", 5);
