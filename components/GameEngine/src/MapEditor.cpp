@@ -93,7 +93,7 @@ void MapEditor::SetButtons() {
    Vector2f spacing = Vector2f(0, _data->window.getSize().y/6.0f);
 
    GenerateButton(font, "Create new map ", buttons->CreateMap, buttons->CreateMapText, position);
-   GenerateButton(font, "Edit Map", buttons->LoadMap, buttons->LoadMapText, position + Vector2f(0, spacing.y));
+   GenerateButton(font, "Load a Map", buttons->LoadMap, buttons->LoadMapText, position + Vector2f(0, spacing.y));
 
 }
 

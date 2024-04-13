@@ -19,7 +19,8 @@
 #include "GameLooptyLoop.h"
 #include "NonPlayerCharacter.h"
 #include "../../Maps/include/Lever.h"
-
+#include "GameScreen.h"
+#include "MainMenu.h"
 #include <cmath>
 #include <nlohmann/json.hpp>
 
@@ -36,35 +37,32 @@ public:
     */
    void Init() override;
 
-   /**
-    * @brief Handles the inputs (clicks) of the user on the window and updates the game logic.
-    * @brief Either select an item from the sidebar
-    * @brief Or place an item on the map
-    * @brief Or clear the map
-    * @brief Or save the map
-    */
    void HandleInput() override;
 
    void Update(float deltaTime) override;
 
    /**
-    * @brief Clear the window and then Draw all the components.
-    * @param deltaTime
-    */
+     * @brief Clear the window and then Draw all the components.
+     * @param deltaTime
+     */
    void Draw(float deltaTime) override;
 
 
-   /**
-    * @brief Struct to designate Items that are to be placed on the sidebar.
-    */
+
+
+   void loadMapFromFile(const std::string& filename);
+
+   vector<std::string> listSavedMaps();
+   int getUserSelection(const std::vector<std::string>& files);
+
+   void DisplayCreationMessage(const std::string& message)    ;
+
    struct SidebarItem :public Movable{
        sf::Sprite sprite;
        std::string name;
        int permittedCount;
        sf::Text countText;
        sf::RectangleShape countBackground;
-
-       SidebarItem(const std::string &name, int permittedCount);
    };
 
 private:
@@ -79,6 +77,8 @@ private:
 
    /** The map observer. */
    MapObserver mapObserver;
+
+   Campaign _campaign;
 
    /** The objects on the sidebar. */
    std::vector<SidebarItem> sidebarObjects;
@@ -134,82 +134,6 @@ private:
 
    shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
 
-   /**
-    * @brief Calculates the sizes of the textures based on the window size.
-    *
-    * This function calculates the sizes of the map texture, character view texture, and console view texture
-    * based on the window size.
-    */
-   void calculateTextureSizes(int x, int y);
-
-   /**
-    * @brief Loads the textures for the map creator interface.
-    */
-   void loadTextures();
-
-   /**
-    * @brief Saves the edited map to a file in the Saved Maps directory as a .json file.
-    */
-   void saveMapToFile();
-
-   /**
-    * @brief Initializes the sidebar by specifying size and textures.
-    */
-   void initSideBar();
-
-   /**
-    * @brief Draws the sidebar.
-    */
-   void drawSideBar();
-
-   /**
-    * @brief Asks the use to enter the name and size of the map in order to resize the window and create said map.
-    */
-   Position askForSize();
-
-   /**
-    * @brief Initializes the buttons on the screen by specifying their sizes and their textures.
-    */
-   void initButtons();
-
-   /**
-    * @brief Draws the buttons on the screen.
-    */
-   void drawButtons();
-
-   /**
-    * @brief Assigns the current map a new default one and, detaches the observer from the old map and attaches it to the new one.
-    */
-   void clearMap();
-
-   /**
-    * @brief Based a click on the passed mouse position, selects an object from the sidebar.
-    * @param mousePos
-    */
-   void selectObjectFromSidebar(const Vector2f &mousePos);
-
-   /**
-    * @brief Places an object on the map based on the passed mouse position, using the method in Map.h.
-    * @param mousePos
-    */
-   void placeObjectOnMap(const Vector2f &mousePos);
-
-   /**
-    * @brief Checks where the user clicked on the screen eg. sidebar, map, buttons and calls the appropriate function.
-    * @param mousePos Position of the click
-    */
-   void processClickActions(const Vector2f &mousePos);
-
-   /**
-    * @brief closes the window when the user clicks the close button.
-    */
-   void handleCloseEvent();
-
-   /**
-    * @brief Checks whether the event on the window was a click.
-    * @param event
-    */
-   void handleMouseButtonPressedEvent(const Event &event);
 
 };
 #endif MAPLOADER_H
