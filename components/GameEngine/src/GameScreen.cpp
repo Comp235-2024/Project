@@ -89,7 +89,8 @@ void GameScreen::Init() {
 
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
-        _campaign.mike = Player(5, "knight");
+//        _campaign.mike.textureName = this->_data->player.textureName;
+        _campaign.mike = this->_data->player;
 
         shared_ptr<Weapon> mikeSword= make_shared<Weapon>(Weapon("Great Sword","Strength", 10));
         shared_ptr<Ring> mikeRing= make_shared<Ring>(Ring("Ring of Power","Dexterity", 5));
@@ -105,7 +106,7 @@ void GameScreen::Init() {
 
         shared_ptr<Helmet> mikeHelmet= make_shared<Helmet>( Helmet("Hat","Wisdom", 5));
 
-        _campaign.mike.getWornItems()->addItem(mikeHelmet);
+        _campaign.mike.getWornItems().addItem(mikeHelmet);
 
     }
     _currentMap->place(_campaign.mike, start);
@@ -113,10 +114,15 @@ void GameScreen::Init() {
     _player = make_shared<Player>(_campaign.mike);
 
     // Turn manager portion
-    _turnManager = make_shared<TurnManager>();
-    _turnManager->addCharacter(_player, true);
-    if (_data->log->enabledModules.system) {
-        _turnManager->attach(_data->log);
+    if (_mapIndex == 0) {
+        _turnManager = make_shared<TurnManager>();
+        _turnManager->addCharacter(_player, true);
+        if (_data->log->enabledModules.system) {
+            _turnManager->attach(_data->log);
+        }
+    } else {
+        _enableFlags->move = true;
+        _enableFlags->attack = true;
     }
     findNPCs();
 
@@ -147,6 +153,9 @@ void GameScreen::Update(float deltaTime) {
             HandleNpcActions();
             _turnManager->nextTurn();
         }
+    }
+    if (_npcs.size() == 0 ){
+        _enableFlags->objective = true;
     }
 
     switch (_gameState) {
@@ -324,14 +333,14 @@ void GameScreen::handleMouseButtonMap() {
                     }
                 }
             } else if (_gameState == GameState::Attacking) {
-                shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+                auto target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
                 //TODO Update attack logic to use the player's attack value and the target's defense value
                 if (target != nullptr) {
                     notify("Player attacked target", "Character");
-                    notify("Enemy died due to an unbelievably strong blow", "Character");
 //                    _currentMap->remove(gridPos);
 //                    _turnManager->removePlayer(target);
-                    target->setHealth(target->getHealth()/2);
+//                    target->setHealth(target->getHitPoints()/2);
+                    handleAttack(_player, target);
                     ChangeState(GameState::Idle);
                     _enableFlags->attack = false;
                     
@@ -417,7 +426,6 @@ void GameScreen::findNPCs() {
                 this->_npcs.back()->position = Vector2i{x, y};
                 this->_turnManager->addCharacter(this->_npcs.back(), false);
                 this->notify("NPC found at " + to_string(x) + ", " + to_string(y), "System");
-                return;
             }
             ++x;
         }
@@ -433,8 +441,9 @@ void GameScreen::scanForNearbyObjects() {
             if (dynamic_cast<TreasureChest *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
 
-            } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
+            } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get()) && !_enableFlags->objective) {
                 this->notify("Door detected nearby", "System");
+                _turnManager->nextTurn();
                 _turnManager->resetTurns();
                 ChangeState(GameState::Idle);
                 this->Draw(0.0f); // to reset the circle drawn if attack or move did not happen
@@ -443,6 +452,7 @@ void GameScreen::scanForNearbyObjects() {
                 _enableFlags->inventory = true;
                 _enableFlags->roll_dice = true;
                 _enableFlags->interact = true;
+                _enableFlags->objective = false;
                 this->Init();
             } else if (dynamic_cast<Character *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Character detected nearby", "System");
@@ -565,13 +575,31 @@ void GameScreen::HandleNpcActions() {
     // move the npc to a random cell 2 cells away
 
     //random pos
-    Vector2i newPos = Vector2i{rand() % 3 - 1 + npc->position.x, rand() % 3 - 1 + npc->position.y};
-    this->notify("NPC moving to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
-    if (_currentMap->move(npc->position, newPos)) {
-        npc->position = newPos;
-        notify("NPC moved to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
-    }
+//    Vector2i newPos = Vector2i{rand() % 3 - 1 + npc->position.x, rand() % 3 - 1 + npc->position.y};
+//    this->notify("NPC moving to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
+//    if (_currentMap->move(npc->position, newPos)) {
+//        npc->position = newPos;
+//        notify("NPC moved to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
+//    }
 
+    Vector2i playerPos = _player->position;
+    Vector2i npcPos = npc->position;
+
+    vector<Position> path = _currentMap->findPath(npcPos, playerPos);
+
+    int range = _data->dice.roll(_diceType) / 2;
+
+    if (path.size() <= range) {
+        this->notify("NPC attacking player", "Character");
+
+        if (path.size() > 3) {
+            _currentMap->move(npcPos, path.at(path.size() - 2));
+        }
+//        handleAttack(npc, _player);
+    } else {
+        this->notify("Moving NPC closer to player", "Character");
+        _currentMap->move(npcPos, path.at(range));
+    }
 
 
     // Handle NPC actions here
@@ -638,6 +666,8 @@ void GameScreen::ChangeState(GameState newState) {
                 return;
             }
             _enableFlags->roll_dice = false;
+            _enableFlags->move = true;
+            _enableFlags->attack = true;
             this->notify("Game state changed to RollingDice", "System");
 
             break;
@@ -801,7 +831,7 @@ void GameScreen::drawInventoryScreen() {
 
 void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackSection) {
     Backpack* backpack = _player->getBackpack();
-    WornItemsContainer* wornItems = _player->getWornItems();
+    WornItemsContainer& wornItems = _player->getWornItems();
 
     int backpackCapacity = backpack->getCapacity();
     float margin = 20.0f; // Margin for spacing
@@ -847,8 +877,8 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
         _data->window.draw(itemShape);
 
         // Checking and displaying item if it exists
-        if(itemIndex < wornItems->getWornItemsContainerStorage().size()){
-            shared_ptr<Item> item = wornItems->getWornItemsContainerStorage()[itemIndex];
+        if(itemIndex < wornItems.getWornItemsContainerStorage().size()){
+            shared_ptr<Item> item = wornItems.getWornItemsContainerStorage()[itemIndex];
             if (item != nullptr) {
                 wornItemText.setString(item->getName());
 
@@ -862,7 +892,7 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
                                          itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
 
                 _data->window.draw(wornItemText);
-                wornItems->wornItemsRectangles.push_back(itemShape);
+                wornItems.wornItemsRectangles.push_back(itemShape);
             }
         }
 
@@ -1035,7 +1065,7 @@ void GameScreen::equipSelectedItem() {
     }
 
     auto worn = _player->getWornItems();
-    auto storage = worn->getWornItemsContainerStorage();
+    auto storage = worn.getWornItemsContainerStorage();
 
     // Check if the slot is already taken
     if (storage[slotIndex] != nullptr) {
@@ -1062,8 +1092,8 @@ int GameScreen::getSlotIndexForItem(const std::string& itemType) {
 
 void GameScreen::checkItemSelection() {
     auto worn = _player->getWornItems();
-    auto storage = worn->getWornItemsContainerStorage();
-    auto rectangles = worn->wornItemsRectangles;
+    auto storage = worn.getWornItemsContainerStorage();
+    auto rectangles = worn.wornItemsRectangles;
 
     for (int slotIndex = 0; slotIndex < storage.size(); slotIndex++) {
         if (_data->inputs.IsButtonClicked(rectangles[slotIndex], Mouse::Left, _data->window)) {
@@ -1360,8 +1390,64 @@ void GameScreen::drawHealthBars() {
 
 
     for (auto entity : _npcs){
-        createHealthBar(entity->position, false, entity->getHealth());
+        createHealthBar(entity->position, false, entity->getHitPoints());
     }
-    createHealthBar(_player->position, true, _player->getHealth());
+    createHealthBar(_player->position, true, _player->getHitPoints());
+}
 
+void GameScreen::handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc) {
+    int p_attack_bon = player->getAttackBonus();
+
+    int npc_hp = npc->getHitPoints();
+    int npc_armor = npc->getArmorClass();
+    int p_weapon_dmg = 0;
+
+    try {
+        auto p_weapon = (player->getWornItems().getWornItemsContainerStorage().at(2));
+        p_weapon_dmg = p_weapon->getEnchantmentLevel();
+    } catch (...){
+        this->notify("Player does not have a weapon equipped", "Character");
+        this->notify("Using fists", "Character");
+        p_weapon_dmg = 200;
+    }
+
+    // add dice mod
+    float roll = static_cast<float>(_data->dice.roll("1d20"));
+    roll = (roll - 1) / 10;
+
+    // calculate damage with the formula (attack bonus + weapon damage - armor class) * roll where roll is a random number between 0 and 19
+    int p_dmg = p_attack_bon + p_weapon_dmg - npc_armor;
+    p_dmg = p_dmg * roll;
+    this->notify("Player attacked NPC with " + to_string(p_dmg) + " damage", "Character");
+
+    npc_hp -= p_dmg;
+    if (npc_hp <= 0) {
+        npc->setHitPoints(0);
+        make_npc_into_chest(npc->position);
+        this->notify("NPC died and turned into chest", "Character");
+        _turnManager->removePlayer(npc);
+        auto it = find(_npcs.begin(), _npcs.end(), npc);
+        if (it != _npcs.end()) {
+            _npcs.erase(it);
+        }
+
+    } else {
+        npc->setHitPoints(npc_hp);
+        this->notify("Player attacked NPC", "Character");
+        this->notify("NPC hitpoints: " + to_string(npc_hp), "Character");
+    }
+}
+
+
+void GameScreen::make_npc_into_chest(Vector2i vector2) {
+
+    shared_ptr<TreasureChest> dead_npc = make_shared<TreasureChest>();
+    shared_ptr<Armor> armor = make_shared<Armor>(Armor("God Armor", Armor::enchantment_types[0], 12));
+    shared_ptr<Weapon> weapon = make_shared<Weapon>(Weapon("God Weapon", Weapon::enchantment_types[0], 12));
+
+    dead_npc->addItem(armor);
+    dead_npc->addItem(weapon);
+
+    _currentMap->remove(vector2);
+    _currentMap->place(dead_npc, vector2);
 }

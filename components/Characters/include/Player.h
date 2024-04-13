@@ -38,7 +38,7 @@ public:
 
     void setBackpack(Backpack* backpack);
 
-    WornItemsContainer* getWornItems();
+    WornItemsContainer &getWornItems();
 
     void setWornItems(WornItemsContainer* wornItems);
 

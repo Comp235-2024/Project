@@ -33,6 +33,7 @@ struct enable_flags {
     bool inventory = true;
     bool roll_dice = true;
     bool interact = true;
+    bool objective = false;
 };
 
 enum class GameState {
@@ -44,7 +45,8 @@ enum class GameState {
     RollingDice,
     Inventory,
     Stats,
-    Exiting
+    Exiting,
+
 };
 
 public:
@@ -361,6 +363,8 @@ private:
     void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
     void drawMapStuff();
     void drawHealthBars();
+    void handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc);
+    void make_npc_into_chest(Vector2i vector2);
 };
 
 #endif // GAME_SCREEN_H

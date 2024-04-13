@@ -96,11 +96,13 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
-    map.setStartCell(Position{0, 0});
+    map.setStartCell(Position{7, 7});
 
     Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
 
+    Ogre enemy1{};
+    map.place(enemy1, Position{18, 10});
     std::shared_ptr<Helmet> helmet = std::make_shared<Helmet>("Great Helmet","Intelligence", 10);
     std::shared_ptr<Armor> armor = std::make_shared<Armor>("Iron Armor","Strength", 10);
     TreasureChest chest{"chest1", 15};

@@ -31,8 +31,8 @@ void Player::setBackpack(Backpack* backpack) {
     this->backpack = *backpack;
 }
 
-WornItemsContainer* Player::getWornItems() {
-    return &wornItems;
+WornItemsContainer &Player::getWornItems() {
+    return wornItems;
 }
 
 void Player::setWornItems(WornItemsContainer* wornItems) {
