@@ -31,7 +31,7 @@ struct MainData{
     unique_ptr<Campaign> campaign;
     Music music;
     Dice dice;
-    Character player;
+    Player player;
 };
 
 typedef shared_ptr<MainData> MainDataRef;

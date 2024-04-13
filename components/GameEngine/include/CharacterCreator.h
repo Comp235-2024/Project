@@ -52,9 +52,8 @@ public:
 
     /**
      * @brief Creates a character of the specified type.
-     * @param type The type of character to create.
      */
-    void CreateCharacter(const std::string& type);
+    void CreateCharacter();
 
     /**
      * @brief Displays a message on the character creation screen.
@@ -77,13 +76,18 @@ private:
      * @brief Represents the buttons for selecting character types.
      */
     struct Buttons {
-        RectangleShape CreateNimble; /**< The button for creating a nimble character. */
-        Text CreateNimbleText; /**< The text for the nimble character button. */
-        RectangleShape CreateBully; /**< The button for creating a bully character. */
-        Text CreateBullyText; /**< The text for the bully character button. */
-        RectangleShape CreateTank; /**< The button for creating a tank character. */
-        Text CreateTankText; /**< The text for the tank character button. */
+        Sprite dwarf;
+        Sprite elf;
+        Sprite knight;
+        Sprite next;
+        Sprite back;
+        Sprite panel;
+        RectangleShape choose;
+        Text chooseText;
+
     };
+
+    int index = 0;
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons for selecting character types. */
 
@@ -107,6 +111,15 @@ private:
      */
     static void GenerateButton(const Font &font, const string &name, RectangleShape &button, Text &buttonText, Vector2f position);
 
+
+
+    /**
+     * @brief Generates a button sprite.
+     * @param button The button sprite to generate.
+     * @param position The position of the button sprite.
+     * @param texture The texture of the button sprite.
+     */
+    static void GenerateButton(Sprite& button, Vector2f position, Texture& texture, int x, int y);
     // Additional attributes for UI components go here
 };
 

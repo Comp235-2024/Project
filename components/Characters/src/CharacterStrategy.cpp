@@ -206,8 +206,8 @@ bool HumanPlayerStrategy::freeAction(int choice){
     switch (choice){
             case 1:
                 cout<<"Content of Backpack: "<<endl;
-                if(player->getBackpack().isEmpty()){
-                    player->getBackpack().printItems();
+                if(player->getBackpack()->isEmpty()){
+                    player->getBackpack()->printItems();
 
                     return false;
                 }
@@ -218,14 +218,14 @@ bool HumanPlayerStrategy::freeAction(int choice){
                 int index_choice1;
                 cin>>index_choice1;
 
-                while(index_choice1<0 || index_choice1>player->getBackpack().getSize()){
+                while(index_choice1<0 || index_choice1>player->getBackpack()->getSize()){
                     cout<<"Invalid Index, please enter a valid index: "<<endl;
                     cin>>index_choice1;
                 }
 
                 if(index_choice1!=0){
-                    player->getWornItems().addItem(player->getBackpack().getBackpackStorage()[index_choice1]);
-                    player->getBackpack().removeItem(player->getBackpack().getBackpackStorage()[index_choice1]);
+                    player->getWornItems().addItem(player->getBackpack()->getBackpackStorage()[index_choice1]);
+                    player->getBackpack()->removeItem(player->getBackpack()->getBackpackStorage()[index_choice1]);
                 }
 
                 break;
@@ -251,7 +251,7 @@ bool HumanPlayerStrategy::freeAction(int choice){
                 }
 
                 if(index_choice2!=0){
-                    player->getBackpack().addItem(player->getWornItems().getItem(index_choice2));
+                    player->getBackpack()->addItem(player->getWornItems().getItem(index_choice2));
                     player->getWornItems().removeItem(player->getWornItems().getItem(index_choice2));
                 }
 

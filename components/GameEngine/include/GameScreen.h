@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "State.h"
 #include "TurnManager.h"
+#include "Campaign.h"
 
 /**
  * @class GameScreen
@@ -27,16 +28,25 @@ class GameScreen : public State {
 struct enable_flags {
     bool turn_manager = false;
     bool draw_whose_turn = false;
+    bool attack = true;
+    bool move = true;
+    bool inventory = true;
+    bool roll_dice = true;
+    bool interact = true;
+    bool objective = false;
 };
 
 enum class GameState {
+    StartScreen,
     Idle,
     Moving,
     Attacking,
     Interacting,
     RollingDice,
     Inventory,
-    Exiting
+    Stats,
+    Exiting,
+
 };
 
 public:
@@ -105,23 +115,27 @@ private:
     RectangleShape _bg; /**< The background shape. */
     Vector2u _windowSize; /**< The window size. */
 
-    shared_ptr<Character> _player; /**< The player character. */
-    vector<shared_ptr<Character>> _npcs; /**< The non-player characters. */
+    shared_ptr<Player> _player; /**< The player character. */
+    vector<shared_ptr<NonPlayerCharacter>> _npcs; /**< The non-player characters. */
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
 
+    const Color buttonColorFill{Color(210, 180, 140)};
+    const Color buttonColorText{Color(50, 50, 50)};
+    const Color buttonInactiveColor{Color(150, 150, 150)};
+    const Color buttonEndTurnColor{Color(120, 150, 86)};
+    const Color buttonExitGameColor{Color(170, 100, 100)};
 
-    GameState _gameState = GameState::Idle; /**< The current game state. */
+    Color _sideBarButtonColor = buttonColorFill;
+
+    GameState _gameState = GameState::StartScreen; /**< The current game state. */
 
     unique_ptr<enable_flags> _enableFlags = make_unique<enable_flags>();
 
     shared_ptr<TurnManager> _turnManager; /**< The turn manager. */
 
     int _diceModifier; /**< The dice modifier for the player character. */
-    string _diceType = "1d6"; /**< The dice type for the player character. */
-
-    bool _moveEnabled = false; /**< Indicates whether the move button is enabled. */
-    bool _attackEnabled = false; /**< Indicates whether the attack button is enabled. */
+    string _diceType = "1d20"; /**< The dice type for the player character. */
 
     std::array<std::pair<Keyboard::Key, Vector2i>, 4> movementBindings = {
             {{Keyboard::Up,    {0, -1}},
@@ -154,8 +168,16 @@ private:
         Text rollDiceText;
         RectangleShape exit;
         Text exitText;
+        RectangleShape endTurn;
+        Text endTurnText;
         RectangleShape stats;
         Text statsText;
+        RectangleShape start;
+        Text startText;
+        RectangleShape inventoryExit;
+        Text inventoryExitText;
+        RectangleShape chestExit;
+        Text chestExitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -204,7 +226,17 @@ private:
      * 
      * This function scans for nearby objects in the current map and performs actions based on the objects found.
      */
-    void scanForNearbyObjects();
+     void scanForNearbyObjects();
+
+     /**
+      * @brief Checks if the position are within 1 cell of each other (Diagonals included)
+      * @brief Does not do type checking
+      * @param pos1
+      * @param pos2
+      * @return
+      */
+     bool isAdjacent(const Vector2i& pos1, const Vector2i& pos2);
+
 
     /**
      * @brief Converts a position to a Vector2i.
@@ -227,7 +259,7 @@ private:
      * @param name The name of the button.
      * @param buttonPos The position of the button.
      */
-    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos);
+    void generateButton(RectangleShape &button, Text &buttonText, const string &name, int buttonPos, bool active, Color buttonColor);
 
     /**
      * @brief Generates the texture for the console view.
@@ -241,6 +273,99 @@ private:
     void onMoveOrAttack();
     void HandlePlayerActions();
     void HandleNpcActions();
+    void handleStart();
+    void drawStartScreen();
+
+    /**
+     * @brief Calls the appropriate functions to let the user interact with their inventory
+     */
+    void handleInventory();
+
+    /**
+     * @brief Processes the player's inventory click and selects the respective item
+     */
+    void processInventoryBackpackClick();
+
+    /**
+     * @brief Processes the player's worn items click and selects the respective item
+     */
+    void processInventoryWornItemsClick();
+
+    /**
+     * @brief Processes the player's chest click and selects the respective item from the fixed worn Items sequence
+     *
+     * @param itemType
+     * @return
+     */
+    int getSlotIndexForItem(const std::string& itemType);
+
+    /**
+     * @brief given the previously selected item, it equips it to the player
+     */
+    void equipSelectedItem();
+
+    /**
+     * @brief checks whether the user is spamming clicks
+     * @return
+     */
+    bool isClickAllowed();
+
+    /**
+     * @brief checks if the selected Item exists
+     */
+    void checkItemSelection();
+
+    /**
+     * @brief Either selects or deselects the item
+     * @param itemAtSlot
+     */
+    void toggleItemSelection(std::shared_ptr<Item>& itemAtSlot);
+
+
+    shared_ptr<Item> selectedItem;
+
+    std::vector<sf::RectangleShape> chestItemRectangles;
+
+    /**
+     * @brief Draws the Inventory interface
+     */
+    void drawInventoryScreen();
+
+    /**
+     * @brief Draws the Inventory items
+     * @param wornItemsSection
+     * @param backpackItemsSection
+     */
+    void drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackItemsSection);
+    //Since the inventory screen is a bit more complex, we need to keep track of the current state
+    //Due to the continuous loop, we need to notify that the state is inventory only once
+    int inventoryFlag =0;
+
+    /**
+     * @brief Checks whether the player exited the inventory screen
+     */
+    void handleInventoryExitButton();
+    RectangleShape backpackScreenSection;
+    RectangleShape wornItemsScreenSection;
+
+    /**
+     * @brief Draws a specific chest's interface
+     */
+    void drawChestScreen();
+    Position chestPositionFlag;
+    void drawChestItems(RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
+    void handleChest();
+    void handleChestExitButton();
+    int chestFlag =0;
+    RectangleShape chestScreenSection;
+
+
+    void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
+    void drawMapStuff();
+    void drawHealthBars();
+    void handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc);
+    void handleAttack(shared_ptr<NonPlayerCharacter> npc, shared_ptr<Player> player);
+    void make_npc_into_chest(Vector2i vector2);
 };
 
 #endif // GAME_SCREEN_H

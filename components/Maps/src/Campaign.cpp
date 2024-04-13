@@ -96,19 +96,41 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
+    map.setStartCell(Position{7, 7});
 
-//    mike = Character(5);
-//    map.place(mike, Position{0, 0});
-//    mike.textureName = "imp";
-    map.setStartCell(Position{0, 0});
+    Ogre enemy2{};
+    map.place(enemy2, Position{13, 4});
 
-    TreasureChest chest{"chest1", 20};
+    Ogre enemy1{};
+    map.place(enemy1, Position{18, 10});
+    std::shared_ptr<Helmet> helmet = std::make_shared<Helmet>("Great Helmet","Intelligence", 10);
+    std::shared_ptr<Armor> armor = std::make_shared<Armor>("Iron Armor","Strength", 10);
+    TreasureChest chest{"chest1", 15};
+
+    chest.addItem(helmet);
+    chest.addItem(armor);
+
     map.place(chest, Position{5, 7});
 
-    TreasureChest chest2{"chest2", 20};
+    std::shared_ptr<Boots> boots = std::make_shared<Boots>("Speed Boots","Dexterity", 7);
+    std::shared_ptr<Belt> belt = std::make_shared<Belt>("Leather Belt","Constitution", 5);
+
+    TreasureChest chest2{"chest2", 15};
+
+    chest2.addItem(boots);
+    chest2.addItem(belt);
+
     map.place(chest2, Position{5, 5});
 
-    TreasureChest chest3{"chest3", 20};
+    std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>("Whip","Strength", 10);
+    std::shared_ptr<Shield> shield = std::make_shared<Shield>("Wooden Shield","Dexterity", 5);
+
+    TreasureChest chest3{"chest3", 15};
+
+    chest3.addItem(weapon);
+    chest3.addItem(shield);
+
+
     map.place(chest3, Position{7, 5});
 
     Wall wall;
@@ -145,10 +167,6 @@ void Campaign::defaultLevel1(){
 
     Door door;
     map.place(door, Position{14, 19});
-    //map.place(door, Position{0, 5});
-
-//    shared_ptr<Door> door2 = make_shared<Door>();
-//    map.place(door2, Position{0, 11});
 
     for (int i = 3; i < 10; ++i) {
         map.place(wall, Position{i, 1});
@@ -192,9 +210,6 @@ void Campaign::defaultLevel2(){
     // easy enemy
     Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
-
-   // map.place(mike, Position{9, 0});
-    //mike.textureName = "imp";
 
     map.setStartCell(Position{0, 9});
 
@@ -342,15 +357,8 @@ void Campaign::defaultLevel3() {
         map.place(pillar, Position{15, i});
     }
 
-    //TODO CHANGE TO PLAYER
-//    Character mike{5};
-    //Changed this to put it in the Character constructor
-    //mike.textureName = "imp";
 
-    map.place(mike, Position{12, 12});
-
-    //TODO CHANGE TO AN NPC TYPE
-    Ogre boss{};
+    Ogre boss{200, 200, 25, 25, 25};
     map.place(boss, Position{9, 9});
 
     this->addMap(map);

@@ -89,15 +89,15 @@ int TreasureChest::getNbTreasureChests()
     return nbTreasureChests;
 }
 
-vector<Item*> TreasureChest::getTreasureChestStorage() const{
+vector<shared_ptr<Item>> TreasureChest::getTreasureChestStorage() const{
     return this->TreasureChestStorage;
 }
 
-Item* TreasureChest::getItem(int index) const{
+shared_ptr<Item> TreasureChest::getItem(int index) const{
     return this->TreasureChestStorage[index];
 }
 
-int TreasureChest::getItemIndex(Item* item) const{
+int TreasureChest::getItemIndex(shared_ptr<Item> item) const{
     for (int i = 0; i < this->size; i++) {
         if (this->TreasureChestStorage[i]->getItemID() == item->getItemID()) {
             return i;
@@ -111,7 +111,7 @@ int TreasureChest::getItemIndex(Item* item) const{
  *
  * @param item
  */
-void TreasureChest::addItem(Item* item)
+void TreasureChest::addItem(shared_ptr<Item> item)
 {
     if (this->isFull())
     {
@@ -129,7 +129,7 @@ void TreasureChest::addItem(Item* item)
         item->placed=true;
         this->size++;
         this->TreasureChestStorage.push_back(item);
-        cout<<item->getName()<<" added to "<<this->getName()<<"\n"<<endl;
+//        cout<<item->getName()<<" added to "<<this->getName()<<"\n"<<endl;
     }
 }
 
@@ -139,7 +139,7 @@ void TreasureChest::addItem(Item* item)
  *
  * @param item
  */
-void TreasureChest::removeItem(Item* item)
+void TreasureChest::removeItem(shared_ptr<Item> item)
 {
     if (this->isEmpty())
     {
@@ -264,7 +264,7 @@ void TreasureChest::printSortedItemsByName(string name) const
  * @return true
  * @return false
  */
-bool TreasureChest::isFound(Item* item) const
+bool TreasureChest::isFound(shared_ptr<Item> item) const
 {
     for (int i = 0; i < this->size; i++)
     {

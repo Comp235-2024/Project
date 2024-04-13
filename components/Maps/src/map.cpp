@@ -240,6 +240,7 @@ vector<Position> Map::findPath(Position start, Position end) const {
 }
 
 
+
 /**
  * @brief Removes a movable object from the map at the specified position.
  * @param Position The position from which to remove the object.

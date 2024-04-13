@@ -14,7 +14,7 @@ private:
     //TODO SOME CONFIGURATION FOR WORNITEMS INSTEAD OF HAVING ITEM IN HAND
     WornItemsContainer wornItems;
 
-    Item* item_in_hand;
+    shared_ptr<Item> item_in_hand;
 
 public:
     std::string textureName = "knight";
@@ -25,16 +25,22 @@ public:
 
     explicit Player(int level);
 
+    Player(int level, string TextureName);
+
     Player getPlayer();
 
     //TODO STANDARDIZED THIS METHOD (SEE DEFINITION) IT NOW ASSUMES THAT THE ITEM IN HAND IS AT INDEX 3
-    Item* getItemInHand();
+    shared_ptr<Item> getItemInHand();
 
-    void setItemInHand(Item* item);
+    void setItemInHand(shared_ptr<Item> item);
 
-    Backpack getBackpack();
+    Backpack* getBackpack();
 
-    WornItemsContainer getWornItems();
+    void setBackpack(Backpack* backpack);
+
+    WornItemsContainer &getWornItems();
+
+    void setWornItems(WornItemsContainer* wornItems);
 
 };
 

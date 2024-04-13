@@ -54,9 +54,6 @@ class Character : public Movable,  public Observable{
         unique_ptr<Boots> boots;
         unique_ptr<Helmet> helmet;
 
-        // iterator for the worn items
-        typedef std::map<std::string, std::unique_ptr<Item>>::iterator iterator;
-
     };
 public:
 
@@ -287,7 +284,7 @@ public:
 
 
 private:
-    shared_ptr<WornItems> wornItems;
+//    shared_ptr<WornItems> wornItems;
 
     CharacterStrategy* strategy;
     int initiative = 1;
@@ -295,18 +292,11 @@ private:
 private:
     Position location;
 
-    //TODO implement health logic
-    int health;
-
     Sprite sprite;
 
     int abilityScores[6]; // 0: Strength, 1: Dexterity, 2: Constitution, 3:
                          // Intelligence, 4: Wisdom, 5: Charisma
     int abilityModifiers[6]{};
-    int hitPoints;
-    int armorClass{};
-    int attackBonus;
-    int damageBonus{};
     int numberOfAttacks; // Number of attacks per round
     int level;
     std::vector<int> additionalAttackBonuses;  // Holds additional attack bonuses.
@@ -342,6 +332,13 @@ private:
     void calculateDamageBonus();
 
 
+protected:
+    //TODO implement health logic
+    int health = 100;
+    int hitPoints;
+    int armorClass{};
+    int attackBonus;
+    int damageBonus{};
 };
 
 #endif

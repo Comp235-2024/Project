@@ -7,19 +7,25 @@
 #include <utility>
 
 Character::Character(){
-health = 100;
-location = Position(0,0);
-strategy = nullptr;
+    health = 100;
+    location = Position(0,0);
+    strategy = nullptr;
 
-hitPoints=5;
-armorClass=5;
-attackBonus=5;
-damageBonus=5;
-level=5;
-for(int i=0;i<6;i++){
-    abilityScores[i]=5;
-    abilityModifiers[i]=5;}
+    hitPoints=5;
+    armorClass=5;
+    attackBonus=5;
+    damageBonus=5;
+    level=5;
+    for(int i=0;i<6;i++){
+        abilityScores[i]=5;
+        abilityModifiers[i]=5;}
 
+    generateAbilityScores();
+    calculateAbilityModifiers();
+    calculateHitPoints();
+    calculateArmorClass();
+    calculateAttackBonus();
+    calculateDamageBonus();
 
 }
 /**
@@ -80,7 +86,7 @@ void Character::calculateAbilityModifiers() {
  * @brief Calculates the hit points of the character.
  */
 void Character::calculateHitPoints() {
-    hitPoints = 1; // Base HP + Constitution modifier
+    hitPoints = 100 + abilityScores[2]; // Base HP + Constitution modifier
 }
 
 /**

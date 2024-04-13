@@ -2,6 +2,7 @@
 #define ITEMCONTAINER_H
 
 #include "Item.h"
+#include <memory>
 
 
 /**
@@ -55,7 +56,7 @@ public:
          *
          * @param item
          */
-    virtual void addItem(Item* item) =0;
+    virtual void addItem(shared_ptr<Item> item) =0;
 
     /**
          * @brief Method to remove an Item object from the current ItemContainer object
@@ -63,7 +64,7 @@ public:
          *
          * @param item
          */
-    virtual void removeItem(Item* item) =0;
+    virtual void removeItem(shared_ptr<Item> item) =0;
 
     /**
          * @brief Method to check if an Item object is found in the current ItemContainer object
@@ -73,7 +74,7 @@ public:
          * @return true
          * @return false
          */
-    virtual bool isFound(Item* item) const =0;
+    virtual bool isFound(shared_ptr<Item> item) const =0;
 
     /**
          * @brief Method to print all the Item objects in the current ItemContainer object
