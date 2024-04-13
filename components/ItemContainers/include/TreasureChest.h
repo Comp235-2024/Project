@@ -23,9 +23,11 @@ private:
          * @brief Vector containing all the Item objects in the current TreasureChest object
          *
          */
-    vector <Item*> TreasureChestStorage;
+    vector <shared_ptr<Item>> TreasureChestStorage;
 
 public:
+
+    std::vector<sf::RectangleShape> chestItemRectangles;
 
     /**
          * @brief Default Constructor for the TreasureChest object
@@ -71,25 +73,25 @@ public:
          */
     ~TreasureChest()=default;
 
-    vector<Item*> getTreasureChestStorage() const;
+    vector<shared_ptr<Item>> getTreasureChestStorage() const;
 
-    Item* getItem(int index) const;
+    shared_ptr<Item> getItem(int index) const;
 
-    int getItemIndex(Item* item) const;
+    int getItemIndex(shared_ptr<Item> item) const;
 
     /**
          * @brief Method to get the number of TreasureChest objects created
          *
          * @return int
          */
-    void addItem(Item* item) override;
+    void addItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to remove an Item object from the current TreasureChest object
          *
          * @param item
          */
-    void removeItem(Item* item) override;
+    void removeItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to check if an Item object is found in the current TreasureChest object
@@ -98,7 +100,7 @@ public:
          * @return true
          * @return false
          */
-    bool isFound(Item* item) const override;
+    bool isFound(shared_ptr<Item> item) const override;
 
     /**
          * @brief Method to print all the Item objects in the current TreasureChest object

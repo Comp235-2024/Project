@@ -101,8 +101,8 @@ void Campaign::defaultLevel1(){
     Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
 
-    Helmet* helmet = new Helmet("Great Helmet","Intelligence", 10);
-    Armor* armor = new Armor("Iron Armor","Strength", 10);
+    std::shared_ptr<Helmet> helmet = std::make_shared<Helmet>("Great Helmet","Intelligence", 10);
+    std::shared_ptr<Armor> armor = std::make_shared<Armor>("Iron Armor","Strength", 10);
     TreasureChest chest{"chest1", 15};
 
     chest.addItem(helmet);
@@ -110,8 +110,8 @@ void Campaign::defaultLevel1(){
 
     map.place(chest, Position{5, 7});
 
-    Boots* boots = new Boots("Speed Boots","Dexterity", 7);
-    Belt* belt = new Belt("Leather Belt","Constitution", 5);
+    std::shared_ptr<Boots> boots = std::make_shared<Boots>("Speed Boots","Dexterity", 7);
+    std::shared_ptr<Belt> belt = std::make_shared<Belt>("Leather Belt","Constitution", 5);
 
     TreasureChest chest2{"chest2", 15};
 
@@ -120,13 +120,14 @@ void Campaign::defaultLevel1(){
 
     map.place(chest2, Position{5, 5});
 
-    Weapon* weapon = new Weapon("Whip","Strength", 10);
-    Shield* shield = new Shield("Wooden Shield","Dexterity", 5);
+    std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>("Whip","Strength", 10);
+    std::shared_ptr<Shield> shield = std::make_shared<Shield>("Wooden Shield","Dexterity", 5);
 
     TreasureChest chest3{"chest3", 15};
 
     chest3.addItem(weapon);
     chest3.addItem(shield);
+
 
     map.place(chest3, Position{7, 5});
 

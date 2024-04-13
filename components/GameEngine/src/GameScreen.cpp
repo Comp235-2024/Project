@@ -91,8 +91,8 @@ void GameScreen::Init() {
     if (_mapIndex == 0) {
         _campaign.mike = Player(5, "knight");
 
-        Weapon* mikeSword=new Weapon("Great Sword","Strength", 10);
-        Ring* mikeRing=new Ring("Ring of Power","Dexterity", 5);
+        shared_ptr<Weapon> mikeSword= make_shared<Weapon>(Weapon("Great Sword","Strength", 10));
+        shared_ptr<Ring> mikeRing= make_shared<Ring>(Ring("Ring of Power","Dexterity", 5));
 
         Backpack backpack{"backpack1", 10};
         _campaign.mike.setBackpack(&backpack);
@@ -103,7 +103,7 @@ void GameScreen::Init() {
         WornItemsContainer wornItems{"wornItems1",6};
         _campaign.mike.setWornItems(&wornItems);
 
-        Helmet* mikeHelmet=new Helmet("Hat","Wisdom", 5);
+        shared_ptr<Helmet> mikeHelmet= make_shared<Helmet>( Helmet("Hat","Wisdom", 5));
 
         _campaign.mike.getWornItems()->addItem(mikeHelmet);
 
@@ -341,19 +341,24 @@ void GameScreen::handleMouseButtonMap() {
             }
                 
         }
-        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr && _gameState != GameState::Idle) {
-            //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
-            shared_ptr<TreasureChest> chest = dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
-            if (chest){
-                if(isAdjacent(_player->position, gridPos)){
-                    ChangeState(GameState::Interacting);
-                    chestPositionFlag=gridPos;
-                    //TODO Add logic for interacting with Chests
+        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr && _gameState == GameState::Idle) {
+            try {
+                //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
+                shared_ptr<TreasureChest> chest = dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
 
+                if (chest) {
+                    if (isAdjacent(_player->position, gridPos)) {
+                        ChangeState(GameState::Interacting);
+                        chestPositionFlag = gridPos;
+                        //TODO Add logic for interacting with Chests
+                    }
                 }
-
             }
 
+
+            catch(exception& e){
+                this->notify("Error: " + string(e.what()), "System");
+            }
         }
     }
 }
@@ -733,6 +738,7 @@ void GameScreen::drawInventoryScreen() {
     wornItemsSection.setOutlineThickness(2);
     wornItemsSection.setOutlineColor(sf::Color::Black);
     wornItemsSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+    wornItemsScreenSection= wornItemsSection;
 
     // Worn Items Text
     sf::Text wornItemsText;
@@ -750,6 +756,7 @@ void GameScreen::drawInventoryScreen() {
     backpackSection.setOutlineThickness(2);
     backpackSection.setOutlineColor(sf::Color::Black);
     backpackSection.setPosition(sectionMargin + wornItemsWidth + spacing, windowSize.y * 0.1f);
+    backpackScreenSection=backpackSection;
 
     // Backpack Text
     sf::Text backpackText;
@@ -841,7 +848,7 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
 
         // Checking and displaying item if it exists
         if(itemIndex < wornItems->getWornItemsContainerStorage().size()){
-            Item* item = wornItems->getWornItemsContainerStorage()[itemIndex];
+            shared_ptr<Item> item = wornItems->getWornItemsContainerStorage()[itemIndex];
             if (item != nullptr) {
                 wornItemText.setString(item->getName());
 
@@ -855,6 +862,7 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
                                          itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
 
                 _data->window.draw(wornItemText);
+                wornItems->wornItemsRectangles.push_back(itemShape);
             }
         }
 
@@ -900,7 +908,7 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
                 itemShape.setOutlineColor(sf::Color::Black);
 
                 if (index < backpack->getBackpackStorage().size()) {
-                    Item* item = backpack->getBackpackStorage()[index];
+                    shared_ptr<Item> item = backpack->getBackpackStorage()[index];
                     if (item != nullptr) {
                         // Set item name as text
                         chestItemText.setString(item->getName());
@@ -919,22 +927,170 @@ void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleS
                 _data->window.draw(itemShape);
                 if (index < backpack->getBackpackStorage().size() && backpack->getBackpackStorage()[index] != nullptr) {
                     _data->window.draw(chestItemText); // Only draw text if item exists
+                    backpack->inventoryItemRectangles.push_back(itemShape);
                 }
             }
         }
     }
 }
 void GameScreen::handleInventory() {
-    //TODO Handle item interactions in the inventory screen
+    if (_data->inputs.IsButtonClicked(buttons->inventoryExit, Mouse::Left, _data->window)) {
+        handleInventoryExitButton();
+    }if (_data->inputs.IsButtonClicked(backpackScreenSection, Mouse::Left, _data->window)) {
+        processInventoryBackpackClick();
+    }if (_data->inputs.IsButtonClicked(wornItemsScreenSection, Mouse::Left, _data->window)) {
+        processInventoryWornItemsClick();
+    }
 
-    handleInventoryExitButton();
 }
 
 void GameScreen::handleInventoryExitButton() {
-    if(_data->inputs.IsButtonClicked(buttons->inventoryExit, Mouse::Left, _data->window)) {
-        ChangeState(GameState::Idle);
-        this->notify("Inventory closed", "System");
-        inventoryFlag=0;
+    ChangeState(GameState::Idle);
+    this->notify("Inventory closed", "System");
+
+    inventoryFlag = 0;
+}
+
+void GameScreen::processInventoryBackpackClick() {
+    static auto lastClickTime = std::chrono::high_resolution_clock::now();
+    auto now = std::chrono::high_resolution_clock::now();
+    static const std::chrono::milliseconds clickCooldown(100); // 200 milliseconds cooldown
+
+    // Check if we are within the cooldown period after the last click
+    if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastClickTime) < clickCooldown) {
+        return;
+    }
+
+    auto backpack = _player->getBackpack();
+    auto storage = backpack->getBackpackStorage();
+    auto rectangles = backpack->inventoryItemRectangles;
+
+    for (int i = 0; i < storage.size(); i++) {
+        if (_data->inputs.IsButtonClicked(rectangles[i], Mouse::Left, _data->window)) {
+            lastClickTime = std::chrono::high_resolution_clock::now(); // Update last click time
+
+            auto& itemAtSlot = storage[i];
+            bool selectionStateChanged = false; // Track if we changed the selection state
+
+            // If there's an item in the slot and it's the selected item, deselect it.
+            if (itemAtSlot && selectedItem == itemAtSlot) {
+                selectedItem.reset();
+                selectionStateChanged = true;
+                this->notify("Item deselected", "System");
+            }
+            // If the slot has an item and it's not the selected item, select it.
+            else if (itemAtSlot && selectedItem != itemAtSlot) {
+                selectedItem = itemAtSlot;
+                selectionStateChanged = true;
+                this->notify("Item selected: " + selectedItem->getName(), "System");
+            }
+            // If the slot is empty and there is a selected item, move it to the slot.
+            else if (!itemAtSlot && selectedItem) {
+                itemAtSlot = selectedItem;
+                selectedItem.reset();
+                selectionStateChanged = true;
+                this->notify("Item added to backpack: " + selectedItem->getName(), "System");
+            }
+
+            // If the selection state changed, exit to prevent duplicate notifications.
+            if (selectionStateChanged) {
+                break;
+            }
+        }
+    }
+}
+
+
+void GameScreen::processInventoryWornItemsClick() {
+    if (!isClickAllowed()) {
+        return; // Exit if click is not allowed due to cooldown.
+    }
+
+    if (selectedItem != nullptr) {
+        equipSelectedItem();
+        return;
+    }
+
+    checkItemSelection();
+}
+
+bool GameScreen::isClickAllowed() {
+    static auto lastClickTime = std::chrono::high_resolution_clock::now();
+    const std::chrono::milliseconds clickCooldown(100); // 100 milliseconds cooldown
+
+    auto now = std::chrono::high_resolution_clock::now();
+    if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastClickTime) < clickCooldown) {
+        return false;
+    }
+    lastClickTime = now; // Update last click time.
+    return true;
+}
+
+void GameScreen::equipSelectedItem() {
+    int slotIndex = getSlotIndexForItem(selectedItem->getType());
+
+    if (slotIndex == -1) {
+        this->notify("Invalid item type: " + selectedItem->getType(), "System");
+        return;
+    }
+
+    auto worn = _player->getWornItems();
+    auto storage = worn->getWornItemsContainerStorage();
+
+    // Check if the slot is already taken
+    if (storage[slotIndex] != nullptr) {
+        this->notify("Item already equipped at this slot", "System");
+        return;
+    }
+
+    // Equipping item
+    storage[slotIndex] = selectedItem;
+    selectedItem.reset(); // Clear the selectedItem
+    this->notify("Item added to worn items: " + storage[slotIndex]->getName(), "System");
+}
+
+int GameScreen::getSlotIndexForItem(const std::string& itemType) {
+    // Map each item type to a specific slot index.
+    static const std::map<std::string, int> itemSlotMap = {
+            {"Weapon", 2}, {"Armor", 1}, {"Helmet", 0}, {"Shield/Ring", 3},
+            {"Belt", 4}, {"Boots", 5}
+    };
+
+    auto it = itemSlotMap.find(itemType);
+    return it != itemSlotMap.end() ? it->second : -1;
+}
+
+void GameScreen::checkItemSelection() {
+    auto worn = _player->getWornItems();
+    auto storage = worn->getWornItemsContainerStorage();
+    auto rectangles = worn->wornItemsRectangles;
+
+    for (int slotIndex = 0; slotIndex < storage.size(); slotIndex++) {
+        if (_data->inputs.IsButtonClicked(rectangles[slotIndex], Mouse::Left, _data->window)) {
+            auto& itemAtSlot = storage[slotIndex];
+            if (itemAtSlot) {
+                toggleItemSelection(itemAtSlot);
+                break;
+            }
+        }
+    }
+}
+
+void GameScreen::toggleItemSelection(std::shared_ptr<Item>& itemAtSlot) {
+    bool selectionStateChanged = false;
+
+    if (selectedItem == itemAtSlot) {
+        selectedItem.reset();
+        selectionStateChanged = true;
+        this->notify("Item deselected", "System");
+    } else if (selectedItem != itemAtSlot) {
+        selectedItem = itemAtSlot;
+        selectionStateChanged = true;
+        this->notify("Item selected: " + selectedItem->getName(), "System");
+    }
+
+    if (selectionStateChanged) {
+        return;
     }
 }
 
@@ -959,6 +1115,7 @@ void GameScreen::drawChestScreen() {
     backpackSection.setOutlineThickness(2);
     backpackSection.setOutlineColor(sf::Color::Black);
     backpackSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+    backpackScreenSection = backpackSection;
 
     // Backpack Text
     sf::Text backpackText;
@@ -969,6 +1126,7 @@ void GameScreen::drawChestScreen() {
     sf::FloatRect backpackTextRect = backpackText.getLocalBounds();
     backpackText.setOrigin(backpackTextRect.width / 2, backpackTextRect.height / 2);
     backpackText.setPosition(backpackSection.getPosition().x + backpackSection.getSize().x / 2, windowSize.y * 0.05f);
+
 
     // Chest Section - Right
     sf::RectangleShape chestSection(sf::Vector2f(sectionWidth, windowSize.y * 0.8f));
@@ -1058,7 +1216,7 @@ void GameScreen::drawChestItems(sf::RectangleShape *chestItemsSection, sf::Recta
                 itemShape.setOutlineColor(sf::Color::Black);
 
                 if (index < backpack->getBackpackStorage().size()) {
-                    Item* item = backpack->getBackpackStorage()[index];
+                    shared_ptr<Item> item = backpack->getBackpackStorage()[index];
                     if (item != nullptr) {
                         // Set item name as text
                         backpackItemText.setString(item->getName());
@@ -1104,7 +1262,7 @@ void GameScreen::drawChestItems(sf::RectangleShape *chestItemsSection, sf::Recta
 
             // Draw item if present
             if (index < chest->getSize()) {
-                Item* item = chest->getTreasureChestStorage()[index];
+                shared_ptr<Item> item = chest->getTreasureChestStorage()[index];
                 if (item != nullptr) {
                     // Set item name as text
                     chestItemText.setString(item->getName());
@@ -1125,6 +1283,7 @@ void GameScreen::drawChestItems(sf::RectangleShape *chestItemsSection, sf::Recta
             _data->window.draw(itemShape);
             if (index < chest->getSize() && chest->getTreasureChestStorage()[index] != nullptr) {
                 _data->window.draw(chestItemText); // Only draw text if item exists
+                chest->chestItemRectangles.push_back(itemShape);
             }
         }
     }
@@ -1204,10 +1363,5 @@ void GameScreen::drawHealthBars() {
         createHealthBar(entity->position, false, entity->getHealth());
     }
     createHealthBar(_player->position, true, _player->getHealth());
-
-
-
-
-
 
 }

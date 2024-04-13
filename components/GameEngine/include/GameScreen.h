@@ -274,20 +274,89 @@ private:
     void handleStart();
     void drawStartScreen();
 
+    /**
+     * @brief Calls the appropriate functions to let the user interact with their inventory
+     */
     void handleInventory();
+
+    /**
+     * @brief Processes the player's inventory click and selects the respective item
+     */
+    void processInventoryBackpackClick();
+
+    /**
+     * @brief Processes the player's worn items click and selects the respective item
+     */
+    void processInventoryWornItemsClick();
+
+    /**
+     * @brief Processes the player's chest click and selects the respective item from the fixed worn Items sequence
+     *
+     * @param itemType
+     * @return
+     */
+    int getSlotIndexForItem(const std::string& itemType);
+
+    /**
+     * @brief given the previously selected item, it equips it to the player
+     */
+    void equipSelectedItem();
+
+    /**
+     * @brief checks whether the user is spamming clicks
+     * @return
+     */
+    bool isClickAllowed();
+
+    /**
+     * @brief checks if the selected Item exists
+     */
+    void checkItemSelection();
+
+    /**
+     * @brief Either selects or deselects the item
+     * @param itemAtSlot
+     */
+    void toggleItemSelection(std::shared_ptr<Item>& itemAtSlot);
+
+
+    shared_ptr<Item> selectedItem;
+
+    std::vector<sf::RectangleShape> chestItemRectangles;
+
+    /**
+     * @brief Draws the Inventory interface
+     */
     void drawInventoryScreen();
+
+    /**
+     * @brief Draws the Inventory items
+     * @param wornItemsSection
+     * @param backpackItemsSection
+     */
     void drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackItemsSection);
     //Since the inventory screen is a bit more complex, we need to keep track of the current state
     //Due to the continuous loop, we need to notify that the state is inventory only once
     int inventoryFlag =0;
-    void handleInventoryExitButton();
 
+    /**
+     * @brief Checks whether the player exited the inventory screen
+     */
+    void handleInventoryExitButton();
+    RectangleShape backpackScreenSection;
+    RectangleShape wornItemsScreenSection;
+
+    /**
+     * @brief Draws a specific chest's interface
+     */
     void drawChestScreen();
     Position chestPositionFlag;
     void drawChestItems(RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
     void handleChest();
     void handleChestExitButton();
     int chestFlag =0;
+    RectangleShape chestScreenSection;
+
 
     void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
     void drawMapStuff();
