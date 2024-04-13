@@ -4,6 +4,7 @@
 #include "ItemContainer.h"
 #include "Item.h"
 #include "Movable.h"
+#include <memory>
 
 /**
  * @brief Class for Backpack objects which may hold Item objects
@@ -21,9 +22,11 @@ private:
          * @brief Vector containing all the Item objects in the current Backpack object
          *
          */
-    vector <Item*> BackpackStorage;
+    vector <shared_ptr<Item> > BackpackStorage;
 
 public:
+
+    std::vector<sf::RectangleShape> inventoryItemRectangles;
 
     /**
          * @brief Default Constructor for the Backpack object
@@ -72,33 +75,33 @@ public:
     /**
          * @brief Method to get the vector containing all the Item objects in the current Backpack object
          *
-         * @return vector<Item*>
+         * @return vector<shared_ptr<Item>>
          */
-    vector <Item*> getBackpackStorage() const;
+    vector <shared_ptr<Item> > getBackpackStorage() const;
 
     /**
          * @brief Method to get an Item object from the current Backpack object
          *
          * @param index
-         * @return Item*
+         * @return shared_ptr<Item>
          */
-    Item* getItem(int index) const;
+    shared_ptr<Item> getItem(int index) const;
 
-    int getItemIndex(Item* item) const;
+    int getItemIndex(shared_ptr<Item> item) const;
 
     /**
          * @brief Method to add an Item object to the current Backpack object
          *
          * @param item
          */
-    void addItem(Item* item) override;
+    void addItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to remove an Item object from the current Backpack object
          *
          * @param item
          */
-    void removeItem(Item* item) override;
+    void removeItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to check if an Item object is found in the current Backpack object
@@ -107,7 +110,7 @@ public:
          * @return true
          * @return false
          */
-    bool isFound(Item* item) const override;
+    bool isFound(shared_ptr<Item> item) const override;
 
     /**
          * @brief Method to print all the Item objects in the current Backpack object

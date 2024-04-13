@@ -24,8 +24,8 @@ Vector2i InputManager::GetMousePos(RenderWindow &window) {
 bool InputManager::IsButtonClicked(const RectangleShape &rectangleShape, Mouse::Button button, RenderWindow &window) {
     if (Mouse::isButtonPressed(button)) {
         IntRect buttonRect(
-                rectangleShape.getPosition().x - rectangleShape.getSize().x / 2.0f,
-                rectangleShape.getPosition().y - rectangleShape.getSize().y / 2.0f,
+                rectangleShape.getPosition().x - rectangleShape.getSize().x / 5.0f,
+                rectangleShape.getPosition().y - rectangleShape.getSize().y / 5.0f,
                 rectangleShape.getSize().x,
                 rectangleShape.getSize().y);
         if (buttonRect.contains(Mouse::getPosition(window))) {

@@ -39,11 +39,11 @@ void Player::setWornItems(WornItemsContainer* wornItems) {
     this->wornItems = *wornItems;
 }
 
-Item* Player::getItemInHand() {
+shared_ptr<Item> Player::getItemInHand() {
     return this->getBackpack()->getBackpackStorage()[2];
 }
 
-void Player::setItemInHand(Item* item) {
+void Player::setItemInHand(shared_ptr<Item> item) {
     item_in_hand = item;
 }
 

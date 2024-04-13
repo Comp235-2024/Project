@@ -21,9 +21,10 @@ private:
          * @brief Vector containing all the Item objects in the current WornItemsContainer object
          *
          */
-    vector <Item*> WornItemsContainerStorage;
+    vector <shared_ptr<Item> > WornItemsContainerStorage;
 
 public:
+    std::vector<sf::RectangleShape> wornItemsRectangles;
 
     /**
          * @brief Default Constructor for the WornItemsContainer object
@@ -74,35 +75,35 @@ public:
          * @brief Method to get the vector containing all the Item objects in the current WornItemsContainer object
          * @return
          */
-    vector<Item*> getWornItemsContainerStorage() const;
+    vector<shared_ptr<Item>> getWornItemsContainerStorage() const;
 
     /**
          * @brief Method to get an Item object from the current WornItemsContainer object
          * @param index
          * @return
          */
-    Item* getItem(int index) const;
+    shared_ptr<Item> getItem(int index) const;
 
     /**
          * @brief Method to get the index of an Item object in the current WornItemsContainer object
          * @param item
          * @return
          */
-    int getItemIndex(Item* item) const;
+    int getItemIndex(shared_ptr<Item> item) const;
 
     /**
          * @brief Method to add an Item object to the current WornItemsContainer object
          *
          * @param item
          */
-    void addItem(Item* item) override;
+    void addItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to remove an Item object from the current WornItemsContainer object
          *
          * @param item
          */
-    void removeItem(Item* item) override;
+    void removeItem(shared_ptr<Item> item) override;
 
     /**
          * @brief Method to check if an Item object is found in the current WornItemsContainer object
@@ -111,7 +112,7 @@ public:
          * @return true
          * @return false
          */
-    bool isFound(Item* item) const override;
+    bool isFound(shared_ptr<Item> item) const override;
 
     /**
          * @brief Method to print all the Item objects in the current WornItemsContainer object

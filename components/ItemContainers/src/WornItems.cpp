@@ -89,15 +89,15 @@ int WornItemsContainer::getNbWornItemsContainer()
     return nbWornItemsContainer;
 }
 
-vector<Item*> WornItemsContainer::getWornItemsContainerStorage() const{
+vector<shared_ptr<Item> > WornItemsContainer::getWornItemsContainerStorage() const {
     return this->WornItemsContainerStorage;
 }
 
-Item* WornItemsContainer::getItem(int index) const{
+shared_ptr<Item>  WornItemsContainer::getItem(int index) const{
     return this->WornItemsContainerStorage[index];
 }
 
-int WornItemsContainer::getItemIndex(Item* item) const{
+int WornItemsContainer::getItemIndex(shared_ptr<Item> item) const{
     for (int i = 0; i < this->size; i++) {
         if (this->WornItemsContainerStorage[i]->getItemID() == item->getItemID()) {
             return i;
@@ -111,7 +111,7 @@ int WornItemsContainer::getItemIndex(Item* item) const{
  *
  * @param item
  */
-void WornItemsContainer::addItem(Item* item)
+void WornItemsContainer::addItem(shared_ptr<Item> item)
 {
     if (this->isFull())
     {
@@ -139,7 +139,7 @@ void WornItemsContainer::addItem(Item* item)
  *
  * @param item
  */
-void WornItemsContainer::removeItem(Item* item)
+void WornItemsContainer::removeItem(shared_ptr<Item> item)
 {
     if (this->isEmpty())
     {
@@ -263,7 +263,7 @@ void WornItemsContainer::printSortedItemsByName(string name) const
  * @return true
  * @return false
  */
-bool WornItemsContainer::isFound(Item* item) const
+bool WornItemsContainer::isFound(shared_ptr<Item> item) const
 {
     for (int i = 0; i < this->size; i++)
     {
