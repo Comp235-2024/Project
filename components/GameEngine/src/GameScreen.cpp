@@ -158,6 +158,13 @@ void GameScreen::Update(float deltaTime) {
         _enableFlags->objective = true;
     }
 
+    if (_mapIndex == 3 && _enableFlags->objective) {
+        this->notify("Objective reached", "System");
+        this->notify("Game Over", "System");
+        this->notify("Exiting Game", "System");
+        _data->stateMachine.RemoveState();
+    }
+
     switch (_gameState) {
         case GameState::StartScreen:
             break;
@@ -441,7 +448,7 @@ void GameScreen::scanForNearbyObjects() {
             if (dynamic_cast<TreasureChest *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
 
-            } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get()) && !_enableFlags->objective) {
+            } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get()) && _enableFlags->objective) {
                 this->notify("Door detected nearby", "System");
                 _turnManager->nextTurn();
                 _turnManager->resetTurns();
@@ -561,7 +568,27 @@ void GameScreen::generateConsoleTexture() {
     _consoleTexture.clear(Color::Transparent);
     RectangleShape console(Vector2f(_consoleTexture.getSize().x, _consoleTexture.getSize().y));
     console.setFillColor(Color(72, 59, 58));
+
+    // show the character's stats
+    Text statsText;
+    Font &font = _data->assets.GetFont("My Font");
+    statsText.setFont(font);
+    statsText.setCharacterSize(20);
+    statsText.setFillColor(Color::White);
+
+
+    string stats = "Hit Points: " + to_string(_player->getHitPoints()) + "\n" +
+                   "Armor Class: " + to_string(_player->getArmorClass()) + "\n" +
+                   "Attack Bonus: " + to_string(_player->getAttackBonus()) + "\n" +
+                   "Damage Bonus: " + to_string(_player->getDamageBonus()) + "\n";
+    statsText.setString(stats);
+    statsText.setPosition(10, 5);
+
+
+
+
     _consoleTexture.draw(console);
+    _consoleTexture.draw(statsText);
 
 
     _consoleTexture.display();
@@ -574,31 +601,36 @@ void GameScreen::HandleNpcActions() {
     shared_ptr<NonPlayerCharacter> npc = dynamic_pointer_cast<NonPlayerCharacter>(_turnManager->getCurrentPlayer());
     // move the npc to a random cell 2 cells away
 
-    //random pos
-//    Vector2i newPos = Vector2i{rand() % 3 - 1 + npc->position.x, rand() % 3 - 1 + npc->position.y};
-//    this->notify("NPC moving to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
-//    if (_currentMap->move(npc->position, newPos)) {
-//        npc->position = newPos;
-//        notify("NPC moved to " + to_string(newPos.x) + ", " + to_string(newPos.y), "Character");
-//    }
-
     Vector2i playerPos = _player->position;
     Vector2i npcPos = npc->position;
+
+    vector<Vector2i> _movementBindings = {{Vector2i{0, 1}, Vector2i{0, -1}, Vector2i{1, 0}, Vector2i{-1, 0}}};
+    //find an empty cell near the player
+    for (auto direction : _movementBindings) {
+        Vector2i newPos = playerPos + direction;
+        if (_currentMap->getGrid().at(newPos.y).at(newPos.x) == nullptr){
+            playerPos = newPos;
+        }
+    }
 
     vector<Position> path = _currentMap->findPath(npcPos, playerPos);
 
     int range = _data->dice.roll(_diceType) / 2;
+    this->notify("NPC range: " + to_string(range), "Character");
 
-    if (path.size() <= range) {
+    if (path.size() <= range * 2) {
         this->notify("NPC attacking player", "Character");
 
-        if (path.size() > 3) {
+        if (path.size() > 2) {
             _currentMap->move(npcPos, path.at(path.size() - 2));
+            npc->position = Vector2i {path.at(path.size() - 2).x, path.at(path.size() - 2).y};
         }
-//        handleAttack(npc, _player);
+        if (path.size() <= range) {
+            handleAttack(npc, _player);
+        }
     } else {
-        this->notify("Moving NPC closer to player", "Character");
-        _currentMap->move(npcPos, path.at(range));
+        this->notify("Player Not In range and is not seen", "Character");
+//        _currentMap->move(npcPos, path.at(range));
     }
 
 
@@ -1408,7 +1440,7 @@ void GameScreen::handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCha
     } catch (...){
         this->notify("Player does not have a weapon equipped", "Character");
         this->notify("Using fists", "Character");
-        p_weapon_dmg = 200;
+        p_weapon_dmg = 80;
     }
 
     // add dice mod
@@ -1435,6 +1467,45 @@ void GameScreen::handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCha
         npc->setHitPoints(npc_hp);
         this->notify("Player attacked NPC", "Character");
         this->notify("NPC hitpoints: " + to_string(npc_hp), "Character");
+    }
+}
+
+void GameScreen::handleAttack( shared_ptr<NonPlayerCharacter> npc, shared_ptr<Player> player) {
+    int npc_attack_bon = npc->getAttackBonus();
+
+    int player_hp = player->getHitPoints();
+    int player_armor = player->getArmorClass();
+    int npc_weapon_dmg = 0;
+
+    try {
+//        auto p_weapon = dynamic_cast<Weapon *>(player->getWornItems().getWornItemsContainerStorage().at(2));
+//        npc_weapon_dmg = p_weapon->getEnchantmentLevel();
+    } catch (...){
+        this->notify("Player does not have a weapon equipped", "Character");
+        this->notify("Using the default bow", "Character");
+        npc_weapon_dmg = 40;
+    }
+
+    // add dice mod
+    float roll = static_cast<float>(_data->dice.roll("1d20"));
+    roll = (roll - 1) / 10;
+
+    // calculate damage with the formula (attack bonus + weapon damage - armor class) * roll where roll is a random number between 0 and 19
+    int npc_dmg = npc_attack_bon + npc_weapon_dmg - player_armor;
+    npc_dmg = npc_dmg * roll;
+    this->notify("Player attacked NPC with " + to_string(npc_dmg) + " damage", "Character");
+
+    player_hp -= npc_dmg;
+    if (player_hp <= 0) {
+        player->setHitPoints(0);
+        this->notify("Player died", "Character");
+        this->notify("Game over", "Character");
+        ChangeState(GameState::Exiting);
+
+    } else {
+        player->setHitPoints(player_hp);
+        this->notify("NPC attacked", "Character");
+        this->notify("Player hitpoints: " + to_string(player_hp), "Character");
     }
 }
 
