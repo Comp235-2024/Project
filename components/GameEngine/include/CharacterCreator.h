@@ -82,12 +82,10 @@ private:
         Sprite lizard;
         Sprite next;
         Sprite back;
-        RectangleShape CreateNimble; /**< The button for creating a nimble character. */
-        Text CreateNimbleText; /**< The text for the nimble character button. */
-        RectangleShape CreateBully; /**< The button for creating a bully character. */
-        Text CreateBullyText; /**< The text for the bully character button. */
-        RectangleShape CreateTank; /**< The button for creating a tank character. */
-        Text CreateTankText; /**< The text for the tank character button. */
+        Sprite panel;
+        RectangleShape choose;
+        Text chooseText;
+
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons for selecting character types. */
@@ -120,7 +118,7 @@ private:
      * @param position The position of the button sprite.
      * @param texture The texture of the button sprite.
      */
-    static void GenerateButton(Sprite& button, Vector2f position, Texture& texture);
+    static void GenerateButton(Sprite& button, Vector2f position, Texture& texture, int x, int y);
     // Additional attributes for UI components go here
 };
 

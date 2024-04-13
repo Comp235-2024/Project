@@ -46,10 +46,7 @@ void CharacterCreator::HandleInput() {
             this->_data->window.close();
         }
         if (_data->inputs.IsSpriteClicked(buttons->dwarf, sf::Mouse::Left, _data->window)) {
-//            CreateCharacter("Bully");
-//            CharacterCreator::DisplayCreationMessage("Nimble Character Created");
             this->notify("Creating dwarf character", "System");
-            //_data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
             _data->player.textureName = "dwarf_m";
             this->notify("Returning to the Main menu", "System");
             _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
@@ -57,19 +54,21 @@ void CharacterCreator::HandleInput() {
         else if (_data->inputs.IsSpriteClicked(buttons->elf, sf::Mouse::Left, _data->window)) {
 
             this->notify("Creating elf character", "System");
-            //_data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
             _data->player.textureName = "elf_f";
             this->notify("Returning to the Main menu", "System");
-            //_data->stateMachine.RemoveState();
             _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         }
         else if (_data->inputs.IsSpriteClicked(buttons->elf, sf::Mouse::Left, _data->window)) {
 
             this->notify("Creating lizard character", "System");
-            //_data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
             _data->player.textureName = "lizard_f";
             this->notify("Returning to the Main menu", "System");
-            //_data->stateMachine.RemoveState();
+            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
+        }
+        else if (_data->inputs.IsButtonClicked(buttons->choose, Mouse::Left, _data->window)) {
+            this->notify("Creating dwarf character", "System");
+            _data->player.textureName = "dwarf_m";
+            this->notify("Returning to the Main menu", "System");
             _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         }
     }
@@ -115,13 +114,17 @@ void CharacterCreator::Draw(float deltaTime) {
     _data->window.clear();
     _data->window.draw(_bg);
 
+    _data->window.draw(buttons->choose);
+    _data->window.draw(buttons->chooseText);
+
+
+    _data->window.draw(buttons->panel);
+    _data->window.draw(buttons->next);
+    _data->window.draw(buttons->back);
 
     _data->window.draw(buttons->dwarf);
     _data->window.draw(buttons->elf);
     _data->window.draw(buttons->lizard);
-    _data->window.draw(buttons->next);
-    _data->window.draw(buttons->back);
-
 
     _data->window.display();
 
@@ -143,14 +146,17 @@ void CharacterCreator::SetButtons() {
 
 
     Font& font = _data->assets.GetFont("My Font");
-    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/3.4f);
+    Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/2.f);
 
-    GenerateButton(buttons->dwarf, position, this->_data->assets.GetTexture("dwarf_m"));
-    GenerateButton(buttons->elf, position + Vector2f(0,20), this->_data->assets.GetTexture("elf_f"));
-    GenerateButton(buttons->lizard, position + Vector2f(0,40), this->_data->assets.GetTexture("lizard_f"));
-    GenerateButton(buttons->next, position + Vector2f(0,60), this->_data->assets.GetTexture("nextButton"));
-    GenerateButton(buttons->back, position + Vector2f(0,80), this->_data->assets.GetTexture("backButton"));
+    GenerateButton(buttons->dwarf, position + Vector2f(-50,-300), this->_data->assets.GetTexture("dwarf_m"), 6, 6);
+    GenerateButton(buttons->elf, position + Vector2f(0,40), this->_data->assets.GetTexture("elf_f"), 2, 2);
+    GenerateButton(buttons->lizard, position + Vector2f(0,80), this->_data->assets.GetTexture("lizard_f"), 2, 2);
 
+    GenerateButton(buttons->panel, position + Vector2f(-200,-400), this->_data->assets.GetTexture("panel"), 3, 3);
+    GenerateButton(buttons->next, position + Vector2f(60,-130), this->_data->assets.GetTexture("nextButton"), 1, 1);
+    GenerateButton(buttons->back, position + Vector2f(-200,-130), this->_data->assets.GetTexture("backButton"), 1, 1);
+
+    GenerateButton(font, "Choose this!", buttons->choose, buttons->chooseText, position + Vector2f(0,20));
 //    GenerateButton(font, "Create Nimble ", buttons->CreateBully, buttons->CreateBullyText, position);
 //    GenerateButton(font, "Create Bully", buttons->CreateNimble, buttons->CreateNimbleText, position + Vector2f(0, 100));
 //    GenerateButton(font, "Create Tank", buttons->CreateTank, buttons->CreateTankText, position + Vector2f(0, 200));
@@ -184,11 +190,11 @@ void CharacterCreator::GenerateButton(const Font &font, const string& name, Rect
  * @param buttonText
  * @param position
  */
-void CharacterCreator::GenerateButton(Sprite& button, Vector2f position, Texture& texture) {
+void CharacterCreator::GenerateButton(Sprite& button, Vector2f position, Texture& texture, int x, int y) {
 
-    Vector2f size = Vector2f(50, 50);
-    //button.setSize(size);
-    button.setOrigin(size.x/1.0f, size.y/1.0f);
+    Vector2f size = Vector2f(x, y);
+    button.setScale(size);
+    button.setOrigin(size.x/2.0f, size.y/2.0f);
     button.setPosition(position);
     // TODO Maybe add a hover color
     button.setTexture(texture);
