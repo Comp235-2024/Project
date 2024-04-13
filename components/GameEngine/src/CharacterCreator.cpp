@@ -45,73 +45,62 @@ void CharacterCreator::HandleInput() {
         if (Event::Closed == event.type) {
             this->_data->window.close();
         }
-        if (_data->inputs.IsSpriteClicked(buttons->dwarf, sf::Mouse::Left, _data->window)) {
-            this->notify("Creating dwarf character", "System");
-            _data->player.textureName = "dwarf_m";
-            this->notify("Returning to the Main menu", "System");
-            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
+        if (_data->inputs.IsSpriteClicked(buttons->next, sf::Mouse::Left, _data->window)) {
+            if(index == 2) {
+                index = 0;
+            }
+            else {
+                index ++;
+            }
+            Draw(0.0);
         }
-        else if (_data->inputs.IsSpriteClicked(buttons->elf, sf::Mouse::Left, _data->window)) {
+        else if (_data->inputs.IsSpriteClicked(buttons->back, sf::Mouse::Left, _data->window)) {
+            if(index == 0) {
+                index = 2;
+            }
+            else {
+                index --;
+            }
+            Draw(0.0);
 
-            this->notify("Creating elf character", "System");
-            _data->player.textureName = "elf_f";
-            this->notify("Returning to the Main menu", "System");
-            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
         }
-        else if (_data->inputs.IsSpriteClicked(buttons->elf, sf::Mouse::Left, _data->window)) {
 
-            this->notify("Creating lizard character", "System");
-            _data->player.textureName = "lizard_f";
-            this->notify("Returning to the Main menu", "System");
-            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
-        }
         else if (_data->inputs.IsButtonClicked(buttons->choose, Mouse::Left, _data->window)) {
-            this->notify("Creating dwarf character", "System");
-            _data->player.textureName = "dwarf_m";
-            this->notify("Returning to the Main menu", "System");
-            _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
+            this->CreateCharacter();
         }
     }
 }
 
 void CharacterCreator::Update(float deltaTime) {
-    // Update logic if needed
+
 }
 
-void CharacterCreator::CreateCharacter(const std::string& type) {
-    // Instantiate the character using the selected builder
-    // This is a simplified example; you might need to integrate with your game's character management system
-    Character* newCharacter = nullptr;
-    if (type == "Bully") {
-        BullyBuilder bullyBuilder;
-        Character bully(1);
-        bullyBuilder.buildAbilityScores();
-        bullyBuilder.buildHitPoints(bully);
-        bully.textureName = 'lizard_f';
-        this->_data->player = bully;
-
-    } else if (type == "Nimble") {
-        NimbleBuilder nimbleBuilder;
-        Character nimble(1);
-        nimbleBuilder.buildAbilityScores();
-        nimbleBuilder.buildHitPoints(nimble);
-        this->_data->player = nimble;
-
-    } else if (type == "Tank") {
-        TankBuilder TankBuilder;
-        Character tank(1);
-        TankBuilder.buildAbilityScores();
-        TankBuilder.buildHitPoints(tank);
-        this->_data->player = tank;
+void CharacterCreator::CreateCharacter() {
+    if(index == 0) {
+        this->notify("Creating dwarf character", "System");
+        _data->player.textureName = "dwarf_m";
+        this->notify("Returning to the Main menu", "System");
+        _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
+    }
+    else if (index == 1) {
+        this->notify("Creating elf character", "System");
+        _data->player.textureName = "elf_f";
+        this->notify("Returning to the Main menu", "System");
+        _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
+    }
+    else if(index == 2) {
+        this->notify("Creating lizard character", "System");
+        _data->player.textureName = "lizard_f";
+        this->notify("Returning to the Main menu", "System");
+        _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
     }
 
-    // Assume _characterSprite is an sf::Sprite attribute of CharacterCreator
-    //_characterSprite.setTexture(_data->assets.GetTexture(type + " Icon"));
-    // Set position, scale, etc., based on grid layout
 }
 
 void CharacterCreator::Draw(float deltaTime) {
-    _data->window.clear();
+    _mapTexture.clear(Color::Transparent);
+    _data->window.clear(Color::Transparent);
+
     _data->window.draw(_bg);
 
     _data->window.draw(buttons->choose);
@@ -122,45 +111,37 @@ void CharacterCreator::Draw(float deltaTime) {
     _data->window.draw(buttons->next);
     _data->window.draw(buttons->back);
 
-    _data->window.draw(buttons->dwarf);
-    _data->window.draw(buttons->elf);
-    _data->window.draw(buttons->lizard);
+    if(index == 0)
+        _data->window.draw(buttons->dwarf);
+    else if(index == 1)
+        _data->window.draw(buttons->elf);
+    else if(index == 2)
+        _data->window.draw(buttons->lizard);
+
+
 
     _data->window.display();
 
 }
 
 void CharacterCreator::generateMapTexture() {
-    _mapTexture.clear(Color::Transparent);
-    //TODO implement complex maps and their rendering
-
-    //
-
-    //    mapObserver.updateMapOnly(&_mapTexture);
     mapObserver.update();
     _mapTexture.display();
 }
 
 void CharacterCreator::SetButtons() {
-
-
-
     Font& font = _data->assets.GetFont("My Font");
     Vector2f position = Vector2f(_data->window.getSize().x/2.0f, _data->window.getSize().y/2.f);
 
     GenerateButton(buttons->dwarf, position + Vector2f(-50,-300), this->_data->assets.GetTexture("dwarf_m"), 6, 6);
-    GenerateButton(buttons->elf, position + Vector2f(0,40), this->_data->assets.GetTexture("elf_f"), 2, 2);
-    GenerateButton(buttons->lizard, position + Vector2f(0,80), this->_data->assets.GetTexture("lizard_f"), 2, 2);
+    GenerateButton(buttons->elf, position + Vector2f(-50,-300), this->_data->assets.GetTexture("elf_f"), 6, 6);
+    GenerateButton(buttons->lizard, position + Vector2f(-50,-300), this->_data->assets.GetTexture("lizard_f"), 6, 6);
 
     GenerateButton(buttons->panel, position + Vector2f(-200,-400), this->_data->assets.GetTexture("panel"), 3, 3);
     GenerateButton(buttons->next, position + Vector2f(60,-130), this->_data->assets.GetTexture("nextButton"), 1, 1);
     GenerateButton(buttons->back, position + Vector2f(-200,-130), this->_data->assets.GetTexture("backButton"), 1, 1);
 
     GenerateButton(font, "Choose this!", buttons->choose, buttons->chooseText, position + Vector2f(0,20));
-//    GenerateButton(font, "Create Nimble ", buttons->CreateBully, buttons->CreateBullyText, position);
-//    GenerateButton(font, "Create Bully", buttons->CreateNimble, buttons->CreateNimbleText, position + Vector2f(0, 100));
-//    GenerateButton(font, "Create Tank", buttons->CreateTank, buttons->CreateTankText, position + Vector2f(0, 200));
-
 }
 
 void CharacterCreator::GenerateButton(const Font &font, const string& name, RectangleShape &button, Text &buttonText, Vector2f position) {

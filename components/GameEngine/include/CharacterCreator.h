@@ -52,9 +52,8 @@ public:
 
     /**
      * @brief Creates a character of the specified type.
-     * @param type The type of character to create.
      */
-    void CreateCharacter(const std::string& type);
+    void CreateCharacter();
 
     /**
      * @brief Displays a message on the character creation screen.
@@ -87,6 +86,8 @@ private:
         Text chooseText;
 
     };
+
+    int index = 0;
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons for selecting character types. */
 
