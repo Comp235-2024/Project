@@ -206,53 +206,53 @@ bool HumanPlayerStrategy::freeAction(int choice){
     switch (choice){
             case 1:
                 cout<<"Content of Backpack: "<<endl;
-                if(player->getBackpack().isEmpty()){
-                    player->getBackpack().printItems();
+                if(player->getBackpack()->isEmpty()){
+                    player->getBackpack()->printItems();
 
                     return false;
                 }
 
-                player->getWornItems().printItems();
+                player->getWornItems()->printItems();
 
                 cout<<"To wear an Item, enter the index of the item; else press 0: "<<endl;
                 int index_choice1;
                 cin>>index_choice1;
 
-                while(index_choice1<0 || index_choice1>player->getBackpack().getSize()){
+                while(index_choice1<0 || index_choice1>player->getBackpack()->getSize()){
                     cout<<"Invalid Index, please enter a valid index: "<<endl;
                     cin>>index_choice1;
                 }
 
                 if(index_choice1!=0){
-                    player->getWornItems().addItem(player->getBackpack().getBackpackStorage()[index_choice1]);
-                    player->getBackpack().removeItem(player->getBackpack().getBackpackStorage()[index_choice1]);
+                    player->getWornItems()->addItem(player->getBackpack()->getBackpackStorage()[index_choice1]);
+                    player->getBackpack()->removeItem(player->getBackpack()->getBackpackStorage()[index_choice1]);
                 }
 
                 break;
 
             case 2:
                 cout<<"Content of Worn Items: "<<endl;
-                if(player->getWornItems().isEmpty()){
-                    player->getWornItems().printItems();
+                if(player->getWornItems()->isEmpty()){
+                    player->getWornItems()->printItems();
 
                     return false;
                 }
 
-                player->getWornItems().printItems();
+                player->getWornItems()->printItems();
 
                 cout<<"To unwear an Item, enter the index of the item; else press 0: ";
 
                 int index_choice2;
                 cin>>index_choice2;
 
-                while(index_choice2<0 || index_choice2>player->getWornItems().getSize()){
+                while(index_choice2<0 || index_choice2>player->getWornItems()->getSize()){
                     cout<<"Invalid Index, please enter a valid index: ";
                     cin>>index_choice2;
                 }
 
                 if(index_choice2!=0){
-                    player->getBackpack().addItem(player->getWornItems().getItem(index_choice2));
-                    player->getWornItems().removeItem(player->getWornItems().getItem(index_choice2));
+                    player->getBackpack()->addItem(player->getWornItems()->getItem(index_choice2));
+                    player->getWornItems()->removeItem(player->getWornItems()->getItem(index_choice2));
                 }
 
                 break;

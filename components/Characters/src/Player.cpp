@@ -14,23 +14,37 @@ Player::Player(int level):Character(level){
     item_in_hand = nullptr;
 }
 
+Player::Player(int level, string TextureName):Character(level){
+    item_in_hand = nullptr;
+    textureName = TextureName;
+}
+
 Player Player::getPlayer(){
     return *this;
 }
 
-Backpack Player::getBackpack() {
-    return backpack;
+Backpack* Player::getBackpack() {
+    return &backpack;
 }
 
-WornItemsContainer Player::getWornItems() {
-    return wornItems;
+void Player::setBackpack(Backpack* backpack) {
+    this->backpack = *backpack;
+}
+
+WornItemsContainer* Player::getWornItems() {
+    return &wornItems;
+}
+
+void Player::setWornItems(WornItemsContainer* wornItems) {
+    this->wornItems = *wornItems;
 }
 
 Item* Player::getItemInHand() {
-    return this->getBackpack().getBackpackStorage()[2];
+    return this->getBackpack()->getBackpackStorage()[2];
 }
 
 void Player::setItemInHand(Item* item) {
     item_in_hand = item;
 }
+
 

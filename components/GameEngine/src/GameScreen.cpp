@@ -90,10 +90,28 @@ void GameScreen::Init() {
     Vector2i start = positionToVector2i(_currentMap->getStartCell());
     if (_mapIndex == 0) {
         _campaign.mike = this->_data->player;
+
+
+        Weapon* mikeSword=new Weapon("Great Sword","Strength", 10);
+        Ring* mikeRing=new Ring("Ring of Power","Dexterity", 5);
+
+        Backpack backpack{"backpack1", 10};
+        _campaign.mike.setBackpack(&backpack);
+
+        _campaign.mike.getBackpack()->addItem(mikeSword);
+        _campaign.mike.getBackpack()->addItem(mikeRing);
+
+        WornItemsContainer wornItems{"wornItems1",6};
+        _campaign.mike.setWornItems(&wornItems);
+
+        Helmet* mikeHelmet=new Helmet("Hat","Wisdom", 5);
+
+        _campaign.mike.getWornItems()->addItem(mikeHelmet);
+
     }
     _currentMap->place(_campaign.mike, start);
     _campaign.mike.position = start;
-    _player = make_shared<Character>(_campaign.mike);
+    _player = make_shared<Player>(_campaign.mike);
 
     // Turn manager portion
     _turnManager = make_shared<TurnManager>();
@@ -144,6 +162,17 @@ void GameScreen::Update(float deltaTime) {
             onMoveOrAttack();
             break;
         case GameState::Interacting:
+            if (chestFlag == 0) {
+                string message="Player opened a chest at position: " + to_string(chestPositionFlag.x) + ", " + to_string(chestPositionFlag.y);
+                this->notify(message, "Character");
+            }
+
+            chestFlag++;
+            handleChest();
+
+            if(chestFlag==0)
+                this->notify("Player closed the chest", "Character");
+
             break;
         case GameState::RollingDice:
             _diceModifier = _data->dice.roll(_diceType);
@@ -151,8 +180,13 @@ void GameScreen::Update(float deltaTime) {
             ChangeState(GameState::Idle);
             break;
         case GameState::Inventory:
+            //TODO Find a better way to only notify once
+            if(inventoryFlag==0)
+                this->notify("Inventory opened", "System");
 
-            ChangeState(GameState::Idle);
+            handleInventory();
+            inventoryFlag++;
+
             break;
         case GameState::Stats:
 
@@ -179,13 +213,7 @@ void GameScreen::Draw(float deltaTime) {
     _data->window.clear();
     _data->window.draw(_bg);
 
-    if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
-        _mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
-    }
-
-    Texture texture = _mapTexture.getTexture();
-    Sprite mapSprite(texture);
-    _data->window.draw(mapSprite);
+    drawMapStuff();
 
     Texture sideBar = _sideBarTexture.getTexture();
     Sprite sideBarSprite(sideBar);
@@ -205,16 +233,31 @@ void GameScreen::Draw(float deltaTime) {
         handleStart();
     }
 
-    if (_gameState == GameState::Inventory) {
-        // draw inventory view
-//        drawInverntory();
+
+    if(_gameState == GameState::Inventory){
+        drawInventoryScreen();
     }
 
+    if(_gameState==GameState::Interacting){
+        drawChestScreen();
+    }
 
     // draw character view (if any)
 
     // add our names
     _data->window.display();
+}
+
+void GameScreen::drawMapStuff() {
+    if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
+        _mapObserver.drawCircleAroundPos(_player->position, _diceModifier, Color::White, &_mapTexture);
+    }
+
+    Texture texture = _mapTexture.getTexture();
+    Sprite mapSprite(texture);
+    _data->window.draw(mapSprite);
+
+    drawHealthBars();
 }
 
 
@@ -264,36 +307,54 @@ void GameScreen::HandleInput() {
     }
 }
 void GameScreen::handleMouseButtonMap() {
-    if (Mouse::isButtonPressed(Mouse::Left) && (_gameState == GameState::Moving || _gameState == GameState::Attacking)) {
+    if (Mouse::isButtonPressed(Mouse::Left)) {
         Vector2i mousePos = Mouse::getPosition(_data->window);
         Vector2f worldPos = _data->window.mapPixelToCoords(mousePos);
         Vector2i gridPos = Vector2i{static_cast<int>(worldPos.x / _mapObserver.SIZE_MULT), static_cast<int>(worldPos.y / _mapObserver.SIZE_MULT)};
-        if (_gameState == GameState::Moving) {
-            vector<Position> path = _currentMap->findPath(_player->position, gridPos);
-            if (path.size() < _diceModifier + 2 && path.size() > 0) {
-                if (_currentMap->move(_player->position, gridPos)) {
-                    _player->position = gridPos;
-                    notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
-                    onMoveOrAttack();
+
+        if (_gameState == GameState::Moving || _gameState == GameState::Attacking) {
+            if (_gameState == GameState::Moving) {
+                vector<Position> path = _currentMap->findPath(_player->position, gridPos);
+                if (path.size() < _diceModifier + 2 && path.size() > 0) {
+                    if (_currentMap->move(_player->position, gridPos)) {
+                        _player->position = gridPos;
+                        notify("Player moved to " + to_string(gridPos.x) + ", " + to_string(gridPos.y), "Character");
+                        onMoveOrAttack();
+                        ChangeState(GameState::Idle);
+                        _enableFlags->move = false;
+                    }
+                }
+            } else if (_gameState == GameState::Attacking) {
+                shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+                //TODO Update attack logic to use the player's attack value and the target's defense value
+                if (target != nullptr) {
+                    notify("Player attacked target", "Character");
+                    notify("Enemy died due to an unbelievably strong blow", "Character");
+//                    _currentMap->remove(gridPos);
+//                    _turnManager->removePlayer(target);
+                    target->setHealth(target->getHealth()/2);
                     ChangeState(GameState::Idle);
-                    _enableFlags->move = false;
+                    _enableFlags->attack = false;
+                    
+                } else {
+                    notify("No target found", "Character");
                 }
             }
-        } else if (_gameState == GameState::Attacking) {
-            shared_ptr<NonPlayerCharacter> target = dynamic_pointer_cast<NonPlayerCharacter>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
-            if (target != nullptr) {
+                
+        }
+        else if(_currentMap->getGrid()[gridPos.y][gridPos.x] !=nullptr && _gameState != GameState::Idle) {
+            //Since there is no Button to go to Interacting state, we check if the player is near a chest and clicks on it. If so, we change the state to Interacting
+            shared_ptr<TreasureChest> chest = dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[gridPos.y][gridPos.x]);
+            if (chest){
+                if(isAdjacent(_player->position, gridPos)){
+                    ChangeState(GameState::Interacting);
+                    chestPositionFlag=gridPos;
+                    //TODO Add logic for interacting with Chests
 
-                // roll a dice here for the attack
+                }
 
-                notify("Player attacked target", "Character");
-                notify("Enemy died due to an unbelievably strong blow", "Character");
-                _currentMap->remove(gridPos);
-                _turnManager->removePlayer(target);
-                ChangeState(GameState::Idle);
-                _enableFlags->attack = false;
-            } else {
-                notify("No target found", "Character");
             }
+
         }
     }
 }
@@ -367,6 +428,7 @@ void GameScreen::scanForNearbyObjects() {
         if (_currentMap->isInBounds(newPos)) {
             if (dynamic_cast<TreasureChest *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Chest detected nearby", "System");
+
             } else if (dynamic_cast<Door *>(_currentMap->getGrid()[newPos.y][newPos.x].get())) {
                 this->notify("Door detected nearby", "System");
                 _turnManager->resetTurns();
@@ -384,6 +446,12 @@ void GameScreen::scanForNearbyObjects() {
         }
     }
 }
+
+bool GameScreen::isAdjacent(const sf::Vector2i &pos1, const sf::Vector2i &pos2){
+    if(_currentMap->isInBounds(pos1) && _currentMap->isInBounds(pos2))
+        return std::abs(pos1.x - pos2.x) <= 1 && std::abs(pos1.y - pos2.y) <= 1 && !(pos1 == pos2);
+}
+
 Vector2i GameScreen::positionToVector2i(Position position) {
     return Vector2i{position.x, position.y};
 }
@@ -641,4 +709,506 @@ void GameScreen::drawStartScreen() {
     _data->window.draw(buttons->startText);
     _data->window.draw(campaignInfoBox);
     _data->window.draw(campaignInfoText);
+}
+
+void GameScreen::drawInventoryScreen() {
+    sf::Vector2u windowSize = _data->window.getSize();
+
+    // Background for the inventory screen
+    sf::RectangleShape inventoryScreen(sf::Vector2f(windowSize.x, windowSize.y));
+    inventoryScreen.setFillColor(sf::Color(72, 59, 58));// Dark grey color
+    inventoryScreen.setOutlineThickness(2);
+    inventoryScreen.setOutlineColor(sf::Color::Black);
+
+    // Calculate the positions and sizes, keeping the original proportions
+    float sectionMargin = windowSize.x * 0.02f;// Margin on the sides
+    float spacing = 10.0f;                     // Spacing between sections
+
+    // Calculate widths while maintaining the original size ratio
+    float wornItemsWidth = windowSize.x * 0.33f - sectionMargin - spacing / 2;
+    float backpackWidth = windowSize.x * 0.67f - sectionMargin - spacing / 2;
+
+    // Worn Items Section
+    sf::RectangleShape wornItemsSection(sf::Vector2f(wornItemsWidth, windowSize.y * 0.8f));
+    wornItemsSection.setFillColor(sf::Color(210, 180, 140));// Beige color
+    wornItemsSection.setOutlineThickness(2);
+    wornItemsSection.setOutlineColor(sf::Color::Black);
+    wornItemsSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+
+    // Worn Items Text
+    sf::Text wornItemsText;
+    wornItemsText.setFont(_data->assets.GetFont("My Font"));
+    wornItemsText.setCharacterSize(30);               // Bigger size
+    wornItemsText.setFillColor(sf::Color(30, 30, 30));// Darker color
+    wornItemsText.setString("Worn Items");
+    sf::FloatRect wornItemsTextRect = wornItemsText.getLocalBounds();
+    wornItemsText.setOrigin(wornItemsTextRect.left + wornItemsTextRect.width / 2.0f, wornItemsTextRect.top + wornItemsTextRect.height / 2.0f);
+    wornItemsText.setPosition(wornItemsSection.getPosition().x + wornItemsSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Backpack Section
+    sf::RectangleShape backpackSection(sf::Vector2f(backpackWidth, windowSize.y * 0.8f));
+    backpackSection.setFillColor(sf::Color(210, 180, 140));// Beige color
+    backpackSection.setOutlineThickness(2);
+    backpackSection.setOutlineColor(sf::Color::Black);
+    backpackSection.setPosition(sectionMargin + wornItemsWidth + spacing, windowSize.y * 0.1f);
+
+    // Backpack Text
+    sf::Text backpackText;
+    backpackText.setFont(_data->assets.GetFont("My Font"));
+    backpackText.setCharacterSize(30);               // Bigger size
+    backpackText.setFillColor(sf::Color(30, 30, 30));// Darker color
+    backpackText.setString("Backpack");
+    sf::FloatRect backpackTextRect = backpackText.getLocalBounds();
+    backpackText.setOrigin(backpackTextRect.left + backpackTextRect.width / 2.0f, backpackTextRect.top + backpackTextRect.height / 2.0f);
+    backpackText.setPosition(backpackSection.getPosition().x + backpackSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Exit Button
+    sf::RectangleShape exitButton(sf::Vector2f(100, 50));// Size of the button
+    exitButton.setFillColor(sf::Color(150, 50, 50));     // Button color
+    exitButton.setOutlineThickness(2);
+    exitButton.setOutlineColor(sf::Color::Black);
+    exitButton.setPosition(windowSize.x - 110, 10);// Positioned at the top right corner
+
+    // Exit Button Text
+    sf::Text exitButtonText;
+    exitButtonText.setFont(_data->assets.GetFont("My Font"));
+    exitButtonText.setCharacterSize(24);
+    exitButtonText.setFillColor(sf::Color::White);
+    exitButtonText.setString("Exit");
+    sf::FloatRect exitButtonTextRect = exitButtonText.getLocalBounds();
+    exitButtonText.setOrigin(exitButtonTextRect.left + exitButtonTextRect.width / 2.0f, exitButtonTextRect.top + exitButtonTextRect.height / 2.0f);
+    exitButtonText.setPosition(exitButton.getPosition().x + exitButton.getSize().x / 2, exitButton.getPosition().y + exitButton.getSize().y / 2);
+
+    // Drawing the inventory screen elements
+    _data->window.draw(inventoryScreen);
+    _data->window.draw(wornItemsSection);
+    _data->window.draw(backpackSection);
+    _data->window.draw(wornItemsText);
+    _data->window.draw(backpackText);
+    _data->window.draw(exitButton);
+    buttons->inventoryExit = exitButton;
+    _data->window.draw(exitButtonText);
+    buttons->inventoryExitText = exitButtonText;
+
+    drawInventoryItems(&wornItemsSection, &backpackSection);
+}
+
+void GameScreen::drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackSection) {
+    Backpack* backpack = _player->getBackpack();
+    WornItemsContainer* wornItems = _player->getWornItems();
+
+    int backpackCapacity = backpack->getCapacity();
+    float margin = 20.0f; // Margin for spacing
+
+    // Adjusting sideLength to make blocks proportional and span vertically
+    float availableWidth = wornItemsSection->getSize().x - 2 * margin; // Assuming margin on both sides
+    float maxWidthFor3Items = wornItemsSection->getSize().x - 4 * margin; // 4 margins total for 3 items
+    float sideLength = std::min(maxWidthFor3Items / 3, (wornItemsSection->getSize().y - 7 * margin) / 6);
+
+    struct ItemSlot {
+        sf::Vector2f position;
+        std::string label;
+    };
+
+    int itemIndex=0;
+    // Recalculate horizontal positions based on the new sideLength
+    float armorX = wornItemsSection->getSize().x / 2 - sideLength / 2;
+    float weaponX = armorX - sideLength - margin; // Adjusted to ensure it doesn't stick out
+    float shieldRingX = armorX + sideLength + margin; // Adjusted to ensure it doesn't stick out
+
+    std::vector<ItemSlot> itemSlots = {
+            {{armorX, margin}, "Helmet"},
+            {{armorX, 2 * margin + sideLength}, "Armor"},
+            {{weaponX, 2 * margin + sideLength}, "Weapon"},
+            {{shieldRingX, 2 * margin + sideLength}, "Shield/Ring"},
+            {{armorX, 3 * margin + 2 * sideLength}, "Belt"},
+            {{armorX, 4 * margin + 3 * sideLength}, "Boots"}
+    };
+
+    for (const auto& slot : itemSlots) {
+        Text wornItemText;
+        wornItemText.setFont(_data->assets.GetFont("My Font")); // Set the font once
+        wornItemText.setCharacterSize(18); // Set character size once
+        wornItemText.setFillColor(sf::Color::Black); // Set text color once
+
+        sf::RectangleShape itemShape(sf::Vector2f(sideLength, sideLength));
+        itemShape.setPosition(wornItemsSection->getPosition() + slot.position);
+        itemShape.setFillColor(sf::Color(200, 200, 200)); // Placeholder color
+        itemShape.setOutlineThickness(1);
+        itemShape.setOutlineColor(sf::Color::Black);
+
+        // Draw the item slot
+        _data->window.draw(itemShape);
+
+        // Checking and displaying item if it exists
+        if(itemIndex < wornItems->getWornItemsContainerStorage().size()){
+            Item* item = wornItems->getWornItemsContainerStorage()[itemIndex];
+            if (item != nullptr) {
+                wornItemText.setString(item->getName());
+
+                // Adjust font size to fit the text within its block
+                adjustTextSize(wornItemText, itemShape.getSize().x - 2 * margin, itemShape.getSize().y - 2 * margin);
+
+                // Recalculate the text bounds after font size adjustment
+                sf::FloatRect textBounds = wornItemText.getLocalBounds();
+                wornItemText.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+                wornItemText.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2.0f,
+                                         itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
+
+                _data->window.draw(wornItemText);
+            }
+        }
+
+        // Text labels for each item slot
+        sf::Text label;
+        label.setFont(_data->assets.GetFont("My Font"));
+        label.setString(slot.label);
+        label.setCharacterSize(14);
+        label.setFillColor(sf::Color::Black);
+        sf::FloatRect textRect = label.getLocalBounds();
+        label.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        label.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2, itemShape.getPosition().y - margin / 2);
+        _data->window.draw(label);
+
+        itemIndex++;
+    }
+
+    // Backpack Section - Make blocks square and displayed horizontally
+    // Adjust the number of rows and columns based on the capacity to maintain square shape
+    int backpackRows = std::ceil(std::sqrt(backpackCapacity));
+    int backpackColumns = backpackRows; // Assuming a square layout for simplicity
+
+    // Calculate the size of each item slot in the backpack
+    float backpackItemSize = std::min(
+            (backpackSection->getSize().x - (backpackColumns + 1) * margin) / backpackColumns,
+            (backpackSection->getSize().y - (backpackRows + 1) * margin) / backpackRows);
+
+    Text chestItemText;
+    chestItemText.setFont(_data->assets.GetFont("My Font")); // Set the font once
+    chestItemText.setCharacterSize(14); // Set character size once
+    chestItemText.setFillColor(sf::Color::Black); // Set text color once
+
+    // Draw backpack items
+    for (int i = 0; i < backpackRows; i++) {
+        for (int j = 0; j < backpackColumns; j++) {
+            int index = i * backpackColumns + j;
+            if (index < backpackCapacity) {
+                sf::RectangleShape itemShape(sf::Vector2f(backpackItemSize,backpackItemSize)); // Square shape
+                itemShape.setPosition(backpackSection->getPosition().x + j * (backpackItemSize + margin) + margin,
+                                      backpackSection->getPosition().y + i * (backpackItemSize + margin) + margin); // Positioned with margins
+                itemShape.setFillColor(sf::Color(150, 150, 150)); // Placeholder color
+                itemShape.setOutlineThickness(2);
+                itemShape.setOutlineColor(sf::Color::Black);
+
+                if (index < backpack->getBackpackStorage().size()) {
+                    Item* item = backpack->getBackpackStorage()[index];
+                    if (item != nullptr) {
+                        // Set item name as text
+                        chestItemText.setString(item->getName());
+
+                        // Adjust font size to fit the text within its block
+                        adjustTextSize(chestItemText, itemShape.getSize().x - 2 * margin, itemShape.getSize().y - 2 * margin);
+
+                        // Recalculate the text bounds after font size adjustment
+                        sf::FloatRect textBounds = chestItemText.getLocalBounds();
+                        chestItemText.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+                        chestItemText.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2.0f,
+                                                  itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
+                    }
+                }
+
+                _data->window.draw(itemShape);
+                if (index < backpack->getBackpackStorage().size() && backpack->getBackpackStorage()[index] != nullptr) {
+                    _data->window.draw(chestItemText); // Only draw text if item exists
+                }
+            }
+        }
+    }
+}
+void GameScreen::handleInventory() {
+    //TODO Handle item interactions in the inventory screen
+
+    handleInventoryExitButton();
+}
+
+void GameScreen::handleInventoryExitButton() {
+    if(_data->inputs.IsButtonClicked(buttons->inventoryExit, Mouse::Left, _data->window)) {
+        ChangeState(GameState::Idle);
+        this->notify("Inventory closed", "System");
+        inventoryFlag=0;
+    }
+}
+
+void GameScreen::drawChestScreen() {
+    sf::Vector2u windowSize = _data->window.getSize();
+
+    // Background for the chest screen
+    sf::RectangleShape chestScreen(sf::Vector2f(windowSize.x, windowSize.y));
+    chestScreen.setFillColor(sf::Color(72, 59, 58)); // Dark grey color
+    chestScreen.setOutlineThickness(2);
+    chestScreen.setOutlineColor(sf::Color::Black);
+
+    float sectionMargin = windowSize.x * 0.02f; // Margin on the sides
+    float spacing = 10.0f; // Spacing between sections
+
+    // Half the width for each section (backpack and chest), minus margins and spacing
+    float sectionWidth = (windowSize.x - 2 * sectionMargin - spacing) / 2;
+
+    // Backpack Section - Left
+    sf::RectangleShape backpackSection(sf::Vector2f(sectionWidth, windowSize.y * 0.8f));
+    backpackSection.setFillColor(sf::Color(210, 180, 140)); // Beige color
+    backpackSection.setOutlineThickness(2);
+    backpackSection.setOutlineColor(sf::Color::Black);
+    backpackSection.setPosition(sectionMargin, windowSize.y * 0.1f);
+
+    // Backpack Text
+    sf::Text backpackText;
+    backpackText.setFont(_data->assets.GetFont("My Font"));
+    backpackText.setString("Backpack");
+    backpackText.setCharacterSize(30);
+    backpackText.setFillColor(sf::Color(30, 30, 30));
+    sf::FloatRect backpackTextRect = backpackText.getLocalBounds();
+    backpackText.setOrigin(backpackTextRect.width / 2, backpackTextRect.height / 2);
+    backpackText.setPosition(backpackSection.getPosition().x + backpackSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Chest Section - Right
+    sf::RectangleShape chestSection(sf::Vector2f(sectionWidth, windowSize.y * 0.8f));
+    chestSection.setFillColor(sf::Color(210, 180, 140)); // Beige color, similar to backpack section
+    chestSection.setOutlineThickness(2);
+    chestSection.setOutlineColor(sf::Color::Black);
+    chestSection.setPosition(sectionMargin + sectionWidth + spacing, windowSize.y * 0.1f);
+
+    // Chest Text
+    sf::Text chestText;
+    chestText.setFont(_data->assets.GetFont("My Font"));
+    chestText.setString("Chest");
+    chestText.setCharacterSize(30);
+    chestText.setFillColor(sf::Color(30, 30, 30));
+    sf::FloatRect chestTextRect = chestText.getLocalBounds();
+    chestText.setOrigin(chestTextRect.width / 2, chestTextRect.height / 2);
+    chestText.setPosition(chestSection.getPosition().x + chestSection.getSize().x / 2, windowSize.y * 0.05f);
+
+    // Exit Button
+    sf::RectangleShape exitButton(sf::Vector2f(100, 50));// Size of the button
+    exitButton.setFillColor(sf::Color(150, 50, 50));     // Button color
+    exitButton.setOutlineThickness(2);
+    exitButton.setOutlineColor(sf::Color::Black);
+    exitButton.setPosition(windowSize.x - 110, 10);// Positioned at the top right corner
+
+    //Exit Button text
+    sf::Text exitButtonText;
+    exitButtonText.setFont(_data->assets.GetFont("My Font"));
+    exitButtonText.setCharacterSize(24);
+    exitButtonText.setFillColor(sf::Color::White);
+    exitButtonText.setString("Exit");
+    sf::FloatRect exitButtonTextRect = exitButtonText.getLocalBounds();
+    exitButtonText.setOrigin(exitButtonTextRect.left + exitButtonTextRect.width / 2.0f, exitButtonTextRect.top + exitButtonTextRect.height / 2.0f);
+    exitButtonText.setPosition(exitButton.getPosition().x + exitButton.getSize().x / 2, exitButton.getPosition().y + exitButton.getSize().y / 2);
+
+
+    // Drawing the chest screen elements
+    _data->window.draw(chestScreen);
+    _data->window.draw(backpackSection);
+    _data->window.draw(chestSection);
+    _data->window.draw(backpackText);
+    _data->window.draw(chestText);
+    _data->window.draw(exitButton);
+    buttons->chestExit = exitButton;
+    _data->window.draw(exitButtonText);
+    buttons->chestExitText = exitButtonText;
+
+    //TODO Call drawChestItems with the position of the chest
+    drawChestItems(&chestSection, &backpackSection);
+
+}
+
+void GameScreen::drawChestItems(sf::RectangleShape *chestItemsSection, sf::RectangleShape *backpackItemsSection) {
+    Position position=chestPositionFlag;
+
+    Backpack* backpack = _player->getBackpack();
+    std::shared_ptr<TreasureChest> chest = std::dynamic_pointer_cast<TreasureChest>(_currentMap->getGrid()[position.y][position.x]); // This method needs to be implemented based on your game's design.
+
+    int backpackCapacity = backpack->getCapacity();
+    int chestCapacity = chest->getCapacity(); // Assuming Chest has a similar method to get its capacity.
+    float margin = 20.0f; // Margin for spacing
+
+    // Common setup for both sections
+    float sectionWidth = chestItemsSection->getSize().x - 2 * margin; // Assuming equal width for both sections
+    int rows = std::ceil(std::sqrt(std::max(backpackCapacity, chestCapacity))); // Determine row count based on the larger of backpack or chest capacity
+    float itemSize = std::min((chestItemsSection->getSize().x - (rows + 1) * margin) / rows,
+                              (chestItemsSection->getSize().y - (rows + 1) * margin) / rows); // Ensure squares
+
+
+
+    // Draw backpack items
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < rows; j++) {
+            int index = i * rows + j;
+            if (index < backpackCapacity) {
+                Text backpackItemText;
+                backpackItemText.setFont(_data->assets.GetFont("My Font")); // Set the font once
+                backpackItemText.setCharacterSize(14); // Set character size once
+                backpackItemText.setFillColor(sf::Color::Black); // Set text color once
+
+
+                sf::RectangleShape itemShape(sf::Vector2f(itemSize, itemSize)); // Square shape
+                itemShape.setPosition(backpackItemsSection->getPosition().x + j * (itemSize + margin) + margin,
+                                      backpackItemsSection->getPosition().y + i * (itemSize + margin) + margin); // Positioned with margins
+                itemShape.setFillColor(sf::Color(150, 150, 150)); // Placeholder color
+                itemShape.setOutlineThickness(2);
+                itemShape.setOutlineColor(sf::Color::Black);
+
+                if (index < backpack->getBackpackStorage().size()) {
+                    Item* item = backpack->getBackpackStorage()[index];
+                    if (item != nullptr) {
+                        // Set item name as text
+                        backpackItemText.setString(item->getName());
+
+                        // Adjust font size to fit the text within its block
+                        adjustTextSize(backpackItemText, itemShape.getSize().x - 2 * margin, itemShape.getSize().y - 2 * margin);
+
+                        // Recalculate the text bounds after font size adjustment
+                        sf::FloatRect textBounds = backpackItemText.getLocalBounds();
+                        backpackItemText.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+                        backpackItemText.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2.0f,
+                                                  itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
+                    }
+                }
+
+                _data->window.draw(itemShape);
+                if (index < backpack->getBackpackStorage().size() && backpack->getBackpackStorage()[index] != nullptr) {
+                    _data->window.draw(backpackItemText); // Only draw text if item exists
+                }
+            }
+        }
+    }
+
+
+    // Draw chest items
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < rows; j++) {
+            int index = i * rows + j;
+            if (index >= chestCapacity) continue; // Skip if index exceeds chest capacity
+
+            Text chestItemText;
+            chestItemText.setFont(_data->assets.GetFont("My Font")); // Set the font once
+            chestItemText.setCharacterSize(14); // Set character size once
+            chestItemText.setFillColor(sf::Color::Black); // Set text color once
+
+            // Create item shape
+            sf::RectangleShape itemShape(sf::Vector2f(itemSize, itemSize));
+            itemShape.setPosition(chestItemsSection->getPosition().x + j * (itemSize + margin) + margin,
+                                  chestItemsSection->getPosition().y + i * (itemSize + margin) + margin);
+            itemShape.setFillColor(sf::Color(150, 150, 150));
+            itemShape.setOutlineThickness(2);
+            itemShape.setOutlineColor(sf::Color::Black);
+
+            // Draw item if present
+            if (index < chest->getSize()) {
+                Item* item = chest->getTreasureChestStorage()[index];
+                if (item != nullptr) {
+                    // Set item name as text
+                    chestItemText.setString(item->getName());
+
+                    // Adjust font size to fit the text within its block
+                    adjustTextSize(chestItemText, itemShape.getSize().x - margin, itemShape.getSize().y - margin);
+
+                    // Center the text within its block after adjusting its size
+                    sf::FloatRect textBounds = chestItemText.getLocalBounds();
+                    chestItemText.setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+                    chestItemText.setPosition(itemShape.getPosition().x + itemShape.getSize().x / 2.0f,
+                                              itemShape.getPosition().y + itemShape.getSize().y / 2.0f - textBounds.height / 2.0f);
+
+                }
+            }
+
+            // Draw item shape and text
+            _data->window.draw(itemShape);
+            if (index < chest->getSize() && chest->getTreasureChestStorage()[index] != nullptr) {
+                _data->window.draw(chestItemText); // Only draw text if item exists
+            }
+        }
+    }
+}
+
+void GameScreen::handleChest() {
+    //TODO Handle item interactions in the chest screen
+
+    handleChestExitButton();
+}
+
+void GameScreen::handleChestExitButton() {
+    if(_data->inputs.IsButtonClicked(buttons->chestExit, Mouse::Left, _data->window)) {
+        ChangeState(GameState::Idle);
+        this->notify("Chest closed", "System");
+        chestPositionFlag={-1,-1};
+        chestFlag=0;
+    }
+}
+
+void GameScreen::adjustTextSize(sf::Text &text, float maxWidth, float maxHeight) {
+    // Ensure the method starts with a character size that's likely too big, then adjust down.
+    unsigned int characterSize = text.getCharacterSize();
+    sf::FloatRect bounds = text.getLocalBounds();
+
+    // Determine an upper bound for character size that's definitely too large to fit.
+    float initialScaleFactor = std::min(maxWidth / bounds.width, maxHeight / bounds.height);
+    characterSize = static_cast<unsigned int>(characterSize * initialScaleFactor);
+    text.setCharacterSize(characterSize);
+    bounds = text.getLocalBounds();
+
+    // Decrease character size until the text fits within maxWidth and maxHeight
+    while ((bounds.width > maxWidth || bounds.height > maxHeight) && characterSize > 0) {
+        --characterSize;
+        text.setCharacterSize(characterSize);
+        bounds = text.getLocalBounds();
+    }
+
+    // Incrementally increase character size to maximize use of available space, ensuring a margin
+    // Note: This loop may be optionally skipped if you want to ensure a margin is always present
+    while (characterSize < maxHeight) {
+        ++characterSize;
+        text.setCharacterSize(characterSize);
+        bounds = text.getLocalBounds();
+
+        if (bounds.width > maxWidth || bounds.height > maxHeight) {
+            // Undo the last increase if it made the text too big
+            --characterSize;
+            text.setCharacterSize(characterSize);
+            break; // Exit the loop as we've found the limit
+        }
+    }
+}
+
+void GameScreen::drawHealthBars() {
+
+    auto createHealthBar = [this](Vector2i pos, bool isPlayer, unsigned int health) {
+        Vector2f pixelPos = static_cast<Vector2f>(pos) * _mapObserver.SIZE_MULT;
+
+        RectangleShape bar;
+        if (isPlayer) {
+            bar.setFillColor(Color::Green);
+        } else {
+            bar.setFillColor(Color::Red);
+        }
+        bar.setOutlineThickness(1);
+        bar.setOutlineColor(Color::Black);
+        bar.setSize(Vector2f{_mapObserver.SIZE_MULT * health/100, _mapObserver.SIZE_MULT * 0.1f});
+        bar.setPosition(pixelPos + Vector2f{0, _mapObserver.SIZE_MULT * 0.1f});
+
+        this->_data->window.draw(bar);
+    };
+
+
+
+    for (auto entity : _npcs){
+        createHealthBar(entity->position, false, entity->getHealth());
+    }
+    createHealthBar(_player->position, true, _player->getHealth());
+
+
+
+
+
+
 }

@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "State.h"
 #include "TurnManager.h"
+#include "Campaign.h"
 
 /**
  * @class GameScreen
@@ -112,8 +113,8 @@ private:
     RectangleShape _bg; /**< The background shape. */
     Vector2u _windowSize; /**< The window size. */
 
-    shared_ptr<Character> _player; /**< The player character. */
-    vector<shared_ptr<Character>> _npcs; /**< The non-player characters. */
+    shared_ptr<Player> _player; /**< The player character. */
+    vector<shared_ptr<NonPlayerCharacter>> _npcs; /**< The non-player characters. */
     Campaign _campaign;
     MapObserver _mapObserver; /**< The map observer. */
 
@@ -171,6 +172,10 @@ private:
         Text statsText;
         RectangleShape start;
         Text startText;
+        RectangleShape inventoryExit;
+        Text inventoryExitText;
+        RectangleShape chestExit;
+        Text chestExitText;
     };
 
     shared_ptr<Buttons> buttons = make_shared<Buttons>(); /**< The buttons on the game screen. */
@@ -219,7 +224,17 @@ private:
      * 
      * This function scans for nearby objects in the current map and performs actions based on the objects found.
      */
-    void scanForNearbyObjects();
+     void scanForNearbyObjects();
+
+     /**
+      * @brief Checks if the position are within 1 cell of each other (Diagonals included)
+      * @brief Does not do type checking
+      * @param pos1
+      * @param pos2
+      * @return
+      */
+     bool isAdjacent(const Vector2i& pos1, const Vector2i& pos2);
+
 
     /**
      * @brief Converts a position to a Vector2i.
@@ -258,6 +273,25 @@ private:
     void HandleNpcActions();
     void handleStart();
     void drawStartScreen();
+
+    void handleInventory();
+    void drawInventoryScreen();
+    void drawInventoryItems(RectangleShape* wornItemsSection, RectangleShape* backpackItemsSection);
+    //Since the inventory screen is a bit more complex, we need to keep track of the current state
+    //Due to the continuous loop, we need to notify that the state is inventory only once
+    int inventoryFlag =0;
+    void handleInventoryExitButton();
+
+    void drawChestScreen();
+    Position chestPositionFlag;
+    void drawChestItems(RectangleShape* chestItemsSection, RectangleShape* backpackItemsSection);
+    void handleChest();
+    void handleChestExitButton();
+    int chestFlag =0;
+
+    void adjustTextSize(sf::Text &text, float maxWidth, float maxHeight);
+    void drawMapStuff();
+    void drawHealthBars();
 };
 
 #endif // GAME_SCREEN_H
