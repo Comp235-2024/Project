@@ -79,12 +79,14 @@ void CharacterCreator::CreateCharacter() {
     if(index == 0) {
         this->notify("Creating dwarf character", "System");
         _data->player.textureName = "dwarf_m";
+        _data->player = Player(5, "dwarf_m");
         this->notify("Returning to the Main menu", "System");
         _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
     }
     else if (index == 1) {
         this->notify("Creating elf character", "System");
         _data->player.textureName = "elf_f";
+        _data->player = Player(5, "elf_f");
         this->notify("Returning to the Main menu", "System");
         _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
     }

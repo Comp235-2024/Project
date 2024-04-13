@@ -1456,6 +1456,7 @@ void GameScreen::handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCha
     if (npc_hp <= 0) {
         npc->setHitPoints(0);
         make_npc_into_chest(npc->position);
+        player->levelUp();
         this->notify("NPC died and turned into chest", "Character");
         _turnManager->removePlayer(npc);
         auto it = find(_npcs.begin(), _npcs.end(), npc);
@@ -1475,7 +1476,7 @@ void GameScreen::handleAttack( shared_ptr<NonPlayerCharacter> npc, shared_ptr<Pl
 
     int player_hp = player->getHitPoints();
     int player_armor = player->getArmorClass();
-    int npc_weapon_dmg = 0;
+    int npc_weapon_dmg = 20;
 
     try {
 //        auto p_weapon = dynamic_cast<Weapon *>(player->getWornItems().getWornItemsContainerStorage().at(2));
@@ -1483,7 +1484,7 @@ void GameScreen::handleAttack( shared_ptr<NonPlayerCharacter> npc, shared_ptr<Pl
     } catch (...){
         this->notify("Player does not have a weapon equipped", "Character");
         this->notify("Using the default bow", "Character");
-        npc_weapon_dmg = 40;
+        npc_weapon_dmg = 30;
     }
 
     // add dice mod
@@ -1494,6 +1495,10 @@ void GameScreen::handleAttack( shared_ptr<NonPlayerCharacter> npc, shared_ptr<Pl
     int npc_dmg = npc_attack_bon + npc_weapon_dmg - player_armor;
     npc_dmg = npc_dmg * roll;
     this->notify("Player attacked NPC with " + to_string(npc_dmg) + " damage", "Character");
+
+    if (npc_dmg < 0) {
+        npc_dmg = -npc_dmg;
+    }
 
     player_hp -= npc_dmg;
     if (player_hp <= 0) {
