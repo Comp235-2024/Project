@@ -89,8 +89,9 @@ void CharacterCreator::CreateCharacter() {
         _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
     }
     else if(index == 2) {
-        this->notify("Creating lizard character", "System");
-        _data->player.textureName = "lizard_f";
+        this->notify("Creating knight character", "System");
+//        _data->player.textureName = "knight";
+        _data->player = Player(5, "knight");
         this->notify("Returning to the Main menu", "System");
         _data->stateMachine.AddState(StateRef(new MainMenu(_data)), false, _data->log);
     }
@@ -116,7 +117,7 @@ void CharacterCreator::Draw(float deltaTime) {
     else if(index == 1)
         _data->window.draw(buttons->elf);
     else if(index == 2)
-        _data->window.draw(buttons->lizard);
+        _data->window.draw(buttons->knight);
 
 
 
@@ -135,7 +136,7 @@ void CharacterCreator::SetButtons() {
 
     GenerateButton(buttons->dwarf, position + Vector2f(-50,-300), this->_data->assets.GetTexture("dwarf_m"), 6, 6);
     GenerateButton(buttons->elf, position + Vector2f(-50,-300), this->_data->assets.GetTexture("elf_f"), 6, 6);
-    GenerateButton(buttons->lizard, position + Vector2f(-50,-300), this->_data->assets.GetTexture("lizard_f"), 6, 6);
+    GenerateButton(buttons->knight, position + Vector2f(-50,-300), this->_data->assets.GetTexture("knight"), 6, 6);
 
     GenerateButton(buttons->panel, position + Vector2f(-200,-400), this->_data->assets.GetTexture("panel"), 3, 3);
     GenerateButton(buttons->next, position + Vector2f(60,-130), this->_data->assets.GetTexture("nextButton"), 1, 1);

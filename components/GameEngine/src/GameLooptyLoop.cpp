@@ -35,7 +35,7 @@ GameLooptyLoop::GameLooptyLoop(int width, int height, const string& title) {
     _data->assets.LoadTexture("knight", "../../assets/images/frames/knight_m_idle_anim_f0.png");
     _data->assets.LoadTexture("panel", "../../assets/images/frames/panel.png");
     _data->assets.LoadTexture("wizard", "../../assets/images/frames/wizzard_m_idle_anim_f0.png");
-    //tiny_zombie, skelet, pumpkin_dude, orc_warrior, knight_m, wizard_f, orc_shaman, orge, necromancer, masked_orc, lizard, imp, goblin, elf_f, dwarf_m, doc, big_demon, angel
+    //tiny_zombie, skelet, pumpkin_dude, orc_warrior, knight_m, wizard_f, orc_shaman, orge, necromancer, masked_orc, knight, imp, goblin, elf_f, dwarf_m, doc, big_demon, angel
     string characters[] = {"tiny_zombie", "skelet", "pumpkin_dude", "orc_warrior", "knight_m", "wizzard_f", "orc_shaman", "ogre", "masked_orc", "lizard_f", "imp", "goblin", "elf_f", "dwarf_m", "doc", "big_demon", "angel"};
     for (auto &character : characters) {
         _data->assets.LoadTexture(character, format("../../assets/images/frames/{}_idle_anim_f0.png", character));

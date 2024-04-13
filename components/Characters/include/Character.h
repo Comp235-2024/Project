@@ -292,18 +292,11 @@ private:
 private:
     Position location;
 
-    //TODO implement health logic
-    int health = 100;
-
     Sprite sprite;
 
     int abilityScores[6]; // 0: Strength, 1: Dexterity, 2: Constitution, 3:
                          // Intelligence, 4: Wisdom, 5: Charisma
     int abilityModifiers[6]{};
-    int hitPoints;
-    int armorClass{};
-    int attackBonus;
-    int damageBonus{};
     int numberOfAttacks; // Number of attacks per round
     int level;
     std::vector<int> additionalAttackBonuses;  // Holds additional attack bonuses.
@@ -339,6 +332,13 @@ private:
     void calculateDamageBonus();
 
 
+protected:
+    //TODO implement health logic
+    int health = 100;
+    int hitPoints;
+    int armorClass{};
+    int attackBonus;
+    int damageBonus{};
 };
 
 #endif

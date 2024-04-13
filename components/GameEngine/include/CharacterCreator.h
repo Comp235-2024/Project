@@ -78,7 +78,7 @@ private:
     struct Buttons {
         Sprite dwarf;
         Sprite elf;
-        Sprite lizard;
+        Sprite knight;
         Sprite next;
         Sprite back;
         Sprite panel;

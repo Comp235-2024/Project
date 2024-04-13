@@ -20,6 +20,12 @@ Character::Character(){
         abilityScores[i]=5;
         abilityModifiers[i]=5;}
 
+    generateAbilityScores();
+    calculateAbilityModifiers();
+    calculateHitPoints();
+    calculateArmorClass();
+    calculateAttackBonus();
+    calculateDamageBonus();
 
 }
 /**
@@ -80,7 +86,7 @@ void Character::calculateAbilityModifiers() {
  * @brief Calculates the hit points of the character.
  */
 void Character::calculateHitPoints() {
-    hitPoints = 1; // Base HP + Constitution modifier
+    hitPoints = 100 + abilityScores[2]; // Base HP + Constitution modifier
 }
 
 /**
