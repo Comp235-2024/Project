@@ -87,17 +87,12 @@ int Backpack::getNbBackpacks()
     return nbBackpacks;
 }
 
-vector<Item*> Backpack::getBackpackStorage() const{
+vector<shared_ptr<Item> > Backpack::getBackpackStorage() const{
     return this->BackpackStorage;
 }
 
 //TODO
-Item* Backpack::getItem(int index) const {
-    return this->getBackpackStorage()[index];
-}
-
-//TODO
-int Backpack::getItemIndex(Item* item) const{
+int Backpack::getItemIndex(shared_ptr<Item> item) const{
     for (int i = 0; i < this->size; i++) {
         if (this->getBackpackStorage()[i]->getItemID() == item->getItemID()) {
             return i;
@@ -112,7 +107,7 @@ int Backpack::getItemIndex(Item* item) const{
  *
  * @param item
  */
-void Backpack::addItem(Item* item)
+void Backpack::addItem(shared_ptr<Item> item)
 {
     if (this->isFull())
     {
@@ -129,7 +124,7 @@ void Backpack::addItem(Item* item)
     {
         item->placed=true;
         this->size++;
-        this->BackpackStorage.push_back(item);
+        this->BackpackStorage.push_back(static_cast<const shared_ptr<Item>>(item));
         cout<<item->getName()<<" added to "+this->getName()+"\n"<<endl;
     }
 }
@@ -140,7 +135,7 @@ void Backpack::addItem(Item* item)
  *
  * @param item
  */
-void Backpack::removeItem(Item* item)
+void Backpack::removeItem(shared_ptr<Item> item)
 {
     if (this->isEmpty())
     {
@@ -263,7 +258,7 @@ void Backpack::printSortedItemsByName(string name) const
  * @return true
  * @return false
  */
-bool Backpack::isFound(Item* item) const
+bool Backpack::isFound(shared_ptr<Item> item) const
 {
     for (int i = 0; i < this->size; i++)
     {
