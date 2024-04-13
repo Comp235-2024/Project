@@ -358,10 +358,7 @@ void Campaign::defaultLevel3() {
     }
 
 
-    map.place(mike, Position{12, 12});
-
-    //TODO CHANGE TO AN NPC TYPE
-    Ogre boss{};
+    Ogre boss{200, 200, 25, 25, 25};
     map.place(boss, Position{9, 9});
 
     this->addMap(map);

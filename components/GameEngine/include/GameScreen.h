@@ -295,6 +295,7 @@ private:
     void drawMapStuff();
     void drawHealthBars();
     void handleAttack(shared_ptr<Player> player, shared_ptr<NonPlayerCharacter> npc);
+    void handleAttack(shared_ptr<NonPlayerCharacter> npc, shared_ptr<Player> player);
     void make_npc_into_chest(Vector2i vector2);
 };
 
