@@ -12,7 +12,7 @@
 
 class NonPlayerCharacter : public Character{
 private:
-    Item* item_in_hand;
+    Item* item_in_hand{};
 
 public:
     ~NonPlayerCharacter() override =default;
@@ -48,7 +48,8 @@ class Ogre : public NonPlayerCharacter{
 public:
     std::string textureName = "ogre";
 
-    Ogre()=default;
+    Ogre();
+    Ogre(int health, int hit_points, int armor_class, int attack_bonus, int damage_bonus);
     ~Ogre() override =default;
 
     Ogre(const Ogre&)=default;

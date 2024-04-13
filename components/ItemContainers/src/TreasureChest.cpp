@@ -129,7 +129,7 @@ void TreasureChest::addItem(Item* item)
         item->placed=true;
         this->size++;
         this->TreasureChestStorage.push_back(item);
-        cout<<item->getName()<<" added to "<<this->getName()<<"\n"<<endl;
+//        cout<<item->getName()<<" added to "<<this->getName()<<"\n"<<endl;
     }
 }
 

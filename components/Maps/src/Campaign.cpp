@@ -96,13 +96,16 @@ void Campaign::defaultLevel1(){
 
     Map map(20, 20);
 
-    map.setStartCell(Position{0, 0});
+    map.setStartCell(Position{7, 7});
 
     Ogre enemy2{};
     map.place(enemy2, Position{13, 4});
 
-    Helmet* helmet = new Helmet("Great Helmet","Intelligence", 10);
-    Armor* armor = new Armor("Iron Armor","Strength", 10);
+    Ogre enemy1{};
+    map.place(enemy1, Position{18, 10});
+
+    auto* helmet = new Helmet("Great Helmet","Intelligence", 10);
+    auto* armor = new Armor("Iron Armor","Strength", 10);
     TreasureChest chest{"chest1", 15};
 
     chest.addItem(helmet);
@@ -110,7 +113,7 @@ void Campaign::defaultLevel1(){
 
     map.place(chest, Position{5, 7});
 
-    Boots* boots = new Boots("Speed Boots","Dexterity", 7);
+    auto* boots = new Boots("Speed Boots","Dexterity", 7);
     Belt* belt = new Belt("Leather Belt","Constitution", 5);
 
     TreasureChest chest2{"chest2", 15};
@@ -120,8 +123,8 @@ void Campaign::defaultLevel1(){
 
     map.place(chest2, Position{5, 5});
 
-    Weapon* weapon = new Weapon("Whip","Strength", 10);
-    Shield* shield = new Shield("Wooden Shield","Dexterity", 5);
+    auto* weapon = new Weapon("Whip","Strength", 10);
+    auto* shield = new Shield("Wooden Shield","Dexterity", 5);
 
     TreasureChest chest3{"chest3", 15};
 
