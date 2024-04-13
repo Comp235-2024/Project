@@ -1478,8 +1478,8 @@ void GameScreen::handleAttack( shared_ptr<NonPlayerCharacter> npc, shared_ptr<Pl
     int npc_weapon_dmg = 0;
 
     try {
-        auto p_weapon = dynamic_cast<Weapon *>(player->getWornItems().getWornItemsContainerStorage().at(2));
-        npc_weapon_dmg = p_weapon->getEnchantmentLevel();
+//        auto p_weapon = dynamic_cast<Weapon *>(player->getWornItems().getWornItemsContainerStorage().at(2));
+//        npc_weapon_dmg = p_weapon->getEnchantmentLevel();
     } catch (...){
         this->notify("Player does not have a weapon equipped", "Character");
         this->notify("Using the default bow", "Character");
